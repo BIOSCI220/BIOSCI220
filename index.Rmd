@@ -28,3 +28,7 @@ options(warn = 0)
 
 
 ![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=50%}
+
+
+```{r child = '00-declaration.Rmd'}
+```
