@@ -1,13 +1,11 @@
 bookdown::gitbook:
+  toc_depth: 2
   highlight: pygments
-  split_by: section
   config:
     toc:
       collapse: section
       before: |
         <li><a href="./">BIOSCI 220: Quantitative Biology</a></li>
-      after: |
-        <li><a href="https://github.com/BIOSCI220/BIOSCI220" target="blank">BIOSCI 220: Quantitative Biology</a></li>
     download: ["pdf", "epub"]
     search: yes
 bookdown::html_book:
