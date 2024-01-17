@@ -1,5 +1,5 @@
 theme: jekyll-theme-dinky
-title: biosci220-bookdown
+title: BIOSCI220
 markdown: kramdown
 kramdown:
   parse_block_html: true

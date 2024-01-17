@@ -1,5 +1,7 @@
 --- 
 title: "BIOSCI 220: Quantitative Biology"
+author: "Materials for module 1"
+date: "Lecturers: Charlotte Jones-Todd & Jenn Jury"
 ---
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
@@ -25,4 +27,4 @@ options(warn = 0)
 # Nau mai, haere mai. Welcome to BIOSCI 220! {-}
 
 
-![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true)
+![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=50%}
