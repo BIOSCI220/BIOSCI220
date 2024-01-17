@@ -27,7 +27,7 @@ options(warn = 0)
 # Nau mai, haere mai. Welcome to BIOSCI 220! {-}
 
 
-![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=50%}
+![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true)
 
 
 ```{r child = '00-declaration.Rmd'}
