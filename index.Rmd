@@ -4,7 +4,7 @@ author: "Materials for module 1"
 date: "Lecturers: Charlotte Jones-Todd & Jenn Jury"
 ---
 
-```{r, echo = FALSE, warning=FALSE, message=FALSE}
+```{r, echo = FALSE, warning=FALSE, message=FALSE, eval = FALSE}
 ## install packages used in book if not already
 pkgs <- c("devtools", "tidyverse", "palmerpenguins", "patchwork", "equatiomatic",
 "vegan", "gglm", "GGally", "viridis", "goeveg", "vegan3d", "tufte",
