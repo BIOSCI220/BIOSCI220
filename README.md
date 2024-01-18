@@ -1,6 +1,6 @@
-## BIOSCI 220: Quantitative Biology, Module 1
+## <img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" width="100" height="100"> BIOSCI 220: Quantitative Biology, Module 1
 
-<img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" width="100" height="100">
+
 
 ## Copyright
 
