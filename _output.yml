@@ -6,14 +6,8 @@ bookdown::gitbook:
       collapse: section
       before: |
         <li><a href="./">BIOSCI 220: Quantitative Biology</a></li>
-    download: ["pdf", "epub"]
+    download: ["html"]
     search: yes
+    sharing: null
 bookdown::html_book:
   theme: spacelab
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default

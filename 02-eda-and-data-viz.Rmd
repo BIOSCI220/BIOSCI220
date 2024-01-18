@@ -1,0 +1,515 @@
+# Data wrangling and manipulation
+
+
+<div class="alert alert-success" role="alert">
+![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%} 
+
+<strong>Learning objectives</strong> 
+
+<ul>
+<li> Carry out and interpret the outputs of basic exploratory data analysis using in-built R functions </li>
+<li> Create and communicate informative data visualisations using `R`</li>
+<li> Discuss and critique data visualisations</li>
+</ul>
+
+</div>
+
+
+## Exploratory Data Analysis (EDA)
+
+
+To kick off this section and to ensure you're all set to go for the rest of the module we're going to carry out some exploratory data analysis and visualisations on some real-world data :-)
+
+For this module we will be using `tidyverse`. ['tidyverse'](https://www.tidyverse.org/) is a collection of `R` packages that all share underlying design philosophy, grammar, and data structures. They are specifically designed to make data wrangling, manipulation, visualisation, and analysis simpler.
+
+To install **all** the packages that belong to the `tidyverse` run
+
+```{r, echo = TRUE, eval = FALSE}
+## request (download) the tidyverse packages from the centralised library
+install.packages("tidyverse")
+
+```
+
+To tell your computer to access the `tidyverse` functionality in your session run `r library(tidyverse)` (**Note** you'll have to do this each time you start up an `R` session):
+
+```{r, echo = TRUE, eval = TRUE}
+## Get the tidyverse packages from our local library
+## Do this every time you start a new session
+## and want to use the tidyverse! 
+library(tidyverse)
+```
+
+#### The pipe operator `%>%`
+
+A nifty `tidyverse` tool is called the pipe operator `%>%`. The pipe operator allows us to combine multiple operations in `R` into a single sequential chain of actions.
+
+Say you would like to perform a hypothetical sequence of operations on a hypothetical data frame x using hypothetical functions f(), g(), and h():
+
+
+
+ This is where the pipe operator %>% comes in handy. %>% takes the output of one function and then “pipes” it to be the input of the next function. Furthermore, a helpful trick is to read %>% as “then” or “and then.” For example, you can obtain the same output as the hypothetical sequence of functions as follows:
+
+```{r eval = FALSE, echo = TRUE}
+x %>% 
+  f() %>% 
+  g() %>% 
+  h()
+```
+You would read this sequence as:
+
++ Take x then
++ Use this output as the input to the next function f() then
++ Use this output as the input to the next function g() then
++ Use this output as the input to the next function h()
+
+
+So to calculate the mean **Age** of each **Species** in the `paua` dataset we would use
+
+```{r, eval = TRUE, echo = TRUE}
+paua %>%
+group_by(Species) %>%
+summarize(mean_age = mean(Age))
+```
+
+You would read the sequence  above as:
+
++ Take the `paua` data.frame then
++ Use this and apply the `group_by()` function to group by `Species`
++ Use this output and apply the `summarize()` function to calculate the mean (using (`mean()`) `Age` of each group (`Species`), calling the resulting number `mean_age`
+
+
+
+### Basic plotting (for your own purposes)
+
+The payoff is so clear: you make informative plots that help you understand data.
+
+```{r boxplot, echo = TRUE, eval = TRUE}
+boxplot(Age ~ Species, data  = paua)
+```
+
+So what have we asked our computer to do here? Given what we know about the types of data our `paua` *Object* contains what plots do you think would be most appropriate for each variable? Below is some example code; each line of code will produce a plot (perhaps not a sensible one though). What do you think? What is each plot showing us?
+
+```{r plot options, eval = FALSE, echo = TRUE}
+boxplot(Length ~ Species, data  = paua)
+boxplot(Age ~ Species, data  = paua)
+plot(Age ~ Length, data  = paua)
+boxplot(Age ~ Length, data  = paua)
+plot(paua$Age)
+```
+
+
+**`tidy` data**
+
+> "Tidy datasets are all alike, but every messy dataset is messy in its own way." `r tufte::quote_footer('--- Hadley Wickham')`
+
+
+There are three interrelated rules which make a dataset `tidy`:
+
+ 1. Each variable must have its own column
+ 2. Each observation must have its own row
+ 3. Each value must have its own cell
+
+<p align="center">![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/tidydata_1.jpg){width=70%}</p>
+
+<p align="center">Illustration from the Openscapes blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst</p>
+
+
+Why ensure that your data is `tidy`? 1) **Consistency:** using a consistent format aids learning and reproducibility, and 2) **simplicity:** it's a format that is well understood by `R`!
+ 
+> "Tidy datasets are easy to manipulate, model and visualize, and have a specific structure: each variable is a column, each observation is a row, and each type of observational unit is a table. This framework makes it easy to tidy messy datasets because only a small set of tools are needed to deal with a wide range of un-tidy datasets." `r tufte::quote_footer('--- Hadley Wickham, Tidy Data')`
+
+
+### Introuducing the [Palmer penguins](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090081)
+
+```{r penguins}
+library(palmerpenguins) ## this package contains some nice penguin data
+penguins
+```
+
+So, what does this show us?
+
++ `A tibble: 344 x 8`: A `tibble` is a specific kind of data frame in `R`. The `penguin` dataset has
+  + `344` rows (i.e., 344 different observations). Here, each observation corresponds to a penguin.
+  + `8` columns corresponding to 3 variables describing each observation.
+  + `species`, `island`, `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g`, `sex`, and  `year` are the different variables of this dataset.
+  
++ We then have a preview of the first 10 rows of observations corresponding to the first 10 penguins. ```... with 334 more rows` indicates there are 334 more rows to see, but these have not been printed (likely as it would clog our screen)
+
+To learn more about the penguins read the [paper that talks all about the data collection.](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090081)
+
+### Common dataframe manipulations in the `tidyverse`, using `dplyr` and `tidyr`
+
+Even from these first few rows of data we can see that there are some `NA` values. Let's count the number of `NA`s. Remember the `%>%` operator? Here we're going to be introduced to a few new things
+
+  + the `apply()` function,
+  + the `is.na()` function, and
+  + how `R` deals with `logical` values!
+
+```{r, message = FALSE}
+library(tidyverse)
+penguins %>% 
+  apply(.,2,is.na) %>%
+  apply(.,2,sum)
+```
+There's lot going on in that code! Let's break it down
+
++ Take `penguins` then
++ Use `penguins` as an input to the `apply()` function (this is specified as the first argument using the `.`)
+  + Now the `apply()` function takes 3 arguments: 
+    1. the data object you want it to *apply* something to (in our case `penguins`)
+    2. the margin you want to *apply* that something to; 1 stands for rows and 2 stands for columns, and
+    3. the function you want it to apply (in our case `is.na()`).
+  + So the second line of code is asking `R` to *apply* the `is.na()` function over the columns of `penguins`
+    + `is.na()` asks for each value it's fed is it an `NA` value; it returns a `TRUE` if so and a `FALSE` otherwise
++ The output from the first `apply()` is then fed to the second `apply()` (using the `.`). The `sum()` function then add them up!
+    + `R` treats a `TRUE` as a 1 and a `FALSE` as a 0.
+    
+So how many `NA`s do you think there are!
+
+Doesn't help much. To
+
+Now we know there are `NA` values throughout the data let's remove then and create a new `NA` free version called `penguins_nafree`. There is a really handy `tidyverse` (`dplyr`) function for this!
+
+```{r}
+penguins_nafree <- penguins %>% drop_na()
+penguins_nafree
+```
+
+Below are some other useful manipulation functions; have a look at the outputs and run them yourselves and see if you can work out what they're doing.
+
+```{r}
+filter(penguins_nafree, island == "Torgersen" )
+summarise(penguins_nafree, average_bill_length = mean(bill_length_mm))
+group_by(penguins_nafree, species)
+```
+
+
+Often we want to summarise variables by different groups (factors). Below we
+
++ Take the `penguins_nafree` data then
++ Use this and apply the `group_by()` function to group by `species`
++ Use this output and apply the `summarize()` function to calculate the mean (using (`mean()`) bill length (`bill_length_mm`) of each group (`species`), calling the resulting number `average_bill_length`
+
+
+```{r}
+penguins_nafree %>% 
+  group_by(species) %>% 
+  summarise(average_bill_length = mean(bill_length_mm))
+```
+
+We can also group by multiple factors, for example, 
+
+
+```{r}
+penguins_nafree %>% 
+  group_by(island,species) %>% 
+  summarise(average_bill_length = mean(bill_length_mm))
+```
+
+**What about getting more complicated?**
+
+I suggest you run the code below one pipe at a time to work out what each function is doing and data it is acting on.
+
+```{r, message = FALSE, warning = FALSE}
+penguins_nafree %>%
+  filter(., sex != "male") %>%
+  select(c("species", "island", "body_mass_g")) %>%
+  group_by(species, island) %>%
+  summarise(total_mass_g = sum(body_mass_g)) %>%
+  pivot_wider(names_from = c(island), values_from = total_mass_g)
+```
+
+
+## Data Visualisation
+
+> "...have obligations in that we have a great deal of power over how people ultimately make use of data, both in the patterns they see and the conclusions they draw." `r tufte::quote_footer('--- Michael Correll, Ethical Dimensions of Visualization Research')`
+
+> "Clutter and confusion are not attributes of data - they are shortcomings of design." `r tufte::quote_footer('--- Edward Tufte')`
+
+
+### Exploratory plots
+
+Exploratory plots are just *for you*, they
+
+  + focus solely on data exploration,
+  + don't have to look pretty,
+  + just needs to get to the point,
+  + explore and discover new data facets, and
+  + help formulate new questions.
+  
+For example,
+  
+```{r example, me, echo = FALSE, fig.cap="", warning = FALSE, message = FALSE, fig.align='center'}
+## scatter
+ggplot(data = penguins_nafree, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point()
+## histogram
+ggplot(data = penguins_nafree, aes(x = bill_length_mm)) +
+  geom_histogram(aes(fill = species), alpha = 0.5, position = "identity")
+```
+
+
+### Explanatory plots
+
+Explanatory plots are mainly *for others*. These are the most common kind of graph used in scientific publications. They should
+
+   + have a clear purpose,
+   + be designed for the audience,
+   + be easy to read (*this covers a lot of things*),
+   + not distort the data,
+   + help guide the reader to a particular conclusion, 
+   + answer a specific question, and
+   + support an outlined  decision.
+   
+For example,
+
+<p align="center">![](https://jimgruman.netlify.app/post/variableimportance/2020_31_PalmerPenguins.png)</p>
+<p align="center">Plots by Cedric Scherer and mentioned on [this blog](https://jimgruman.netlify.app/post/variableimportance/)</p>
+
+
+
+### [Ten Simple Rules for Better Figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833)
+
+> "Scientific visualization is classically defined as the process of graphically displaying scientific data. However, this process is far from direct or automatic. There are so many different ways to represent the same data: scatter plots, linear plots, bar plots, and pie charts, to name just a few. Furthermore, the same data, using the same type of plot, may be perceived very differently depending on who is looking at the figure. A more accurate definition for scientific visualization would be a graphical interface between people and data." `r tufte::quote_footer('--- Nicolas P. Rougier, Michael Droettboom, Philip E. Bourne, Ten Simple Rules for Better Figures ')`
+
+> "message and readability of the figure is the most important aspect while beauty is only an option" `r tufte::quote_footer('--- Nicolas P. Rougier, Michael Droettboom, Philip E. Bourne, Ten Simple Rules for Better Figures ')`
+
+
+ + **Know** Your Audience
+ 
+ + **Identify** Your Message
+ 
+ + **Adapt** the Figure to the Support Medium
+ 
+ + **Captions** Are Not Optional
+ 
+ + **Do Not** Trust the Defaults
+ 
+ + Use **Color** Effectively
+ 
+ + **Do Not Mislead** the Reader
+ 
+    + [There are formulas to measure how misleading a graph is!](https://en.wikipedia.org/wiki/Misleading_graph)
+    
+ + **Avoid** *Chartjunk*
+ 
+ + **Message** Trumps Beauty
+ 
+ + Get the Right **Tool**
+ 
+    + I'm an advocate for `R` `r emo::ji("wink")`
+
+So we've seen some pretty plots, let's get around to making some!
+
+### Introducing `ggplot2`
+
+`ggplot2` is an `R` package for producing statistical, or data, graphics; it has an underlying grammar based on the [Grammar of Graphics](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448)
+
+Every `ggplot2` plot has three key components:
+
+  + `data`,
+
+  + A set of `aes`thetic mappings between variables in the data and visual properties, and
+
+  + At least one layer which describes how to render each observation. Layers are usually created with a `geom` function.
+  
+<p align="center">![`ggplot2` layers](figs/ggplot.png)</p>
+
+
+#### Plotting `palmerpenguins`
+
+**You might find [this application](https://cmjt.shinyapps.io/penguin/) useful, now and later...**
+
+Recall we used specified an `NA`-free version of the dataset:
+
+```{r}
+penguins_nafree <- penguins %>% 
+  drop_na()
+```
+
+
+**Scatter plot** using `geom_point()`
+
+```{r flippoint,message=FALSE,warning=FALSE}
+ggplot(penguins_nafree,aes(x = body_mass_g, y = flipper_length_mm)) + ## data & aesthetics
+    geom_point() ## geom
+```
+
+But, what about adding some personal touches? Axis labels can be specified using `xlab()` and `ylab()`, see the final two lines of code in the chunk below. But what do you think the additional code is doing? Try specifying some different colours in  `scale_color_manual()`!!
+
+```{r point}
+ggplot(data = penguins_nafree, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species),size = 2)  +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"), name = "") +
+  xlab("Bill length (mm)") +
+  ylab("Bill depth (mm)")
+```
+
+What about the *spread*/*distribution* of our continuous variables by the factor variables (e.g., `species`):
+
+  + Boxplots (`geom_boxplot()`)? 
+  + Violin plots (`geom_violin()`)? 
+  + Histograms (`geom_histogram()`)?
+
+**Boxplot** using `geom_boxplot()` 
+
+```{r, message=FALSE}
+## boxplot
+ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) +
+    geom_boxplot() +
+    ylab("Flipper length (mm)") + xlab("") +
+  theme_classic() ## what do you think this is doing?
+```
+
+**Violin plot** using `geom_violin()` 
+
+```{r, message = FALSE}
+## violin plot
+ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) + 
+    geom_violin() +
+    ylab("Flipper length (mm)") + xlab("") +
+    theme_minimal() ## another theme...
+```
+
+We should always avoid using similarly bight red and green colours: they may not be distinguishable for red-green colorblind readers. Using `ggplot2` we can access a whole range of colourblind friendly palettes: one package that has a whole range is `RColorBrewer` install it then try running `RColorBrewer::display.brewer.all(colorblindFriendly = TRUE)` what do you think you've asked your computer to show you?
+
+**Histogram** using `geom_histogram()`
+
+```{r, message = FALSE}
+## histogram, with a colorblind friendly palette
+## try running display.brewer.all(colorblindFriendly = TRUE)
+## what do you think it's doing
+ggplot(penguins_nafree,aes(x = flipper_length_mm)) + 
+    geom_histogram(aes(fill = species), alpha = 0.5, position = "identity") +
+    xlab("Flipper length (mm)") + 
+    scale_fill_brewer(palette = "Dark2", name = "Species") +
+  theme_light() ## and another one....
+
+```
+
+**Bar charts** using `geom_bar()`
+
+We've seen that there are three `factor` variables in the dataset: `species`, `island`, and `sex`. To count the number of penguins of each `species` and `sex` on each `island` we could use
+
+```{r count}
+penguins_nafree %>%
+  count(species, sex, island)
+```
+
+It's not too easy to compare the numbers here; what about a bar graph (`geom_bar()`)? Based on what we went through in the lecture see if you can figure out what each line is adding to the plot. What do you think `facet_wrap()` is doing? To figure it out, run it yourself and try changing some of the lines of code!
+
+```{r bar}
+ggplot(penguins_nafree, aes(x = species, fill = sex)) +
+  geom_bar(alpha = 0.8, position = "dodge") +
+  facet_wrap(~island) + ## what are we doing here?
+  xlab("") +
+  theme_linedraw() + ## remember themes...
+  scale_fill_manual(values = c("cyan4","darkorange"), name = "Sex") 
+```
+
+
+
+
+#### The Good, the Bad, and the Ugly...
+
+Have a go at running and modifying each code chunk below. Can you improve the plots?
+
+```{r, eval = TRUE, message = FALSE, warning = FALSE}
+ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) + ## data & aesthetics
+    geom_boxplot()  + ## geom
+  ggtitle("Flipper length (mm) by species") +
+  ylab("Flipper length (mm)") +
+  xlab("Species") +
+  theme_dark() ## theme
+
+ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) + ## data & aesthetics
+    geom_jitter()  + ## geom
+  ggtitle("Flipper length (mm) by species") +
+  ylab("Flipper length (mm)") +
+  xlab("Species") +
+  theme_dark() ## theme
+ggplot(penguins,aes(x = species, y = flipper_length_mm)) + ## data & aesthetics
+    geom_violin()  + ## geom
+  ggtitle("Flipper length (mm) by species") +
+  ylab("Flipper length (mm)") +
+  xlab("Species") +
+  theme_dark() ## theme
+ggplot(penguins_nafree, aes(x = body_mass_g, y = flipper_length_mm, 
+                         col = species)) +
+    geom_point(size = 2, alpha = 0.5) + 
+    geom_smooth(method = "lm", se = FALSE) +
+    facet_grid(~ sex) +
+    theme_bw() + 
+    labs(title = "Flipper Length and Body Mass, by Sex & Species",
+         subtitle = paste0(nrow(penguins), " of the Palmer Penguins"),
+         x = "Body Mass (g)", 
+         y = "Flipper Length (mm)")
+```
+
+
+
+### What do we think about when we look at plots (*a taster*)
+
+Between group variation
+
+```{r, echo = FALSE}
+means <- penguins_nafree %>% group_by(species) %>% summarise(means = mean(bill_length_mm))
+mean <- mean(penguins_nafree$bill_length_mm)
+means$ends <- mean
+means$lag1 <- means$means[c(2,3,1)]
+means$lag2 <- means$means[c(3,1,2)]
+ggplot(penguins_nafree,aes(x = species, y = bill_length_mm)) + 
+    geom_violin()  + 
+  ylab("Bill length (mm)") +
+  xlab("Species") +
+  geom_point(data = means, aes(x = species, y = means),color = "blue", size = 2) +
+  annotate(geom = 'text', label = "Average bill length per species" , x = -Inf, y = Inf, hjust = 0, vjust = 1.2, color = "blue") +
+  geom_hline(yintercept = mean, color = "red") +
+  annotate(geom = 'text', label = "Overall average bill length" , x = -Inf, y = Inf, hjust = 0, vjust = 3, color = "red") +
+  geom_segment(data = means, aes(x = species, y = means, xend = species, yend = ends),col = "darkgreen", size = 2)  +
+  annotate(geom = 'text', label = "Differences to overall average" , x = -Inf, y = Inf, hjust = 0, vjust = 5, color = "darkgreen") +
+  geom_hline(data = means, aes(yintercept = means), color = "blue", alpha = 0.3, lty = 2) + 
+  geom_segment(data = means, aes(x = as.numeric(species) - 0.15, y = means, 
+                                 xend = as.numeric(species) - 0.15, yend = lag1),col = "purple", size = 2) +
+  geom_segment(data = means, aes(x = as.numeric(species) + 0.15, y = means, 
+                                 xend = as.numeric(species) + 0.15, yend = lag2),col = "purple", size = 2)+
+  annotate(geom = 'text', label = "Differences between groups" , x = -Inf, y = Inf, 
+           hjust = 0, vjust = 7, color = "purple")
+```
+
+Within group variation
+
+```{r,echo = FALSE}
+jit <- ggplot() + 
+  geom_jitter(data = penguins_nafree,aes(x = species, y = bill_length_mm, color = species), alpha = 0.2) 
+
+penguins_nafree$x_points <- layer_data(jit)$x
+penguins_nafree$y_points <- layer_data(jit)$y
+penguins_nafree <- penguins_nafree %>% group_by(species) %>% mutate(sp_means = mean(bill_length_mm))
+
+ggplot() + 
+  ylab("Bill length (mm)") +
+  xlab("Species") +
+  geom_point(data = means, aes(x = species, y = means, color = species), size = 2) +
+  geom_text(data = means, aes(x = species, y = means + 2.5, color = species, 
+                              label = paste0("Species average = ",round(means,3)))) +
+  geom_hline(data = means, aes(yintercept = means, color = species), alpha = 0.3, lty = 2) +
+  geom_point(data = penguins_nafree,aes(x = x_points, y = y_points, color = species), alpha = 0.2) +
+  theme(legend.position = "none") + 
+  geom_segment(data = penguins_nafree, aes(x = x_points, y = y_points, xend = x_points, 
+                                 yend = sp_means,color = species), size = 1, alpha = 0.2) 
+```
+
+
+<div class="alert alert-info" role="alert">
+![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%} 
+
+<strong>Other resources: optional but recommended</strong>
+
+<ul>
+<li>[`ggplot2` cheatsheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)</li>
+<li>[Elegant Graphics for Data Analysis](https://ggplot2-book.org/introduction.html)</li>
+<li>[Using `ggplot2` to communicate your results](https://ourcodingclub.github.io/tutorials/datavis/)</li>
+<li>[Teacups, giraffes, and statistics: free online introductory level R and statistics modules](https://tinystats.github.io/teacups-giraffes-and-statistics/)</li>
+</ul>
+</div>

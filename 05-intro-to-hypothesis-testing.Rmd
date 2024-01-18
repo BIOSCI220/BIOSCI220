@@ -1,0 +1,269 @@
+# Introduction to Hypothesis testing
+
+So, we can collect data, but what about drawing inferences and carrying out significance tests? A **significance test** can tell us whether an observed effect (e.g., the difference between two means, or medians; the correlation between two variables) could occur by chance in selecting a random sample from each of, say, two populations.
+
+<div class="alert alert-success" role="alert">
+![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%}
+
+<strong>Learning objectives</strong> 
+
+<ul>
+<li> Formulate a question/hypothesis to investigate based on the given data </li>
+<li> List the aims, write out the appropriate null and alternative hypothesis using statistical notation for, and write `R` code to carry out a randomization test </li>
+<li> Correctly interpret and communicate a p-value in terms of a randomisation test</li>
+<li> State in terms of probability statements the meaning of the power and significance level of an hypothesis test</li>
+
+</ul>
+</div>
+
+## Randomisation tests
+
+The basic approach to a randomisation test is straightforward:
+
+ 1. Choose a statistic to measure the effect in question (e.g., differences between group means)
+ 2. Calculate that test statistic on the observed data. Note this metric can be **anything** you wish
+ 3. Construct the sampling distribution that this statistic would have if the effect were not present in the population (i.e., the distribution under the *Null* hypothesis, $H_0$): For chosen number of times
+    + shuffle the data labels
+    + calculate the test statistic for the reshuffled data and retain
+ 4. Find the location of your observed statistic in the sampling distribution. The location of observed statistic in sampling distribution is informative:
+   + if in the main body of the distribution then the observed statistic could easily have occurred by chance
+   + if in the tail of the distribution then the observed statistic would rarely occur by chance and there is evidence that something other than chance is operating.
+ 5. Calculate the proportion of times your reshuffled statistics equal or exceed the observed. This *p-value* is the probability that we observe a statistic at least as “extreme” as the one we observed **State** the strength of evidence against the null on the basis of this **probability**.
+ 
+### A randomization test for two independent samples
+
+Remember the Pāua data from earlier in the module? This dataset contains the following variables
+
+ + `Age` of  P$\overline{\text{a}}$ua in years (calculated from counting rings in the cone) 
+ + `Length` of  P$\overline{\text{a}}$ua shell in centimeters
+ + `Species` of  P$\overline{\text{a}}$ua: *Haliotis iris* (typically found in NZ) and
+*Haliotis australis* (less commonly found in NZ) 
+
+We can read these data directly into R using the URL and the `readr` package, which is part of the `tidyverse` collection) as follows.
+
+```{r, message = FALSE}
+paua <- readr::read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/paua.csv")
+```
+
+
+```{r}
+glimpse(paua)
+```
+
+ One question we may want to ask is if on average the shell length differs between Species? 
+
+ + **Scientific question**: Are the shell lengths of shells the same in both species? 
+ + **Null hypothesis**: The distribution of shell lengths in *Haliotis iris* the same as in *Haliotis australis*
+ + **Test statistic**: Difference of sample means
+
+```{r violin, warning=FALSE, message = FALSE, echo = FALSE}
+means <- paua %>% group_by(Species) %>% summarise(means = mean(Length))
+ggplot(paua,aes(x = Species, y = Length)) + 
+  geom_violin() +
+  geom_point(alpha = 0.4) +
+  ylab("Length (cms)") + xlab("") +
+  theme_classic() +
+  geom_point(data = means, aes(x = Species, y = means, color = Species), size = 2) +
+  geom_hline(data = means, aes(yintercept = means, color = Species), lty = 2, alpha = 0.7) +
+  scale_color_brewer(type = "div", palette = "Dark2") +
+  theme(legend.position = "none") +
+  geom_text(data = means, 
+            aes(x = Species, y = means + 0.5, 
+                label = paste0("Species averege = ",round(means,3)), color = Species))
+```
+
+But because the data are skewed and we've likely got non-constant variances we may be better off adopting a randomisation test, rather than a parametric t-test (see the next chapter). Our approach is as follows.
+
+#### 1. Choose a statistic that measures the effect of interest (in this case the differences between means).
+
+
+```{r}
+## observed differences in means
+diff_in_means <- paua %>% 
+  group_by(Species) %>% 
+  summarise(mean = mean(Length)) %>%
+  summarise(diff = diff(mean)) %>% as.numeric()
+diff_in_means
+```
+
+#### 2. Construct the sampling distribution that this statistic would have if the effect were not present in the population (i.e., the distribution under $H_0$) .
+ 
+```{r}
+## Number of times I want to randomise
+nreps <- 9999  
+## initialize empty array to hold results
+randomisation_difference_mean <- numeric(nreps)
+set.seed(1234) ## *****Remove this line for actual analyses*****
+## This means that each run with produce the same results and
+## agree with the printout that I show.
+
+for (i in 1:nreps) {
+  ## the observations
+  data <- data.frame(value = paua$Length)
+  ##  randomise labels
+  data$random_labels <-sample(paua$Species, replace = FALSE)
+  ## randomised differences in mean
+  randomisation_difference_mean[i] <- data %>% 
+    group_by(random_labels) %>% summarise(mean = mean(value)) %>% 
+    summarise(diff = diff(mean)) %>% as.numeric()
+}
+## results, combine with the observed statistic
+results <- data.frame(randomisation_difference_mean = c(diff_in_means, randomisation_difference_mean))
+```
+
+#### 3. Locate the observed statistic (i.e., from our observed random sample) in the sampling distribution
+
+The location of observed statistic in the sampling distribution allows us to draw inference with regards to our hypothesis.
+
+If the observed statistic is in the main body of the distribution then it is more than likely that the observed statistic occurred by chance. However, if the observed statistic is in the tail of the distribution then it would rarely occur by chance and we have evidence against the observed statistic occurring by chance alone.
+
+```{r pval}
+## How many randomised differences in means are as least as extreme as the one we observed
+## absolute value as dealing with two tailed
+n_exceed <- sum(abs(results$randomisation_difference_mean) >= abs(diff_in_means))
+n_exceed
+```
+
+We see something as least as extreme as our observed test statistic 18 times. This translates to a two-sided tail proportion of `r n_exceed/1000`. The plot below illustrates the location of the observed test statistic in that of the distribution of the test statistics we calculated under the null hypothesis.
+
+```{r hist, echo = FALSE}
+ggplot(results, aes(x = randomisation_difference_mean)) +
+  geom_histogram(bins = 35) +
+  theme_classic() + ylab("") + xlab("Differences between randomised group means") +
+  geom_vline(xintercept = diff_in_means, col = "#CC5500", size = 1,alpha = 0.6) +
+  annotate(geom = 'text', label = "Observed difference \n between means" , 
+           x = -0.9, y = 750, color = "#CC5500")
+  
+
+```
+
+
+In experimental situations a large p-value (large tail proportion) means that the luck of the randomisation quite often produces group differences as large or even larger than what we've got in our data. A small p-value means that the luck of the randomisation draw hardly ever produces group differences as large as we've got in our data. **So what do you conclude here?**
+
+**NOTE: We can extend the randomization test to make inference about any sample statistic (not just the mean)**
+
+## What is a `r emo::ji('scream')` p-value? `r emo::ji('scream')` Really?
+
+> "Good statistical practice, as an essential component of good scientific practice, 
+emphasizes principles of good study design and conduct, a variety of numerical 
+and graphical summaries of data, understanding of the phenomenon under study, 
+interpretation of results in context, complete reporting and proper
+logical and quantitative understanding of what data summaries mean. 
+No single index should substitute for scientific reasoning." `r tufte::quote_footer('--- ASA Statement on p-Values')`
+
+Informally, a p-value is the probability under a specified statistical model that a statistical summary of the data (e.g., the sample mean difference between two compared groups) would be equal to or more extreme than its observed value.
+
+There are **many** different schools of thought about how a p-value should be interpreted.
+
+Most people agree that the p-value is a useful measure of the strength of evidence against the null hypothesis. The smaller the p-value, the stronger the evidence against $H_0$. 
+
+Some people go further and use an accept/reject framework. Under this framework, the null hypothesis $H_0$ should be rejected if the p-value is less than 0.05 (say), and accepted if the p-value is greater than 0.05. In this course we mostly use the strength of evidence interpretation. The p-value measures how far out our observation lies in the tails of the distribution specified by $H_0$:
+
+```{r, warning = FALSE, echo = FALSE, fig.height = 4, fig.width = 9, fig.align = 'center'}
+critical_f <- qf(.95, df1 = 3, df2 = 48)
+ggplot(data.frame(x = c(0, 5)), aes(x), size = 2) +
+  stat_function(fun = df,
+                geom = "area",
+                fill = "orange",
+                xlim = c(critical_f, 5),
+                args = list(
+                  df1 = 3,
+                  df2 = 49
+                )) +
+  stat_function(fun = df,
+                geom = "line",
+                args = list(
+                  df1 = 3,
+                  df2 = 49
+                )) +
+  geom_vline(xintercept = critical_f, lty = 2, col = "grey", size = 2) + 
+   annotate("text", critical_f + 0.6, 0.7, 
+           label = "Observed statistic", color = "grey", family = "Comic Sans MS", size = 5) +
+  theme_void() +
+  annotate("text", 1.65, 0.6, 
+           label = expression(paste("Sampling distribution when ", H[0], " is true")),
+           parse = TRUE, family = "Comic Sans MS", size = 4) +
+  annotate("text", 3.5, 0.2, 
+           label = "p-value", color = "orange", family = "Comic Sans MS", size = 5) + 
+  geom_segment(aes(x = 1.8, y = 0.55, xend = 1, yend = 0.1),
+                  arrow = arrow(length = unit(0.5, "cm")))  + 
+  geom_segment(aes(x = 3.5, y = 0.15, xend = 3.2, yend = 0.01),
+                  arrow = arrow(length = unit(0.5, "cm")), alpha = 0.6) 
+
+
+
+```
+
+
+
+In summary, **p-values** can indicate how incompatible the data are with a specified statistical model; they **do not** measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.
+
+Note that a p-value does **not** measure the size of an effect or the importance of a result and by itself it does **not** provide a good measure of evidence regarding a model or hypothesis. Note also, that a substantial evidence of a difference does **not** equate to evidence of a substantial difference! Any scientific conclusions and business or policy decisions **should not** be based only on whether a p-value passes a specific threshold as proper inference requires **full** reporting and transparency. 
+
+Remember that **statistical significance does not imply practical significance**, and that **statistical significance says nothing about the size of treatment differences.** To estimate the sizes of differences you need confidence intervals, look out for these in the following chapters. 
+
+
+#### Some p-value threshold recursive FAQs
+
+**Q:** Why do so many colleges and grad schools teach *p-val*=0.05? **A:** Because that's still what the scientific community and journal editors use. `r emo::ji('scream')` **BUT IT SHOULDN'T BE** `r emo::ji('scream')`
+
+**Q:** Why do so many people still use *p-val*=0.05? **A:** Because that's what they were rote taught in college or grad school. `r emo::ji('scream')`**BUT THEY SHOULDN'T BE**`r emo::ji('scream')`
+
+
+## Type I and Type II errors
+
+> "Type I Zoom error: you think people can hear you, but you’re actually on mute.  Type II Zoom error: you think your muted, but actually people can hear you." `r tufte::quote_footer('--- @CynPeacock, Twitter')`
+
+
+|State of Nature  | Don't reject $H_0$ | reject $H_0$ |
+|---              |---                |---            |
+| $H_0$ is true |  `r emo::ji("check")` | Type I error  |
+| $H_0$ is false  | Type II error  | `r emo::ji("check")` |
+
+<p align="center">![](https://miro.medium.com/max/924/0*8P474MYDyFZZBdVQ.png)</p>
+
+
+### Type I
+
+A **Type I** error (false positive): declare a difference (i.e., reject $H_0$) when there is no difference (i.e. $H_0$ is true). Risk of the Type I error is determined by the *level of significance* (which we set!) (i.e., $\alpha =\text{ P(Type I error)} = \text{P(false positive)}$.
+
+<p align="center">![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/type_1_errors.png)</p>
+
+### Type II
+
+A **Type II** error (false negative): difference not declared (i.e., $H_0$ not rejected) when there is a difference (i.e., $H_0$ is false). Let $\beta =$ P(do not reject $H_0$ when $H_0$ is false); so, $1-\beta$ = P(reject $H_0$ when $H_0$ is false) = P(a true positive), which is the statistical **power** of the test.
+
+<p align="center">![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/type_2_errors.png)</p>
+
+### Significance level
+
+The **significance level** is the probability of a Type I error (i.e., the probability of finding an effect that is not there, a false positive).
+
+### Power
+
+The **power** of a test is the probability that the test correctly rejects the null hypothesis when the alternative hypothesis is true. The probability of finding an effect that is there =  1 - probability of a **Type II** error (false negative).
+
+Reducing the chance of a **Type I** error increases the chance of a **Type II** error. They are inversely related. **Type II** error rate is determined by a combination of the following.
+
+  + **Effect size** (size of difference, of biological significance) between the true population parameters
+  + Experimental error variance 
+  + **Sample size**
+  + Choice of **Type I** error rate ($\alpha$)
+
+### Family-Wise Error Rate (FWER)
+
+**Each** time we carry out a hypothesis test the probability we get a false positive result (type I error) is given by $\alpha$ (the *level of significance* we choose).
+
+When we have **multiple comparisons** to make we should then control the **Type I** error rate across the entire *family* of tests under consideration, i.e., control the **Family-Wise Error Rate (FWER)**; this ensures that the risk of making at least one **Type I** error among the family of comparisons in the experiment is $\alpha$. 
+
+
+
+<div class="alert alert-info" role="alert">
+![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%} 
+
+<strong>Other resources: optional but recommended</strong>
+
+<ul>
+<li>[The ASA Statement on p-Values: Context, Process, and Purpose](https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108)</li>
+</ul>
+</div>

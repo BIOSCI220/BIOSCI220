@@ -1,12 +1,13 @@
 title: "BIOSCI 220: Quantitative Biology"
 author: "Materials for module 1"
 date: "Lecturers: Charlotte Jones-Todd & Jenn Jury"
-book_filename: "BIOSCI220"
 language:
   ui:
-    chapter_name: "Part "
+    chapter_name: "Chapter "
 delete_merged_file: true
-rmd_files: ["index.Rmd"]
+rmd_files: ["index.Rmd", "00-declaration.Rmd", "01-intro-to-R.Rmd", "02-eda-and-data-viz.Rmd", 
+"03-data-practice.Rmd", "04-experimental-design.Rmd", "05-intro-to-hypothesis-testing.Rmd", 
+"06-intro-to-slr.Rmd", "07-lm-stats-inference.Rmd", "08-multivariate-methods.Rmd"]
 output:
   bookdown::gitbook:
     theme: cosmo

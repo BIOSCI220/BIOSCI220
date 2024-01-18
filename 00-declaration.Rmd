@@ -1,4 +1,9 @@
-# Information to set you up for your semester {-}
+
+# Key Information {-}
+
+<div class="alert alert-danger" role="alert">
+![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex_blue.png?raw=true){width=10%} <strong><span style="color:red">**Please read this page carefully as it contains all the key information about the course.**</span></strong>
+</div>
 
 ## Course outline {-}
 
@@ -9,20 +14,68 @@ To understand modern biological research and findings, and to participate in thi
 BIOSCI 220 Quantitative biology will introduce you to the programming language R to develop the aforementioned skills, with no coding experience assumed or expected. The aim is to give beginners the confidence to continue learning R and not be afraid of statistics and mathematics! 
 
 
-## Your teaching team, Semester 1, 2024 {-}
+##  `R` and `RStudio` {-}
 
-### Module 1: Data exploration and statistical inference {-}
-**Weeks 1 - 3** Dr Charlotte Jones-Todd
-**Weeks 4 - 6** Jenn Jury (course coordinator)
+Throughout this course, you will be learning how to program using `R` and `RStudio` weekly. <span style="color:red"> You are expected to familiarise yourself with these environments during the first week of the course.</span> We provide plenty of help session and easy-to-follow instructions for this, please see CANVAS and/or [Installing R and RStudio] to get started.
 
-### Module 2: Mathematical modelling in biology {-}
-**Weeks 7 - 9** Dr Nobuto Takeuchi
+Note that lab computers will already have `R` and`RStudio` installed; however, if you plan to use your personal computer then you will need to install both `R` and `RStudio` yourself. Follow the directions in [Installing R and RStudio] to do so (or come along to a dedicated help session).
 
-### Module 3: Model-based inference and critical thinking about models {-}
-**Weeks 10 - 12** Assoc. Prof. Emma Carroll
+Another option available is to use [RStudio Cloud](https://rstudio.cloud/) where, everything is run in a web browser (on a remote server) and doesn't require you to download the software onto your personal computer.
 
 
-## Assessment structure {-}
+## Your teaching team {-}
+
+**Semester 1, 2024**
+
+```{r include=FALSE}
+lecs <- matrix(c(1, "R programming and data exploration", "1 - 3", "Dr Charlotte Jones-Todd", 
+               1, "Statistical inference", "4 - 6", "Jenn Jury (course coordinator)", 
+               2, "Mathematical modelling in biology", "7 - 9", "Dr Nobuto Takeuchi", 
+               3, "Model-based inference and critical thinkin", "10 - 12", "Assoc. Prof. Emma Carroll"), 
+               ncol = 4,byrow = TRUE)
+colnames(lecs) <- c("Module Number", "Module Content", "Weeks taught","Lecturer")
+
+lecs <- as.table(lecs)
+```
+
+```{r echo=FALSE}
+knitr::kable(lecs, align = "cccc", "simple", row.names = FALSE)
+```
+
+
+## Lectures {-}
+
+<span style="color:red">Lectures are every week:</span>
+
+  + <span style="color:red">**Mondays**: 8-9 am in 260-098, and </span>
+  + <span style="color:red">**Tuesdays**: 8-9 am in 260-098. </span>
+
+
+You should attend the lectures in-person as there will be in-class activities to assist you with your learning. However, 
+lecture recordings will be available in CANVAS via the Panopto video tab after the lecture has been delivered (typically within 24 hours).
+
+
+## Assessment {-}
+
+### Assessment structure {-}
+
+```{r, echo=FALSE}
+require(tidyverse)
+require(knitr)
+assess <- data.frame(Week =  c(1:5, "Easter Break", 6:12 , "Exam Period"), 
+                     Laboratories = c("R help session","lab", "lab", "", "lab","", "lab", rep(c("","lab", "lab"), 2), ""), 
+                     Quizzes = c("",rep("quiz", 4), "", rep("quiz", 7), ""), 
+                     Inspera = c(rep("", 7),"Test", rep("", 5), "Exam"))
+
+assess %>%
+  dplyr::mutate(Laboratories = kableExtra::cell_spec(Laboratories, background = ifelse(Laboratories == "lab", "#ffb38a", ""))) %>%
+  dplyr::mutate(Laboratories = kableExtra::cell_spec(Laboratories, background = ifelse(Laboratories == "R help session", "#ffccd4", ""))) %>%
+  dplyr::mutate(Quizzes = kableExtra::cell_spec(Quizzes, background = ifelse(Quizzes == "quiz", "#ADD8E6", ""))) %>%
+  dplyr::mutate(Inspera = kableExtra::cell_spec(Inspera, background = ifelse(Inspera != "", "#CBC3E3", ""))) %>%
+  kable(align = "cccc", "simple")
+```
+
+### Assessment summary {-}
 
 ```{r include=FALSE}
 assessment <- matrix(c("2, 3, 5, 6, 8, 9, 11, 12", 5, 40, "2 - 12 inclusive", 1, 10, 7, 20, 20, "Exam period", 30, 30),ncol=3,byrow=TRUE)
@@ -34,31 +87,30 @@ assessment <- as.table(assessment)
 knitr::kable(assessment, align = "cccc", "simple")
 ```
 
-Note: The test will be held on **Tuesday 12th September 6.30 - 8.15pm NZST**. **The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.** The delivery mode for the test and the exam is an on-campus, invigilated Inspera assessment.
+<span style="color:red">The test will be held on **Tuesday 12th September 6.30 - 8.15pm NZST**. **The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**</span> The delivery mode for the test and the exam is an on-campus, invigilated Inspera assessment.
 
 
-## Lectures {-}
+### Laboratories {-}
 
-Lectures are every week on Mondays and Wednesdays 8-9 am in 260-098 (Owen G Glenn building, 098). We strongly encourage you to attend the lectures in-person as there will be in-class activities to assist you with your learning.\
-Lecture recordings will be available in CANVAS via the Panopto video tab as soon as possible after the lecture has been delivered.
+<span style="color:red">There are **eight** labs in total. Each lab is worth **5%** of your final grade (40% in total).</span>
 
+Labs will be held in 106-014 (Biology Building, Room 014) during your scheduled SSO lab time, which will be **one of** Monday 2-5pm, Tuesday 10am-1pm, Tuesday 2-5pm, Thursday 2-5pm or Friday 10am-1pm.
 
-## Laboratories (5% each, 40% towards final grade) {-}
-
-Labs will be held in 106-014 (Biology Building, Room 014) during your scheduled SSO lab time, which will be one of Monday 2-5pm, Tuesday 10am-1pm, Tuesday 2-5pm, Thursday 2-5pm or Friday 10am-1pm.\
 There are eight (8) labs in total. Labs are held in weeks 2, 3, 5, 6, 8, 9, 11 and 12. (i.e. in each three week lecture block there are labs in the last two weeks).
+
 Labs are three (3) hours and the material is designed to be completed in this time. 
+
 Each lab is worth 5%, totalling 40% towards your final grade.
+
 You are scheduled into a lab stream in SSO. While lab attendance is not compulsory, it is highly recommended you attend your scheduled lab stream. There is teaching staff to support you through the tasks and answer your course-related questions.
 
 
-## Weekly quizzes (1% each, 10% towards final grade) {-}
+### Weekly quizzes {-}
 
-There are eleven (11) weekly quizzes due at the end of each week from week 2 - week 12 (due Friday at 10pm). These are worth 1% each,  where your one (1) quiz that has the lowest mark will be dropped from your final grade. This means overall, your weekly quizzes will total 10% towards your final grade.
-These are designed for you to solidify concepts and practice skills taught each week and thereby keep up with the material.
+<span style="color:red"> There are **eleven** weekly quizzes in total. Each quiz is worth **1%** and (if you have completed all quizzes) your one (1) quiz that has the lowest mark will be dropped from your final grade. Therefore your weekly quizzes will total **10%** towards final grade)</span>
+
+The weekly quizzes due at the end of each week from week 2 - week 12 (due Friday at 10pm). These are designed for you to solidify concepts and practice skills taught each week and thereby keep up with the material.
+
 There are practice quizzes for you to attempt prior to sitting the weekly quiz, these are not assessed. There is also a practice quiz for week 1.
-\
-\
 
 
-*We are looking forward to meeting you and working with you all this semester.*
