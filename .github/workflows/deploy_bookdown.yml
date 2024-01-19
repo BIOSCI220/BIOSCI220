@@ -24,10 +24,10 @@ jobs:
       #     # install full prebuilt version
       #     TINYTEX_INSTALLER: TinyTeX 
       - name: Install libcurl and libmagick
-        run: sudo apt-get install libcurl4-openssl-dev libxml2-dev libssl-dev libmagick++-6.q16-dev
+        run: sudo apt-get install libcurl4-openssl-dev libxml2-dev libssl-dev libmagick++-6.q16-dev libharfbuzz-dev libfribidi-dev
       - name: Install rmarkdown
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
-      - name: Render Book
+      - name: Render HTML
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
       - uses: actions/upload-artifact@v2
         with:
