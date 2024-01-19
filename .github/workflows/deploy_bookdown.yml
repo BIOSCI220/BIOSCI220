@@ -29,6 +29,8 @@ jobs:
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
+	env:
+         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v2
         with:
           name: _book
