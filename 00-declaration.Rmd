@@ -68,8 +68,8 @@ assess <- data.frame(Week =  c(1:5, "Easter Break", 6:12 , "Exam Period"),
                      Inspera = c(rep("", 7),"Test", rep("", 5), "Exam"))
 
 assess %>%
-  dplyr::mutate(Laboratories = kableExtra::cell_spec(Laboratories, background = ifelse(Laboratories == "lab", "#ffb38a", ""))) %>%
-  dplyr::mutate(Laboratories = kableExtra::cell_spec(Laboratories, background = ifelse(Laboratories == "R help session", "#ffccd4", ""))) %>%
+  dplyr::mutate(Laboratories = kableExtra::cell_spec(Laboratories, background = ifelse(Laboratories == "lab", "#ffb38a", 
+  																																										 ifelse(Laboratories == "R help session", "#ffccd4", "")))) %>%
   dplyr::mutate(Quizzes = kableExtra::cell_spec(Quizzes, background = ifelse(Quizzes == "quiz", "#ADD8E6", ""))) %>%
   dplyr::mutate(Inspera = kableExtra::cell_spec(Inspera, background = ifelse(Inspera != "", "#CBC3E3", ""))) %>%
   kable(align = "cccc", "simple")

@@ -1,5 +1,5 @@
 --- 
-title: "Nau mai, haere mai. Welcome to BIOSCI 220!"
+title: "Module 1"
 author: ""
 date: ""
 ---
@@ -12,7 +12,7 @@ pkgs <- c("devtools", "tidyverse", "palmerpenguins", "patchwork",
 options(warn = -1)
 for (i in pkgs){
 if (!require(i, quietly = TRUE, character.only = TRUE)){
-install.packages(i, dependencies = TRUE)
+install.packages(i)
 }
 }
 if(!require("equatiomatic", quietly = TRUE, character.only = TRUE)){
@@ -22,12 +22,12 @@ if (!require("emo", quietly = TRUE, character.only = TRUE)){
 devtools::install_github("hadley/emo")
 }
 if (!require("icons", quietly = TRUE, character.only = TRUE)){
-remotes::install_github("mitchelloharawild/icons")
+devtools::install_github("mitchelloharawild/icons")
 }
 options(warn = 0)
 ```
 
-
+# Nau mai, haere mai. Welcome to BIOSCI 220! {-}
 
 <center>
 
