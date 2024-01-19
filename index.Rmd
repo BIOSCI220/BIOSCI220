@@ -12,17 +12,17 @@ pkgs <- c("devtools", "tidyverse", "palmerpenguins", "patchwork",
 options(warn = -1)
 for (i in pkgs){
 if (!require(i, quietly = TRUE, character.only = TRUE)){
-install.packages(i, dep = TRUE)
+install.packages(i)
 }
 }
 if(!require("equatiomatic", quietly = TRUE, character.only = TRUE)){
-  devtools::install_github("datalorax/equatiomatic")
+  devtools::install_github("datalorax/equatiomatic", auth_token = NULL)
 }
 if (!require("emo", quietly = TRUE, character.only = TRUE)){
-devtools::install_github("hadley/emo")
+devtools::install_github("hadley/emo", auth_token = NULL)
 }
 if (!require("icons", quietly = TRUE, character.only = TRUE)){
-devtools::install_github("mitchelloharawild/icons")
+devtools::install_github("mitchelloharawild/icons", auth_token = NULL)
 }
 options(warn = 0)
 ```
