@@ -112,12 +112,13 @@ So the probability of observing a t-statistic as least as extreme given under th
 
 The formula for this model is $$Y_i = \alpha + \beta_1x_i + \epsilon_i$$ where for observation $i$ $Y_i$ is the value of the response (`bill_depth_mm`) and $x_i$ is the value of the explanatory variable (`bill_length_mm`); $\alpha$ and $\beta_1$ are population parameters to be estimated using our sample data. We could also write this model as
   
-  
-```{r, echo = FALSE, results='asis', warning=FALSE}
-library(equatiomatic)
-slm <- lm(bill_depth_mm ~ bill_length_mm, data = penguins_nafree)
-extract_eq(slm, wrap = TRUE)
-```
+
+
+$$
+\begin{aligned}
+\operatorname{bill\_depth\_mm} &= \alpha + \beta_{1}(\operatorname{bill\_length\_mm}) + \epsilon
+\end{aligned}
+$$
 
 **Fitted model**
 
@@ -189,9 +190,13 @@ where the only new terminology from the above formula is
 
 Another way to write this model formula for this example is
 
-```{r, echo = FALSE, results='asis'}
-extract_eq(slm_sp, wrap = TRUE)
-```
+
+$$
+\begin{aligned}
+\operatorname{bill\_depth\_mm} &= \alpha + \beta_{1}(\operatorname{bill\_length\_mm}) + \beta_{2}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}})\ + \\
+&\quad \epsilon
+\end{aligned}
+$$
 
 
 When we have categorical explanatory variables (e.g., `species`) we have to use **dummy variables** to estimate population parameters in our linear regression model.
@@ -249,10 +254,14 @@ You'll notice a new term $\beta_4z_ix_{i,k}$ in this model compared to the addit
 
 The model formula for our penguin example can also be written as 
 
-```{r, echo = FALSE, results='asis'}
-slm_int <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins_nafree)
-extract_eq(slm_int, wrap = TRUE)
-```
+
+
+$$
+\begin{aligned}
+\operatorname{bill\_depth\_mm} &= \alpha + \beta_{1}(\operatorname{bill\_length\_mm}) + \beta_{2}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}})\ + \\
+&\quad \beta_{4}(\operatorname{bill\_length\_mm} \times \operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{5}(\operatorname{bill\_length\_mm} \times \operatorname{species}_{\operatorname{Gentoo}}) + \epsilon
+\end{aligned}
+$$
 
 where $\beta_4$bill_length_mm x species~Chinstrap~ and $\beta_5$bill_length_mm x species~Gentoo~ represent the interaction terms in the model.
 
@@ -425,9 +434,13 @@ Using the `slm_sp` model we can make a point prediction for the expected bill de
 
 Recall the model equation
 
-```{r, echo = FALSE, results='asis'}
-equatiomatic::extract_eq(slm_sp, wrap = TRUE)
-```
+
+$$
+\begin{aligned}
+\operatorname{bill\_depth\_mm} &= \alpha + \beta_{1}(\operatorname{bill\_length\_mm}) + \beta_{2}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}})\ + \\
+&\quad \epsilon
+\end{aligned}
+$$
 
 And recall the output table from this model, with estimates.
 
