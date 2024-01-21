@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Hypothesis testing and introduction to linear regression | Module 1</title>
+  <meta name="description" content="Chapter 6 Hypothesis testing and introduction to linear regression | Module 1" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Hypothesis testing and introduction to linear regression | Module 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Hypothesis testing and introduction to linear regression | Module 1" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-hypothesis-testing.html"/>
+<link rel="next" href="statistical-inference.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BIOSCI 220: Quantitative Biology</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Nau mai, haere mai. Welcome to BIOSCI 220!</a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html"><i class="fa fa-check"></i>Key Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#course-outline"><i class="fa fa-check"></i>Course outline</a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#r-and-rstudio"><i class="fa fa-check"></i><code>R</code> and <code>RStudio</code></a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#your-teaching-team"><i class="fa fa-check"></i>Your teaching team</a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#assessment"><i class="fa fa-check"></i>Assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html"><i class="fa fa-check"></i><b>1</b> <code>R</code> and <code>RStudio</code></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#what-are-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What are <code>R</code> and <code>RStudio</code>?</a></li>
+<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.2</b> Getting started with <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data wrangling and manipulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-eda"><i class="fa fa-check"></i><b>2.1</b> Exploratory Data Analysis (EDA)</a></li>
+<li class="chapter" data-level="2.2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#data-visualisation"><i class="fa fa-check"></i><b>2.2</b> Data Visualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-practice.html"><a href="data-practice.html"><i class="fa fa-check"></i><b>3</b> Data practice</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-practice.html"><a href="data-practice.html#data-sovereignty"><i class="fa fa-check"></i><b>3.1</b> Data sovereignty</a></li>
+<li class="chapter" data-level="3.2" data-path="data-practice.html"><a href="data-practice.html#reproducible-research"><i class="fa fa-check"></i><b>3.2</b> Reproducible research</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html"><i class="fa fa-check"></i><b>4</b> Introduction to the design and analysis of experiments</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#introduction-to-experiments"><i class="fa fa-check"></i><b>4.1</b> Introduction to experiments</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#the-three-main-principles-of-experimental-design"><i class="fa fa-check"></i><b>4.2</b> The three (main) principles of experimental design</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#some-experimental-designs"><i class="fa fa-check"></i><b>4.3</b> Some experimental designs</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html"><i class="fa fa-check"></i><b>5</b> Introduction to Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#randomisation-tests"><i class="fa fa-check"></i><b>5.1</b> Randomisation tests</a></li>
+<li class="chapter" data-level="5.2" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#what-is-a-p-value"><i class="fa fa-check"></i><b>5.2</b> What is a <em>p-value</em>?</a></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#type-i-and-type-ii-errors"><i class="fa fa-check"></i><b>5.3</b> Type I and Type II errors</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing and introduction to linear regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#learning-outcomes"><i class="fa fa-check"></i><b>6.1</b> Learning outcomes</a></li>
+<li class="chapter" data-level="6.2" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#hypothesis-testing"><i class="fa fa-check"></i><b>6.2</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="6.3" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#model-assumptions"><i class="fa fa-check"></i><b>6.3</b> Model assumptions</a></li>
+<li class="chapter" data-level="6.4" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#model-diagnostic-plots"><i class="fa fa-check"></i><b>6.4</b> Model diagnostic plots</a></li>
+<li class="chapter" data-level="6.5" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#other-resources-optional-but-recommended"><i class="fa fa-check"></i><b>6.5</b> Other resources: optional but recommended</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i><b>7</b> Statistical Inference</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statistical-inference.html"><a href="statistical-inference.html#learning-outcomes-1"><i class="fa fa-check"></i><b>7.1</b> Learning Outcomes</a></li>
+<li class="chapter" data-level="7.2" data-path="statistical-inference.html"><a href="statistical-inference.html#linear-regression"><i class="fa fa-check"></i><b>7.2</b> Linear Regression</a></li>
+<li class="chapter" data-level="7.3" data-path="statistical-inference.html"><a href="statistical-inference.html#model-comparison-selection-and-checking-again"><i class="fa fa-check"></i><b>7.3</b> Model comparison, selection, and checking (again)</a></li>
+<li class="chapter" data-level="7.4" data-path="statistical-inference.html"><a href="statistical-inference.html#confidence-intervals-and-point-predictions"><i class="fa fa-check"></i><b>7.4</b> Confidence intervals and point predictions</a></li>
+<li class="chapter" data-level="7.5" data-path="statistical-inference.html"><a href="statistical-inference.html#tldr-lm"><i class="fa fa-check"></i><b>7.5</b> TL;DR <code>lm()</code></a></li>
+<li class="chapter" data-level="7.6" data-path="statistical-inference.html"><a href="statistical-inference.html#other-resources-optional-but-recommended-1"><i class="fa fa-check"></i><b>7.6</b> Other resources: optional but recommended</a></li>
+<li class="chapter" data-level="7.7" data-path="statistical-inference.html"><a href="statistical-inference.html#beyond-linear-models-to-generalised-linear-models-glms-not-examinable"><i class="fa fa-check"></i><b>7.7</b> Beyond Linear Models to Generalised Linear Models (GLMs) (<em>not examinable</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html"><i class="fa fa-check"></i><b>8</b> Multivariate Data Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#learning-outcomes-2"><i class="fa fa-check"></i><b>8.1</b> Learning Outcomes</a></li>
+<li class="chapter" data-level="8.2" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#what-is-multivariate-data"><i class="fa fa-check"></i><b>8.2</b> What is multivariate data?</a></li>
+<li class="chapter" data-level="8.3" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#dimension-reduction"><i class="fa fa-check"></i><b>8.3</b> Dimension reduction</a></li>
+<li class="chapter" data-level="8.4" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#distance-matrices-and-measures"><i class="fa fa-check"></i><b>8.4</b> Distance matrices and measures</a></li>
+<li class="chapter" data-level="8.5" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#why-is-nmds-used-frequently-in-biology"><i class="fa fa-check"></i><b>8.5</b> Why is nMDS used frequently in biology?</a></li>
+<li class="chapter" data-level="8.6" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#steps-to-nmds"><i class="fa fa-check"></i><b>8.6</b> Steps to nMDS</a></li>
+<li class="chapter" data-level="8.7" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#nmds-in-r-using-metamds-on-the-palmerpenguins-data-set"><i class="fa fa-check"></i><b>8.7</b> nMDS in <code>R</code> using <code>metaMDS()</code> on the <code>palmerpenguins</code> data set</a></li>
+<li class="chapter" data-level="8.8" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#diagnostic-plots-for-nmds"><i class="fa fa-check"></i><b>8.8</b> Diagnostic plots for nMDS</a></li>
+<li class="chapter" data-level="8.9" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#how-to-interpret-an-nmds-plot-and-what-to-report"><i class="fa fa-check"></i><b>8.9</b> How to interpret an nMDS plot and what to report</a></li>
+<li class="chapter" data-level="8.10" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#nmds-in-r-using-metamds-with-community-structure-data"><i class="fa fa-check"></i><b>8.10</b> nMDS in <code>R</code> using <code>metaMDS()</code> with community structure data</a></li>
+<li class="chapter" data-level="8.11" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#other-resources-optional-but-recommended-2"><i class="fa fa-check"></i><b>8.11</b> Other resources: optional but recommended</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://canvas.auckland.ac.nz/courses/104039">CANVAS</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Module 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hypothesis-testing-and-introduction-to-linear-regression" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Hypothesis testing and introduction to linear regression<a href="hypothesis-testing-and-introduction-to-linear-regression.html#hypothesis-testing-and-introduction-to-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-outcomes" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Learning outcomes<a href="hypothesis-testing-and-introduction-to-linear-regression.html#learning-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Describe the difference between a scientific hypothesis and statistical hypotheses (H<sub>0</sub> and H<sub>1</sub>/H<sub>A</sub>)</li>
+<li>Apply the four steps of hypothesis testing and write <code>R</code> code for
+<ul>
+<li>one-sample t-test</li>
+<li>two-sample independent t-test</li>
+<li>one-way Analysis of Variance (ANOVA)</li>
+</ul></li>
+<li>Identify similarities of hypothesis tests listed above to simple linear regression</li>
+<li>List linear regression model assumptions and be able to evaluate model diagnostics to assess model suitability</li>
+</ul>
+</div>
+<div id="hypothesis-testing" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Hypothesis testing<a href="hypothesis-testing-and-introduction-to-linear-regression.html#hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="scientific-vs-statistical-hypotheses" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Scientific vs statistical hypotheses<a href="hypothesis-testing-and-introduction-to-linear-regression.html#scientific-vs-statistical-hypotheses" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Scientific/Research hypotheses</strong> are expected or predicted relationships between two or more variables that motivate a piece of research. They stem from the research question and often are developed from prior knowledge or theoretical expectation.</p>
+<p><strong>Statistical hypotheses</strong> involve restating the research hypothesis so it can be addressed by statistical techniques, such as hypothesis testing. For hypothesis testing, two statistical hypotheses are presented:</p>
+<ul>
+<li><strong>Null hypothesis H<sub>0</sub></strong>
+<ul>
+<li>It is the “no news here” hypothesis.</li>
+<li>It is always specific; it identifies one particular value for the parameter of interest.</li>
+<li>Usually it is there is no difference, no relationship, no effect (i.e., usually = 0).</li>
+<li>Most often it would be interesting to find evidence against the null hypothesis.</li>
+<li>This the only hypothesis that is actually being tested when we conduct a hypothesis test.</li>
+</ul></li>
+<li><strong>Alternative hypothesis H<sub>1</sub>/H<sub>A</sub></strong>
+<ul>
+<li>It is the “new news” hypothesis.</li>
+<li>It is the opposite of the null, often everything that isn’t the null hypothesis.</li>
+<li>There is a difference, a relationship, an effect (i.e. usually <span class="math inline">\(\neq\)</span> 0).</li>
+<li>The alternative contains possibilities that would be more biologically interesting than what is stated in the null hypothesis.</li>
+<li>The alternative also often contains values that are predicted in the scientific hypothesis being evaluated by the statistical test, so the researcher often hopes to find evidence against the null hypothesis.</li>
+</ul></li>
+</ul>
+</div>
+<div id="four-basic-steps-of-hypothesis-testing" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Four basic steps of hypothesis testing<a href="hypothesis-testing-and-introduction-to-linear-regression.html#four-basic-steps-of-hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1. State the hypotheses</strong><br />
+<strong>2. Compute the test statistic</strong><br />
+<strong>3. Determine the p-value</strong><br />
+<strong>4. Draw the appropriate conclusions</strong></p>
+<p>Actually, there is a couple of initial things to do before step 1. These are to determine what type of statistical test you will conduct (based off what metric you wish to measure and your scientific hypothesis and data - see lecture and Hypothesis testing H5P for more information) and check to make sure the assumptions of said test are met. If assumptions are not met, you’ll need to adjust the test you conduct. We’ll go over model assumptions and model diagnostics in lecture and later in this guide.</p>
+<p>We’ll go through all the steps of hypothesis testing by going through some worked examples. We will, again, use the <code>paua.csv</code> data from CANVAS. Recall that the P<span class="math inline">\(\overline{\text{a}}\)</span>ua dataset contains the following variables:</p>
+<ul>
+<li><code>Age</code> of P<span class="math inline">\(\overline{\text{a}}\)</span>ua in years (calculated from counting rings in the cone)</li>
+<li><code>Length</code> of P<span class="math inline">\(\overline{\text{a}}\)</span>ua shell in centimetres</li>
+<li><code>Species</code> of P<span class="math inline">\(\overline{\text{a}}\)</span>ua: <em>Haliotis iris</em> (Blackfoot p<span class="math inline">\(\overline{\text{a}}\)</span>ua) and
+<em>Haliotis australis</em> (Yellowfoot p<span class="math inline">\(\overline{\text{a}}\)</span>ua) - both endemic to NZ</li>
+</ul>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb85-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb85-2" aria-hidden="true" tabindex="-1"></a>paua <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;paua.csv&quot;</span>)</span></code></pre></div>
+<p>It is a good idea to check our data set has imported into <code>R</code> correctly and is how we expect it to look</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(paua)</span></code></pre></div>
+<pre><code>## Rows: 60
+## Columns: 3
+## $ Species &lt;chr&gt; &quot;Haliotis iris&quot;, &quot;Haliotis australis&quot;, &quot;Haliotis australis&quot;, &quot;…
+## $ Length  &lt;dbl&gt; 1.80, 5.40, 4.80, 5.75, 5.65, 2.80, 5.90, 3.75, 7.20, 4.25, 6.…
+## $ Age     &lt;dbl&gt; 1.497884, 11.877010, 5.416991, 4.497799, 5.500789, 2.500972, 6…</code></pre>
+</div>
+<div id="one-sample-t-test" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> One-Sample t-test<a href="hypothesis-testing-and-introduction-to-linear-regression.html#one-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Using a violin plot we can look at the distribution of shell <code>Length</code> (i.e., one variable hence a one-sample t-test will be used). We can calculate the average <code>Length</code> of all shells in our sample.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb88-1" aria-hidden="true" tabindex="-1"></a>paua <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">average_length =</span> <span class="fu">mean</span>(Length))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   average_length
+##            &lt;dbl&gt;
+## 1           5.19</code></pre>
+<p><img src="BIOSCI220_files/figure-html/vio1-1.png" width="672" /></p>
+<p>What about drawing inference? <em>Do we believe that the average length of P<span class="math inline">\(\overline{\text{a}}\)</span>ua shells is, say, 5cm (perhaps some previous research suggests this value)?</em> This is our research question. Let’s turn this into statistical hypotheses that we can test.</p>
+<div id="step-one.-state-the-hypotheses" class="section level4 hasAnchor" number="6.2.3.1">
+<h4><span class="header-section-number">6.2.3.1</span> Step one. State the hypotheses<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-one.-state-the-hypotheses" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><em>Null hypothesis:</em> On average P<span class="math inline">\(\overline{\text{a}}\)</span>ua shells are 5 cm long</li>
+<li><em>Alternative hypothesis</em>: On average P<span class="math inline">\(\overline{\text{a}}\)</span>ua shells are <strong>not</strong> 5 cm long</li>
+<li><em>Notationally</em>: <span class="math inline">\(H_0: \mu = 5\)</span> vs <span class="math inline">\(H_1: \mu \neq 5\)</span> (<em><span class="math inline">\(\mu\)</span> is the proposed population mean</em>)</li>
+</ul>
+</div>
+<div id="step-two.-compute-the-test-statistic" class="section level4 hasAnchor" number="6.2.3.2">
+<h4><span class="header-section-number">6.2.3.2</span> Step two. Compute the test statistic<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-two.-compute-the-test-statistic" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We know our sample average (5.192 cm), but can we make any claims based on this one number? Other useful information to help us reflect the uncertainty about our sample mean is the spread/variability of data around this mean.</p>
+<p><strong>Visualising the uncertainty in a one-sample t-test - the SEM</strong></p>
+<p>The Standard Error of the Mean (SEM) is a measure of uncertainty about the mean. We can visualise this uncertainty by adding error bars around the sample mean on our violin plot. Typically <span class="math inline">\(\pm\)</span> twice the SEM is the interval used:</p>
+<p><img src="BIOSCI220_files/figure-html/vizun-1.png" width="672" /></p>
+<p><em>Why error bars that are <span class="math inline">\(\pm\)</span> twice the SEM?</em>
+This is approximately the 95% confidence interval for the population mean.</p>
+<p>We can use the in-built functions in <code>R</code> to calculate the mean and the SEM. Yay - we don’t have to do these calculations by hand, <code>R</code> can do them for us! For the <code>paua</code> data, here’s some code we can use:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb90-1" aria-hidden="true" tabindex="-1"></a>sem <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Length),</span>
+<span id="cb90-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb90-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sem =</span> <span class="fu">sd</span>(Length)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Length)))</span>
+<span id="cb90-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb90-3" aria-hidden="true" tabindex="-1"></a>sem</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
+##    mean   sem
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1  5.19 0.155</code></pre>
+<p>Note: have you noticed the font in the code above is coloured differently? The <span style="color: green;">green font indicates an <code>R</code> function to do a calculation</span>, the <span style="color: red;">red font indicates the name of an object being created. Try to change these and see what the headers of the tibble output change to</span>, and <code>Length</code> is the variable in the <code>paua</code> data set that we want to summarise. (you will not see the colours if you are reading this course guide printed in black and white).</p>
+<p><strong>The test statistic is a way of summarising the sample mean and its uncertainty into a single number. For a t-test, the test statistic is the t-statistic or the t-value.</strong></p>
+<p>The t-statistic for a one-sample t-test is:</p>
+<p>t-statistic <span class="math inline">\(= \frac{\bar{x}- \mu}{\text{SEM}}\)</span> = <span class="math inline">\(\frac{5.1925 - 5}{0.155351}\)</span> = 1.239</p>
+<ul>
+<li><p><span class="math inline">\(\bar{x}\)</span> is the sample mean</p></li>
+<li><p><span class="math inline">\(\mu\)</span> is the theoretical value (<em>proposed population mean</em>)</p></li>
+<li><p>SEM is the Standard Error of the Mean. <strong>SEM</strong> <span class="math inline">\(= \frac{\sigma}{\sqrt{n}}\)</span>; where <span class="math inline">\(\sigma\)</span> is a population parameter that we estimate using our sample standard deviation (SD). <span class="math inline">\(SD = \sqrt{\frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{n-1}}\)</span> (<span class="math inline">\(i = 1,...,n\)</span>) is the standard deviation (SD) of the sample, <span class="math inline">\(n\)</span> is the sample size, and <span class="math inline">\(\bar{x}\)</span> is the sample mean. (<em>to learn more about how this is calculated, see “Other resources:optional but recommended” at the end of this section</em>)</p></li>
+</ul>
+<p>We want to compare this t-statistic to the <strong>null distribution</strong>, which is the most likely range of values that will occur if we assume the null hypothesis is true (<code>R</code> can create this null distribution for us, which is a t-distribution for a t-test). This comparison generates a <strong>p-value</strong>, which is the next step in hypothesis testing.</p>
+</div>
+<div id="step-three.-determine-the-p-value" class="section level4 hasAnchor" number="6.2.3.3">
+<h4><span class="header-section-number">6.2.3.3</span> Step three. Determine the p-value<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-three.-determine-the-p-value" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Recall that a <em>p</em>-value is the probability under a specified statistical model (here, the null distribution) that a statistical summary of the data would be equal to or more extreme than its observed value (here, the t-statistic).</p>
+<p>So in this case it’s the probability, under the null hypothesis (<span class="math inline">\(\mu = 5\)</span>), that we would observe a t-statistic at least as extreme as we did.</p>
+<p>The null distribution, assuming H<sub>0</sub> is true, is below. The t-statistic calculated from our hypothesis test was 1.2391. Now, remember that our alternative hypotheses was <span class="math inline">\(H_1: \mu \neq 5\)</span> so we have to consider both sides of the inequality; hence, anything as least as extreme is either <span class="math inline">\(&gt; 1.2391\)</span> or <span class="math inline">\(&lt; -1.2391\)</span> to our observed test statistic (vertical lines). Anything at least as extreme is therefore given by the grey shaded areas.</p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p>We can calculate the <em>p</em>-value using the <code>pt()</code> function (where <code>q</code> is our calculated t-statistic, and <code>df</code> are the degrees of freedom from above):</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="at">q  =</span> <span class="fl">1.2391</span>,<span class="at">df =</span> <span class="dv">59</span>))</span></code></pre></div>
+<pre><code>## [1] 0.2202152</code></pre>
+<p>But why make life hard for ourselves - let’s just do all of the above (specify our hypotheses, compute our test statistic and determine our <em>p</em>-value) in one step using <code>R</code>!!</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(paua<span class="sc">$</span>Length, <span class="at">mu =</span> <span class="dv">5</span> )</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  paua$Length
+## t = 1.2391, df = 59, p-value = 0.2202
+## alternative hypothesis: true mean is not equal to 5
+## 95 percent confidence interval:
+##  4.881643 5.503357
+## sample estimates:
+## mean of x 
+##    5.1925</code></pre>
+</div>
+<div id="step-four.-draw-the-appropriate-conclusions" class="section level4 hasAnchor" number="6.2.3.4">
+<h4><span class="header-section-number">6.2.3.4</span> Step four. Draw the appropriate conclusions<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-four.-draw-the-appropriate-conclusions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>So our <em>p</em>-value - the probability that under our null hypothesis we observe anything as least as extreme as what we did - is ~0.22. Do you think what we’ve observed is likely under the null hypothesis? Or in other words, do we believe that the average length of P<span class="math inline">\(\overline{\text{a}}\)</span>ua shells is 5 cm?</p>
+<ul>
+<li>Big <em>p</em>-values mean what we observed isn’t surprising.</li>
+<li>A big <em>p</em>-value doesn’t prove that the null hypothesis is true, but it certainly offers no evidence that it is <em>not</em> true.</li>
+<li>Thus, when we see a large <em>p</em>-value, all we can say is that we have no evidence against the null hypothesis.</li>
+</ul>
+<p>Does the plot below help to visualise this? The proposed population mean is shown by the solid red horizontal line; the dashed line shows the sample mean and the dotted lines <span class="math inline">\(\pm\)</span> twice the SEM (i.e., ~95% confidence interval).</p>
+<p><img src="BIOSCI220_files/figure-html/vizunmu-1.png" width="672" /></p>
+<p>One of the most important steps is communicating our findings to our audience. <strong>When writing up results from hypothesis testing, always include these values listed below so the reader can determine how you obtained your p-value:</strong></p>
+<ul>
+<li>the value of the test-statistic (here our t-statistic is 1.2391)</li>
+<li>the sample size (<em>n</em>) (here <em>n</em> = 60 - which <code>R</code> code have we have written in previous weeks to find this out?)</li>
+<li>the <em>p</em>-value, related back to your null hypothesis (in biological terms) (here our <em>p</em>-value is 0.22 or 22% which means we have no evidence against the null hypothesis that the average population shell length for both species of p<span class="math inline">\(\overline{\text{a}}\)</span>ua is 5 cm). Report the actual <em>p</em>-value and not some level of significance.</li>
+<li>The <em>p</em>-value indicates the weight of evidence against the null hypothesis, but it does not measure the size of the effect, so for <em>best practice also include the confidence interval, also in biological terms</em> (in the <code>t.test</code> output, we can see the values for our confidence interval are 4.882 and 5.503 - we will go over confidence intervals in more detail in Chapter 6: Statistical inference).</li>
+</ul>
+</div>
+</div>
+<div id="two-sample-independent-t-test-with-t.test-and-lmin-r" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Two-sample independent t-test (with <code>t.test()</code> and <code>lm()</code>in <code>R</code>)<a href="hypothesis-testing-and-introduction-to-linear-regression.html#two-sample-independent-t-test-with-t.test-and-lmin-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have two species of p<span class="math inline">\(\overline{\text{a}}\)</span>ua in this data set, so it may be more interesting to ask <em>is there a difference in the average shell length of Haliotis australis and Haliotis iris</em>?</p>
+<p><img src="BIOSCI220_files/figure-html/vio-1.png" width="672" /></p>
+<div id="step-one.-state-the-hypotheses-1" class="section level4 hasAnchor" number="6.2.4.1">
+<h4><span class="header-section-number">6.2.4.1</span> Step one. State the hypotheses<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-one.-state-the-hypotheses-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><em>Null hypothesis:</em> On average the species’ shells are the same length</li>
+<li><em>Alternative hypothesis</em>: they aren’t the same!</li>
+<li><em>Notationally</em>:<br />
+<span class="math inline">\(H_0: \mu_{\text{Haliotis australis}} - \mu_{\text{Haliotis iris}} = 0\)</span> OR <span class="math inline">\(H_0: \mu_{\text{Haliotis australis}} = \mu_{\text{Haliotis iris}}\)</span><br />
+vs 
+<span class="math inline">\(H_1: \mu_{\text{Haliotis australis}} - \mu_{\text{Haliotis iris}} \neq 0\)</span> OR <span class="math inline">\(H_1: \mu_{\text{Haliotis australis}} \neq \mu_{\text{Haliotis iris}}\)</span></li>
+</ul>
+<p><em>Haliotis australis</em> average - <em>Haliotis iris</em> average = <span class="math inline">\(\bar{x}_{\text{Haliotis australis}} - \bar{x}_{\text{Haliotis iris}}\)</span> = 5.767 - 4.81 = 0.957. This tells us the difference, but is the difference large enough to say they are different, or is 0.957 similar enough to 0 to say there is no difference?</p>
+<p>Adding information about the <strong>variation</strong> around the average values can help! Recall the SEM from the one-sample t-test? The same idea holds here in calculating the test-statistic for a two-sample t-test, although the calculation is a little bit more complicated (as we have to think about the number of observations in each group). But from the two group SEMs we can calculate the Standard Error of the Difference, <strong>SED</strong>, between two means.</p>
+</div>
+<div id="step-two-three.-compute-the-test-statistic-and-determine-the-p-value" class="section level4 hasAnchor" number="6.2.4.2">
+<h4><span class="header-section-number">6.2.4.2</span> Step two &amp; three. Compute the test statistic and determine the p-value<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-two-three.-compute-the-test-statistic-and-determine-the-p-value" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The test statistic is also called a t-statistic (it is a t-test after all!)<br />
+t-statistic = <span class="math inline">\(\frac{\bar{x}_{\text{difference}} - \mu}{\text{SED}}\)</span> = <span class="math inline">\(\frac{\bar{x}_{\text{difference}} - 0}{\text{SED}}\)</span></p>
+<ul>
+<li>where <span class="math inline">\(\bar{x}_{\text{difference}}\)</span> is the differences between the species` averages.</li>
+</ul>
+<p>Calculations are a bit trickier here so let’s use <code>R</code>. We have two options (both give us the same information):</p>
+<p><strong>Option 1.</strong> using <code>t.test()</code></p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb96-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Length <span class="sc">~</span> Species, <span class="at">data =</span> paua)</span>
+<span id="cb96-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the result</span></span>
+<span id="cb96-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb96-3" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Length by Species
+## t = 3.5404, df = 57.955, p-value = 0.0007957
+## alternative hypothesis: true difference in means between group Haliotis australis and group Haliotis iris is not equal to 0
+## 95 percent confidence interval:
+##  0.4158802 1.4980086
+## sample estimates:
+## mean in group Haliotis australis      mean in group Haliotis iris 
+##                         5.766667                         4.809722</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can print out individual pieces of information from the results using</span></span>
+<span id="cb98-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the $ to subset the data, as below</span></span>
+<span id="cb98-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb98-3" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>statistic</span></code></pre></div>
+<pre><code>##        t 
+## 3.540364</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb100-1" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.0007956853</code></pre>
+<p>Listed are the t-statistic, <code>t</code> = 3.5403636 and the <em>p</em>-value, <code>p-value</code> = 0.0007956853 for the hypothesis test outlined above.</p>
+<p><strong>Option 2.</strong> using <code>lm()</code></p>
+<p><code>lm(y ~ x, data = )</code> is the required information of this <code>R</code> function, where <code>lm</code> stands for linear model, <code>y</code> represents the y/dependent/response/outcome variable and <code>x</code> represents the x/independent/explanatory/predictor variable/s. <code>data =</code> tells <code>R</code> which data set to use to find these <code>y</code> and <code>x</code> variables.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb102-1" aria-hidden="true" tabindex="-1"></a>t.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Length <span class="sc">~</span> Species, <span class="at">data =</span> paua)</span>
+<span id="cb102-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extracting the estimated population parameters</span></span>
+<span id="cb102-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(t.lm)<span class="sc">$</span>coef</span></code></pre></div>
+<pre><code>##                        Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept)           5.7666667  0.2278199 25.312396 4.911173e-33
+## SpeciesHaliotis iris -0.9569444  0.2941142 -3.253649 1.902460e-03</code></pre>
+<p><strong>So, what are the values/regression coefficients from the <code>lm()</code> output above?</strong></p>
+<p><code>lm()</code> will calculate the least squares <code>Estimate</code> for the y-intercept (<code>(Intercept)</code>) and the slope (<code>SpeciesHaliotis iris</code>):</p>
+<ul>
+<li><p><code>Estimate</code> of <code>(Intercept)</code> = the <em>baseline</em> = <span class="math inline">\(\bar{x}_\text{Haliotis australis}\)</span> = 5.7666667</p></li>
+<li><p><code>Std. Error</code> of <code>(Intercept)</code> = SE of <span class="math inline">\(\bar{x}_\text{Haliotis australis}\)</span> = SEM = 0.2278199</p></li>
+<li><p><code>Estimate</code> of <code>SpeciesHaliotis iris</code> = <span class="math inline">\(\bar{x}_\text{Haliotis iris}\)</span> – <span class="math inline">\(\bar{x}_\text{Haliotis australis}\)</span> = -0.9569444</p></li>
+<li><p><code>Std. Error</code> of <code>SpeciesHaliotis iris</code> = SE of (<span class="math inline">\(\bar{x}_\text{Haliotis iris}\)</span> – <span class="math inline">\(\bar{x}_\text{Haliotis australis}\)</span> ) = SED = 0.2941142</p></li>
+</ul>
+<p><strong>Hypotheses being tested</strong></p>
+<p>The <code>t value</code> and <code>Pr (&gt;|t|)</code> are the t-statistic and <em>p</em>-value for testing the null hypotheses:</p>
+<p><code>(Intercept)</code> row: Mean abundance is zero for <em>Haliotis australis</em> (not interested in this really)
+<code>SpeciesHaliotis iris</code> row: No difference between the population mean shell lengths of <em>Haliotis australis</em> and <em>Haliotis iris</em></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>By default, <code>R</code> orders variables alphabetically. Sometimes, we don’t mind because there is no logical order to our variables. However, sometimes, we want to specify the variable order (e.g., if we ran a study where we had variables labelled <code>before</code>, <code>during</code> and <code>after</code>, <code>after</code> would come first - weird! Or if we ran an experiment where we had a <code>control</code> and three treatments, labelled <code>A</code>, <code>B</code> and <code>C</code>, it would make the most sense to compare all treatments to the <code>control</code> as the baseline). We can use the <code>mutate</code> function in <code>R</code> to change the variable order:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># changing the baseline</span></span>
+<span id="cb104-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co"># it&#39;s the order that makes the difference</span></span>
+<span id="cb104-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-3" aria-hidden="true" tabindex="-1"></a>paua_rl <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">fct_relevel</span>(Species, <span class="st">&quot;Haliotis iris&quot;</span>, <span class="st">&quot;Haliotis australis&quot;</span>))</span>
+<span id="cb104-4"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-5"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-5" aria-hidden="true" tabindex="-1"></a>c.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Length <span class="sc">~</span> Species, <span class="at">data =</span> paua_rl)</span>
+<span id="cb104-6"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(c.lm)<span class="sc">$</span>coef</span></code></pre></div>
+<pre><code>##                            Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept)               4.8097222  0.1860141 25.856756 1.578074e-33
+## SpeciesHaliotis australis 0.9569444  0.2941142  3.253649 1.902460e-03</code></pre>
+<p><strong>The values/regression coefficients from the <code>lm()</code> output above</strong></p>
+<ul>
+<li><p><code>Estimate</code> of <code>(Intercept)</code> = the <em>baseline</em> = <span class="math inline">\(\bar{x}_\text{Haliotis iris}\)</span> = 4.8097222</p></li>
+<li><p><code>Std. Error</code> of <code>(Intercept)</code> = SE of <span class="math inline">\(\bar{x}_\text{Haliotis iris}\)</span> = SEM = 0.1860141</p></li>
+<li><p><code>Estimate</code> of <code>SpeciesHaliotis australis</code> = <span class="math inline">\(\bar{x}_\text{Haliotis australis}\)</span> – <span class="math inline">\(\bar{x}_\text{Haliotis iris}\)</span> = 0.9569444</p></li>
+<li><p><code>Std. Error</code> of <code>SpeciesHaliotis australis</code> = SE of (<span class="math inline">\(\bar{x}_\text{Haliotis australis}\)</span> – <span class="math inline">\(\bar{x}_\text{Haliotis iris}\)</span> ) = SED = 0.2941142</p></li>
+</ul>
+<p><strong>Hypotheses being tested</strong></p>
+<ul>
+<li>The <code>t value</code> and <code>Pr (&gt;|t|)</code> are the t-statistic and <em>p</em>-value for testing the null hypotheses:</li>
+</ul>
+<p><code>(Intercept)</code> row: Mean abundance is zero for <em>Haliotis iris</em> (not interested in this really)<br />
+<code>SpeciesHaliotis australis</code> row: No difference between the population mean lengths of <em>Haliotis australis</em> and <em>Haliotis iris</em></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+</div>
+<div id="step-four.-draw-the-appropriate-conclusions-1" class="section level4 hasAnchor" number="6.2.4.3">
+<h4><span class="header-section-number">6.2.4.3</span> Step four. Draw the appropriate conclusions<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-four.-draw-the-appropriate-conclusions-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/t_test_6.jpg" /></p>
+<p>From the <code>t.test</code> we got a t-statistic of 3.540364 and a <em>p</em>-value of 0.0007956853
+From the <code>lm()</code> we got a t-statistic for the hypothesis test we are interested in of -3.253649 (or 3.253649, doesn’t matter which we look at because it is a two-tailed test) and a p-value of 0.001902460 (this is the same number as 1.902460e-03).</p>
+<p><em>Why do these numbers differ?</em><br />
+<code>t.test</code> defaults to the Welch t-test, which is used when the variance of two samples is not equal. If you want to see the same results from <code>t.test</code> and <code>lm()</code> try this code out:<br />
+<code>test_eq_var &lt;- t.test(Length ~ Species, var.equal = TRUE, data = paua)</code><br />
+<code>test_eq_var</code><br />
+However, we did not use this <code>var.equal = TRUE</code> argument because the variances (the spread of the data) do not really look equal - check out the violin plot! We need to check our data meet model assumptions - this is coming up after we look at One way Analysis of Variance.</p>
+</div>
+</div>
+<div id="one-way-anova-with-aov-and-lmin-r" class="section level3 hasAnchor" number="6.2.5">
+<h3><span class="header-section-number">6.2.5</span> One way ANOVA (with <code>aov()</code> and <code>lm()</code>in <code>R</code>)<a href="hypothesis-testing-and-introduction-to-linear-regression.html#one-way-anova-with-aov-and-lmin-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Remember the Palmer penguins? <strong>You might find <a href="https://cmjt.shinyapps.io/penguin/">this application</a> useful, now and later…</strong></p>
+<p>Below is the bill depth (mm) values for each bird in the sample, grouped together by species</p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>Now we have more than two groups: <span class="math inline">\(3\)</span> potential comparisons we might be interested in. Remember that each time we carry out a hypothesis test the probability we get a false positive result (<strong>Type I</strong> error) is given by <span class="math inline">\(\alpha\)</span> (the <strong>level of significance</strong> we choose). In light of this we should control the <strong>Type I</strong> error rate across the entire <em>family</em> of tests under consideration, i.e., control the <strong>Family-Wise Error Rate (FWER)</strong>; this ensures that the risk of making at least one <strong>Type I</strong> error among the family of comparisons in the experiment is <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong>AN</strong>alysis <strong>O</strong>f <strong>VA</strong>riance (ANOVA) can do this!</p>
+<div id="step-one.-state-the-hypotheses-2" class="section level4 hasAnchor" number="6.2.5.1">
+<h4><span class="header-section-number">6.2.5.1</span> Step one. State the hypotheses<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-one.-state-the-hypotheses-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><em>Null hypothesis:</em> The mean bill depth of each penguin species is the same</li>
+<li><em>Alternative hypothesis</em>: The mean bill depth of <strong>at least one</strong> species differs from the others</li>
+<li><em>Notationally</em>: <span class="math inline">\(H_0: \mu_{Adelie} = \mu_{Chinstrap} = \mu_{Gentoo}\)</span> vs <span class="math inline">\(H_A:\)</span> <strong>at least one</strong> <span class="math inline">\(\mu_{i}\)</span> is different from the others</li>
+</ul>
+</div>
+<div id="step-two-three.-compute-the-test-statistic-and-determine-the-p-value-1" class="section level4 hasAnchor" number="6.2.5.2">
+<h4><span class="header-section-number">6.2.5.2</span> Step two &amp; three. Compute the test statistic and determine the p-value<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-two-three.-compute-the-test-statistic-and-determine-the-p-value-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The test statistic (the single number summary of the sample data) for ANOVA is the <strong>F-statistic</strong> or the <strong>F-value</strong>.</p>
+<p>Consider the ratio below, this is the F-statistic (check out the <code>R</code> output below to see where the values came from for this penguin data example): 
+<span class="math inline">\({\frac {{\text{variation due to groups}}}{{\text{unexplained variance}}}} = {\frac {{\text{ mean between-group variability}}}{{\text{mean within-group variability}}}}\)</span> <span class="math inline">\(=\frac{\text{MSB}}{\text{MSW}}\)</span> = <span class="math inline">\(\frac{435.39}{1.26}\)</span> = <span class="math inline">\(344.83\)</span></p>
+<p><strong>Option 1.</strong> using <code>aov()</code></p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using aov()</span></span>
+<span id="cb106-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb106-2" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(bill_depth_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins_nafree)</span>
+<span id="cb106-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov)</span></code></pre></div>
+<pre><code>##              Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## species       2  870.8   435.4   344.8 &lt;2e-16 ***
+## Residuals   330  416.7     1.3                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><strong>Option 2.</strong> using <code>lm()</code> then <code>anova()</code></p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first we need to specify a linear model from the data</span></span>
+<span id="cb108-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb108-2" aria-hidden="true" tabindex="-1"></a>fit.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="do">## then we apply anova() to our fitted data</span></span>
+<span id="cb109-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.lm)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: bill_depth_mm
+##            Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## species     2 870.79  435.39  344.83 &lt; 2.2e-16 ***
+## Residuals 330 416.67    1.26                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="step-four.-draw-the-appropriate-conclusions-2" class="section level4 hasAnchor" number="6.2.5.3">
+<h4><span class="header-section-number">6.2.5.3</span> Step four. Draw the appropriate conclusions<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-four.-draw-the-appropriate-conclusions-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><em>What do you notice about the results using <code>aov()</code> and using <code>lm()</code> then <code>anova()</code>?</em> <strong>They are BOTH THE SAME</strong></p>
+<p>The probability of getting an <strong>F-statistic</strong> at least as extreme as the one we observe: <strong>p-value</strong> <code>Pr(&gt;F)</code> = <code>&lt; 2.2e-16</code> tells us we have extremely strong evidence against <span class="math inline">\(H_0\)</span>.</p>
+<p>This means it is likely that the population mean bill depth from <strong>at least one</strong> species differs from the others. Generally, It would be useful to know which groups differ from each other, but our results do not tell us this. To see which groups differ, we can use the regression coefficient output below.<br />
+Note: this is only an option if first creating a linear model using <code>lm()</code>, hence in this course we recommend this for running an ANOVA.
+Note: species <code>Adelie</code> will be the <strong>baseline</strong> in this linear regression with a categorical factor variable by default because it starts with the letter <code>A</code></p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.lm)<span class="sc">$</span>coef</span></code></pre></div>
+<pre><code>##                     Estimate Std. Error     t value     Pr(&gt;|t|)
+## (Intercept)      18.34726027 0.09299608 197.2906740 0.000000e+00
+## speciesChinstrap  0.07332796 0.16497460   0.4444803 6.569867e-01
+## speciesGentoo    -3.35062162 0.13877592 -24.1441135 6.622121e-75</code></pre>
+<p><strong>The values/regression coefficients from the <code>lm()</code> output above</strong></p>
+<ul>
+<li><p><code>Estimate</code> of (<code>Intercept</code>) = <span class="math inline">\(\text{mean}_{\text{Adelie}}\)</span> = 18.3472603</p></li>
+<li><p><code>Std. Error</code> of (<code>Intercept</code>) = SE of <span class="math inline">\(\text{mean}_{\text{Adelie}}\)</span> = SEM = 0.0929961</p></li>
+<li><p><code>Estimate</code> of <code>speciesChinstrap</code> = <span class="math inline">\(\text{mean}_{\text{Chinstrap}}\)</span> - <span class="math inline">\(\text{mean}_{\text{Adelie}}\)</span> = 0.073328<br />
+This means the average bill depth of Chinstrap penguins is estimated to be 0.073328 larger than the average bill depth of Adelie penguins = 18.3472603 + 0.073328 = 18.4205882 mm.</p></li>
+<li><p><code>Std. Error</code> of <code>speciesChinstrap</code> = SE of (<span class="math inline">\(\text{mean}_{\text{Chinstrap}}\)</span> - <span class="math inline">\(\text{mean}_{\text{Adelie}}\)</span> ) = SED = 0.1649746</p></li>
+<li><p>What is <span class="math inline">\(\text{mean}_{\text{Gentoo}}\)</span> - <span class="math inline">\(\text{mean}_{\text{Adelie}}\)</span>?</p></li>
+</ul>
+<p><strong>Hypotheses being tested</strong></p>
+<ul>
+<li>The <code>t value</code> and <code>Pr (&gt;|t|)</code> are the t - and <em>p</em>-value for testing the null hypotheses</li>
+</ul>
+<p><code>(Intercept)</code>row: Mean abundance is zero for Adelie population<br />
+<code>speciesChinstrap</code> row: No difference between the population mean bill depth of Chinstrap and Adelie<br />
+<code>speciesGentoo</code> row: No difference between the population mean bill depth of Gentoo and Adelie</p>
+<p>We’re interested in 2 and 3, but not necessarily 1!</p>
+<p>So, what do you conclude? Does your inference match the plot? Remember when writing up your results to include all relevant information (see section 5.2.4.3) so the reader can determine how you obtained your <em>p</em>-value.</p>
+</div>
+</div>
+</div>
+<div id="model-assumptions" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Model assumptions<a href="hypothesis-testing-and-introduction-to-linear-regression.html#model-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To make meaningful interpretations of any linear regression outputs, our data must meet some <strong>key assumptions</strong></p>
+<ul>
+<li><strong>Independence</strong></li>
+<li>There is a <strong>linear relationship</strong> between the response and the explanatory variable(s)</li>
+<li>The residuals have <strong>constant variance</strong></li>
+<li>The residuals are <strong>normally distributed</strong></li>
+</ul>
+<p>We can check these assumptions in lots of different ways. In this course, we are using diagnostic plots.</p>
+</div>
+<div id="model-diagnostic-plots" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Model diagnostic plots<a href="hypothesis-testing-and-introduction-to-linear-regression.html#model-diagnostic-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Again, <code>R</code> is making our lives easy! Such a small amount of code to check our model assumptions - nice one :-)</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb113-1" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(fit.lm) <span class="co"># Plot the four main linear regression diagnostic plots</span></span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/qqnorm-1.png" width="672" /></p>
+<div id="residuals-vs-fitted-plot" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Residuals vs Fitted plot<a href="hypothesis-testing-and-introduction-to-linear-regression.html#residuals-vs-fitted-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>residuals having constant variance assumption</strong> can be checked with this plot. You are looking for a roughly symmetric cloud of points above and below the horizontal line at zero. You want to see no pattern or structure in your residuals (e.g., a “starry” night). You definitely don’t want to see the scatter increasing or decreasing around the zero line as the fitted values get bigger (e.g., trumpet/ wedge of cheese/ slice of pizza shaped) which would indicate unequal variances (heteroscedasticity).</p>
+<p>[Note: in the residual vs fitted plot above things look a bit weird, the points are in clumps. Why? Think of the model we fitted (i.e., one with a categorical explanatory variable)]</p>
+</div>
+<div id="normal-quantile-quantile-qq-plot" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Normal quantile-quantile (QQ) plot<a href="hypothesis-testing-and-introduction-to-linear-regression.html#normal-quantile-quantile-qq-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>residuals are normally distributed assumption</strong> can be checked with this plot. This plot shows the sorted residuals versus corresponding quantile expected from a standard normal distribution. Points should be close to the 45-degree line; points moving away from the line at either tail suggest the residuals are from a skewed distribution, although some departure from the 45-degree line is acceptable and common.</p>
+</div>
+<div id="scale-location-plot" class="section level3 hasAnchor" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> Scale-Location plot<a href="hypothesis-testing-and-introduction-to-linear-regression.html#scale-location-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This plot can be used to check the <strong>linear relationship assumption</strong>. We want the line to be roughly horizontal (means the relationship between Y and X variables is linear). It can also be another way to check the <strong>homoscedasticity (constant-variance) assumption</strong>. For this assumption to be met in this plot, we want to see that the residuals are spread roughly equally along the range of the explanatory variable/s (fitted values).</p>
+</div>
+<div id="residuals-vs-leverage-plot" class="section level3 hasAnchor" number="6.4.4">
+<h3><span class="header-section-number">6.4.4</span> Residuals vs Leverage plot<a href="hypothesis-testing-and-introduction-to-linear-regression.html#residuals-vs-leverage-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This plot can also be used to check the <strong>linear relationship and residuals having constant variance assumptions</strong> in the same way as the scale-location plot: we want to see a roughly straight horizontal line and the spread of standardized residuals shouldn’t change as a function of leverage. The other useful functionality of this plot is it can help detect <em>influential</em> outliers in a linear regression model (i.e. Even if data have extreme values, they might not be influential to determine the regression line.). Points with high leverage may be influential: that is, deleting them would change the model a lot. These high leverage points will be found in upper or lower right hand corners of the plot.</p>
+<p>[Note: in the residuals vs leverage plot above things look a bit weird because there are only three points. Why? Well think of the model we fitted (i.e., one with a single categorical explanatory variable). It looks like there is a plot up in the top right-hand corner, but actually the three points are all centered on 0 on the y-axis. We can’t tell much from this plot, but will use these plots more later on.]</p>
+</div>
+<div id="what-if-data-do-not-fulfil-the-model-assumptions" class="section level3 hasAnchor" number="6.4.5">
+<h3><span class="header-section-number">6.4.5</span> What if data do not fulfil the model assumptions?<a href="hypothesis-testing-and-introduction-to-linear-regression.html#what-if-data-do-not-fulfil-the-model-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can test these model assumptions more formally using specific tests, but in general, these visual model diagnostic plots are enough to understand our data. A pattern in these diagnostic plots is not just a go-or-stop sign. It makes us think about our data and ask some questions:</p>
+<ul>
+<li>Are there some points in your data set that are identified as potentially problematic in more than one diagnostic plot? Go back to your original data set - is there something special about that point? Or is it an error in data entry?</li>
+<li>Is there really a linear relationship between Y and X variables? If not, you can transform your data to attempt to make it linear (makes interpretation of results a bit more complicated) or use a different statistical technique (some sort of non-linear regression) (not covered in this course)</li>
+<li>Is there any other important variable/s that you left out of your model?</li>
+<li>Could data be systematically biased from data collection?</li>
+</ul>
+<p>Checking residuals is a great way to discover new insights in your model and data!</p>
+<p><a href="https://data.library.virginia.edu/diagnostic-plots/">More information here on understanding diagnostic plots for linear regression analysis</a></p>
+<p><strong>Important things to note:</strong></p>
+<ul>
+<li><strong>run model diagnostics AFTER you’ve fitted the linear model to the data (using <code>lm()</code>) but BEFORE you interpret the outputs</strong><br />
+</li>
+<li><strong>if model assumptions are not met/violated, then the results of our hypothesis test may be inaccurate and so we should not interpret the outputs</strong>.</li>
+</ul>
+</div>
+</div>
+<div id="other-resources-optional-but-recommended" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Other resources: optional but recommended<a href="hypothesis-testing-and-introduction-to-linear-regression.html#other-resources-optional-but-recommended" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+I thought it could be helpful to have a thread on ANOVA in R. As a statistical consultant, this is the most frequent FAQ I get from clients - how to run a linear model on their data, conduct hypothesis tests, extract predicted means and perform contrasts.
+</p>
+— We are R-Ladies (<span class="citation">@WeAreRLadies</span>) <a href="https://twitter.com/WeAreRLadies/status/1223790298024726528?ref_src=twsrc%5Etfw">February 2, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+I've made this cheat sheet and I think it's important. Most stats 101 tests are simple linear models - including "non-parametric" tests. It's so simple we should only teach regression. Avoid confusing students with a zoo of named tests. <a href="https://t.co/9PFR1ly3lW">https://t.co/9PFR1ly3lW</a> 1/n
+</p>
+— Jonas K. Lindeløv (<span class="citation">@jonaslindeloev</span>) <a href="https://twitter.com/jonaslindeloev/status/1110907133833502721?ref_src=twsrc%5Etfw">March 27, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+The aov() function in <a href="https://twitter.com/hashtag/Rstats?src=hash&amp;ref_src=twsrc%5Etfw">#Rstats</a> is actually a wrapper around the lm() function <a href="https://t.co/FbvxQdtD4c">pic.twitter.com/FbvxQdtD4c</a>
+</p>
+— Dan Quintana (<span class="citation">@dsquintana</span>) <a href="https://twitter.com/dsquintana/status/1189536788790042625?ref_src=twsrc%5Etfw">October 30, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><strong>How to calculate the Standard Error of the Mean</strong></p>
+<p>How do we reflect our uncertainty about our sample mean? (<em>remember it’s the population we want to make inference on based on our sample!</em>) The Standard Error of the Mean, <strong>SEM</strong>, <span class="math inline">\(= \frac{\sigma}{\sqrt{n}}\)</span>; where <span class="math inline">\(\sigma\)</span> is a population parameter that we estimate using our sample standard deviation (SD). <span class="math inline">\(SD = \sqrt{\frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{n-1}}\)</span> (<span class="math inline">\(i = 1,...,n\)</span>) is the standard deviation (SD) of the sample, <span class="math inline">\(n\)</span> is the sample size, and <span class="math inline">\(\bar{x}\)</span> is the sample mean.</p>
+<p><strong>Calculating the top line of the SD calculation <span class="math inline">\(\sum_{i = 1}^n(x_i - \bar{x})^2, i = 1,...,n\)</span> by hand</strong>.</p>
+<p>It’s the sum squared differences of the distances between the <span class="math inline">\(i^{th}\)</span> observation and the sample mean <span class="math inline">\(\bar{x}\)</span> (denoted <span class="math inline">\(\mu_x\)</span> in the GIF below)</p>
+<p><img src="https://raw.githubusercontent.com/cmjt/statbiscuits/master/figs_n_gifs/var.gif" /></p>
+<p>So using the example values in the GIF</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># our sample of values</span></span>
+<span id="cb114-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>)</span>
+<span id="cb114-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sample mean</span></span>
+<span id="cb114-4"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-4" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb114-5"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-5" aria-hidden="true" tabindex="-1"></a>sample_mean</span></code></pre></div>
+<pre><code>## [1] 4.333333</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distance from mean for each value</span></span>
+<span id="cb116-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb116-2" aria-hidden="true" tabindex="-1"></a>distance_from_mean <span class="ot">&lt;-</span> x <span class="sc">-</span> sample_mean</span>
+<span id="cb116-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb116-3" aria-hidden="true" tabindex="-1"></a>distance_from_mean</span></code></pre></div>
+<pre><code>## [1] -3.3333333 -2.3333333 -1.3333333  0.6666667  1.6666667  4.6666667</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># squared distance from mean for each value</span></span>
+<span id="cb118-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb118-2" aria-hidden="true" tabindex="-1"></a>squared_distance_from_mean <span class="ot">&lt;-</span> distance_from_mean<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb118-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb118-3" aria-hidden="true" tabindex="-1"></a>squared_distance_from_mean</span></code></pre></div>
+<pre><code>## [1] 11.1111111  5.4444444  1.7777778  0.4444444  2.7777778 21.7777778</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum of the squared distances</span></span>
+<span id="cb120-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(squared_distance_from_mean)</span></code></pre></div>
+<pre><code>## [1] 43.33333</code></pre>
+<p><strong>Calculating SD and SEM</strong></p>
+<p>So that’s the top line, what about the complete <strong>SD</strong> calculation? Remember it’s <span class="math inline">\(\sqrt{\frac{\Sigma_{i = 1}^n(x_i - \bar{x})^2}{n-1}}\)</span> so = <span class="math inline">\(\sqrt{\frac{43.3333333}{n-1}}\)</span> = <span class="math inline">\(\sqrt{\frac{43.3333333}{6-1}}\)</span> = <span class="math inline">\(\sqrt{\frac{43.3333333}{5}}\)</span> = 2.9439203.</p>
+<p>Or we could just use <code>R</code>’s <code>sd()</code> function (much easier!!)</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
+<pre><code>## [1] 2.94392</code></pre>
+<p>So the <strong>SEM</strong> is <span class="math inline">\(\frac{\text{SD}}{\sqrt{n}}\)</span> = <span class="math inline">\(\frac{2.9439203}{\sqrt{6}}\)</span> = 1.20185</p>
+<p>In <code>R</code></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (length(x)) returns the length of the vector x which is n, the sample size</span></span>
+<span id="cb124-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x)) </span></code></pre></div>
+<pre><code>## [1] 1.20185</code></pre>
+<p>For the <code>paua</code> data we can avoid all those “by-hand” calculations and use the in-built functions in <code>R</code> to calculate the mean and the SEM, which we need for our test statistic, the t-statistic.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb126-1" aria-hidden="true" tabindex="-1"></a>sem <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Length),</span>
+<span id="cb126-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb126-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sem =</span> <span class="fu">sd</span>(Length)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Length)))</span>
+<span id="cb126-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb126-3" aria-hidden="true" tabindex="-1"></a>sem</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
+##    mean   sem
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1  5.19 0.155</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-hypothesis-testing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="statistical-inference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["BIOSCI220.html"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

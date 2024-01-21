@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Multivariate Data Analysis | Module 1</title>
+  <meta name="description" content="Chapter 8 Multivariate Data Analysis | Module 1" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Multivariate Data Analysis | Module 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Multivariate Data Analysis | Module 1" />
+  
+  
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="statistical-inference.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BIOSCI 220: Quantitative Biology</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Nau mai, haere mai. Welcome to BIOSCI 220!</a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html"><i class="fa fa-check"></i>Key Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#course-outline"><i class="fa fa-check"></i>Course outline</a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#r-and-rstudio"><i class="fa fa-check"></i><code>R</code> and <code>RStudio</code></a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#your-teaching-team"><i class="fa fa-check"></i>Your teaching team</a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#assessment"><i class="fa fa-check"></i>Assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html"><i class="fa fa-check"></i><b>1</b> <code>R</code> and <code>RStudio</code></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#what-are-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What are <code>R</code> and <code>RStudio</code>?</a></li>
+<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.2</b> Getting started with <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data wrangling and manipulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-eda"><i class="fa fa-check"></i><b>2.1</b> Exploratory Data Analysis (EDA)</a></li>
+<li class="chapter" data-level="2.2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#data-visualisation"><i class="fa fa-check"></i><b>2.2</b> Data Visualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-practice.html"><a href="data-practice.html"><i class="fa fa-check"></i><b>3</b> Data practice</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-practice.html"><a href="data-practice.html#data-sovereignty"><i class="fa fa-check"></i><b>3.1</b> Data sovereignty</a></li>
+<li class="chapter" data-level="3.2" data-path="data-practice.html"><a href="data-practice.html#reproducible-research"><i class="fa fa-check"></i><b>3.2</b> Reproducible research</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html"><i class="fa fa-check"></i><b>4</b> Introduction to the design and analysis of experiments</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#introduction-to-experiments"><i class="fa fa-check"></i><b>4.1</b> Introduction to experiments</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#the-three-main-principles-of-experimental-design"><i class="fa fa-check"></i><b>4.2</b> The three (main) principles of experimental design</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#some-experimental-designs"><i class="fa fa-check"></i><b>4.3</b> Some experimental designs</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html"><i class="fa fa-check"></i><b>5</b> Introduction to Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#randomisation-tests"><i class="fa fa-check"></i><b>5.1</b> Randomisation tests</a></li>
+<li class="chapter" data-level="5.2" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#what-is-a-p-value"><i class="fa fa-check"></i><b>5.2</b> What is a <em>p-value</em>?</a></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#type-i-and-type-ii-errors"><i class="fa fa-check"></i><b>5.3</b> Type I and Type II errors</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing and introduction to linear regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#learning-outcomes"><i class="fa fa-check"></i><b>6.1</b> Learning outcomes</a></li>
+<li class="chapter" data-level="6.2" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#hypothesis-testing"><i class="fa fa-check"></i><b>6.2</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="6.3" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#model-assumptions"><i class="fa fa-check"></i><b>6.3</b> Model assumptions</a></li>
+<li class="chapter" data-level="6.4" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#model-diagnostic-plots"><i class="fa fa-check"></i><b>6.4</b> Model diagnostic plots</a></li>
+<li class="chapter" data-level="6.5" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#other-resources-optional-but-recommended"><i class="fa fa-check"></i><b>6.5</b> Other resources: optional but recommended</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i><b>7</b> Statistical Inference</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statistical-inference.html"><a href="statistical-inference.html#learning-outcomes-1"><i class="fa fa-check"></i><b>7.1</b> Learning Outcomes</a></li>
+<li class="chapter" data-level="7.2" data-path="statistical-inference.html"><a href="statistical-inference.html#linear-regression"><i class="fa fa-check"></i><b>7.2</b> Linear Regression</a></li>
+<li class="chapter" data-level="7.3" data-path="statistical-inference.html"><a href="statistical-inference.html#model-comparison-selection-and-checking-again"><i class="fa fa-check"></i><b>7.3</b> Model comparison, selection, and checking (again)</a></li>
+<li class="chapter" data-level="7.4" data-path="statistical-inference.html"><a href="statistical-inference.html#confidence-intervals-and-point-predictions"><i class="fa fa-check"></i><b>7.4</b> Confidence intervals and point predictions</a></li>
+<li class="chapter" data-level="7.5" data-path="statistical-inference.html"><a href="statistical-inference.html#tldr-lm"><i class="fa fa-check"></i><b>7.5</b> TL;DR <code>lm()</code></a></li>
+<li class="chapter" data-level="7.6" data-path="statistical-inference.html"><a href="statistical-inference.html#other-resources-optional-but-recommended-1"><i class="fa fa-check"></i><b>7.6</b> Other resources: optional but recommended</a></li>
+<li class="chapter" data-level="7.7" data-path="statistical-inference.html"><a href="statistical-inference.html#beyond-linear-models-to-generalised-linear-models-glms-not-examinable"><i class="fa fa-check"></i><b>7.7</b> Beyond Linear Models to Generalised Linear Models (GLMs) (<em>not examinable</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html"><i class="fa fa-check"></i><b>8</b> Multivariate Data Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#learning-outcomes-2"><i class="fa fa-check"></i><b>8.1</b> Learning Outcomes</a></li>
+<li class="chapter" data-level="8.2" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#what-is-multivariate-data"><i class="fa fa-check"></i><b>8.2</b> What is multivariate data?</a></li>
+<li class="chapter" data-level="8.3" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#dimension-reduction"><i class="fa fa-check"></i><b>8.3</b> Dimension reduction</a></li>
+<li class="chapter" data-level="8.4" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#distance-matrices-and-measures"><i class="fa fa-check"></i><b>8.4</b> Distance matrices and measures</a></li>
+<li class="chapter" data-level="8.5" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#why-is-nmds-used-frequently-in-biology"><i class="fa fa-check"></i><b>8.5</b> Why is nMDS used frequently in biology?</a></li>
+<li class="chapter" data-level="8.6" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#steps-to-nmds"><i class="fa fa-check"></i><b>8.6</b> Steps to nMDS</a></li>
+<li class="chapter" data-level="8.7" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#nmds-in-r-using-metamds-on-the-palmerpenguins-data-set"><i class="fa fa-check"></i><b>8.7</b> nMDS in <code>R</code> using <code>metaMDS()</code> on the <code>palmerpenguins</code> data set</a></li>
+<li class="chapter" data-level="8.8" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#diagnostic-plots-for-nmds"><i class="fa fa-check"></i><b>8.8</b> Diagnostic plots for nMDS</a></li>
+<li class="chapter" data-level="8.9" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#how-to-interpret-an-nmds-plot-and-what-to-report"><i class="fa fa-check"></i><b>8.9</b> How to interpret an nMDS plot and what to report</a></li>
+<li class="chapter" data-level="8.10" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#nmds-in-r-using-metamds-with-community-structure-data"><i class="fa fa-check"></i><b>8.10</b> nMDS in <code>R</code> using <code>metaMDS()</code> with community structure data</a></li>
+<li class="chapter" data-level="8.11" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#other-resources-optional-but-recommended-2"><i class="fa fa-check"></i><b>8.11</b> Other resources: optional but recommended</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://canvas.auckland.ac.nz/courses/104039">CANVAS</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Module 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multivariate-data-analysis" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Multivariate Data Analysis<a href="multivariate-data-analysis.html#multivariate-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-outcomes-2" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Learning Outcomes<a href="multivariate-data-analysis.html#learning-outcomes-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Define multivariate data</li>
+<li>Describe what dimension reduction is and why we apply it</li>
+<li>Explain the aims, steps and uses of non-metric multidimensional scaling (nMDS) for biological application</li>
+<li>Compare two different distance measures, namely Euclidean and Bray Curtis, and know when it is appropriate to use each one</li>
+<li>Write <code>R</code> code to carry out nMDS, plot a 2-D solution and perform associated diagnostic plots</li>
+<li>Interpret and effectively communicate nMDS outputs</li>
+</ul>
+</div>
+<div id="what-is-multivariate-data" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> What is multivariate data?<a href="multivariate-data-analysis.html#what-is-multivariate-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So far in this course we have visualised and analysed data with, at most a few variables, where each variable generally requires a dimension in space or a separate axis on a graph to be visualised (e.g., if we have 8 variables in a data set, we would require 8 dimensions/an 8-axis graph to show them all). We are pretty good at looking for patterns in data in 1- and 2-dimensions (2-D), we’re ok with 3-D, but for most people the thought of visualising what 4-D or above even looks like is mind-boggling enough without even thinking about interpreting data in these high dimensions!! Unfortunately, most biological data sets contain many variables (aka is high-dimensional or multivariate), so we can do one of two things:</p>
+<ul>
+<li>Analyse the data in pairs of variables, which can kind of work for smallish multivariate data sets however, this quickly gets challenging to make overall interpretations of the data set as a whole.</li>
+<li>Use statistical tools to search for patterns in the data in multivariate space and summarise those patterns into a lower dimensionality so our brains can process it!!</li>
+</ul>
+<p>Let’s elaborate more on the second option presented here…</p>
+</div>
+<div id="dimension-reduction" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Dimension reduction<a href="multivariate-data-analysis.html#dimension-reduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When data is high-dimensional, it is hard to distinguish between the important variables that are relevant to the output and the redundant or not-so important ones. <strong>Dimension reduction</strong> can make the data less noisy while retaining the important information and simplify it for exploration, interpretation, and visualisation.</p>
+<p>The main aim of <strong>dimension reduction</strong> is to find the best low-dimensional representation of the variation in a multivariate data set, but how do we do this? There are many methods that all have slightly different uses, including principal component analysis (PCA), principal coordinate analysis (PCO), cluster analysis, discriminant analysis etc. – and one that is commonly used in many areas of biology that we are going to explore in more detail is non-metric multidimensional scaling (nMDS).</p>
+<div id="non-metric-multidimensional-scaling-nmds" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Non-metric multidimensional scaling (nMDS)<a href="multivariate-data-analysis.html#non-metric-multidimensional-scaling-nmds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The aim of nMDS is to ‘map’ the original position of samples in a dataset in multidimensional space as accurately as possible using a reduced number of dimensions. This means the distances between the sample points in the specified reduced dimensions (usually 2-D because this is easiest for our brains to visualise, but sometimes 3-D if required) is as closely matched as possible to the relative distances among the samples from the original higher dimension dataset. For example, if sample A has higher similarity to sample B than it does to sample C then sample A will be placed closer on the map to sample B than it is to sample C. This makes it easier for the original data to be plotted, visualized and interpreted.</p>
+</div>
+</div>
+<div id="distance-matrices-and-measures" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Distance matrices and measures<a href="multivariate-data-analysis.html#distance-matrices-and-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To create a nMDS visualisation, the original data must first be translated into a distance matrix, as shown in the diagram below.</p>
+<p><img src="figs/data_to_nMDS_diagram_labelled.png" /></p>
+<p>R will automatically calculate the distance matrix for us using the original data when we write code to produce an nMDS plot, but it’s important we know what a distance matrix is and how it is calculated. The reason is we need to input the type of distance matrix we want <code>R</code> to use, which differs depending on your data.</p>
+<p>An example of a distance matrix you may have seen before is distances between cities on a map. Below is a distance matrix for flight distances (in kilometres) between locations in the North Island of New Zealand.</p>
+<p><img src="figs/NI_NZ_flight_distance_matrix_full.png" /></p>
+<p>Since distance is symmetric (i.e. distance between A and B is equal to distance between B and A), we can focus on only the lower (orange) or upper (green) triangular part of the matrix. The diagonal elements of a distance matrix (blue) are zero because they represent the distance of a sample from itself. So this information is often shown in a triangular matrix, as below.</p>
+<p><img src="figs/NI_NZ_flight_distance_matrix_tri.png" /></p>
+<p>Another way we could measure the distance between these cities would be to use driving distances. These distances differ from flight distances as the roads are not usually in a straight line to a location; instead they go around mountains, through valleys and connect towns and cities together. Below is a distance matrix for driving distances (in kilometres) between locations in the North Island of New Zealand. You should note that all the flight distances are shorter than the driving distances.</p>
+<p><img src="figs/NI_NZ_drive_distance_matrix_tri.png" />
+<a href="https://www.destination-nz.com/new-zealand-information/essentials/distance-charts">Link to source</a></p>
+<p>We could also display distance matrices of flight times, driving times etc. There are many ways to calculate distance between these geographic locations! In a similar way, there are also many distance measures we can use to determine differences between biological samples <a href="https://www.library.auckland.ac.nz/search/numerical%20ecology%20legendre">See Legendre &amp; Legendre’s 1998 (&amp; 2012) book Numerical Ecology</a>. We will introduce two commonly used distance measures in biology – Euclidean distance and Bray-Curtis distance.</p>
+<div id="euclidean-distance" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Euclidean distance<a href="multivariate-data-analysis.html#euclidean-distance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Drawing a straight line between A and B</strong> is also termed “as the crow flies” distance. This is how the flight distances in the example above were measured and is also called <strong>Euclidean distance - a very commonly used distance measure</strong>. It is the way we measure most things in life!</p>
+<p><img src="figs/euc.png" /></p>
+<p>Above we have two points <em>A</em> and <em>B</em> (these could be biological samples or observations) and we want to know the straight line, as the crow flies, distance between them so we can use the Euclidean distance formula to calculate this.</p>
+<p>(Note: if you remember a bit of high school mathematics, you may notice this is Pythagoras’ formula).</p>
+<p>Let’s say x<sub>1</sub> = 1, x<sub>2</sub> = 5, y<sub>1</sub> = 1 and y<sub>2</sub> = 3. We could write this as A (1, 1) and B (5, 3).</p>
+<p><span class="math display">\[
+\begin{aligned}
+  d_{Euclidean}(A, B) &amp; = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\
+  &amp; = \sqrt{(5 - 1)^2 + (3 - 1)^2}\\
+  &amp; = \sqrt{(4)^2 + (2)^2}\\
+  &amp; = \sqrt{16 + 4}\\
+  &amp; = \sqrt{20}\\
+  &amp; = 4.47
+\end{aligned}
+\]</span></p>
+<p>This example only has two variables (x and y) so only two dimensions, however, we can use this formula to calculate distance between two points (or samples with biological data) for any number of variables in multivariate space (or R can do it for us!). A more generic way to write the formula for multivariate data is:</p>
+<p><span class="math display">\[d_{Euclidean}(j, k) = \sqrt{\sum^{n} (y_{i,j} - y_{i,k})^2}\]</span>
+where <em>j</em> and <em>k</em> represent the two samples whose distance is being measured, so <span class="math inline">\(y_{i,j}\)</span> is the value of variable <em>i</em> in sample <em>j</em>, and <span class="math inline">\(y_{i,k}\)</span> is the value of variable <em>i</em> in sample <em>k</em>, and <em>n</em> is the total number of samples. “the value of the variable <em>i</em> in sample <em>j</em>” would be equivalent to the abundance of a particular species <em>i</em> in a location/sample <em>j</em>.</p>
+<p>Below is a made-up ecological data set with four samples (S1 - S4, let’s say they are different locations) and seven variables (V1 - V7, let’s say they are different species).</p>
+<pre><code>##       Variable
+## Sample V1 V2 V3 V4 V5 V6 V7
+##     S1  0  5  3  0  2  0  0
+##     S2  0 10  6  0  4  0  0
+##     S3  1  0  0  1  0  1  0
+##     S4  0  1  1  0  1  0  0</code></pre>
+<p>Take a minute to study this data.</p>
+<ul>
+<li>which samples/locations do you think are most similar to each other?</li>
+<li>which samples/locations are most different from each other?</li>
+</ul>
+<p><code>R</code> will calculate the distance matrix for us, but let’s practice calculating the Euclidean distance between sample 1 &amp; 2. (doing these calculations is not examinable)</p>
+<p><span class="math display">\[
+\begin{aligned}
+  d_{Euclidean}(j, k) &amp; = \sqrt{\sum^{n} (y_{i,j} - y_{i,k})^2}\\
+  d_{Euclidean}(1, 2) &amp; = \sqrt{\sum(y_{(V1,S1)} - y_{(V1,S2})^2 + (y_{(V2,S1)} - y_{(V2,S2)})^2 + ... +(y_{(V7,S1)} - y_{(V7,S2)})^2}\\
+  &amp; = \sqrt{(0 - 0)^2 + (5 - 10)^2 + (3 - 6)^2 + (0 - 0)^2 + (2 - 4)^2 + (0 - 0)^2 + (0 - 0)^2}\\
+  &amp; = \sqrt{(-5)^2 + (-3)^2 + (-2)^2}\\
+  &amp; = \sqrt{38}\\
+  &amp; = 6.1644
+\end{aligned}
+\]</span></p>
+<p>This means the distance between samples 1 and 2 in 7-D space is 6.1644.</p>
+<p>The complete triangular distance matrix using the Euclidean distance measure is:</p>
+<pre><code>##         1       2       3 4
+## 1                          
+## 2  6.1644                  
+## 3  6.4031 12.4500          
+## 4  4.5826 10.7240  2.4495</code></pre>
+<p>Now take a minute to study the values in the distance matrix above. Larger values mean they are further apart/less similar to each other. Is this the same as what you expected to see when looking at the original data set?</p>
+<p>Samples 2 &amp; 4 appear very different from each other with a distance of 10.724, but they share all the same species. Samples 3 &amp; 4 appear the most similar to each other with a distance of 2.4495, even though they have no species in common. What’s going on here?</p>
+<p><strong>Euclidean distance…</strong></p>
+<ul>
+<li>…is a really useful distance measure for “well-behaved” data (without many zeroes or the zeroes are meaningful) and approximately normally distributed data!!</li>
+<li>…does not have an upper value boundary (can be any number larger than zero).</li>
+<li>…puts emphasis on variables with large ranges (high abundance values) e.g., samples 2 &amp; 4.</li>
+<li>…between two samples not sharing any variable/species may be smaller than between two samples sharing all variables/species, but with the same variables/species having large abundance differences between samples e.g., samples 3 &amp; 4 vs samples 2 &amp; 4, respectively. In other words, the distance between 0 and 1 is treated the same as the distance between 1 and 2, or 1001 and 1002.</li>
+<li>…will put samples with low counts closer together, even when they have no variables/species in common i.e., samples 3 &amp; 4.</li>
+<li>…is a symmetrical index, i.e., it treats double zeros in the same way as double presences. This means it is not appropriate for data sets where joint absences are considered meaningless, i.e., if two samples do not have a particular variable/species present, does this mean they are more similar to each other?</li>
+</ul>
+</div>
+<div id="bray-curtis-bc-distance" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Bray-Curtis (BC) distance<a href="multivariate-data-analysis.html#bray-curtis-bc-distance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Bray-Curtis dissimilarity measure is commonly used for many types of biological data (e.g., community composition data, metagenomics, medicine). It takes the sum of the absolute differences between samples (that’s what the |…| symbols mean) and divides by the total sum for a pair of samples. By doing this, it calculates the proportion of mis-matching individuals between samples. The formula is:</p>
+<p><span class="math display">\[d_{Bray-Curtis}(j,k) = \sum^n \frac{|y_{i,k} - y_{j,k}|}{(y_{i,k} + y_{j,k})}\]</span></p>
+<p>where <em>j</em> and <em>k</em> represent the two samples whose distance is being measured, so <span class="math inline">\(y_{i,j}\)</span> is the value of variable <em>i</em> in sample <em>j</em>, and <span class="math inline">\(y_{i,k}\)</span> is the value of variable <em>i</em> in sample <em>k</em>, and <em>n</em> is the total number of samples. “the value of the variable <em>i</em> in sample <em>j</em>” would be equivalent to the abundance of a particular species <em>i</em> in a location/sample <em>j</em> for community structure data. The result will always take a value between 0 and 1, where <strong>0 = the samples are identical to each other and 1 = the samples have no variables in common</strong>.<br />
+(Note: this is often converted to a Bray-Curtis <strong>similarity</strong> distance by BC<sub>sim</sub> = 1 - BC<sub>dissim</sub>. Why? Because it is more intuitive to interpret 0 = nothing in common and 1 = identical! You need to be aware of whether the <strong>dissimilarity</strong> or the <strong>similarity</strong> distance measure is being used, as it can drastically impact your interpretation!!)</p>
+<p>Let’s use the same made-up data set we used before to calculate a Bray-Curtis dissimilarity distance matrix:</p>
+<pre><code>##       Variable
+## Sample V1 V2 V3 V4 V5 V6 V7
+##     S1  0  5  3  0  2  0  0
+##     S2  0 10  6  0  4  0  0
+##     S3  1  0  0  1  0  1  0
+##     S4  0  1  1  0  1  0  0</code></pre>
+<p>As mentioned earlier, <code>R</code> will calculate the distance matrix for us, but let’s practice calculating the Bray-Curtis distance between sample 1 &amp; 2. (doing these calculations is not examinable)</p>
+<p><span class="math display">\[
+\begin{aligned}
+d_{Bray-Curtis}(j,k)&amp; = \sum^n \frac{|y_{i,k} - y_{j,k}|}{(y_{i,k} + y_{j,k})}\\
+d_{Bray-Curtis}(1,2)&amp; = \frac{|(y_{(V1,S1)} - y_{(V1,S2}) + (y_{(V2,S1)} - y_{(V2,S2)}) + ... +(y_{(V7,S1)} - y_{(V7,S2)})|}
+{(y_{(V1,S1)} + y_{(V1,S2}) + (y_{(V2,S1)} + y_{(V2,S2)}) + ... +(y_{(V7,S1)} + y_{(V7,S2)})}\\
+&amp; = \frac{|0-0| + |5-10| + |3-6| + |0-0| + |2-4| + |0-0| + |0-0|}{(0+0) + (5+10) + (3+6) + (0+0) + (2+4) + (0+0) + (0+0)}\\
+&amp; = \frac{5 + 3 + 2}{15 + 9 + 6}\\
+&amp; = \frac{10}{30}\\
+&amp; = 0.333
+\end{aligned}
+\]</span>
+(out of a total of 30 individuals in samples 1 and 2, 10 cannot be paired with an individual of the same species/variable from the other location/sample)</p>
+<p>The complete triangular distance matrix using the Bray-Curtis dissimilarity distance measure is:</p>
+<pre><code>##       1     2     3 4
+## 1                    
+## 2 0.333              
+## 3 1.000 1.000        
+## 4 0.538 0.739 1.000</code></pre>
+<p>You will see that this differs significantly from the Euclidean distance matrix. Samples 1 &amp; 2 appear the most similar to each other and sample 3 differs completely from the other three samples. This may be more like what you expected to see when you first looked at this data set. <em>This illustrates why it is important to choose the right distance measure specific to your data set</em> :-)</p>
+<p><strong>Bray-Curtis dissimilarity distance…</strong></p>
+<ul>
+<li>…reflects changes in composition and relative abundances pretty well.</li>
+<li>…adds more weighting to relatively rare individuals, as differences between smaller values matter.</li>
+<li>…always treats joint absences as unimportant – they do not make the samples more similar to each other.</li>
+</ul>
+</div>
+</div>
+<div id="why-is-nmds-used-frequently-in-biology" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Why is nMDS used frequently in biology?<a href="multivariate-data-analysis.html#why-is-nmds-used-frequently-in-biology" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>It makes few (if any) model assumptions about the form of the data.</li>
+<li>As the name suggests, it is a non-parametric (“non-metric”) technique. This means that data is not required to fit a normal distribution - an assumption of parametric tests, like linear regression we looked at earlier in the course. Fulfilling the multivariate normality assumptions can be very challenging in many biological data sets.</li>
+<li>What makes nMDS non-metric is that it is rank-based. This means that instead of using the actual values to calculate distances between samples, it uses ranks. For example, instead of saying that sample A is 5 points away from sample B, and 10 from sample C, you would instead say that: sample A is the “1st” most close sample to B, and sample C is the “2nd” most close. These ranks of the similarities between samples are the only information used by nMDS. NOTE: metric MDS (mMDS) would use the actual distances between samples generated in the distance matrix and if the data fit this model, it is the preferred method although we will not be covering this in this course. If we use the Euclidean and the Bray-Curtis distance matrices calculated above, we can display these as the rank-based information that is used to create an nMDS plot.</li>
+</ul>
+<p>Euclidean distance matrix (left) and resultant rank-based matrix used to create nMDS (right)
+<img src="figs/euc_dmvalues_nMDSranks.png" /></p>
+<p>Bray-Curtis dissimilarity distance matrix (left) and resultant rank-based matrix used to create nMDS (right)
+<img src="figs/bc_dmvalues_nMDSranks.png" /></p>
+<ul>
+<li>Because nMDS uses rank-ordered data, data transformation is less often necessary. Data may require standardisation still – this is especially true if the variables being analysed are on different scales or with completely different units of measurement being used (e.g., grams and millimeters). (we will cover how to do this when working with the penguin data)</li>
+<li>Some other dimension reduction techniques only work in Euclidean distance (i.e., principal component analysis). nMDS can be performed using any distance measure/metric thus is an extremely flexible technique that can accommodate a variety of different kinds of data. There are many different distance measures to choose from and a commonly used one for biological data is Bray-Curtis.</li>
+<li>Because of the point made above, the link between the original data and the final plot is relatively transparent and easy to explain – <em>the rationale of nMDS is the preservation of the relationships between samples in reduced dimensional space</em>.</li>
+</ul>
+</div>
+<div id="steps-to-nmds" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Steps to nMDS<a href="multivariate-data-analysis.html#steps-to-nmds" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Choose which distance measure is appropriate for your data and calculate the distance matrix to perform the nMDS on. <code>metaMDS()</code> in <code>R</code> creates the distance matrix for you, but your choice of distance measure is important here.</p></li>
+<li><p>Choose a desired number of dimensions for your nMDS. One way to choose an appropriate number of dimensions is to calculate nMDS values for a range of dimensions. A scree plot/stress plot (stress versus number of dimensions) can be easily created in <code>R</code>, to assist in identifying where adding more dimensions does not substantially lower the stress value (more on this in Diagnostic plots for nMDS). As mentioned above, 2- or 3-dimensions is usually favoured for ease of interpretation.<br />
+<strong>Note: although the diagnostic plots are presented later on in this guide, it would be a good idea to run a scree plot early on in your data analysis to help you decide how many dimensions to use for your nMDS.</strong></p></li>
+</ol>
+<p><img src="figs/nMDS_workflow_in_R.PNG" /></p>
+</div>
+<div id="nmds-in-r-using-metamds-on-the-palmerpenguins-data-set" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> nMDS in <code>R</code> using <code>metaMDS()</code> on the <code>palmerpenguins</code> data set<a href="multivariate-data-analysis.html#nmds-in-r-using-metamds-on-the-palmerpenguins-data-set" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>R</code> has two main nMDS functions available, <code>monoMDS()</code>, which is part of the MASS library (automatically installed in <code>R</code>), and <code>metaMDS()</code>, which is part of the <code>vegan</code> package. We will use the <code>metaMDS()</code> function because:</p>
+<ul>
+<li>it is more automated (so is easier for beginners like us!).</li>
+<li>by default, it ensures the first axis represents the main source of variation in the data (by using principal component analysis - another dimension reduction technique), which is best for interpreting the nMDS plot we will produce.</li>
+</ul>
+<p>We need to download and install the vegan package, necessary for running <code>metaMDS()</code>. Call the vegan package to use its functions (you will need to install it first if you haven’t already – do you remember how to do that? HINT: <code>install.packages(“”)</code>):</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="multivariate-data-analysis.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span></code></pre></div>
+<p>We then need to load the data into <code>R</code>, which has columns of variables and rows for samples.</p>
+<p>We’ll use a familiar data set to start with, our palmerpenguins, which only has a few variables.</p>
+<p>NOTE: most of the default arguments in <code>metaMDS()</code> are set for community structure data (this is ecological data where we want to know species occurrence and abundance in samples that represent communities) as this is what the vegan package was designed for.
+As the palmerpenguin data is not community structure data, we will be making some changes to the defaults (this will be useful to know as many of you are not ecologists, or even if you are, your data may not be about community structure!).</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="multivariate-data-analysis.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we should be used to loading these packages by now :-)</span></span>
+<span id="cb168-2"><a href="multivariate-data-analysis.html#cb168-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-3"><a href="multivariate-data-analysis.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb168-4"><a href="multivariate-data-analysis.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb168-5"><a href="multivariate-data-analysis.html#cb168-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-6"><a href="multivariate-data-analysis.html#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="co"># getting rid of NAs</span></span>
+<span id="cb168-7"><a href="multivariate-data-analysis.html#cb168-7" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span> ()</span></code></pre></div>
+<p>We only use the numeric variables for our nMDS, so let’s create a pairs plot to look at the relationships between <code>bill_depth_mm</code>, <code>bill_length_mm</code>, <code>flipper_length_mm</code>, and <code>body_mass_g</code> two variables at a time.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="multivariate-data-analysis.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally) <span class="co"># introducing a new package GGally, please install then open</span></span>
+<span id="cb169-2"><a href="multivariate-data-analysis.html#cb169-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-3"><a href="multivariate-data-analysis.html#cb169-3" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span> </span>
+<span id="cb169-4"><a href="multivariate-data-analysis.html#cb169-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpairs</span>(<span class="at">columns =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>) <span class="co"># specifies to only use numeric variables found in </span></span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="multivariate-data-analysis.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># columns 3 – 6 of the penguins_nafree data set</span></span></code></pre></div>
+<p>We can overlay more information on to this plot by colouring each sample point by species</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="multivariate-data-analysis.html#cb171-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span> </span>
+<span id="cb171-2"><a href="multivariate-data-analysis.html#cb171-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpairs</span>(<span class="at">columns =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">aes</span>(<span class="at">colour =</span> species))  </span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<p>Or by sex</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="multivariate-data-analysis.html#cb172-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span> </span>
+<span id="cb172-2"><a href="multivariate-data-analysis.html#cb172-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpairs</span>(<span class="at">columns =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">aes</span>(<span class="at">colour =</span> sex))  </span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p>With four original variables, we need 4-D to visualise this data accurately as a whole. However, we can see that three of these variables (e.g. <code>flipper_length_mm</code>, <code>body_mass_g</code>, and <code>bill_length_mm</code>) have relatively strong positive correlations with each other. Therefore, it seems feasible to display this data in fewer dimensions without losing the important information in the data. Using nMDS will retain the rank order of similarity between samples and because of the correlation between variables, the ranks will be similar between variables, meaning the nMDS should be able to do a good job at reducing dimensionality of the data.</p>
+<p>Before we run the nMDS, we need to ensure our data is in the correct format. As mentioned earlier, if the variables are on different scales or have different units of measurement, they are not easily comparable to each other. In the penguin data, we have <code>body_mass_g</code> measured in grams while the other three numeric variables are measure in millimetres. A simple tool is to standardise/scale each variable - in <code>R</code> using the <code>scale()</code> function. If using the default arguments, which we will, it will centre each variable by subtracting its overall column mean from each observation and then dividing each observation by the overall column standard deviation: <span class="math inline">\(\frac{x - \bar{x}}{sx}\)</span>. This makes all variables comparable to each other (i.e. changes within and between variables are relative).</p>
+<p>One of the outputs from <code>metaMDS()</code> is variable scores, which are useful for plotting onto our nMDS. For variable scores to be calculated in <code>metaMDS()</code> (called species scores), all of our data must be positive. In community structure data, you cannot have negative species abundances so this is only necessary if using data that contains negative values, or become negative once standardised. To ensure all of our data is positive, we will need to add a constant to each variable so that all of its values are positive. Below, to do this, we have made a <code>minShift()</code> function, which raises each variable by the absolute value of its minimum. For example, if the minimum is -2, +2 is added to each value, so that the minimum is now zero. Finally, to get the variable scores, set <code>wascores=TRUE</code> in <code>metaMDS()</code> code.</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="multivariate-data-analysis.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the code for the minShift function explained above</span></span>
+<span id="cb173-2"><a href="multivariate-data-analysis.html#cb173-2" aria-hidden="true" tabindex="-1"></a>minShift <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {x <span class="sc">+</span> <span class="fu">abs</span>(<span class="fu">min</span>(x))}</span>
+<span id="cb173-3"><a href="multivariate-data-analysis.html#cb173-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb173-4"><a href="multivariate-data-analysis.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="co"># we are creating a new object call nmds_penguins where we are preparing</span></span>
+<span id="cb173-5"><a href="multivariate-data-analysis.html#cb173-5" aria-hidden="true" tabindex="-1"></a><span class="co"># our non-community structure data for metaMDS()</span></span>
+<span id="cb173-6"><a href="multivariate-data-analysis.html#cb173-6" aria-hidden="true" tabindex="-1"></a>nmds_penguins <span class="ot">&lt;-</span> penguins_nafree <span class="sc">%&gt;%</span>                  <span class="co"># use the NA free data set</span></span>
+<span id="cb173-7"><a href="multivariate-data-analysis.html#cb173-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric), <span class="sc">-</span>year) <span class="sc">%&gt;%</span> <span class="co"># year makes no sense here so we remove it</span></span>
+<span id="cb173-8"><a href="multivariate-data-analysis.html#cb173-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale</span>() <span class="sc">%&gt;%</span>                                              <span class="co"># scale the variables</span></span>
+<span id="cb173-9"><a href="multivariate-data-analysis.html#cb173-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(. , <span class="dv">2</span>, minShift)  <span class="co"># apply our minShift function to the variables/columns</span></span></code></pre></div>
+<p>Now our data is in a good format, we can run the nMDS, using the <code>metaMDS()</code> function from the <code>vegan</code> package. Remember, the <code>vegan</code> package is designed for community structure data, so we need to change some of the defaults for this analysis.</p>
+<ul>
+<li>The default distance measure (<code>bray</code>) is only appropriate for certain data (see notes on distance measures above on when you may wish to use it). In many cases with non-community structure data, the distance parameter should be set to euclidean. Euclidean distance is the distance measure we want to use with this penguin data.</li>
+<li>The default data transformations that are appropriate for community structure data need to be turned off by setting <code>autotransform=FALSE</code> and <code>noshare=FALSE</code>.</li>
+</ul>
+<p>We can set the number of dimensions/axes we want the nMDS to output. Generally, we do not want more than 3 dimensions/axes as larger numbers means the interpretation of the data remains challenging for our poor brains (anything above 3-D is very difficult to conceptualise and visualise). The number of axes can be changed using the <em>k</em> argument (e.g. <code>k = 2</code>), where <em>k</em> is the number of dimensions.</p>
+<p><em>Note for your future-self, should you use these notes again:</em> If you run into a problem where it can’t find a convergent solution (which basically means it can’t find the same solution at least twice), you can increase the number of random restarts to be more likely of finding the global solution for our specified <em>k</em> (e.g., increasing <code>try =</code> and <code>trymax =</code>).</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="multivariate-data-analysis.html#cb174-1" aria-hidden="true" tabindex="-1"></a>nmds_penguins_results <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(<span class="at">comm =</span> nmds_penguins, <span class="co"># Define the data to use </span></span>
+<span id="cb174-2"><a href="multivariate-data-analysis.html#cb174-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">distance =</span> <span class="st">&quot;euclidean&quot;</span>,     <span class="co"># Specify distance</span></span>
+<span id="cb174-3"><a href="multivariate-data-analysis.html#cb174-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">k =</span> <span class="dv">2</span>, <span class="co"># can we reduce to 2D for easy interpretation?</span></span>
+<span id="cb174-4"><a href="multivariate-data-analysis.html#cb174-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">try =</span> <span class="dv">100</span>, <span class="at">trymax =</span> <span class="dv">100</span>, <span class="co"># Number of random starts     </span></span>
+<span id="cb174-5"><a href="multivariate-data-analysis.html#cb174-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">autotransform=</span><span class="cn">FALSE</span>, <span class="co"># turn off default for community data</span></span>
+<span id="cb174-6"><a href="multivariate-data-analysis.html#cb174-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">noshare=</span><span class="cn">FALSE</span>, <span class="co"># turn off default for community data</span></span>
+<span id="cb174-7"><a href="multivariate-data-analysis.html#cb174-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">wascores=</span><span class="cn">TRUE</span>) <span class="co"># turn off default for community data</span></span></code></pre></div>
+<p>nMDS is an iterative algorithm, so it completes the same series of steps repeatedly until it finds the best solution. The steps are outlined below</p>
+<ul>
+<li>Begins by constructing an initial random configuration of the samples in the specified number of dimensions.</li>
+<li>Distances among samples in this starting configuration are calculated and regressed against the original distance matrix.</li>
+<li>From this regression, the predicted distances for each pair of samples is calculated. If a perfect fit, all distances among samples would match the rank-order of distances in the original distance matrix.</li>
+<li>A stress value is calculated that measures the goodness-of-fit of this configuration (Kruskal’s stress, which measures the sum of squared differences between this configuration’s distances and the distances predicted by the regression).</li>
+<li>The configuration is then improved by moving the position of the samples slightly in the direction in which the stress changes most rapidly. The distances among samples is now recalculated, the regression performed again and stress recalculated.</li>
+<li>This process is repeated until it reaches convergence by failing to achieve any lower stress values, which indicates that a minimum stress level (perhaps local) has been found.</li>
+<li>This whole procedure will then be repeated with a new random initial configuration (as many as you have specified using the <code>try =</code> argument).</li>
+<li>If the same lowest stress is achieved at least twice, convergence is reached and this solution is output as the best representation of this high-dimensional multivariate data in the specified number of dimensions.</li>
+</ul>
+<p>Because nMDS is iterative, is important to note that each time you produce an nMDS plot from scratch it may look slightly different, even when starting with the same data (although this is now less of a problem with increased computational power and the ability to set many initial random starts). It also means it can take a little bit of time to complete, depending on your device’s capabilities.</p>
+<p>View a summary of the results of the nMDS, which will display how the function was called (<code>Call</code>), the data set and any transformations used (<code>Data</code>), the distance measure (<code>Distance</code>), the number of dimensions (<code>Dimensions</code>), the final stress value (<code>Stress</code>), whether any convergent solution was achieved, how many random initial configurations were tried, plus whether scores have been scaled, centered, or rotated (<code>Scaling</code>).</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="multivariate-data-analysis.html#cb175-1" aria-hidden="true" tabindex="-1"></a>nmds_penguins_results <span class="co"># prints summary of results</span></span></code></pre></div>
+<pre><code>## 
+## Call:
+## metaMDS(comm = nmds_penguins, distance = &quot;euclidean&quot;, k = 2,      try = 100, trymax = 100, autotransform = FALSE, noshare = FALSE,      wascores = TRUE) 
+## 
+## global Multidimensional Scaling using monoMDS
+## 
+## Data:     nmds_penguins 
+## Distance: euclidean 
+## 
+## Dimensions: 2 
+## Stress:     0.08608257 
+## Stress type 1, weak ties
+## Best solution was repeated 5 times in 100 tries
+## The best solution was from try 0 (metric scaling or null solution)
+## Scaling: centring, PC rotation 
+## Species: expanded scores based on &#39;nmds_penguins&#39;</code></pre>
+<p>We can gain more details of the analysis. First, let’s call up a list of the names of the items in the <code>nmds_penguins_results</code> object.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="multivariate-data-analysis.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span> (nmds_penguins_results)</span></code></pre></div>
+<pre><code>##  [1] &quot;nobj&quot;       &quot;nfix&quot;       &quot;ndim&quot;       &quot;ndis&quot;       &quot;ngrp&quot;      
+##  [6] &quot;diss&quot;       &quot;iidx&quot;       &quot;jidx&quot;       &quot;xinit&quot;      &quot;istart&quot;    
+## [11] &quot;isform&quot;     &quot;ities&quot;      &quot;iregn&quot;      &quot;iscal&quot;      &quot;maxits&quot;    
+## [16] &quot;sratmx&quot;     &quot;strmin&quot;     &quot;sfgrmn&quot;     &quot;dist&quot;       &quot;dhat&quot;      
+## [21] &quot;points&quot;     &quot;stress&quot;     &quot;grstress&quot;   &quot;iters&quot;      &quot;icause&quot;    
+## [26] &quot;call&quot;       &quot;model&quot;      &quot;distmethod&quot; &quot;distcall&quot;   &quot;data&quot;      
+## [31] &quot;distance&quot;   &quot;converged&quot;  &quot;tries&quot;      &quot;bestry&quot;     &quot;engine&quot;    
+## [36] &quot;species&quot;</code></pre>
+<p>Below are some items created from the analysis that you may find useful (many are in the summary output above). Input these into <code>R</code> to see what information you learn about your analysis. (Remember the <code>$</code> symbol means you are producing a subset from the total data)</p>
+<p><code>nmds_penguins_results$ndim</code> #number of nMDS axes or dimensions created</p>
+<p><code>nmds_penguins_results$converged</code> #did the iteration find a convergent solution (i.e. likely to have found global solution)?</p>
+<p><code>nmds_penguins_results$stress</code> #stress value of final solution</p>
+<p><code>nmds_penguins_results$distance</code> #distance metric used</p>
+<p><code>nmds_penguins_results$tries</code> #number of random initial configurations tried</p>
+<p><code>nmds_penguins_results$points</code> #scores for each sample (here, individual penguins)</p>
+<p><code>nmds_penguins_results$species</code> #scores for variables (called species in the <code>MetaMDS()</code> function)</p>
+<p>We can produce a very basic exploratory nMDS plot in <code>baseR</code> with both sample and variable scores represented.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="multivariate-data-analysis.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span> (nmds_penguins_results)</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<p>Open black circles correspond to samples and red crosses indicate variables. Axes have numbers on them but they are not interpretable from a nMDS – the scales are arbitrary values as we used rank order to separate the samples from each other.</p>
+<p>Because nothing is labelled, this default plot above is not very helpful. For substantially better plots, construct them yourself using ggplot2 by subsetting sample scores and variable scores from the nMDS output. The scores are the coordinates of samples and variables in the <em>k</em> dimensional space you have specified, so you can use them like any variable in a biplot. In the code below, we are creating some new data set objects containing the sample scores <code>nmds_penguins_results$points</code> and variable scores <code>nmds_penguins_results$species</code> information, and adding <code>species</code> and <code>sex</code> information from our original data set in case we wish to colour code samples in our ggplot based on this extra information - clusters or patterns may be related to this extra information.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="multivariate-data-analysis.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="do">### creating a nMDS plot using ggplot2</span></span>
+<span id="cb180-2"><a href="multivariate-data-analysis.html#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-3"><a href="multivariate-data-analysis.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Recommendation is to run each line of code below and then view either the</span></span>
+<span id="cb180-4"><a href="multivariate-data-analysis.html#cb180-4" aria-hidden="true" tabindex="-1"></a><span class="do">## sample_scores or variable_scores objects to see what it is doing at each step</span></span>
+<span id="cb180-5"><a href="multivariate-data-analysis.html#cb180-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-6"><a href="multivariate-data-analysis.html#cb180-6" aria-hidden="true" tabindex="-1"></a><span class="co"># First create a data frame of the scores from the samples</span></span>
+<span id="cb180-7"><a href="multivariate-data-analysis.html#cb180-7" aria-hidden="true" tabindex="-1"></a>sample_scores <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(nmds_penguins_results<span class="sc">$</span>points)</span>
+<span id="cb180-8"><a href="multivariate-data-analysis.html#cb180-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-9"><a href="multivariate-data-analysis.html#cb180-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Now add the extra species and sex information columns</span></span>
+<span id="cb180-10"><a href="multivariate-data-analysis.html#cb180-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the line of code below says combine the current sample_scores object with</span></span>
+<span id="cb180-11"><a href="multivariate-data-analysis.html#cb180-11" aria-hidden="true" tabindex="-1"></a><span class="co"># the first column of the penguins_nafree data set and store it in an object</span></span>
+<span id="cb180-12"><a href="multivariate-data-analysis.html#cb180-12" aria-hidden="true" tabindex="-1"></a><span class="co"># called sample_scores</span></span>
+<span id="cb180-13"><a href="multivariate-data-analysis.html#cb180-13" aria-hidden="true" tabindex="-1"></a>sample_scores <span class="ot">&lt;-</span> <span class="fu">cbind</span>(sample_scores, penguins_nafree[, <span class="dv">1</span>])</span>
+<span id="cb180-14"><a href="multivariate-data-analysis.html#cb180-14" aria-hidden="true" tabindex="-1"></a><span class="co"># this next line of code says add a column header to the third column (the new</span></span>
+<span id="cb180-15"><a href="multivariate-data-analysis.html#cb180-15" aria-hidden="true" tabindex="-1"></a><span class="co"># column) of the sample_scores data frame; call it species</span></span>
+<span id="cb180-16"><a href="multivariate-data-analysis.html#cb180-16" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sample_scores)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;species&quot;</span></span>
+<span id="cb180-17"><a href="multivariate-data-analysis.html#cb180-17" aria-hidden="true" tabindex="-1"></a><span class="co"># based on the first two, can you work out what these two lines of code say?</span></span>
+<span id="cb180-18"><a href="multivariate-data-analysis.html#cb180-18" aria-hidden="true" tabindex="-1"></a>sample_scores <span class="ot">&lt;-</span> <span class="fu">cbind</span>(sample_scores, penguins_nafree[, <span class="dv">7</span>])</span>
+<span id="cb180-19"><a href="multivariate-data-analysis.html#cb180-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sample_scores)[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">&quot;sex&quot;</span></span>
+<span id="cb180-20"><a href="multivariate-data-analysis.html#cb180-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-21"><a href="multivariate-data-analysis.html#cb180-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Next, we can create a data frame of the scores for variable data (species)</span></span>
+<span id="cb180-22"><a href="multivariate-data-analysis.html#cb180-22" aria-hidden="true" tabindex="-1"></a>variable_scores <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(nmds_penguins_results<span class="sc">$</span>species) </span>
+<span id="cb180-23"><a href="multivariate-data-analysis.html#cb180-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-24"><a href="multivariate-data-analysis.html#cb180-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column equivalent to the row name to create variable labels on our plot</span></span>
+<span id="cb180-25"><a href="multivariate-data-analysis.html#cb180-25" aria-hidden="true" tabindex="-1"></a>variable_scores<span class="sc">$</span>variable <span class="ot">&lt;-</span> <span class="fu">rownames</span>(variable_scores)</span></code></pre></div>
+<p>We will use the viridis package containing a colour-blind friendly colour map for creating our ggplot (you will need to install it first if you haven’t already – do you remember how to do that? HINT: <code>install.packages(“”)</code>):</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="multivariate-data-analysis.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code></pre></div>
+<p>Now we have the elements we need to build the plot!!</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="multivariate-data-analysis.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb182-2"><a href="multivariate-data-analysis.html#cb182-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the data points for each sample using the scores created in metaMDS function</span></span>
+<span id="cb182-3"><a href="multivariate-data-analysis.html#cb182-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> sample_scores, <span class="fu">aes</span>(<span class="at">x =</span> MDS1, <span class="at">y =</span> MDS2, </span>
+<span id="cb182-4"><a href="multivariate-data-analysis.html#cb182-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">color =</span> species), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb182-5"><a href="multivariate-data-analysis.html#cb182-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create more appropriate x and y axis labels </span></span>
+<span id="cb182-6"><a href="multivariate-data-analysis.html#cb182-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;nMDS1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb182-7"><a href="multivariate-data-analysis.html#cb182-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;nMDS2&quot;</span>) <span class="sc">+</span></span>
+<span id="cb182-8"><a href="multivariate-data-analysis.html#cb182-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># what colours would we like?</span></span>
+<span id="cb182-9"><a href="multivariate-data-analysis.html#cb182-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">inferno</span>(<span class="dv">15</span>)[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">11</span>)],</span>
+<span id="cb182-10"><a href="multivariate-data-analysis.html#cb182-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">+</span></span>
+<span id="cb182-11"><a href="multivariate-data-analysis.html#cb182-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add stress label to the plot, indicating the label position</span></span>
+<span id="cb182-12"><a href="multivariate-data-analysis.html#cb182-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">&quot;label&quot;</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">1.75</span>, <span class="at">y =</span> <span class="fl">2.75</span>, <span class="at">size =</span> <span class="dv">6</span>,</span>
+<span id="cb182-13"><a href="multivariate-data-analysis.html#cb182-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;Stress: &quot;</span>, <span class="fu">round</span>(nmds_penguins_results<span class="sc">$</span>stress, <span class="at">digits =</span> <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb182-14"><a href="multivariate-data-analysis.html#cb182-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="co"># choosing a theme</span></span>
+<span id="cb182-15"><a href="multivariate-data-analysis.html#cb182-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb182-16"><a href="multivariate-data-analysis.html#cb182-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)) <span class="co"># position and size of legend</span></span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<p>We have not included variable labels from the <code>variable_scores</code> object we created on this plot (but we will in the next example!). Variable labels can help show which variables are similar/different between samples (i.e., which variables are influencing how the samples are separated in this 2-D space). We have created the variable score objects in the code above (<code>variable_scores &lt;- ...</code>), so please plot this information on to your ggplot if you’d like to look at it (use the example ggplot code in the macroinvertebrate example to see how to add the text labels to the plot). Once plotted, use the pairs plot colour coded by species to help you interpret the variable labels on the nMDS. You could ask <em>what body composition variables appear important in distinguishing penguins by species (or sex)?</em></p>
+<p>How could you change this plot to be coloured by sex instead of by species? Give it a try.</p>
+</div>
+<div id="diagnostic-plots-for-nmds" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Diagnostic plots for nMDS<a href="multivariate-data-analysis.html#diagnostic-plots-for-nmds" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While there are limited assumptions with nMDS, it is still a good idea to check and see if the data are a good fit for the model.</p>
+<div id="scree-plotstress-plot" class="section level3 hasAnchor" number="8.8.1">
+<h3><span class="header-section-number">8.8.1</span> Scree plot/Stress plot<a href="multivariate-data-analysis.html#scree-plotstress-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Stress is a goodness-of-fit statistic that nMDS tries to minimise. Stress takes a value between 0 and 1, with values near 0 indicating a better fit. It is calculated for each iteration of the algorithm and will move towards the lowest value to get the best solution.</p>
+<ul>
+<li>Stress increases with an increase in the number of samples and/or the number of variables.</li>
+<li>The stress value will always decrease with increased dimensionality because it is easier to project data into higher dimensions similar to what the original data came from. On the other hand, low-dimensional projections are often easier to interpret and are so preferable. It’s a trade-off.</li>
+</ul>
+<p>The stress plot (or sometimes also called a scree plot) is a diagnostic plot to explore both dimensionality and interpretative value. It plots stress versus number of dimensions to assist in identifying how many <em>k</em> dimensions are suitable to create an interpretable nMDS plot.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="multivariate-data-analysis.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stress plot/scree plot for nMDS</span></span>
+<span id="cb183-2"><a href="multivariate-data-analysis.html#cb183-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-3"><a href="multivariate-data-analysis.html#cb183-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(goeveg) <span class="co"># needed for dimcheckMDS to create scree plot. Install and open</span></span>
+<span id="cb183-4"><a href="multivariate-data-analysis.html#cb183-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-5"><a href="multivariate-data-analysis.html#cb183-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dimcheckMDS</span>(penguins_nafree[ , <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>)], <span class="co"># We are specifying columns 3-6 again </span></span>
+<span id="cb183-6"><a href="multivariate-data-analysis.html#cb183-6" aria-hidden="true" tabindex="-1"></a><span class="co"># using subsetting brackets [] as this is the data we used for the nMDS</span></span>
+<span id="cb183-7"><a href="multivariate-data-analysis.html#cb183-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">distance =</span> <span class="st">&quot;euclidean&quot;</span>, <span class="co"># distance measure used for metaMDS analysis</span></span>
+<span id="cb183-8"><a href="multivariate-data-analysis.html#cb183-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">k =</span> <span class="dv">3</span>    <span class="co"># maximum number of dimensions, default is 6 but we only</span></span>
+<span id="cb183-9"><a href="multivariate-data-analysis.html#cb183-9" aria-hidden="true" tabindex="-1"></a>         <span class="co"># have 4 original variables here so more than 3 does not make sense!</span></span>
+<span id="cb183-10"><a href="multivariate-data-analysis.html#cb183-10" aria-hidden="true" tabindex="-1"></a>            )</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<p><a href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1442-9993.1993.tb00438.x?casa_token=IWdpAQ1m84kAAAAA:-y_JyrrvW4G7zOv1exKzJ0zeK8Xy0U-rd31RgWc3McM14LzBWc7TBXtVM4jwhzLqS2S8kG7nWIqFfATCPg">Clarke (1993)</a> suggests the following guidelines for acceptable stress values:</p>
+<p><img src="figs/stress.png" /></p>
+<p>The scree plot produced in <code>R</code> displays the border of the 0.20 stress value limit with a horizontal red dashed line). Solutions with higher stress values should be interpreted with caution and those with stress above 0.30 are highly suspect, showing basically random placement of data points.</p>
+<p>Remember, stress will always decrease with an increased number of dimensions, as we see in this scree plot above. The scree plot from our penguins data set shows stress values lower than the 0.20 stress limit for any of the 1-, 2-, or 3-D solutions. However, the stress value for the 1-D solution is approx. 0.18. This means our data is usable, but getting close to not being acceptable. Stress in 3-D is 0, likely due to only having 4 original variables that are quite highly correlated with each other, but is a bit more difficult to visualise and hence interpret than 2-D. Also the 2-D nMDS solution has a low stress value of around 0.08 so provides us with an interpretable solution that further reduces the number of dimensions from 4 to 2. So I’d say, let’s go with <em>k</em> = 2. We can determine the actual stress value by looking at the results outputs (<code>nmds_penguins_results$stress</code> <code>0.086</code>), and we also added it to our ggplot.</p>
+</div>
+<div id="shepard-diagram" class="section level3 hasAnchor" number="8.8.2">
+<h3><span class="header-section-number">8.8.2</span> Shepard Diagram<a href="multivariate-data-analysis.html#shepard-diagram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A Shepard diagram is a scatterplot of distances between points in an nMDS final configuration (observed dissimilarity) against the original dissimilarities (ordination distance). For a nMDS, the line of best fit produced is monotonic, in that it can only step up or remain constant. The points in a good Shepard diagram should be a clean curve or straight line. Large scatter around the line suggests that original dissimilarities are not well preserved in the reduced number of dimensions. If your plot resembles a step-wise or inverse L-shaped function, it would be wise to not interpret this data and instead try to solve for a degenerate solution (not covered in this course). However, please note if you have a small data set (not many observations) your data may look step-wise in a Shepard diagram. Note, you will need to produce a new Shepard diagram when altering the number of dimensions being plotted.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="multivariate-data-analysis.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co">#confusingly, the Shepard diagram is called stressplot in R!</span></span>
+<span id="cb184-2"><a href="multivariate-data-analysis.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stressplot</span>(nmds_penguins_results)</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<p>This Shepard diagram shows a gradual increase in the monotonic (red) line with an R<sup>2</sup> value of 0.993 meaning this nMDS preserves the ranks of the original distance matrix really well (which is what we expected remember? Not many original variables and high pair-wise correlations). There is a little bit of scatter around the line but the majority of the observations are consistent with the overall trendline. Nothing to worry about here!</p>
+</div>
+</div>
+<div id="how-to-interpret-an-nmds-plot-and-what-to-report" class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> How to interpret an nMDS plot and what to report<a href="multivariate-data-analysis.html#how-to-interpret-an-nmds-plot-and-what-to-report" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The interpretation of a (successful) nMDS is straightforward: the closer points are to each other the more similar is their community composition (or body composition for our penguin data, or whatever the variables represent). Look for clusters of samples or regular patterns among the samples.</p>
+<p>When writing up results from a nMDS, always include at least:</p>
+<ul>
+<li>A description of any data culling (e.g., we removed rows with NA values in our penguin data set) or data transformations that were used. State these in the order that they were performed. (e.g., after removing NA values from the penguin data set, we standardised/scaled then added a constant to the variables to make them positive)</li>
+<li>The distance measure, number of random restarts, and the specified number of dimensions/axes.</li>
+<li>The value of stress.</li>
+<li>An interpretation of the important/interesting trends and patterns in the data, made evident in the nMDS plot.</li>
+</ul>
+<p>And also include what is relevant from below:</p>
+<ul>
+<li>A table or plot of variable scores that shows how each variable contributes to each axis of the nMDS.
+<ul>
+<li>you can add this to your plot - use the code in the next example to guide you on how to do this.</li>
+<li>to create a table using the penguin data variable scores, try <code>print.data.frame(variable_scores)</code>.</li>
+</ul></li>
+<li>Any other plots of sample scores that may be useful to aid your interpretation of the data, such as color-coding samples by a different factor variable (e.g., we colour coded by species, but hopefully you tried by sex too?).</li>
+</ul>
+</div>
+<div id="nmds-in-r-using-metamds-with-community-structure-data" class="section level2 hasAnchor" number="8.10">
+<h2><span class="header-section-number">8.10</span> nMDS in <code>R</code> using <code>metaMDS()</code> with community structure data<a href="multivariate-data-analysis.html#nmds-in-r-using-metamds-with-community-structure-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s now use a community structure data set - what this <code>vegan</code> package was designed for and so much simpler <code>R</code> code! We need to load the data, which consists of columns of variables/species and rows for samples. Each row-column combination is the abundance of that species in that sample.</p>
+<p><em>An FAQ is “what is community structure data?” It is in essence an ecological concept that uses species/taxa occurrence (what species/taxa is found where?) and abundance (how many individuals of each species/taxa are where?) information to provide species/taxa composition information. Or in other words, it tells us about the assemblages of the community found in that sample/location/site, both in terms of the types of species/taxa and also their abundances. Data is usually presented with each species/taxa in a separate column and each sample/location/site in a separate row.</em></p>
+<p>For this example, we are using some ecological data from the U.S. National Ecological Observatory Network’s aquatic macroinvertebrate collection (<a href="https://data.neonscience.org/data-products/DP1.20120.001" class="uri">https://data.neonscience.org/data-products/DP1.20120.001</a>). The data in the file provided to you in CANVAS are benthic macroinvertebrate species counts for rivers and lakes throughout the entire United States and were collected between July 2014 to October 2018. <strong>We are interested in investigating which macroinvertebrates are more associated with river systems and which are associated with lake systems.</strong></p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="multivariate-data-analysis.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading packages below is only necessary if you&#39;re starting a new R session</span></span>
+<span id="cb185-2"><a href="multivariate-data-analysis.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan) </span>
+<span id="cb185-3"><a href="multivariate-data-analysis.html#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb185-4"><a href="multivariate-data-analysis.html#cb185-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-5"><a href="multivariate-data-analysis.html#cb185-5" aria-hidden="true" tabindex="-1"></a>orders <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;condensed_order.csv&quot;</span>)</span>
+<span id="cb185-6"><a href="multivariate-data-analysis.html#cb185-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: for this code to work you need have downloaded this csv file from CANVAS </span></span>
+<span id="cb185-7"><a href="multivariate-data-analysis.html#cb185-7" aria-hidden="true" tabindex="-1"></a><span class="co"># and saved it into your working directory</span></span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="multivariate-data-analysis.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as you know, it’s always a good idea to check the data has </span></span>
+<span id="cb186-2"><a href="multivariate-data-analysis.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="co"># loaded correctly in R before proceeding further</span></span>
+<span id="cb186-3"><a href="multivariate-data-analysis.html#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(orders) </span>
+<span id="cb186-4"><a href="multivariate-data-analysis.html#cb186-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-5"><a href="multivariate-data-analysis.html#cb186-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(orders) <span class="co"># how many variables and how many samples are there in this data set?</span></span>
+<span id="cb186-6"><a href="multivariate-data-analysis.html#cb186-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-7"><a href="multivariate-data-analysis.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="co"># we can see this data set contains eight different animal orders, </span></span>
+<span id="cb186-8"><a href="multivariate-data-analysis.html#cb186-8" aria-hidden="true" tabindex="-1"></a><span class="co"># location coordinates, type of aquatic system, and elevation. </span></span>
+<span id="cb186-9"><a href="multivariate-data-analysis.html#cb186-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We will consider the eight animal orders and the aquaticSiteType columns only.</span></span></code></pre></div>
+<p>As we are interested in comparing the animal orders between aquatic systems (rivers vs lakes), we can create a pairs plot to look at the relationships between these animal order numeric variables. We can use the piping operator <code>%&gt;%</code> to do this without creating a new data frame.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="multivariate-data-analysis.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally) <span class="co"># only necessary if you&#39;re starting a new R session</span></span>
+<span id="cb187-2"><a href="multivariate-data-analysis.html#cb187-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-3"><a href="multivariate-data-analysis.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pairs plot</span></span>
+<span id="cb187-4"><a href="multivariate-data-analysis.html#cb187-4" aria-hidden="true" tabindex="-1"></a>orders <span class="sc">%&gt;%</span> </span>
+<span id="cb187-5"><a href="multivariate-data-analysis.html#cb187-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpairs</span>(<span class="at">columns =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">11</span>) <span class="co"># specifies to only use variables from columns 4-11 in the orders data set</span></span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="multivariate-data-analysis.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or we can add on the river and lake system information also!</span></span>
+<span id="cb188-2"><a href="multivariate-data-analysis.html#cb188-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-3"><a href="multivariate-data-analysis.html#cb188-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to do this, we first need to convert aquaticSiteType into a factor variable</span></span>
+<span id="cb188-4"><a href="multivariate-data-analysis.html#cb188-4" aria-hidden="true" tabindex="-1"></a>orders<span class="sc">$</span>aquaticSiteType <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(orders<span class="sc">$</span>aquaticSiteType)</span>
+<span id="cb188-5"><a href="multivariate-data-analysis.html#cb188-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-6"><a href="multivariate-data-analysis.html#cb188-6" aria-hidden="true" tabindex="-1"></a>orders <span class="sc">%&gt;%</span> </span>
+<span id="cb188-7"><a href="multivariate-data-analysis.html#cb188-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpairs</span>(<span class="at">columns =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">11</span>, <span class="fu">aes</span>(<span class="at">colour =</span> aquaticSiteType),</span>
+<span id="cb188-8"><a href="multivariate-data-analysis.html#cb188-8" aria-hidden="true" tabindex="-1"></a><span class="co"># code below just makes correlation coefs font smaller so we can read it all!</span></span>
+<span id="cb188-9"><a href="multivariate-data-analysis.html#cb188-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">upper =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">&quot;cor&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)))</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<p><em>What can we learn from this plot?</em><br />
+With eight original variables, we need 8-D to visualise this data accurately. We can see that the abundance of some animal orders are very low and some are very large (look at axes units) and some are only found in a few samples (look at the data set to get a better eye on this using <code>glimpse(orders)</code> or <code>View(orders)</code>). Looking at the correlation coefficients, we can see that there are not many strong correlations between variables. Using nMDS will retain the rank order of similarity between samples. However, as there are not strong correlations between variables, nMDS may not be able to do a good job at reducing dimensionality of the data. It might be a good idea to check our stress plot first to see how many dimensions we want to run our nMDS in.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="multivariate-data-analysis.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(goeveg) <span class="co">#only necessary if you&#39;re starting a new R session</span></span>
+<span id="cb189-2"><a href="multivariate-data-analysis.html#cb189-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-3"><a href="multivariate-data-analysis.html#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimcheckMDS</span>(orders[ , <span class="dv">4</span><span class="sc">:</span><span class="dv">11</span>], <span class="co">#data being used. Here we have specified columns</span></span>
+<span id="cb189-4"><a href="multivariate-data-analysis.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 4-11 again as this relates to the animal order data we used for the nMDS</span></span>
+<span id="cb189-5"><a href="multivariate-data-analysis.html#cb189-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">distance =</span> <span class="st">&quot;bray&quot;</span>, <span class="co">#dissimilarity index used for metaMDS analysis</span></span>
+<span id="cb189-6"><a href="multivariate-data-analysis.html#cb189-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">k =</span> <span class="dv">6</span>, <span class="co">#maximum number of dimensions</span></span>
+<span id="cb189-7"><a href="multivariate-data-analysis.html#cb189-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">trymax =</span> <span class="dv">20</span>, <span class="co">#maximum number of random configuration starts for </span></span>
+<span id="cb189-8"><a href="multivariate-data-analysis.html#cb189-8" aria-hidden="true" tabindex="-1"></a>               <span class="co">#iterative search of the best solution</span></span>
+<span id="cb189-9"><a href="multivariate-data-analysis.html#cb189-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<p>This scree plot from the macroinvertebrate data set shows a stress value of around 0.18 when creating a 2-D nMDS. This means our data is usable, but getting close to not being acceptable. If we look back to the pairs plot, it showed no strong correlations between variables, we also have quite a large number of samples (<code>dim(orders)</code> to remind yourself of how many) which means we expected to have quite a high stress value in low dimensional space. However, because 2-D provides a usable stress value and it is the easiest for us to interpret, we will set <em>k</em> = 2.</p>
+<p>Right-o! So next we will run the nMDS, using the <code>metaMDS()</code> function with default settings for this community structure data set. But we never just trust defaults so let’s make sure we’re happy with what it is going to do for us! For example, the default distance measure is Bray-Curtis which is ideal for this type of species abundance data (if you want to specify this measure, we use the argument <code>distance = “bray”</code>). The default setting also uses common ecological data transformations which includes the Wisconsin double standardization and if values look very large, the function also performs a square-root transformation. These standardize samples by sample size (preventing large samples from dominating the analysis) and giving species equal weight (preventing abundant species from dominating the analysis). If you wanted to use already standardised and/or transformed data, or you want to do this step yourself using other transformations, you can set <code>autotransform = FALSE</code>. We will leave it at the default though because we have not pre-transformed this data and so do not need to specify anything.</p>
+<p>Remember, if you run into a problem where it can’t find a convergent solution (it can’t find the same solution at least two times), you can increase the number of random restarts to be more likely of finding the global solution for our specified <em>k</em> (e.g., increasing <code>try =</code>).</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="multivariate-data-analysis.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the analysis using chosen distance metric</span></span>
+<span id="cb190-2"><a href="multivariate-data-analysis.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="co"># because our chosen distance metric is BC, we do not need to specify distance</span></span>
+<span id="cb190-3"><a href="multivariate-data-analysis.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as BC is the default</span></span>
+<span id="cb190-4"><a href="multivariate-data-analysis.html#cb190-4" aria-hidden="true" tabindex="-1"></a>nmds_minv_results <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(<span class="at">comm =</span> orders[ , <span class="dv">4</span><span class="sc">:</span><span class="dv">11</span>],   <span class="co"># Define the community data </span></span>
+<span id="cb190-5"><a href="multivariate-data-analysis.html#cb190-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">k =</span> <span class="dv">2</span>,              <span class="co"># our stress plot showed this was ok</span></span>
+<span id="cb190-6"><a href="multivariate-data-analysis.html#cb190-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">try =</span> <span class="dv">100</span>, <span class="at">trymax =</span> <span class="dv">100</span>)       <span class="co"># Number of random starts </span></span>
+<span id="cb190-7"><a href="multivariate-data-analysis.html#cb190-7" aria-hidden="true" tabindex="-1"></a><span class="co"># no need to specify autotransform = , noshare = , or wascores = at all in our </span></span>
+<span id="cb190-8"><a href="multivariate-data-analysis.html#cb190-8" aria-hidden="true" tabindex="-1"></a><span class="co"># code because for community data such as this, we can use the default settings.</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="multivariate-data-analysis.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can get the same outputs as we did for the penguin data set</span></span>
+<span id="cb191-2"><a href="multivariate-data-analysis.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember what this all tells us? Look back over previous notes if required</span></span>
+<span id="cb191-3"><a href="multivariate-data-analysis.html#cb191-3" aria-hidden="true" tabindex="-1"></a>nmds_minv_results <span class="co"># print results</span></span></code></pre></div>
+<pre><code>## 
+## Call:
+## metaMDS(comm = orders[, 4:11], k = 2, try = 100, trymax = 100) 
+## 
+## global Multidimensional Scaling using monoMDS
+## 
+## Data:     wisconsin(sqrt(orders[, 4:11])) 
+## Distance: bray 
+## 
+## Dimensions: 2 
+## Stress:     0.1756999 
+## Stress type 1, weak ties
+## Best solution was repeated 3 times in 100 tries
+## The best solution was from try 88 (random start)
+## Scaling: centring, PC rotation, halfchange scaling 
+## Species: expanded scores based on &#39;wisconsin(sqrt(orders[, 4:11]))&#39;</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="multivariate-data-analysis.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co">#run this code to find this information:</span></span>
+<span id="cb193-2"><a href="multivariate-data-analysis.html#cb193-2" aria-hidden="true" tabindex="-1"></a>nmds_minv_results<span class="sc">$</span>ndim                        <span class="co"># how many nMDS axes were created?</span></span>
+<span id="cb193-3"><a href="multivariate-data-analysis.html#cb193-3" aria-hidden="true" tabindex="-1"></a>nmds_minv_results<span class="sc">$</span>converged                 <span class="co"># did it find a convergent solution?</span></span>
+<span id="cb193-4"><a href="multivariate-data-analysis.html#cb193-4" aria-hidden="true" tabindex="-1"></a>nmds_minv_results<span class="sc">$</span>points                 <span class="co"># scores for each location (as samples)</span></span>
+<span id="cb193-5"><a href="multivariate-data-analysis.html#cb193-5" aria-hidden="true" tabindex="-1"></a>nmds_minv_results<span class="sc">$</span>species          <span class="co"># scores for each animal order (as variables)</span></span></code></pre></div>
+<p>Here’s a basic exploratory plot for our macroinvertebrate community structure data…</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="multivariate-data-analysis.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nmds_minv_results)</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p>…but ggplots are much nicer and more informative!</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="multivariate-data-analysis.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="do">### creating an nMDS plot using ggplot2</span></span>
+<span id="cb195-2"><a href="multivariate-data-analysis.html#cb195-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-3"><a href="multivariate-data-analysis.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Recommendation is to run each line of code below and then view either the</span></span>
+<span id="cb195-4"><a href="multivariate-data-analysis.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="do">## data_scores or species_scores objects to see what it is doing at each step</span></span>
+<span id="cb195-5"><a href="multivariate-data-analysis.html#cb195-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-6"><a href="multivariate-data-analysis.html#cb195-6" aria-hidden="true" tabindex="-1"></a><span class="co">#First create a data frame of the scores from the samples</span></span>
+<span id="cb195-7"><a href="multivariate-data-analysis.html#cb195-7" aria-hidden="true" tabindex="-1"></a>data_scores <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(nmds_minv_results<span class="sc">$</span>points)</span>
+<span id="cb195-8"><a href="multivariate-data-analysis.html#cb195-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-9"><a href="multivariate-data-analysis.html#cb195-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Now add the extra aquaticSiteType column</span></span>
+<span id="cb195-10"><a href="multivariate-data-analysis.html#cb195-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the line of code below says combine the current data_scores object with</span></span>
+<span id="cb195-11"><a href="multivariate-data-analysis.html#cb195-11" aria-hidden="true" tabindex="-1"></a><span class="co"># the 14th column of the orders data set and store it in an object</span></span>
+<span id="cb195-12"><a href="multivariate-data-analysis.html#cb195-12" aria-hidden="true" tabindex="-1"></a><span class="co"># called data_scores</span></span>
+<span id="cb195-13"><a href="multivariate-data-analysis.html#cb195-13" aria-hidden="true" tabindex="-1"></a>data_scores <span class="ot">&lt;-</span> <span class="fu">cbind</span>(data_scores, orders[, <span class="dv">14</span>])</span>
+<span id="cb195-14"><a href="multivariate-data-analysis.html#cb195-14" aria-hidden="true" tabindex="-1"></a><span class="co"># this next line of code says add a column header to the third column (the new</span></span>
+<span id="cb195-15"><a href="multivariate-data-analysis.html#cb195-15" aria-hidden="true" tabindex="-1"></a><span class="co"># column) of the data_scores data frame; call it aquaticSiteType</span></span>
+<span id="cb195-16"><a href="multivariate-data-analysis.html#cb195-16" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data_scores)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;aquaticSiteType&quot;</span></span>
+<span id="cb195-17"><a href="multivariate-data-analysis.html#cb195-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-18"><a href="multivariate-data-analysis.html#cb195-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Next, we can create a data frame of the scores for species data</span></span>
+<span id="cb195-19"><a href="multivariate-data-analysis.html#cb195-19" aria-hidden="true" tabindex="-1"></a>species_scores <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(nmds_minv_results<span class="sc">$</span>species)</span>
+<span id="cb195-20"><a href="multivariate-data-analysis.html#cb195-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-21"><a href="multivariate-data-analysis.html#cb195-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column equivalent to the row name to create species labels for us to plot</span></span>
+<span id="cb195-22"><a href="multivariate-data-analysis.html#cb195-22" aria-hidden="true" tabindex="-1"></a>species_scores<span class="sc">$</span>species <span class="ot">&lt;-</span> <span class="fu">rownames</span>(species_scores)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="multivariate-data-analysis.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can build the plot!</span></span>
+<span id="cb196-2"><a href="multivariate-data-analysis.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb196-3"><a href="multivariate-data-analysis.html#cb196-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the text labels for each species group</span></span>
+<span id="cb196-4"><a href="multivariate-data-analysis.html#cb196-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> species_scores, <span class="fu">aes</span>(<span class="at">x =</span> MDS1, <span class="at">y =</span> MDS2, <span class="at">label =</span> species),</span>
+<span id="cb196-5"><a href="multivariate-data-analysis.html#cb196-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb196-6"><a href="multivariate-data-analysis.html#cb196-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the data points for each sample, using the scores created in metaMDS function</span></span>
+<span id="cb196-7"><a href="multivariate-data-analysis.html#cb196-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> data_scores, <span class="fu">aes</span>(<span class="at">x =</span> MDS1, <span class="at">y =</span> MDS2, </span>
+<span id="cb196-8"><a href="multivariate-data-analysis.html#cb196-8" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">color =</span> aquaticSiteType), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb196-9"><a href="multivariate-data-analysis.html#cb196-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create more appropriate x and y axis labels</span></span>
+<span id="cb196-10"><a href="multivariate-data-analysis.html#cb196-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;nMDS1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb196-11"><a href="multivariate-data-analysis.html#cb196-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;nMDS2&quot;</span>) <span class="sc">+</span></span>
+<span id="cb196-12"><a href="multivariate-data-analysis.html#cb196-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># what colours would we like? (we only need two colours here)</span></span>
+<span id="cb196-13"><a href="multivariate-data-analysis.html#cb196-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">inferno</span>(<span class="dv">15</span>)[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">11</span>)],</span>
+<span id="cb196-14"><a href="multivariate-data-analysis.html#cb196-14" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">&quot;Aquatic System Type&quot;</span>) <span class="sc">+</span></span>
+<span id="cb196-15"><a href="multivariate-data-analysis.html#cb196-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add stress label to the plot, indicating the label position and 3sf</span></span>
+<span id="cb196-16"><a href="multivariate-data-analysis.html#cb196-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">&quot;label&quot;</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">1.5</span>, <span class="at">y =</span> <span class="fl">1.5</span>, <span class="at">size =</span> <span class="dv">6</span>,</span>
+<span id="cb196-17"><a href="multivariate-data-analysis.html#cb196-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;Stress: &quot;</span>, <span class="fu">round</span>(nmds_minv_results<span class="sc">$</span>stress, <span class="at">digits =</span> <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb196-18"><a href="multivariate-data-analysis.html#cb196-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="co"># choosing a theme</span></span>
+<span id="cb196-19"><a href="multivariate-data-analysis.html#cb196-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb196-20"><a href="multivariate-data-analysis.html#cb196-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)) <span class="co"># position and size of legend</span></span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+<p>With community structure data, the variable labels can give a bit of information as to what species are more commonly found in which sample, which will be helpful to answer our research question we outlined before we started: which macroinvertebrates are more associated with river systems and which are associated with lake systems? What can you conclude from the plot we have created?</p>
+<p>What about the Shepard diagram (our other diagnostic plot)?</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="multivariate-data-analysis.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Shepard diagram</span></span>
+<span id="cb197-2"><a href="multivariate-data-analysis.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stressplot</span>(nmds_minv_results)</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<p>What sorts of conclusions/interpretations can you make from these macroinvertebrate community structure nMDS outputs? Hint: use the information outlined in “How to interpret an nMDS plot and what to report” section of this course guide.</p>
+</div>
+<div id="other-resources-optional-but-recommended-2" class="section level2 hasAnchor" number="8.11">
+<h2><span class="header-section-number">8.11</span> Other resources: optional but recommended<a href="multivariate-data-analysis.html#other-resources-optional-but-recommended-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="https://little-book-of-r-for-multivariate-analysis.readthedocs.io/en/latest/index.html">Little book for Multivariate Analysis</a></p></li>
+<li><p><a href="https://www.youtube.com/watch?v=Kl49qI3XJKY">A 12 minute youtube video explaining nMDS</a></p></li>
+</ul>
+<div id="creating-a-3-d-nmds-in-r-using-vegan3d-package-for-future-reference" class="section level3 hasAnchor" number="8.11.1">
+<h3><span class="header-section-number">8.11.1</span> Creating a 3-D nMDS in <code>R</code> using <code>vegan3d</code> package (for future reference)<a href="multivariate-data-analysis.html#creating-a-3-d-nmds-in-r-using-vegan3d-package-for-future-reference" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Although not required for this course, you may come across data sets in the near future where stress levels are too high for a 2-D nMDS solution. So I thought I’d include some info for coding 3-D nMDS plots, it may come in handy one day! :-)</p>
+<p>You need to use an extension of the <code>vegan</code> package - it is called <code>vegan3d</code>.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="multivariate-data-analysis.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remember to install the package if you haven&#39;t done so before</span></span>
+<span id="cb198-2"><a href="multivariate-data-analysis.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan3d)</span></code></pre></div>
+<p>We then need to run the <code>metaMDS()</code> function specifying <code>k = 3</code> to get a 3-D solution. Let’s use the macroinvertebrate community structure data from the example above. The stress was much lower at 0.11 for the 3-D solution anyway - check out the stress plot.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="multivariate-data-analysis.html#cb199-1" aria-hidden="true" tabindex="-1"></a>nmds_minv_results_3d <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(<span class="at">comm =</span> orders[ , <span class="dv">4</span><span class="sc">:</span><span class="dv">11</span>], <span class="at">k =</span> <span class="dv">3</span>, <span class="at">try =</span> <span class="dv">100</span>) </span></code></pre></div>
+<p>After this, we need to subset the sample and variable scores from the output, which we did for the 2-D ggplot we created too.</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="multivariate-data-analysis.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample scores data</span></span>
+<span id="cb200-2"><a href="multivariate-data-analysis.html#cb200-2" aria-hidden="true" tabindex="-1"></a>data_scores_3d <span class="ot">&lt;-</span><span class="fu">scores</span>(nmds_minv_results_3d, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>)</span>
+<span id="cb200-3"><a href="multivariate-data-analysis.html#cb200-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-4"><a href="multivariate-data-analysis.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="co"># variable scores data</span></span>
+<span id="cb200-5"><a href="multivariate-data-analysis.html#cb200-5" aria-hidden="true" tabindex="-1"></a>species_scores_3d <span class="ot">&lt;-</span><span class="fu">scores</span>(nmds_minv_results_3d, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>)</span></code></pre></div>
+<p>from there it’s actually pretty straight forward code to get either a static 3-D plot using <code>ordiplot3d</code>…</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="multivariate-data-analysis.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co">#static 3-D variable scores plot</span></span>
+<span id="cb201-2"><a href="multivariate-data-analysis.html#cb201-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">ordiplot3d</span>(species_scores_3d, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">ax.col=</span> <span class="st">&quot;black&quot;</span>, <span class="at">pch =</span> <span class="dv">18</span>)</span>
+<span id="cb201-3"><a href="multivariate-data-analysis.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(out<span class="sc">$</span><span class="fu">xyz.convert</span>(species_scores_3d), <span class="fu">rownames</span>(species_scores_3d), <span class="at">pos=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="multivariate-data-analysis.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co">#static 3-D sample scores plot with sample labels</span></span>
+<span id="cb202-2"><a href="multivariate-data-analysis.html#cb202-2" aria-hidden="true" tabindex="-1"></a>out2 <span class="ot">&lt;-</span> <span class="fu">ordiplot3d</span>(data_scores_3d, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">ax.col=</span> <span class="st">&quot;black&quot;</span>, <span class="at">pch =</span> <span class="dv">18</span>)</span>
+<span id="cb202-3"><a href="multivariate-data-analysis.html#cb202-3" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(out2<span class="sc">$</span><span class="fu">xyz.convert</span>(data_scores_3d), <span class="fu">rownames</span>(data_scores_3d), <span class="at">pos=</span><span class="dv">1</span>) </span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-113-2.png" width="672" /></p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="multivariate-data-analysis.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># too many samples to display labels and see anything useful in this static plot!</span></span>
+<span id="cb203-2"><a href="multivariate-data-analysis.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="co"># however, we can add variable labels instead - more useful</span></span>
+<span id="cb203-3"><a href="multivariate-data-analysis.html#cb203-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb203-4"><a href="multivariate-data-analysis.html#cb203-4" aria-hidden="true" tabindex="-1"></a><span class="co">#static 3-D sample scores plot with variable labels</span></span>
+<span id="cb203-5"><a href="multivariate-data-analysis.html#cb203-5" aria-hidden="true" tabindex="-1"></a>out3 <span class="ot">&lt;-</span> <span class="fu">ordiplot3d</span>(data_scores_3d, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">ax.col=</span> <span class="st">&quot;black&quot;</span>, <span class="at">pch =</span> <span class="dv">18</span>)</span>
+<span id="cb203-6"><a href="multivariate-data-analysis.html#cb203-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(out3<span class="sc">$</span><span class="fu">xyz.convert</span>(species_scores_3d), <span class="fu">rownames</span>(species_scores_3d), <span class="at">pos=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-113-3.png" width="672" /></p>
+<p>… or you can create a rotatable, zoomable dynamic 3-D plot using <code>ordirgl</code> which won’t display in this course guide but are useful and easy to rotate and manipulate on your computer screen using the code below.</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="multivariate-data-analysis.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rotatable 3-D sample scores plot with sample points</span></span>
+<span id="cb204-2"><a href="multivariate-data-analysis.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordirgl</span>(data_scores_3d, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">ax.col=</span> <span class="st">&quot;black&quot;</span>, <span class="at">pch =</span> <span class="dv">18</span>)</span>
+<span id="cb204-3"><a href="multivariate-data-analysis.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to change points to sample labels use type = &quot;t&quot;</span></span>
+<span id="cb204-4"><a href="multivariate-data-analysis.html#cb204-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb204-5"><a href="multivariate-data-analysis.html#cb204-5" aria-hidden="true" tabindex="-1"></a><span class="co">#rotatable 3-D variable scores plot with variable labels</span></span>
+<span id="cb204-6"><a href="multivariate-data-analysis.html#cb204-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ordirgl</span>(species_scores_3d, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">type =</span> <span class="st">&quot;t&quot;</span>, <span class="at">ax.col=</span> <span class="st">&quot;black&quot;</span>, <span class="at">pch =</span> <span class="dv">18</span>)</span></code></pre></div>
+<p><strong>Note:</strong> these functions all work fine on my Dell laptop. However, there is a <a href="https://www.rdocumentation.org/packages/vegan/versions/2.0-10/topics/ordiplot3d">warning in the documentation</a> that function <code>ordirgl</code> uses another package <code>rgl</code> which may not be functional in all platforms, and can crash <code>R</code> in some. Mac users must start <code>X11</code> (and first install <code>X11</code> and some other libraries) before being able to use <code>rgl</code>.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="statistical-inference.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["BIOSCI220.html"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
