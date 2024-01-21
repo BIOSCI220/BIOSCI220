@@ -297,7 +297,7 @@ For example,
  
  + Get the Right **Tool**
  
-    + I'm an advocate for `R` `r emo::ji("wink")`
+    + I'm an advocate for `R` 
 
 So we've seen some pretty plots, let's get around to making some!
 

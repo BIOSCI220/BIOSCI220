@@ -140,7 +140,7 @@ To ensure this go to **Tools** > **Global Options** and uncheck the highlighted 
 <p align="center">![](https://miro.medium.com/max/2784/1*dUNl71Jic2zYhYS2hxOBZA.png){width="40%"}</p>
 
 
-**`r emo::ji("warning")`Warning`r emo::ji("warning")`**
+**Warning**
 
 > If the first line of your R script is
 > `setwd("C:\Users\jenny\path\that\only\I\have")`

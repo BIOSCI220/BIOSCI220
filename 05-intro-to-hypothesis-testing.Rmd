@@ -142,7 +142,7 @@ In experimental situations a large p-value (large tail proportion) means that th
 
 **NOTE: We can extend the randomization test to make inference about any sample statistic (not just the mean)**
 
-## What is a `r emo::ji('scream')` p-value? `r emo::ji('scream')` Really?
+## What is a  *p-value*?
 
 > "Good statistical practice, as an essential component of good scientific practice, 
 emphasizes principles of good study design and conduct, a variety of numerical 
@@ -205,9 +205,9 @@ Remember that **statistical significance does not imply practical significance**
 
 #### Some p-value threshold recursive FAQs
 
-**Q:** Why do so many colleges and grad schools teach *p-val*=0.05? **A:** Because that's still what the scientific community and journal editors use. `r emo::ji('scream')` **BUT IT SHOULDN'T BE** `r emo::ji('scream')`
+**Q:** Why do so many colleges and grad schools teach *p-val*=0.05? **A:** Because that's still what the scientific community and journal editors use.  **BUT IT SHOULDN'T BE** 
 
-**Q:** Why do so many people still use *p-val*=0.05? **A:** Because that's what they were rote taught in college or grad school. `r emo::ji('scream')`**BUT THEY SHOULDN'T BE**`r emo::ji('scream')`
+**Q:** Why do so many people still use *p-val*=0.05? **A:** Because that's what they were rote taught in college or grad school. **BUT THEY SHOULDN'T BE**
 
 
 ## Type I and Type II errors
@@ -217,8 +217,8 @@ Remember that **statistical significance does not imply practical significance**
 
 |State of Nature  | Don't reject $H_0$ | reject $H_0$ |
 |---              |---                |---            |
-| $H_0$ is true |  `r emo::ji("check")` | Type I error  |
-| $H_0$ is false  | Type II error  | `r emo::ji("check")` |
+| $H_0$ is true |  <i class="fa fa-check icon"></i> | Type I error  |
+| $H_0$ is false  | Type II error  | <i class="fa fa-check icon"></i> |
 
 <p align="center">![](https://miro.medium.com/max/924/0*8P474MYDyFZZBdVQ.png)</p>
 

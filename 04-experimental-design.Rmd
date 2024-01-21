@@ -58,19 +58,14 @@ When setting up and experiment and/or considering experimental data there are qu
   + What are the potential sources of **variation**? *Can you control for the unwanted sources or variation?* *Can you name all likely sources?*
   + Can the resulting design be **analyzed** or can the desired comparisons be made? **Can you describe and detail the appropriate analysis?*
   
-#### A simple example: Charlotte's coffee `r icons::icon_style(icons::fontawesome("coffee", style = "solid"), fill = "brown")` `r icons::icon_style(icons::fontawesome("coffee", style = "solid"), fill = "black")` `r icons::icon_style(icons::fontawesome("coffee", style = "solid"), fill = "grey")`
-
+#### A simple example: Charlotte's coffee 
 Charlotte wants to investigate the strength of different coffee beans. So, she sets up an experiment as follows.
 
-+ Three types of coffee beans are chosen: Arabica `r icons::icon_style(icons::fontawesome("coffee", style = "solid"), fill = "brown")`, Liberica `r icons::icon_style(icons::fontawesome("coffee", style = "solid"), fill = "black")`, and Robusta `r icons::icon_style(icons::fontawesome("coffee", style = "solid"), fill = "grey")`.
++ Three types of coffee beans are chosen: *Arabica*, *Liberica* , and *Robusta*.
 + 12 identical cups are chosen and sets of four cups are **randomly allocated** one of three treatments.
 + Four sets of each type of coffee beans are ground and cups made (in the same way) resulting in a total of 12 cups of coffee, see below.
 + Samples are taken from each cup and the coffee strength is measured.
 
-
-**Experiment design:**
-
-`r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "brown")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "brown")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "brown")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "black")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "grey")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "black")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "grey")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "black")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "black")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "grey")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "brown")``r icons::icon_style(icons::fontawesome("coffee", style = "solid"), scale = 2, fill = "grey")`
 
 
 ##### Scientific question: Does coffee strength differ between bean types of coffee beans?
@@ -110,7 +105,7 @@ Blocking helps **control variability** by making treatment groups more alike. Ex
 
 ### Completely randomised design (CRD)
 
-Let's consider a completely randomised design with one treatment factor (e.g., coffee bean type). Here, $n$ experimental units (e.g., cups) are divided **randomly** into $t$ groups. Random allocation can be achieved by simply drawing lots from a hat! To be more rigorous, though, we could use `R`'s `sample()` function (have a go yourself and see if you can work out how to wield `sample()`). Each group is then given one treatment level (one of the treatment factors). As we have defined only one treatment factor all other known independent variables are kept constant so as to not bias any effects (e.g., cup type and  type in Charlotte's`r emo::ji('coffee')` experiment).
+Let's consider a completely randomised design with one treatment factor (e.g., coffee bean type). Here, $n$ experimental units (e.g., cups) are divided **randomly** into $t$ groups. Random allocation can be achieved by simply drawing lots from a hat! To be more rigorous, though, we could use `R`'s `sample()` function (have a go yourself and see if you can work out how to wield `sample()`). Each group is then given one treatment level (one of the treatment factors). As we have defined only one treatment factor all other known independent variables are kept constant so as to not bias any effects (e.g., cup type and  type in Charlotte's coffee experiment).
 
 ![An illustration of a CRD with one tratment factor and three treatment levels (A, B, & C)](https://github.com/cmjt/ggdesign/raw/main/README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
 
@@ -175,13 +170,13 @@ kableExtra::kable(cbind("Cup" = rep(1:3, times = 2), plan)) %>%
 
 A factorial experiment is one where there are two or more sets of (factor) treatments. Rather than studying each factor separately all combinations of the treatment factors are considered. Factorial designs enable us to infer any **interaction** effects, which may be present. An **interaction** effect is one where the effect of one variable depends on the value of another variable (i.e., the effect of one treatment factor on the response variable will change depending on the value of a second treatment factor.)
 
-For example, we could add another treatment to the coffee experiment above: grinder type (manual `r icons::icon_style(icons::fontawesome("mortar-pestle", style = "solid"), fill = "black")` or electric `r icons::icon_style(icons::fontawesome("plug", style = "solid"), fill = "black")`). So, now we have two treatments, bean type (with three levels) and cup type (with two levels). Recall that in a factorial experiment we want to study **all combinations** of the levels of each factor:
+For example, we could add another treatment to the coffee experiment above: grinder type (manual or electric). So, now we have two treatments, bean type (with three levels) and cup type (with two levels). Recall that in a factorial experiment we want to study **all combinations** of the levels of each factor:
 
 |   | Manual    | Electric   | 
 |---|---    |---     |
-| Arabica   | A.M `r icons::icon_style(icons::fontawesome("mortar-pestle", style = "solid"), scale = 3, fill = "brown")`  | A.E `r icons::icon_style(icons::fontawesome("plug", style = "solid"), scale = 3, fill = "brown")` |
-| Liberica  | L.M `r icons::icon_style(icons::fontawesome("mortar-pestle", style = "solid"), scale = 3, fill = "black")`  |  L. E`r icons::icon_style(icons::fontawesome("plug", style = "solid"), scale = 3, fill = "black")` |
-| Robusta   |  R.M `r icons::icon_style(icons::fontawesome("mortar-pestle", style = "solid"), scale = 3, fill = "grey")`  |  R. E `r icons::icon_style(icons::fontawesome("plug", style = "solid"), scale = 3, fill = "grey")` |
+| Arabica   | A.M   | A.E  |
+| Liberica  | L.M   |  L. E |
+| Robusta   |  R.M  |  R. E  |
 
 Note is a factorial design has **equal** numbers of replicates in each group then it is said to be a **balanced** design; if this is not the case then it is **unbalanced**.
 
