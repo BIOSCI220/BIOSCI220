@@ -9,7 +9,7 @@
 
 Living systems are the most complex systems in science, and biology is naturally variable and noisy due to its many internal and external influences. For these reasons, it is difficult to make inferences from and predictions about biological systems. Understanding biology requires computational skills to effectively analyse and interpret data, and multidisciplinary research approaches are becoming more common as a critical key to solving many of the complex problems of studying life and living organisms in today’s world. So, contrary to the popular undergrad biology student beliefs, statistics, mathematics and computational skills are essential in a biologist’s toolkit.
 
-To understand modern biological research and findings, and to participate in this research (and get jobs!), skills in working with and visualising data, learning from data using models, and generating data using simulations of models are crucial. These might be classic statistical models, mathematical models, or inference with process-based models. Biologists also need to be careful and critical thinkers about data and how it is acquired, as well as think critically about the models that we use to try to simplify, and thereby understand, the incredible complexity of biology.
+To understand modern biological research and findings, and to participate in this research (and get jobs!), skills in working with and visualizing data, learning from data using models, and generating data using simulations of models are crucial. These might be classic statistical models, mathematical models, or inference with process-based models. Biologists also need to be careful and critical thinkers about data and how it is acquired, as well as think critically about the models that we use to try to simplify, and thereby understand, the incredible complexity of biology.
 
 **BIOSCI 220: Quantitative Biology** will introduce you to the programming language R to develop the aforementioned skills, with no coding experience assumed or expected. The aim is to give beginners the confidence to continue learning R and not be afraid of statistics and mathematics! 
 
@@ -17,7 +17,7 @@ To understand modern biological research and findings, and to participate in thi
 ##  `R` and `RStudio` {-}
 
 <div class="alert alert-danger" role="alert"> 
-Throughout this course, you will be learning how to program using `R` and `RStudio` weekly. You are expected to install and familiarise yourself with these environments during the first week of the course. We provide plenty of help session and easy-to-follow instructions for this, please see CANVAS and/or [Installing R and RStudio] to get started.
+<span><strong>Throughout this course, you will be learning how to program using `R` and `RStudio` weekly.</span></strong> You are expected to install and familiarize yourself with these environments during the first week of the course. We provide plenty of help session and easy-to-follow instructions for this, please see CANVAS and/or [Installing R and RStudio] to get started.
 </div>
 
 Note that lab computers will already have `R` and`RStudio` installed; however, if you plan to use your personal computer then you will need to install both `R` and `RStudio` yourself. Follow the directions in [Installing R and RStudio] to do so (or come along to a dedicated help session).
@@ -33,7 +33,7 @@ Another option available is to use [RStudio Cloud](https://rstudio.cloud/) where
 lecs <- matrix(c(1, "R programming and data exploration", "1 - 3", "Dr Charlotte Jones-Todd", 
                1, "Statistical inference", "4 - 6", "Jenn Jury (course coordinator)", 
                2, "Mathematical modelling in biology", "7 - 9", "Dr Nobuto Takeuchi", 
-               3, "Model-based inference and critical thinkin", "10 - 12", "Assoc. Prof. Emma Carroll"), 
+               3, "Model-based inference and critical thinking", "10 - 12", "Assoc. Prof. Emma Carroll"), 
                ncol = 4,byrow = TRUE)
 colnames(lecs) <- c("Module Number", "Module Content", "Weeks taught","Lecturer")
 
@@ -110,7 +110,7 @@ There are eight (8) labs in total. Labs are held in weeks 2, 3, 5, 6, 8, 9, 11 a
 
 Labs are three (3) hours and the material is designed to be completed in this time. 
 
-Each lab is worth 5%, totalling 40% towards your final grade.
+Each lab is worth 5%, totaling 40% towards your final grade.
 
 You are scheduled into a lab stream in SSO. While lab attendance is not compulsory, it is highly recommended you attend your scheduled lab stream. There is teaching staff to support you through the tasks and answer your course-related questions.
 

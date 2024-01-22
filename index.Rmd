@@ -4,7 +4,11 @@ author: ""
 date: ""
 ---
 
-```{r, echo = FALSE, warning=FALSE, message=FALSE, eval = TRUE}
+```{r  include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+```
+
+```{r, echo = FALSE, eval = TRUE}
 ## install all  packages used in book 
 pkgs <- c("devtools", "tidyverse", "palmerpenguins", "patchwork",
 "vegan", "gglm", "GGally", "viridis", "goeveg", "vegan3d", "tufte",

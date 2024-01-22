@@ -3,7 +3,7 @@
 The purpose of this section is to get you started learning a new language and learning how to program! Throughout BIOSCI220 you will be introduced to tools required to critically analyse and interpret biological data.
 
 <div class="alert alert-success" role="alert">
-![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%} 
+<center>![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%} </center>
 
 <strong>Learning objectives</strong> 
 
@@ -20,7 +20,7 @@ The purpose of this section is to get you started learning a new language and le
 <li> Explain what an `R` function is; describe what an argument to an `R` function is</li>
 <li> Explain what an `R` package is; distinguish between the functions `install.packages()` and `library()`</li>
 <li> Explain what a *working directory* is in the context of `R`</li>
-<li> Interpret and fix basic  `R` errors such as</li>
+<li> Interpret and fix basic `R` errors such as</li>
 
 ```{r, err1, echo = FALSE, eval = TRUE, error = TRUE}
 library(fiddler)
@@ -32,75 +32,63 @@ and
 read.csv("paua.csv")
 ```
 
-<li> Use the appropriate `R` function to read in a `.csv` data; carry out basic exploratory data analysis using `tidyverse` (e.g., use the pipe operator, `%>%` when summarising a `data.frame`)</li>
+<li> Use the appropriate `R` function to read in a `.csv` data; carry out basic exploratory data analysis using `tidyverse` (e.g., use the pipe operator, `%>%` when summarizing a `data.frame`)</li>
 <li> Create simple plots of different types of data (e.g., continuous, discrete)</li>
 </ul>
 </div>
+
 ## What are `R` and `RStudio`?
 
-> "If R were an airplane, RStudio would be the airport..." `r tufte::quote_footer('--- Julie Lowndes, Introduction to RStudio Awesomeness')`
+`R` is a language, specifically, a programming language. Think of it as the way you can speak to your computer to ask it to carry out certain computations. `RStudio` is an integrated development environment (IDE). This means it is basically an interface, albeit a fancy one, that makes it easier to communicate with your computer in the language `R`. The main benefit is the additional features it has that enable you to more efficiently *speak* `R`.
 
-Alternatively, `R` is the engine...
-
-<p align="center">
-
-![`R` "the engine"](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mercedes_V6_DTM_Rennmotor_1996.jpg/260px-Mercedes_V6_DTM_Rennmotor_1996.jpg){width="50%"}
-</p>
-
-... to `RStudio`'s dashboard.
+You can think of `R` as the engine to `RStudio`'s dashboard.
 
 
-<p align="center">
 
-![`RStudio` "the dashboard](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Dashboard_%282%29.jpg/800px-Dashboard_%282%29.jpg){width="50%"}
-
-</p>
+![`R` "the engine"](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mercedes_V6_DTM_Rennmotor_1996.jpg/260px-Mercedes_V6_DTM_Rennmotor_1996.jpg){width="50%"}![`RStudio` "the dashboard](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Dashboard_%282%29.jpg/800px-Dashboard_%282%29.jpg){width="50%"}
 
 
-Actually, `R` is a language, specifically, a programming language. Think of it as the way you can speak to your computer to ask it to carry out certain computations.
 
-`RStudio` is an integrated development environment (IDE). This means it is basically an interface, albeit a fancy one, that makes it easier to communicate with your computer in the language `R`. The main benefit is the additional features it has that enable you to more efficiently *speak* `R`.
 
 **Note** `R` and `RStudio` are two **different** pieces of software; for this course you are expected to download both. As you'd expect, the dashboard depends on the engine (i.e., `RStudio` depends on `R`) so you have to download `R` to use `RStudio`! 
 
 ### Why are you learning to program?
 
-The selling pitch of this course states that *...biological research has actually been heavily quantitative for 100+ years...* and promises that *...it is now essential for biology students to acquire skills in working with and visualising data, learning from data using models...*. We're not making it up! If you need convincing that quantitative and programming skills are essential to graduate in **all** scientific disciplines have a read of the following.
+The selling pitch of this course states that *...biological research has actually been heavily quantitative for 100+ years...* and promises that *...it is now essential for biology students to acquire skills in working with and visualizing data, learning from data using models...*. We're not making it up! 
+
+
+If you need convincing that quantitative and programming skills are essential to graduate in **all** scientific disciplines have a read of the following.
 
 + [The Popularity of Data Science Software](http://r4stats.com/articles/popularity/)
 + [Data Carpentry for Biologists](https://datacarpentry.org/semester-biology/about/why-r/)
 
-
-**Why`R`?**
-
-+ It's free
-+ It's [open source](https://opensource.com/resources/what-open-source)
-+ A general-purpose of programming language
-+ Written by statisticians (here in Auckland!)
-+ It's available for all operating systems (Windows, Linux, and Mac)
-+ There is a huge online support network
-+ It's extremely flexible; if you can code it you can do it! 15,000+ packages available!
-+ ...
-
-**Why `RStudio`?**
- 
-+ Speaks nicely to `R`
-+ Tab completion
-+ Debugging capabilities
-+ There is a huge online support network
-+ Offers many other features and tools to make your workflow with `R` easier
-+ It facilitates [reproducibility](https://en.wikipedia.org/wiki/Reproducibility)
-+ ...
-
-### Installing R and RStudio
-
-[Software Carpentry install R & RStudio Mac](https://youtu.be/5-ly3kyxwEg) 
+Throughout this course we will be programming using `R`. `R` is a **free** **open-source** statistical programming language created by Ross Ihaka (of [Ngati Kahungunu, Rangitane and Ngati Pakeha](https://www.historyofdatascience.com/ross-ihaka-the-open-hearted-data-hero/) descent) and Robert Gentleman, here at UoA in the Department of Statistics! It is widely used across many scientific fields for data analysis, visualization, and statistical modeling. Proficiency in `R` will enable you to wrangle and explore datasets, conduct statistical analyses, and create visualizations to communicate your findings. These are all essential tools required in any scientific discipline.
 
 
-[Software Carpentry install R & RStudio Windows](https://www.youtube.com/watch?v=q0PjTAylwoU)
+<div class="alert alert-warning">
+  <strong>TODO</strong> Go to the Statistics Department display in the science building foyer (building 303) to see a CD-Rom with the **first** ever version of `R`.
+</div>
+
+`RStudio` is an integrated development environment (IDE) for the `R` programming language. It serves as a user-friendly workspace, offering additional tools for coding, data visualization, and project management. `RStudio` simplifies the process of learning `R` by providing a structured interface with many built-in tools to help organize workflow, fostering a systematic approach to data analysis and research. 
+
+<div class="alert alert-warning">
+  <strong>TODO</strong> Research the meaning of open-source software and briefly outline the pros and cons of this in the context of statistical analysis.
+</div>
+
+## Installing R and RStudio
 
 
 **NOTE:** `RStudio` depends on `R` so there is an order you should follow when you download these software!
+
+<div class="alert alert-warning">
+  <strong>TODO</strong> Follow the instructions below to install `R` and `RStudio`. Here are some step-by-step instructional videos you might find useful
+  
+  <ul>
+  <li>[Software Carpentry install R & RStudio Mac](https://youtu.be/5-ly3kyxwEg)</li>
+  <li>[Software Carpentry install R & RStudio Windows](https://www.youtube.com/watch?v=q0PjTAylwoU)</li>
+  </ul>
+
+</div>
 
 
  1. **Download and install `R`** by following [these instructions](https://cloud.r-project.org/). Make sure you choose the correct operating system; if you are unsure then please ask either a TA or myself.
@@ -112,27 +100,27 @@ The selling pitch of this course states that *...biological research has actuall
     + Wait a little and you should see `RStudio` open up to something similar to the screenshot below
     ![](https://stats220.earo.me/img/rstudio-interface.png)
     + Pay close attention to the notes in the screenshot and familiarise yourself with the terms.
-    + Finally, in the *Console* next to the prompt type `1:10` and press enter on your keyboard. Your computer should say something back you (in the *Console*)! What do you think you were asking it to do? Does the output make sense?^[You should have seen the numbers 1 to 10 printed out as a sequence.]
 
-If you get stuck at any of the steps above then please ask either a TA or myself. It is imperative for the rest of the course that you complete the steps above.
+
+<div class="alert alert-warning">
+  <strong>TODO</strong> Once you have both `R` and `Rstudio` installed, in the *Console* next to the prompt type `1:10` and press enter on your keyboard. Your computer should say something back you (in the *Console*)! What do you think you were asking it to do? Does the output make sense?^[You should have seen the numbers 1 to 10 printed out as a sequence.]
+</div>
+
 
 ## Getting started with `R`
 
-Open up `RStudio` from your computer menu, the icon will look something like this ![](https://vectorified.com/images/rstudio-icon-31.png){width=7%}. Using the diagram above to identify the different panes:
+Open up `RStudio` from your computer menu, the icon will look something like this ![](https://vectorified.com/images/rstudio-icon-31.png){width=7%}. Identify the following panes
 
- + *Console* where you directly type command in and communicate with your computer (via the language `R`).
- + *Environment pane*
- + *Files pane*
+ + **Console Pane**: The console is where you can directly interact with R. You can type and execute R commands line by line, and the results will be displayed in the console pane. It's an interactive space for immediate feedback and testing.
+ + **Environment/History Pane**: This pane provides information about the current `R` environment, including a list of variables, data frames, and other objects in your workspace. It also shows the history of commands that you have executed in the console.
+ + **Files/Plots/Packages/Help Pane**: This pane is a multi-purpose pane that can display different tabs depending on your current activity. It can show the file structure of your project, display plots and visualizations, provide information about installed packages, and offer help documentation.
+ 
+These three panes will likely be the ones to appear by default. There is a fourth pane, one which you will have to open yourself. This is the **Code/Source Pane** and is where you can write, edit, and save your `R` script or code files. It's the primary workspace for creating and modifying your `R` code.
  
 
-**Some terminology**
+### The Code/Source Pane
 
-+ *Running* code: the act of telling R to perform an act by giving it commands in the console.
-+ *Objects*: where values are saved in  (see later for creating an *object*.
-+ *Script*: a text file containing a set of commands and comments.
-+ *Comments*: notes written within a *Script* to better document/explain what's happening
-
-### R *Script*s (a `.r` file)
+**R *Script*s (a `.r` file)**
 
 Go **File** > **New File** > **R Script** to open up a new *Script*
 
@@ -141,9 +129,36 @@ If you had only three panes showing before, a new (fourth) pane should open up i
  + Ensure your cursor is on the line of code you want to run, hold down **Ctrl** and press **Enter**.
  + Ensure your cursor is on the line of code you want to run, then use your mouse to click the Run button (it has a green arrow next to it) on the top right of the *Script* pane.
 
-Type `1:10` in your *Script* and practise *running* this line of code using both methods above. Not that if you've *Run* the code successfully then your computer will speak back to you each time via the *Console*
 
-### Writing *Comments*
+
+<div class="alert alert-warning">
+  <strong>TODO</strong> Type `1:10` in your *Script* and practise *running* this line of code using both methods above. Not that if you've *Run* the code successfully then your computer will speak back to you each time via the *Console*]
+</div>
+
+
+### `R` basics
+
+
+| Term                | Description                                                                                                     |
+|---------------------|-----------------------------------------------------------------------------------------------------------------|
+| `Script`            | A file containing a series of `R` commands and code that can be executed sequentially.                           |
+| `Source`            | To execute the entire content of an `R` script, often done using the "Source" button in `RStudio`.                   |
+| `Running Code`      | The process of executing `R` commands or scripts to perform specific tasks and obtain results.                    |
+| `Console`           | The interactive interface in `RStudio` where `R` commands can be entered and executed line by line.                |
+| `Commenting`        | Adding comments to the code using the `#` symbol to provide explanations or annotations. Comments are ignored during code execution. |
+| `Assignment Operator`| The symbol `<-` or `=` used to assign values to variables in `R`.                                                 |
+| `Variable`          | A named storage location for data in `R`, which can hold different types of values.                                |
+| `Data Type`         | The classification of data into different types, such as numeric, character, logical, etc.                       |
+| `Object`            | A data structure that holds a specific type of data. Objects are used to store and manipulate data, and they can take various forms depending on the type of information being represented. |
+| `Logical Operator`  | Symbols like `==`, `!=`, `<`, `>`, `<=`, and `>=` used for logical comparisons in conditional statements.      |
+| `Function`          | A block of reusable code that performs a specific task when called (e.g., `mean(c(3, 4))`.                                             |
+| `Argument`          | The input values that are passed to the function when it is called.                                              |
+| `Error Handling`    | The process of anticipating, detecting, and handling errors that may occur during code execution.                |
+| `Debugging`         | The process of identifying and fixing errors or bugs in the code.                                                |
+| `Workspace`         | The current working environment in `R`, which includes loaded data, variables, and functions.                       |
+
+
+**Commenting**
 
 *Comments* are notes to yourself (future or present) or to someone else and are, typically, written interspersed in your code. Now, the comments you write will typically be in a language your computer doesn't understand (e.g., English). So that you can write yourself notes in your *Script* you need to tell your computer using the `R` language to ignore them. To do this precede any note you write with \#, see below. The \# is `R` for *ignore anything after this character*.
 
@@ -160,7 +175,7 @@ Type `1:10` in your *Script* and practise *running* this line of code using both
 
 Now remember when you want to leave your `R` session you'll need to **Save** your *Script* to use it again. To do this go **File** > **Save As** and name your file what you wish (remember too to choose a relevant folder on your computer, or as recommended use the `.Rproj` set-up as above).
 
-### Data types
+**Data types**
 
 
 <p align="center">![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/continuous_discrete.png){width="40%"}</p>
@@ -178,9 +193,9 @@ Here we're covering data types in `R` (e.g., integers, doubles/numeric, logical,
 class("Charlotte")
 ```
 
-### Creating *Objects*
+**Creating Objects**
 
-*Objects* are created values using the symbols `<-` (an arrow formed out of `<` and `-`). Like we, typically, write an equation the left-hand side is the *Object* we're defining (creating) and the right-hand side is the stuff we're defining it as.  For example, below I'm creating the *Object* `my_name` and assigning it the character string of my first name.
+*Objects* are created (or *assigned*) values using the symbols `<-` (an arrow formed out of `<` and `-`). Like we, typically, write an equation the left-hand side is the *Object* we're defining (creating) and the right-hand side is the stuff we're defining it as.  For example, below I'm creating the *Object* `my_name` and assigning it the character string of my first name.
 
 ```{r name, eval = TRUE, echo = TRUE}
 my_name <- "Charlotte"
@@ -213,11 +228,11 @@ some_numbers
 An *Object* can also be an entire dataset (see later in this section)!
 
 
-### `R` functions
+**`R` functions**
 
-Functions (or commands) perform tasks in R. They take in inputs called *arguments* and return outputs. You can either manually specify a function’s arguments or use the function’s default values. For example, the function `seq()` in R generates a sequence of numbers. If you just run `seq()` it will return the value 1. That doesn’t seem very useful! This is because the default arguments are set as `seq(from = 1, to = 1)`. Thus, if you don't pass in different values for from and to to change this behaviour, your computer just assumes all you want is the number 1. You can change the argument values by updating the values after the `=` sign. If we try out `seq(from = 2, to = 5)` we get the result `r `seq(from = 2, to = 5)` that we might expect.
+Functions (or commands) perform tasks in R. They take in inputs called *arguments* and return outputs. Functions often have both mandatory and optional arguments: mandatory arguments must be provided for the function to execute correctly, while optional arguments have default values but can be customized by the user. You can either manually specify a function’s arguments or use the function’s default values. For example, the function `seq()` in R generates a sequence of numbers. If you just run `seq()` it will return the value 1. That doesn’t seem very useful! This is because the default arguments are set as `seq(from = 1, to = 1)`. Thus, if you don't pass in different values for from and to to change this behaviour, your computer just assumes all you want is the number 1. You can change the argument values by updating the values after the `=` sign. If we try out `seq(from = 2, to = 5)` we get the result `r `seq(from = 2, to = 5)` that we might expect.
 
-### `R` packages
+**`R` packages**
 
 An `R` *package* is simply a collection of functions! Typically all focused on a particular type of procedure.
 
@@ -225,7 +240,7 @@ The base installation of `R` comes with many useful packages as standard and the
 
 <p align="center">![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Interior_view_of_Stockholm_Public_Library.jpg/800px-Interior_view_of_Stockholm_Public_Library.jpg){width="30%"}</p>
 
-CRAN is like a centralised library with thousands of books in stock. 
+The [Comprehensive R Archive Network(CRAN)](https://cran.r-project.org/) is like a centralised library with thousands of books (packages) in stock. 
 
 To access the contents of a book (package) you first need to request it for (install it into)  your local library (your computer)
 
@@ -246,24 +261,8 @@ To access the knowledge in a particular book (use the function is the package) y
 library(the.package.name)
 ```
 
-### `R` Errors
 
-Sometimes rather than doing what you expect it to your computer will return an Error message to you via the *Console* prefaced with **Error in...* followed by text that will try to explain what went wrong. This, generally, means something has gone wrong, so what do you do?
-
- + **Read it**! THE MESSAGES ARE WRITTEN IN PLAIN ENGLISH (MOSTLY)
- + **DO NOT** continue running bits of code hoping the issue will go away. IT WILL NOT.
- + Try and work out what it means and fix it by:
- 
-    + reading the documentation, see []
-    + search or ask questions on [Stack Overflow](https://stackoverflow.com/) or [RStudio Community](https://community.rstudio.com/)
-
-
-Sometimes your computer will return a warning messages to you prefaced "Warning:". These can sometimes be ignored as they may not affect us. However, READ THE MESSAGE and decide for yourself. Occasionally, also your computer will write you a friendly message, just keeping you up-to date with what it's doing, again don't ignore these they might be telling you something useful!
-
-
-### Working directories
-
-<p align="center">![](https://upload.wikimedia.org/wikipedia/commons/f/f2/678111-map-marker-512.png?20190701063300){width="30%"}</p>
+**Working directories**
 
 You need to tell your computer where to look!
 
@@ -275,21 +274,16 @@ getwd()
 
 You should ensure that you are aware of which directory you're working in (which folder `RStudio` is looking in by default) as this is important later on when we come to reading in files and saving our work!
 
-#### Changing address...
 
-So you're not where you want to be!
+What if you're not where you want to be (i.e., you are looking in the wrong folder)?
 
 Click **Session** > **Set Working Directory** > **Choose Directory** > *Chose where you want to go*
 
 Now notice that something has been written in your *Console* something similar to `setwd("~/Git/BIOSCI220/data")`. Now `setwd()` stands for **set** your **w**orking**d**irectory. If you know the address of the directory you want to work in without having to point-and-click you could use this command directly, in this case you've used the point-and-click to do it and RStudio has helpfully written out your choices as an `R` command.
 
+**Getting help**
 
-### Getting help
-
-<p align="center">![](https://r-coder.com/wp-content/uploads/2020/03/help-r.png){width="30%"}</p>
-
-
-Let's say we want to learn more about the function `mean()` (we can take a wild guess at what it calculates, but... what if we didn't know for sure. There are two ways we can ask within `RStudio`
+How do we know what a function does? Let's say we want to learn more about the function `mean()` (we can take a wild guess at what it calculates, but... what if we didn't know for sure. There are two ways we can ask within `RStudio`
 
 ```{r mean, echo = TRUE, eval = FALSE}
 ?mean()
@@ -301,13 +295,14 @@ or
 help(mean)
 ```
 
-Try both and see what pops up in your right-hand bottom pane!
 
-Failing that [Google](https://www.google.com/) is (often) your friend.
-
+The code above will open up the official `R` documentation (or man pages) for the function `mean()`. Every function has a corresponding *man page* that provides comprehensive information on its usage, required arguments, return value, and often gives user examples. You should always consult the documentation to ensure that what you believe you are asking is indeed what you are asking your computer to do.
 
 
-### Reading in data from a `.csv` file
+
+## Dealing with data
+
+**Reading in data from a `.csv` file**
 
 First off download the `paua.csv` file from [this link](https://github.com/STATS-UOA/databunker/blob/master/data/paua.csv) onto your computer (remember which folder you saved it in!)
 
@@ -320,7 +315,7 @@ This dataset contains the following variables
 
 To read the data into `RStudio` 
 
- In the *Environment* pane click **Import Dataset** > ** From Text (readr)** > **Browse** > *Choose your file, remembering which folder you downloaded it to* > *Another pane should pop up, check the data looks as you might expect* > **Import**
+ In the *Environment* pane click **Import Dataset** > **From Text (readr)** > **Browse** > *Choose your file, remembering which folder you downloaded it to* > *Another pane should pop up, check the data looks as you might expect* > **Import**
  
  You should now notice that in the *Environment* pane there is something listed under *Data* (this is the name of the data.frame *Object* containing the data we will explore)
 
@@ -372,8 +367,59 @@ glimpse(paua)
 `glimpse()` will give you the first few entries of each variable in a row after the variable name. Note also, that the data type  of the variable is given immediately after each variables name inside `< >`.
 
 <div class="alert alert-warning">
-  <strong>TODO!</strong> Try making as many errors as you can...
+  <strong>TODO!</strong> Try running the following operations on the `paua` data object. What do you think each is asking?
+  
+  + `head(paua)`
+  + `tail(paua)`
+  + `paua[1:10,]`
+  + `paua[,2]`
+  + `paua$Age`
+  
 </div>
+
+
+## Error handling and debugging
+
+Sometimes rather than doing what you expect it to your computer will return an Error message to you via the *Console* prefaced with **Error in...** followed by text that will try to explain what went wrong. This, generally, means something has gone wrong, so what do you do?
+
+ 1. **Read it**! THE MESSAGES ARE WRITTEN IN PLAIN ENGLISH (MOSTLY)
+ 2. **DO NOT** continue running bits of code hoping the issue will go away. IT WILL NOT.
+ 3. Try and work out what it means and fix it (some tips below).
+
+Interpreting `R` errors is an invaluable skill! The error messages are designed to be clear and informative. They aim to tell might be going wrong in the code. These messages typically contain information about the type of error hinting at how you might fix it. For example, if there is a typo in a function or variable name, `R` will produce an error like `"Error: object 'variable_name' not found.`" This suggests that `R` couldn't find the specified object `variable_name`.
+
+Understanding error messages involves paying attention to the details, such as the error type (e.g., syntax error, object not found, etc.), and the specific line number where the error occurred! You should always run your code line-by-line, especially if you are new to programming. This means that the execution of each line of code is done in in isolation, providing immediate feedback and pinpointing the exact location where an error occurs. If the meaning or solution to an error isn't immediately obvious then make use of the documentation (RTFM) and even technology. Online platforms like [Stack Overflow](https://stackoverflow.com/) or RStudio Community](https://community.rstudio.com/) and interactive platforms like [ChatGPT](https://chat.openai.com/) can often be your friend! It is very unlikely that you are the first one to have encountered the error and some kind soul with have posted a solution online (which the AI bot will have scraped...). However, it's crucial to approach online answers carefully. You need to first understand the context of your error and use your knowledge about your issue to figure out if the solution is applicable (this gets easier with experience).
+
+
+It is always best to try debugging yourself before blindly following a stranger's advice. Debugging is a crucial aspect of `R` programming and the process itself helps solidify your understanding. There are several widely used methods that help identify and resolve issues in your code, two are outlined below.
+
+ + [**Print debugging**](https://en.wikipedia.org/wiki/Debugging) involves actively printing out objects and asking the software to display variable values or check the flow of execution. For example, if you get this error message `"Error: object 'variable_name' not found.` I might ask `R` to print out what objects do exist in my workspace, it could be that a previous typo means that the object `variable_nam` exists.
+ 
+ +[**Rubber duck debugging**](https://en.wikipedia.org/wiki/Rubber_duck_debugging) is a useful debugging strategy where you explain your code or problem out loud (as if explaining it to a rubber duck). Honestly it works! The process helps clarify your thoughts and identify issues even before seeking external help.
+
+The table below summaries some common `R` issues and errors and the solution.
+
+| Error/Issue                               | Description                                                                                           | Solution                                                                                                 |
+|--------------------------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| **Syntax Error**                           | Incorrect use of `R` syntax, such as missing or mismatched parentheses, braces, or quotes.              | Carefully review the code, check for missing or mismatched symbols, and ensure proper syntax is used.     |
+| **Object Not Found**                       | Attempting to use a variable or function that hasn't been defined or loaded into the workspace.       | Check for typos in variable or function names, ensure the object is created or loaded, and use correct names. |
+| **Package Not Installed/Loaded**           | Trying to use a function from a package that is not installed or loaded into the environment.         | Install the required package using `install.packages("package_name")`, and load it using `library(package_name)`. |
+| **Undefined Function/Variable**            | Using a function or variable that hasn't been defined or is out of scope.                             | Define the function or variable, or check its scope within the code.                                       |
+| **Data Type Mismatch**                     | Operating on data of incompatible types, such as performing arithmetic on character data.            | Ensure that data types are compatible, and consider using functions like `as.numeric()` or `as.character()` for conversions. |
+| **Misuse of Assignment Operator**          | Using the wrong assignment operator (`=` instead of `<-` or vice versa).                              | Be consistent with the assignment operator, and use `<-` for assignment in most cases.                   |
+| **Missing Data**                           | Dealing with missing values in the data, leading to errors in calculations or visualizations.        | Handle missing data appropriately, using functions like `na.omit()` or `complete.cases()`.               |
+| **Index Out of Bounds**                    | Attempting to access an element in a vector or data frame using an index that is out of range.        | Check the length of the vector or data frame and ensure the index is within bounds.                       |
+| **Failure to Load a File**                 | Issues with loading a data file using functions like `read.csv()` or `read.table()`.                 | Check the file path, file format, and encoding. Confirm that the file exists in the specified location.   |
+| **Incorrect Function Arguments**           | Providing incorrect arguments or parameters to a function, leading to errors.                         | Refer to the function's documentation to understand the correct parameters and ensure proper usage.      |
+
+
+Sometimes your computer will return a warning messages to you prefaced "Warning:". These can sometimes be ignored as they may not affect us. However, READ THE MESSAGE and decide for yourself. Occasionally, also your computer will write you a friendly message, just keeping you up-to date with what it's doing, again don't ignore these they might be telling you something useful!
+
+
+<div class="alert alert-warning">
+  <strong>TODO</strong> Keep a bug diary! Each time you get an error message, see if you can solve it and keep a diary of your attempts and solution.
+  
+  </div>
 
 
 <div class="alert alert-info" role="alert">
