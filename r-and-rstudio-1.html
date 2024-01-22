@@ -152,12 +152,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html"><i class="fa fa-check"></i><b>1</b> <code>R</code> and <code>RStudio</code></a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#what-are-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What are <code>R</code> and <code>RStudio</code>?</a></li>
-<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.2</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.3</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.4" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#dealing-with-data"><i class="fa fa-check"></i><b>1.4</b> Dealing with data</a></li>
+<li class="chapter" data-level="1.5" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#error-handling-and-debugging"><i class="fa fa-check"></i><b>1.5</b> Error handling and debugging</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data wrangling and manipulation</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-eda"><i class="fa fa-check"></i><b>2.1</b> Exploratory Data Analysis (EDA)</a></li>
+<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-and-data-wrangling-in-the-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Exploratory data analysis and data wrangling in the Tidyverse</a></li>
 <li class="chapter" data-level="2.2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#data-visualisation"><i class="fa fa-check"></i><b>2.2</b> Data Visualisation</a></li>
+<li class="chapter" data-level="2.3" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#plotting-using-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Plotting using <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.4" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#bringing-things-together"><i class="fa fa-check"></i><b>2.4</b> Bringing things together</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-practice.html"><a href="data-practice.html"><i class="fa fa-check"></i><b>3</b> Data practice</a>
 <ul>
@@ -232,7 +237,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 1</span> <code>R</code> and <code>RStudio</code><a href="r-and-rstudio-1.html#r-and-rstudio-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The purpose of this section is to get you started learning a new language and learning how to program! Throughout BIOSCI220 you will be introduced to tools required to critically analyse and interpret biological data.</p>
 <div class="alert alert-success" role="alert">
-<p><img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" /></p>
+<center>
+<img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" />
+</center>
 <p><strong>Learning objectives</strong></p>
 <ul>
 <li>
@@ -265,11 +272,9 @@ Interpret and fix basic <code>R</code> errors such as
 </li>
 <pre><code>## Error in library(fiddler): there is no package called &#39;fiddler&#39;</code></pre>
 <p>and</p>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;paua.csv&#39;: No such file or
-## directory</code></pre>
 <pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
 <li>
-Use the appropriate <code>R</code> function to read in a <code>.csv</code> data; carry out basic exploratory data analysis using <code>tidyverse</code> (e.g., use the pipe operator, <code>%&gt;%</code> when summarising a <code>data.frame</code>)
+Use the appropriate <code>R</code> function to read in a <code>.csv</code> data; carry out basic exploratory data analysis using <code>tidyverse</code> (e.g., use the pipe operator, <code>%&gt;%</code> when summarizing a <code>data.frame</code>)
 </li>
 <li>
 Create simple plots of different types of data (e.g., continuous, discrete)
@@ -278,63 +283,42 @@ Create simple plots of different types of data (e.g., continuous, discrete)
 </div>
 <div id="what-are-r-and-rstudio" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> What are <code>R</code> and <code>RStudio</code>?<a href="r-and-rstudio-1.html#what-are-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<blockquote>
-“If R were an airplane, RStudio would be the airport…”
-<footer>
-— Julie Lowndes, Introduction to RStudio Awesomeness
-</footer>
-</blockquote>
-<p>Alternatively, <code>R</code> is the engine…</p>
-<p align="center">
-<div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mercedes_V6_DTM_Rennmotor_1996.jpg/260px-Mercedes_V6_DTM_Rennmotor_1996.jpg" style="width:50.0%" alt="" />
-<p class="caption"><code>R</code> “the engine”</p>
-</div>
-</p>
-<p>… to <code>RStudio</code>’s dashboard.</p>
-<p align="center">
-<div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Dashboard_%282%29.jpg/800px-Dashboard_%282%29.jpg" style="width:50.0%" alt="" />
-<p class="caption"><code>RStudio</code> “the dashboard</p>
-</div>
-</p>
-<p>Actually, <code>R</code> is a language, specifically, a programming language. Think of it as the way you can speak to your computer to ask it to carry out certain computations.</p>
-<p><code>RStudio</code> is an integrated development environment (IDE). This means it is basically an interface, albeit a fancy one, that makes it easier to communicate with your computer in the language <code>R</code>. The main benefit is the additional features it has that enable you to more efficiently <em>speak</em> <code>R</code>.</p>
+<p><code>R</code> is a language, specifically, a programming language. Think of it as the way you can speak to your computer to ask it to carry out certain computations. <code>RStudio</code> is an integrated development environment (IDE). This means it is basically an interface, albeit a fancy one, that makes it easier to communicate with your computer in the language <code>R</code>. The main benefit is the additional features it has that enable you to more efficiently <em>speak</em> <code>R</code>.</p>
+<p>You can think of <code>R</code> as the engine to <code>RStudio</code>’s dashboard.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mercedes_V6_DTM_Rennmotor_1996.jpg/260px-Mercedes_V6_DTM_Rennmotor_1996.jpg" style="width:50.0%" alt="R “the engine”" /><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Dashboard_%282%29.jpg/800px-Dashboard_%282%29.jpg" style="width:50.0%" alt="RStudio “the dashboard" /></p>
 <p><strong>Note</strong> <code>R</code> and <code>RStudio</code> are two <strong>different</strong> pieces of software; for this course you are expected to download both. As you’d expect, the dashboard depends on the engine (i.e., <code>RStudio</code> depends on <code>R</code>) so you have to download <code>R</code> to use <code>RStudio</code>!</p>
 <div id="why-are-you-learning-to-program" class="section level3 hasAnchor" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> Why are you learning to program?<a href="r-and-rstudio-1.html#why-are-you-learning-to-program" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The selling pitch of this course states that <em>…biological research has actually been heavily quantitative for 100+ years…</em> and promises that <em>…it is now essential for biology students to acquire skills in working with and visualising data, learning from data using models…</em>. We’re not making it up! If you need convincing that quantitative and programming skills are essential to graduate in <strong>all</strong> scientific disciplines have a read of the following.</p>
+<p>The selling pitch of this course states that <em>…biological research has actually been heavily quantitative for 100+ years…</em> and promises that <em>…it is now essential for biology students to acquire skills in working with and visualizing data, learning from data using models…</em>. We’re not making it up!</p>
+<p>If you need convincing that quantitative and programming skills are essential to graduate in <strong>all</strong> scientific disciplines have a read of the following.</p>
 <ul>
 <li><a href="http://r4stats.com/articles/popularity/">The Popularity of Data Science Software</a></li>
 <li><a href="https://datacarpentry.org/semester-biology/about/why-r/">Data Carpentry for Biologists</a></li>
 </ul>
-<p><strong>Why<code>R</code>?</strong></p>
+<p>Throughout this course we will be programming using <code>R</code>. <code>R</code> is a <strong>free</strong> <strong>open-source</strong> statistical programming language created by Ross Ihaka (of <a href="https://www.historyofdatascience.com/ross-ihaka-the-open-hearted-data-hero/">Ngati Kahungunu, Rangitane and Ngati Pakeha</a> descent) and Robert Gentleman, here at UoA in the Department of Statistics! It is widely used across many scientific fields for data analysis, visualization, and statistical modeling. Proficiency in <code>R</code> will enable you to wrangle and explore datasets, conduct statistical analyses, and create visualizations to communicate your findings. These are all essential tools required in any scientific discipline.</p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Go to the Statistics Department display in the science building foyer (building 303) to see a CD-Rom with the <strong>first</strong> ever version of <code>R</code>.</p>
+</div>
+<p><code>RStudio</code> is an integrated development environment (IDE) for the <code>R</code> programming language. It serves as a user-friendly workspace, offering additional tools for coding, data visualization, and project management. <code>RStudio</code> simplifies the process of learning <code>R</code> by providing a structured interface with many built-in tools to help organize workflow, fostering a systematic approach to data analysis and research.</p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Research the meaning of open-source software and briefly outline the pros and cons of this in the context of statistical analysis.</p>
+</div>
+</div>
+</div>
+<div id="installing-r-and-rstudio" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Installing R and RStudio<a href="r-and-rstudio-1.html#installing-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>NOTE:</strong> <code>RStudio</code> depends on <code>R</code> so there is an order you should follow when you download these software!</p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Follow the instructions below to install <code>R</code> and <code>RStudio</code>. Here are some step-by-step instructional videos you might find useful</p>
 <ul>
-<li>It’s free</li>
-<li>It’s <a href="https://opensource.com/resources/what-open-source">open source</a></li>
-<li>A general-purpose of programming language</li>
-<li>Written by statisticians (here in Auckland!)</li>
-<li>It’s available for all operating systems (Windows, Linux, and Mac)</li>
-<li>There is a huge online support network</li>
-<li>It’s extremely flexible; if you can code it you can do it! 15,000+ packages available!</li>
-<li>…</li>
-</ul>
-<p><strong>Why <code>RStudio</code>?</strong></p>
-<ul>
-<li>Speaks nicely to <code>R</code></li>
-<li>Tab completion</li>
-<li>Debugging capabilities</li>
-<li>There is a huge online support network</li>
-<li>Offers many other features and tools to make your workflow with <code>R</code> easier</li>
-<li>It facilitates <a href="https://en.wikipedia.org/wiki/Reproducibility">reproducibility</a></li>
-<li>…</li>
+<li>
+<a href="https://youtu.be/5-ly3kyxwEg">Software Carpentry install R &amp; RStudio Mac</a>
+</li>
+<li>
+<a href="https://www.youtube.com/watch?v=q0PjTAylwoU">Software Carpentry install R &amp; RStudio Windows</a>
+</li>
 </ul>
 </div>
-<div id="installing-r-and-rstudio" class="section level3 hasAnchor" number="1.1.2">
-<h3><span class="header-section-number">1.1.2</span> Installing R and RStudio<a href="r-and-rstudio-1.html#installing-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://youtu.be/5-ly3kyxwEg">Software Carpentry install R &amp; RStudio Mac</a></p>
-<p><a href="https://www.youtube.com/watch?v=q0PjTAylwoU">Software Carpentry install R &amp; RStudio Windows</a></p>
-<p><strong>NOTE:</strong> <code>RStudio</code> depends on <code>R</code> so there is an order you should follow when you download these software!</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Download and install <code>R</code></strong> by following <a href="https://cloud.r-project.org/">these instructions</a>. Make sure you choose the correct operating system; if you are unsure then please ask either a TA or myself.</p></li>
 <li><p><strong>Download and install <code>RStudio</code></strong> by <a href="https://rstudio.com/products/rstudio/download/">going here</a> choosing RStudio Desktop <em>Open Source License</em> <strong>Free</strong> and following instructions. Again if you are unsure then please ask either a TA or myself.</p></li>
@@ -344,53 +328,123 @@ Create simple plots of different types of data (e.g., continuous, discrete)
 <li>Wait a little and you should see <code>RStudio</code> open up to something similar to the screenshot below
 <img src="https://stats220.earo.me/img/rstudio-interface.png" /></li>
 <li>Pay close attention to the notes in the screenshot and familiarise yourself with the terms.</li>
-<li>Finally, in the <em>Console</em> next to the prompt type <code>1:10</code> and press enter on your keyboard. Your computer should say something back you (in the <em>Console</em>)! What do you think you were asking it to do? Does the output make sense?<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
 </ul></li>
 </ol>
-<p>If you get stuck at any of the steps above then please ask either a TA or myself. It is imperative for the rest of the course that you complete the steps above.</p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Once you have both <code>R</code> and <code>Rstudio</code> installed, in the <em>Console</em> next to the prompt type <code>1:10</code> and press enter on your keyboard. Your computer should say something back you (in the <em>Console</em>)! What do you think you were asking it to do? Does the output make sense?<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div>
 </div>
-<div id="getting-started-with-r" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Getting started with <code>R</code><a href="r-and-rstudio-1.html#getting-started-with-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Open up <code>RStudio</code> from your computer menu, the icon will look something like this <img src="https://vectorified.com/images/rstudio-icon-31.png" style="width:7.0%" />. Using the diagram above to identify the different panes:</p>
+<div id="getting-started-with-r" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Getting started with <code>R</code><a href="r-and-rstudio-1.html#getting-started-with-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Open up <code>RStudio</code> from your computer menu, the icon will look something like this <img src="https://vectorified.com/images/rstudio-icon-31.png" style="width:7.0%" />. Identify the following panes</p>
 <ul>
-<li><em>Console</em> where you directly type command in and communicate with your computer (via the language <code>R</code>).</li>
-<li><em>Environment pane</em></li>
-<li><em>Files pane</em></li>
+<li><strong>Console Pane</strong>: The console is where you can directly interact with R. You can type and execute R commands line by line, and the results will be displayed in the console pane. It’s an interactive space for immediate feedback and testing.</li>
+<li><strong>Environment/History Pane</strong>: This pane provides information about the current <code>R</code> environment, including a list of variables, data frames, and other objects in your workspace. It also shows the history of commands that you have executed in the console.</li>
+<li><strong>Files/Plots/Packages/Help Pane</strong>: This pane is a multi-purpose pane that can display different tabs depending on your current activity. It can show the file structure of your project, display plots and visualizations, provide information about installed packages, and offer help documentation.</li>
 </ul>
-<p><strong>Some terminology</strong></p>
-<ul>
-<li><em>Running</em> code: the act of telling R to perform an act by giving it commands in the console.</li>
-<li><em>Objects</em>: where values are saved in (see later for creating an <em>object</em>.</li>
-<li><em>Script</em>: a text file containing a set of commands and comments.</li>
-<li><em>Comments</em>: notes written within a <em>Script</em> to better document/explain what’s happening</li>
-</ul>
-<div id="r-scripts-a-.r-file" class="section level3 hasAnchor" number="1.2.1">
-<h3><span class="header-section-number">1.2.1</span> R <em>Script</em>s (a <code>.r</code> file)<a href="r-and-rstudio-1.html#r-scripts-a-.r-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>These three panes will likely be the ones to appear by default. There is a fourth pane, one which you will have to open yourself. This is the <strong>Code/Source Pane</strong> and is where you can write, edit, and save your <code>R</code> script or code files. It’s the primary workspace for creating and modifying your <code>R</code> code.</p>
+<div id="the-codesource-pane" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> The Code/Source Pane<a href="r-and-rstudio-1.html#the-codesource-pane" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>R <em>Script</em>s (a <code>.r</code> file)</strong></p>
 <p>Go <strong>File</strong> &gt; <strong>New File</strong> &gt; <strong>R Script</strong> to open up a new <em>Script</em></p>
 <p>If you had only three panes showing before, a new (fourth) pane should open up in the top left of <code>RStudio</code>. This file will have a <code>.r</code> extension and is where you can write, edit, and save the <code>R</code> commands you write. It’s a dedicated text editor for your <code>R</code> code (very useful if you want to save your code to run at a later date). The main difference between typing your code into a <em>Script</em> vs <em>Console</em> is that you edit it and save it for later! Remember though the <em>Console</em> is the pane where you communicate with your computer so all code you write will have to be <em>Run</em> here. There are two ways of <em>running</em> a line of code you’ve written in your <em>Script</em></p>
 <ul>
 <li>Ensure your cursor is on the line of code you want to run, hold down <strong>Ctrl</strong> and press <strong>Enter</strong>.</li>
 <li>Ensure your cursor is on the line of code you want to run, then use your mouse to click the Run button (it has a green arrow next to it) on the top right of the <em>Script</em> pane.</li>
 </ul>
-<p>Type <code>1:10</code> in your <em>Script</em> and practise <em>running</em> this line of code using both methods above. Not that if you’ve <em>Run</em> the code successfully then your computer will speak back to you each time via the <em>Console</em></p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Type <code>1:10</code> in your <em>Script</em> and practise <em>running</em> this line of code using both methods above. Not that if you’ve <em>Run</em> the code successfully then your computer will speak back to you each time via the <em>Console</em>]</p>
 </div>
-<div id="writing-comments" class="section level3 hasAnchor" number="1.2.2">
-<h3><span class="header-section-number">1.2.2</span> Writing <em>Comments</em><a href="r-and-rstudio-1.html#writing-comments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="r-basics" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> <code>R</code> basics<a href="r-and-rstudio-1.html#r-basics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Script</code></td>
+<td>A file containing a series of <code>R</code> commands and code that can be executed sequentially.</td>
+</tr>
+<tr class="even">
+<td><code>Source</code></td>
+<td>To execute the entire content of an <code>R</code> script, often done using the “Source” button in <code>RStudio</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>Running Code</code></td>
+<td>The process of executing <code>R</code> commands or scripts to perform specific tasks and obtain results.</td>
+</tr>
+<tr class="even">
+<td><code>Console</code></td>
+<td>The interactive interface in <code>RStudio</code> where <code>R</code> commands can be entered and executed line by line.</td>
+</tr>
+<tr class="odd">
+<td><code>Commenting</code></td>
+<td>Adding comments to the code using the <code>#</code> symbol to provide explanations or annotations. Comments are ignored during code execution.</td>
+</tr>
+<tr class="even">
+<td><code>Assignment Operator</code></td>
+<td>The symbol <code>&lt;-</code> or <code>=</code> used to assign values to variables in <code>R</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>Variable</code></td>
+<td>A named storage location for data in <code>R</code>, which can hold different types of values.</td>
+</tr>
+<tr class="even">
+<td><code>Data Type</code></td>
+<td>The classification of data into different types, such as numeric, character, logical, etc.</td>
+</tr>
+<tr class="odd">
+<td><code>Object</code></td>
+<td>A data structure that holds a specific type of data. Objects are used to store and manipulate data, and they can take various forms depending on the type of information being represented.</td>
+</tr>
+<tr class="even">
+<td><code>Logical Operator</code></td>
+<td>Symbols like <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and <code>&gt;=</code> used for logical comparisons in conditional statements.</td>
+</tr>
+<tr class="odd">
+<td><code>Function</code></td>
+<td>A block of reusable code that performs a specific task when called (e.g., <code>mean(c(3, 4))</code>.</td>
+</tr>
+<tr class="even">
+<td><code>Argument</code></td>
+<td>The input values that are passed to the function when it is called.</td>
+</tr>
+<tr class="odd">
+<td><code>Error Handling</code></td>
+<td>The process of anticipating, detecting, and handling errors that may occur during code execution.</td>
+</tr>
+<tr class="even">
+<td><code>Debugging</code></td>
+<td>The process of identifying and fixing errors or bugs in the code.</td>
+</tr>
+<tr class="odd">
+<td><code>Workspace</code></td>
+<td>The current working environment in <code>R</code>, which includes loaded data, variables, and functions.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Commenting</strong></p>
 <p><em>Comments</em> are notes to yourself (future or present) or to someone else and are, typically, written interspersed in your code. Now, the comments you write will typically be in a language your computer doesn’t understand (e.g., English). So that you can write yourself notes in your <em>Script</em> you need to tell your computer using the <code>R</code> language to ignore them. To do this precede any note you write with #, see below. The # is <code>R</code> for <em>ignore anything after this character</em>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-and-rstudio-1.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## IGNORE ME</span></span>
-<span id="cb6-2"><a href="r-and-rstudio-1.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## I&#39;m a comment</span></span>
-<span id="cb6-3"><a href="r-and-rstudio-1.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">## I repeat I&#39;m a comment</span></span>
-<span id="cb6-4"><a href="r-and-rstudio-1.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">## I am not a cat</span></span>
-<span id="cb6-5"><a href="r-and-rstudio-1.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">## OK let&#39;s run some code</span></span>
-<span id="cb6-6"><a href="r-and-rstudio-1.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-and-rstudio-1.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## IGNORE ME</span></span>
+<span id="cb3-2"><a href="r-and-rstudio-1.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## I&#39;m a comment</span></span>
+<span id="cb3-3"><a href="r-and-rstudio-1.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="do">## I repeat I&#39;m a comment</span></span>
+<span id="cb3-4"><a href="r-and-rstudio-1.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">## I am not a cat</span></span>
+<span id="cb3-5"><a href="r-and-rstudio-1.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## OK let&#39;s run some code</span></span>
+<span id="cb3-6"><a href="r-and-rstudio-1.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="r-and-rstudio-1.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Hmm maybe I should check this</span></span>
-<span id="cb8-2"><a href="r-and-rstudio-1.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">## @kareem_carr ;-)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-and-rstudio-1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Hmm maybe I should check this</span></span>
+<span id="cb5-2"><a href="r-and-rstudio-1.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## @kareem_carr ;-)</span></span></code></pre></div>
 <p>Now remember when you want to leave your <code>R</code> session you’ll need to <strong>Save</strong> your <em>Script</em> to use it again. To do this go <strong>File</strong> &gt; <strong>Save As</strong> and name your file what you wish (remember too to choose a relevant folder on your computer, or as recommended use the <code>.Rproj</code> set-up as above).</p>
-</div>
-<div id="data-types" class="section level3 hasAnchor" number="1.2.3">
-<h3><span class="header-section-number">1.2.3</span> Data types<a href="r-and-rstudio-1.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Data types</strong></p>
 <p align="center">
 <img src="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/continuous_discrete.png" style="width:40.0%" />
 </p>
@@ -404,98 +458,66 @@ Artwork by <a href="https://github.com/allisonhorst/">@allison_horst</a>
 <li><strong>Logical</strong> values are either TRUE or FALSE. These are classified <code>"logical"</code> or <code>lgl</code> in <code>R</code>.</li>
 <li><strong>Characters</strong> are text such as “Charlotte”, “BIOSCI220”, and “Statistics is the greatest subject ever”. Note that characters are denoted with the quotation marks around them and are classified <code>"character"</code> or <code>chr</code> in <code>R</code>.</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-and-rstudio-1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## As an example we&#39;re going to ask our computer, using R, what it classified the character string &quot;Charlotte&quot; as</span></span>
-<span id="cb9-2"><a href="r-and-rstudio-1.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;Charlotte&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-and-rstudio-1.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## As an example we&#39;re going to ask our computer, using R, what it classified the character string &quot;Charlotte&quot; as</span></span>
+<span id="cb6-2"><a href="r-and-rstudio-1.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;Charlotte&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-</div>
-<div id="creating-objects" class="section level3 hasAnchor" number="1.2.4">
-<h3><span class="header-section-number">1.2.4</span> Creating <em>Objects</em><a href="r-and-rstudio-1.html#creating-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><em>Objects</em> are created values using the symbols <code>&lt;-</code> (an arrow formed out of <code>&lt;</code> and <code>-</code>). Like we, typically, write an equation the left-hand side is the <em>Object</em> we’re defining (creating) and the right-hand side is the stuff we’re defining it as. For example, below I’m creating the <em>Object</em> <code>my_name</code> and assigning it the character string of my first name.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-and-rstudio-1.html#cb11-1" aria-hidden="true" tabindex="-1"></a>my_name <span class="ot">&lt;-</span> <span class="st">&quot;Charlotte&quot;</span></span></code></pre></div>
+<p><strong>Creating Objects</strong></p>
+<p><em>Objects</em> are created (or <em>assigned</em>) values using the symbols <code>&lt;-</code> (an arrow formed out of <code>&lt;</code> and <code>-</code>). Like we, typically, write an equation the left-hand side is the <em>Object</em> we’re defining (creating) and the right-hand side is the stuff we’re defining it as. For example, below I’m creating the <em>Object</em> <code>my_name</code> and assigning it the character string of my first name.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="r-and-rstudio-1.html#cb8-1" aria-hidden="true" tabindex="-1"></a>my_name <span class="ot">&lt;-</span> <span class="st">&quot;Charlotte&quot;</span></span></code></pre></div>
 <p>So now the Object <code>my_name</code> ‘contains’ the value <code>"Charlotte"</code>. Another assignment to the same object will overwrite the content.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-and-rstudio-1.html#cb12-1" aria-hidden="true" tabindex="-1"></a>my_name <span class="ot">&lt;-</span> <span class="st">&quot;Moragh&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-and-rstudio-1.html#cb9-1" aria-hidden="true" tabindex="-1"></a>my_name <span class="ot">&lt;-</span> <span class="st">&quot;Moragh&quot;</span></span></code></pre></div>
 <p>To check the content of an <em>Object</em> you can simply as your computer to print it out for you (in <code>R</code>).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-and-rstudio-1.html#cb13-1" aria-hidden="true" tabindex="-1"></a>my_name</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-and-rstudio-1.html#cb10-1" aria-hidden="true" tabindex="-1"></a>my_name</span></code></pre></div>
 <pre><code>## [1] &quot;Moragh&quot;</code></pre>
 <p><em>Note</em>: <code>R</code> is case sensitive: it treats <code>my_name</code> and <code>My_Name</code> as <strong>different</strong> objects.</p>
 <p>An object can be assigned a collection of things:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-and-rstudio-1.html#cb15-1" aria-hidden="true" tabindex="-1"></a>my_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Charlotte&quot;</span>, <span class="st">&quot;Moragh&quot;</span>, <span class="st">&quot;Jones-Todd&quot;</span>)</span>
-<span id="cb15-2"><a href="r-and-rstudio-1.html#cb15-2" aria-hidden="true" tabindex="-1"></a>my_names</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-and-rstudio-1.html#cb12-1" aria-hidden="true" tabindex="-1"></a>my_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Charlotte&quot;</span>, <span class="st">&quot;Moragh&quot;</span>, <span class="st">&quot;Jones-Todd&quot;</span>)</span>
+<span id="cb12-2"><a href="r-and-rstudio-1.html#cb12-2" aria-hidden="true" tabindex="-1"></a>my_names</span></code></pre></div>
 <pre><code>## [1] &quot;Charlotte&quot;  &quot;Moragh&quot;     &quot;Jones-Todd&quot;</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-and-rstudio-1.html#cb17-1" aria-hidden="true" tabindex="-1"></a>some_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">13</span>,<span class="dv">45</span>,<span class="dv">90</span>)</span>
-<span id="cb17-2"><a href="r-and-rstudio-1.html#cb17-2" aria-hidden="true" tabindex="-1"></a>some_numbers</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="r-and-rstudio-1.html#cb14-1" aria-hidden="true" tabindex="-1"></a>some_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">13</span>,<span class="dv">45</span>,<span class="dv">90</span>)</span>
+<span id="cb14-2"><a href="r-and-rstudio-1.html#cb14-2" aria-hidden="true" tabindex="-1"></a>some_numbers</span></code></pre></div>
 <pre><code>## [1]  1  4  5 13 45 90</code></pre>
 <p>An <em>Object</em> can also be an entire dataset (see later in this section)!</p>
-</div>
-<div id="r-functions" class="section level3 hasAnchor" number="1.2.5">
-<h3><span class="header-section-number">1.2.5</span> <code>R</code> functions<a href="r-and-rstudio-1.html#r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Functions (or commands) perform tasks in R. They take in inputs called <em>arguments</em> and return outputs. You can either manually specify a function’s arguments or use the function’s default values. For example, the function <code>seq()</code> in R generates a sequence of numbers. If you just run <code>seq()</code> it will return the value 1. That doesn’t seem very useful! This is because the default arguments are set as <code>seq(from = 1, to = 1)</code>. Thus, if you don’t pass in different values for from and to to change this behaviour, your computer just assumes all you want is the number 1. You can change the argument values by updating the values after the <code>=</code> sign. If we try out <code>seq(from = 2, to = 5)</code> we get the result <code>r</code>seq(from = 2, to = 5)` that we might expect.</p>
-</div>
-<div id="r-packages" class="section level3 hasAnchor" number="1.2.6">
-<h3><span class="header-section-number">1.2.6</span> <code>R</code> packages<a href="r-and-rstudio-1.html#r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong><code>R</code> functions</strong></p>
+<p>Functions (or commands) perform tasks in R. They take in inputs called <em>arguments</em> and return outputs. Functions often have both mandatory and optional arguments: mandatory arguments must be provided for the function to execute correctly, while optional arguments have default values but can be customized by the user. You can either manually specify a function’s arguments or use the function’s default values. For example, the function <code>seq()</code> in R generates a sequence of numbers. If you just run <code>seq()</code> it will return the value 1. That doesn’t seem very useful! This is because the default arguments are set as <code>seq(from = 1, to = 1)</code>. Thus, if you don’t pass in different values for from and to to change this behaviour, your computer just assumes all you want is the number 1. You can change the argument values by updating the values after the <code>=</code> sign. If we try out <code>seq(from = 2, to = 5)</code> we get the result <code>r</code>seq(from = 2, to = 5)` that we might expect.</p>
+<p><strong><code>R</code> packages</strong></p>
 <p>An <code>R</code> <em>package</em> is simply a collection of functions! Typically all focused on a particular type of procedure.</p>
 <p>The base installation of <code>R</code> comes with many useful packages as standard and these packages will contain many of the functions you will use on a daily basis (e.g., <code>mean()</code>, <code>length()</code>). However, often we wish to do more than base <code>R</code> offer! To do this we need to access all the other amazing packages there are in the <code>R</code>verse.</p>
 <p align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Interior_view_of_Stockholm_Public_Library.jpg/800px-Interior_view_of_Stockholm_Public_Library.jpg" style="width:30.0%" />
 </p>
-<p>CRAN is like a centralised library with thousands of books in stock.</p>
+<p>The <a href="https://cran.r-project.org/">Comprehensive R Archive Network(CRAN)</a> is like a centralised library with thousands of books (packages) in stock.</p>
 <p>To access the contents of a book (package) you first need to request it for (install it into) your local library (your computer)</p>
 <p align="center">
 <img src="https://images.ctfassets.net/pwv49hug9jad/6nubl8JUsMvwqW6FAGaqV9/f8bff26d339059d8d73ba77924d835b7/reading-rooms-feature-image-8.jpg" style="width:30.0%" />
 </p>
 <p>Your can only access books in your local library.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-and-rstudio-1.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;the.package.name&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-and-rstudio-1.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;the.package.name&#39;</span>)</span></code></pre></div>
 <p align="center">
 <img src="https://www.dnb.de/SharedDocs/Bilder/EN/Buehnen/professionell_umgangMitMedien_buehne.jpg?__blob=normal&amp;v=2" style="width:30.0%" />
 </p>
 <p>To access the knowledge in a particular book (use the function is the package) you need to tell your computer via <code>R</code> to go get the book of the shelf. Then you have access to all the functions it contains!</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="r-and-rstudio-1.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(the.package.name)</span></code></pre></div>
-</div>
-<div id="r-errors" class="section level3 hasAnchor" number="1.2.7">
-<h3><span class="header-section-number">1.2.7</span> <code>R</code> Errors<a href="r-and-rstudio-1.html#r-errors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Sometimes rather than doing what you expect it to your computer will return an Error message to you via the <em>Console</em> prefaced with **Error in…* followed by text that will try to explain what went wrong. This, generally, means something has gone wrong, so what do you do?</p>
-<ul>
-<li><p><strong>Read it</strong>! THE MESSAGES ARE WRITTEN IN PLAIN ENGLISH (MOSTLY)</p></li>
-<li><p><strong>DO NOT</strong> continue running bits of code hoping the issue will go away. IT WILL NOT.</p></li>
-<li><p>Try and work out what it means and fix it by:</p>
-<ul>
-<li>reading the documentation, see []</li>
-<li>search or ask questions on <a href="https://stackoverflow.com/">Stack Overflow</a> or <a href="https://community.rstudio.com/">RStudio Community</a></li>
-</ul></li>
-</ul>
-<p>Sometimes your computer will return a warning messages to you prefaced “Warning:”. These can sometimes be ignored as they may not affect us. However, READ THE MESSAGE and decide for yourself. Occasionally, also your computer will write you a friendly message, just keeping you up-to date with what it’s doing, again don’t ignore these they might be telling you something useful!</p>
-</div>
-<div id="working-directories" class="section level3 hasAnchor" number="1.2.8">
-<h3><span class="header-section-number">1.2.8</span> Working directories<a href="r-and-rstudio-1.html#working-directories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p align="center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/678111-map-marker-512.png?20190701063300" style="width:30.0%" />
-</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-and-rstudio-1.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(the.package.name)</span></code></pre></div>
+<p><strong>Working directories</strong></p>
 <p>You need to tell your computer where to look!</p>
 <p>Look at the top of your <em>Console</em>. You will see something like <em>~/Desktop/</em> or <em>C://Users/…</em> (it won’t be an exact match of course). This is the ‘address’ of where your computer is looking. Now, run <code>getwd()</code> and see what output you get (it will be the same as written on the top of your <em>Console</em> pane. This is because <code>getwd()</code> stands for <strong>get</strong> the current <strong>w</strong>orking<strong>d</strong>irectory (i.e., the current directory you are currently <em>working</em> in) e.g.,</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="r-and-rstudio-1.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-and-rstudio-1.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/home/runner/work/BIOSCI220/BIOSCI220&quot;</code></pre>
 <p>You should ensure that you are aware of which directory you’re working in (which folder <code>RStudio</code> is looking in by default) as this is important later on when we come to reading in files and saving our work!</p>
-<div id="changing-address" class="section level4 hasAnchor" number="1.2.8.1">
-<h4><span class="header-section-number">1.2.8.1</span> Changing address…<a href="r-and-rstudio-1.html#changing-address" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>So you’re not where you want to be!</p>
+<p>What if you’re not where you want to be (i.e., you are looking in the wrong folder)?</p>
 <p>Click <strong>Session</strong> &gt; <strong>Set Working Directory</strong> &gt; <strong>Choose Directory</strong> &gt; <em>Chose where you want to go</em></p>
 <p>Now notice that something has been written in your <em>Console</em> something similar to <code>setwd("~/Git/BIOSCI220/data")</code>. Now <code>setwd()</code> stands for <strong>set</strong> your <strong>w</strong>orking<strong>d</strong>irectory. If you know the address of the directory you want to work in without having to point-and-click you could use this command directly, in this case you’ve used the point-and-click to do it and RStudio has helpfully written out your choices as an <code>R</code> command.</p>
-</div>
-</div>
-<div id="getting-help" class="section level3 hasAnchor" number="1.2.9">
-<h3><span class="header-section-number">1.2.9</span> Getting help<a href="r-and-rstudio-1.html#getting-help" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p align="center">
-<img src="https://r-coder.com/wp-content/uploads/2020/03/help-r.png" style="width:30.0%" />
-</p>
-<p>Let’s say we want to learn more about the function <code>mean()</code> (we can take a wild guess at what it calculates, but… what if we didn’t know for sure. There are two ways we can ask within <code>RStudio</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="r-and-rstudio-1.html#cb23-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">mean</span>()</span></code></pre></div>
+<p><strong>Getting help</strong></p>
+<p>How do we know what a function does? Let’s say we want to learn more about the function <code>mean()</code> (we can take a wild guess at what it calculates, but… what if we didn’t know for sure. There are two ways we can ask within <code>RStudio</code></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="r-and-rstudio-1.html#cb20-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">mean</span>()</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="r-and-rstudio-1.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code></pre></div>
-<p>Try both and see what pops up in your right-hand bottom pane!</p>
-<p>Failing that <a href="https://www.google.com/">Google</a> is (often) your friend.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="r-and-rstudio-1.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code></pre></div>
+<p>The code above will open up the official <code>R</code> documentation (or man pages) for the function <code>mean()</code>. Every function has a corresponding <em>man page</em> that provides comprehensive information on its usage, required arguments, return value, and often gives user examples. You should always consult the documentation to ensure that what you believe you are asking is indeed what you are asking your computer to do.</p>
 </div>
-<div id="reading-in-data-from-a-.csv-file" class="section level3 hasAnchor" number="1.2.10">
-<h3><span class="header-section-number">1.2.10</span> Reading in data from a <code>.csv</code> file<a href="r-and-rstudio-1.html#reading-in-data-from-a-.csv-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="dealing-with-data" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Dealing with data<a href="r-and-rstudio-1.html#dealing-with-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Reading in data from a <code>.csv</code> file</strong></p>
 <p>First off download the <code>paua.csv</code> file from <a href="https://github.com/STATS-UOA/databunker/blob/master/data/paua.csv">this link</a> onto your computer (remember which folder you saved it in!)</p>
 <p>This dataset contains the following variables</p>
 <ul>
@@ -505,20 +527,19 @@ Artwork by <a href="https://github.com/allisonhorst/">@allison_horst</a>
 <em>Haliotis australis</em> (less commonly found in NZ)</li>
 </ul>
 <p>To read the data into <code>RStudio</code></p>
-<p>In the <em>Environment</em> pane click <strong>Import Dataset</strong> &gt; ** From Text (readr)** &gt; <strong>Browse</strong> &gt; <em>Choose your file, remembering which folder you downloaded it to</em> &gt; <em>Another pane should pop up, check the data looks as you might expect</em> &gt; <strong>Import</strong></p>
+<p>In the <em>Environment</em> pane click <strong>Import Dataset</strong> &gt; <strong>From Text (readr)</strong> &gt; <strong>Browse</strong> &gt; <em>Choose your file, remembering which folder you downloaded it to</em> &gt; <em>Another pane should pop up, check the data looks as you might expect</em> &gt; <strong>Import</strong></p>
 <p>You should now notice that in the <em>Environment</em> pane there is something listed under <em>Data</em> (this is the name of the data.frame <em>Object</em> containing the data we will explore)</p>
 <p>Now notice how in the <em>Console</em> a few lines of code have been added. These are the commands you were telling your computer via the point-and-click procedure you went through! Notice the character string inside <code>read_csv()</code>… This is the full ‘address’ of your data (the folder you saved it in). When you tell your computer to look for something you need to tell it exactly where it is! Remember the <code>getwd()</code> command above, this tells you the default location <code>RStudio</code> will look for a file, if your file is not in this folder you have to tell it the <strong>full</strong> address.</p>
 <p>Alternatively we could read this data directly into <code>R</code> using the URL (and the <code>readr</code> package, which is part of the <code>tidyverse</code> collection):</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="r-and-rstudio-1.html#cb25-1" aria-hidden="true" tabindex="-1"></a>paua <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/paua.csv&quot;</span>)</span></code></pre></div>
-</div>
-<div id="using-functions-to-look-at-the-data" class="section level3 hasAnchor" number="1.2.11">
-<h3><span class="header-section-number">1.2.11</span> Using functions to look at the data<a href="r-and-rstudio-1.html#using-functions-to-look-at-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="r-and-rstudio-1.html#cb22-1" aria-hidden="true" tabindex="-1"></a>paua <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/paua.csv&quot;</span>)</span></code></pre></div>
+<div id="using-functions-to-look-at-the-data" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Using functions to look at the data<a href="r-and-rstudio-1.html#using-functions-to-look-at-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Automatically <code>RStudio</code> has run the command <code>View()</code> for you. This makes your dataset show itself in the top left pane. It’s like looking at the data in Excel. Follow along with the commands below, I recommend that you open up a new <em>Script</em> and use that to write and save your commands for later. Don’t forget to ensure you have read the <strong>paua</strong> into your session (all commands below assume that your data <em>Object</em> is called <code>paua</code>, if you’ve called it something different then just replace <code>paua</code> with whatever you’ve called it below.</p>
 <p>Now let’s go ahead and use some functions to ask and answer questions about our data. The first thing you should <strong>always</strong> do is view any data frames you import.</p>
 <ul>
 <li>Let’s have a look at your data in the <em>Console</em></li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="r-and-rstudio-1.html#cb26-1" aria-hidden="true" tabindex="-1"></a>paua</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="r-and-rstudio-1.html#cb23-1" aria-hidden="true" tabindex="-1"></a>paua</span></code></pre></div>
 <pre><code>## # A tibble: 60 × 3
 ##    Species            Length   Age
 ##    &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;
@@ -547,12 +568,12 @@ Artwork by <a href="https://github.com/allisonhorst/">@allison_horst</a>
 <ul>
 <li>Using the <code>View()</code> command (recall from above) to scroll through the data in a pop-up viewer</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="r-and-rstudio-1.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(paua)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="r-and-rstudio-1.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(paua)</span></code></pre></div>
 <ul>
 <li>Using the <code>glimpse()</code> command from the <code>dplyr</code> package for an alternative view</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="r-and-rstudio-1.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb29-2"><a href="r-and-rstudio-1.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(paua)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="r-and-rstudio-1.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb26-2"><a href="r-and-rstudio-1.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(paua)</span></code></pre></div>
 <pre><code>## Rows: 60
 ## Columns: 3
 ## $ Species &lt;chr&gt; &quot;Haliotis iris&quot;, &quot;Haliotis australis&quot;, &quot;Haliotis australis&quot;, &quot;…
@@ -560,7 +581,102 @@ Artwork by <a href="https://github.com/allisonhorst/">@allison_horst</a>
 ## $ Age     &lt;dbl&gt; 1.497884, 11.877010, 5.416991, 4.497799, 5.500789, 2.500972, 6…</code></pre>
 <p><code>glimpse()</code> will give you the first few entries of each variable in a row after the variable name. Note also, that the data type of the variable is given immediately after each variables name inside <code>&lt; &gt;</code>.</p>
 <div class="alert alert-warning">
-<p><strong>TODO!</strong> Try making as many errors as you can…</p>
+<p><strong>TODO!</strong> Try running the following operations on the <code>paua</code> data object. What do you think each is asking?</p>
+<ul>
+<li><code>head(paua)</code></li>
+<li><code>tail(paua)</code></li>
+<li><code>paua[1:10,]</code></li>
+<li><code>paua[,2]</code></li>
+<li><code>paua$Age</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="error-handling-and-debugging" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Error handling and debugging<a href="r-and-rstudio-1.html#error-handling-and-debugging" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sometimes rather than doing what you expect it to your computer will return an Error message to you via the <em>Console</em> prefaced with <strong>Error in…</strong> followed by text that will try to explain what went wrong. This, generally, means something has gone wrong, so what do you do?</p>
+<ol style="list-style-type: decimal">
+<li><strong>Read it</strong>! THE MESSAGES ARE WRITTEN IN PLAIN ENGLISH (MOSTLY)</li>
+<li><strong>DO NOT</strong> continue running bits of code hoping the issue will go away. IT WILL NOT.</li>
+<li>Try and work out what it means and fix it (some tips below).</li>
+</ol>
+<p>Interpreting <code>R</code> errors is an invaluable skill! The error messages are designed to be clear and informative. They aim to tell might be going wrong in the code. These messages typically contain information about the type of error hinting at how you might fix it. For example, if there is a typo in a function or variable name, <code>R</code> will produce an error like <code>"Error: object 'variable_name' not found.</code>” This suggests that <code>R</code> couldn’t find the specified object <code>variable_name</code>.</p>
+<p>Understanding error messages involves paying attention to the details, such as the error type (e.g., syntax error, object not found, etc.), and the specific line number where the error occurred! You should always run your code line-by-line, especially if you are new to programming. This means that the execution of each line of code is done in in isolation, providing immediate feedback and pinpointing the exact location where an error occurs. If the meaning or solution to an error isn’t immediately obvious then make use of the documentation (RTFM) and even technology. Online platforms like <a href="https://stackoverflow.com/">Stack Overflow</a> or RStudio Community](<a href="https://community.rstudio.com/" class="uri">https://community.rstudio.com/</a>) and interactive platforms like <a href="https://chat.openai.com/">ChatGPT</a> can often be your friend! It is very unlikely that you are the first one to have encountered the error and some kind soul with have posted a solution online (which the AI bot will have scraped…). However, it’s crucial to approach online answers carefully. You need to first understand the context of your error and use your knowledge about your issue to figure out if the solution is applicable (this gets easier with experience).</p>
+<p>It is always best to try debugging yourself before blindly following a stranger’s advice. Debugging is a crucial aspect of <code>R</code> programming and the process itself helps solidify your understanding. There are several widely used methods that help identify and resolve issues in your code, two are outlined below.</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Debugging"><strong>Print debugging</strong></a> involves actively printing out objects and asking the software to display variable values or check the flow of execution. For example, if you get this error message <code>"Error: object 'variable_name' not found.</code> I might ask <code>R</code> to print out what objects do exist in my workspace, it could be that a previous typo means that the object <code>variable_nam</code> exists.</li>
+</ul>
+<p>+<a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging"><strong>Rubber duck debugging</strong></a> is a useful debugging strategy where you explain your code or problem out loud (as if explaining it to a rubber duck). Honestly it works! The process helps clarify your thoughts and identify issues even before seeking external help.</p>
+<p>The table below summaries some common <code>R</code> issues and errors and the solution.</p>
+<table>
+<colgroup>
+<col width="17%" />
+<col width="40%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Error/Issue</th>
+<th>Description</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Syntax Error</strong></td>
+<td>Incorrect use of <code>R</code> syntax, such as missing or mismatched parentheses, braces, or quotes.</td>
+<td>Carefully review the code, check for missing or mismatched symbols, and ensure proper syntax is used.</td>
+</tr>
+<tr class="even">
+<td><strong>Object Not Found</strong></td>
+<td>Attempting to use a variable or function that hasn’t been defined or loaded into the workspace.</td>
+<td>Check for typos in variable or function names, ensure the object is created or loaded, and use correct names.</td>
+</tr>
+<tr class="odd">
+<td><strong>Package Not Installed/Loaded</strong></td>
+<td>Trying to use a function from a package that is not installed or loaded into the environment.</td>
+<td>Install the required package using <code>install.packages("package_name")</code>, and load it using <code>library(package_name)</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>Undefined Function/Variable</strong></td>
+<td>Using a function or variable that hasn’t been defined or is out of scope.</td>
+<td>Define the function or variable, or check its scope within the code.</td>
+</tr>
+<tr class="odd">
+<td><strong>Data Type Mismatch</strong></td>
+<td>Operating on data of incompatible types, such as performing arithmetic on character data.</td>
+<td>Ensure that data types are compatible, and consider using functions like <code>as.numeric()</code> or <code>as.character()</code> for conversions.</td>
+</tr>
+<tr class="even">
+<td><strong>Misuse of Assignment Operator</strong></td>
+<td>Using the wrong assignment operator (<code>=</code> instead of <code>&lt;-</code> or vice versa).</td>
+<td>Be consistent with the assignment operator, and use <code>&lt;-</code> for assignment in most cases.</td>
+</tr>
+<tr class="odd">
+<td><strong>Missing Data</strong></td>
+<td>Dealing with missing values in the data, leading to errors in calculations or visualizations.</td>
+<td>Handle missing data appropriately, using functions like <code>na.omit()</code> or <code>complete.cases()</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>Index Out of Bounds</strong></td>
+<td>Attempting to access an element in a vector or data frame using an index that is out of range.</td>
+<td>Check the length of the vector or data frame and ensure the index is within bounds.</td>
+</tr>
+<tr class="odd">
+<td><strong>Failure to Load a File</strong></td>
+<td>Issues with loading a data file using functions like <code>read.csv()</code> or <code>read.table()</code>.</td>
+<td>Check the file path, file format, and encoding. Confirm that the file exists in the specified location.</td>
+</tr>
+<tr class="even">
+<td><strong>Incorrect Function Arguments</strong></td>
+<td>Providing incorrect arguments or parameters to a function, leading to errors.</td>
+<td>Refer to the function’s documentation to understand the correct parameters and ensure proper usage.</td>
+</tr>
+</tbody>
+</table>
+<p>Sometimes your computer will return a warning messages to you prefaced “Warning:”. These can sometimes be ignored as they may not affect us. However, READ THE MESSAGE and decide for yourself. Occasionally, also your computer will write you a friendly message, just keeping you up-to date with what it’s doing, again don’t ignore these they might be telling you something useful!</p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Keep a bug diary! Each time you get an error message, see if you can solve it and keep a diary of your attempts and solution.</p>
 </div>
 <div class="alert alert-info" role="alert">
 <p><img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" /></p>
@@ -587,7 +703,6 @@ Artwork by <a href="https://github.com/allisonhorst/">@allison_horst</a>
 </ul>
 </div>
 
-</div>
 </div>
 </div>
 <div class="footnotes">

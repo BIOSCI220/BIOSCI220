@@ -152,12 +152,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html"><i class="fa fa-check"></i><b>1</b> <code>R</code> and <code>RStudio</code></a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#what-are-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What are <code>R</code> and <code>RStudio</code>?</a></li>
-<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.2</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.3</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.4" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#dealing-with-data"><i class="fa fa-check"></i><b>1.4</b> Dealing with data</a></li>
+<li class="chapter" data-level="1.5" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#error-handling-and-debugging"><i class="fa fa-check"></i><b>1.5</b> Error handling and debugging</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data wrangling and manipulation</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-eda"><i class="fa fa-check"></i><b>2.1</b> Exploratory Data Analysis (EDA)</a></li>
+<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-and-data-wrangling-in-the-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Exploratory data analysis and data wrangling in the Tidyverse</a></li>
 <li class="chapter" data-level="2.2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#data-visualisation"><i class="fa fa-check"></i><b>2.2</b> Data Visualisation</a></li>
+<li class="chapter" data-level="2.3" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#plotting-using-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Plotting using <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.4" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#bringing-things-together"><i class="fa fa-check"></i><b>2.4</b> Bringing things together</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-practice.html"><a href="data-practice.html"><i class="fa fa-check"></i><b>3</b> Data practice</a>
 <ul>
@@ -283,10 +288,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>Species</code> of P<span class="math inline">\(\overline{\text{a}}\)</span>ua: <em>Haliotis iris</em> (Blackfoot p<span class="math inline">\(\overline{\text{a}}\)</span>ua) and
 <em>Haliotis australis</em> (Yellowfoot p<span class="math inline">\(\overline{\text{a}}\)</span>ua) - both endemic to NZ</li>
 </ul>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb85-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb85-2" aria-hidden="true" tabindex="-1"></a>paua <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;paua.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb84-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb84-2" aria-hidden="true" tabindex="-1"></a>paua <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;paua.csv&quot;</span>)</span></code></pre></div>
 <p>It is a good idea to check our data set has imported into <code>R</code> correctly and is how we expect it to look</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(paua)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(paua)</span></code></pre></div>
 <pre><code>## Rows: 60
 ## Columns: 3
 ## $ Species &lt;chr&gt; &quot;Haliotis iris&quot;, &quot;Haliotis australis&quot;, &quot;Haliotis australis&quot;, &quot;…
@@ -296,7 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="one-sample-t-test" class="section level3 hasAnchor" number="6.2.3">
 <h3><span class="header-section-number">6.2.3</span> One-Sample t-test<a href="hypothesis-testing-and-introduction-to-linear-regression.html#one-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Using a violin plot we can look at the distribution of shell <code>Length</code> (i.e., one variable hence a one-sample t-test will be used). We can calculate the average <code>Length</code> of all shells in our sample.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb88-1" aria-hidden="true" tabindex="-1"></a>paua <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">average_length =</span> <span class="fu">mean</span>(Length))</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb87-1" aria-hidden="true" tabindex="-1"></a>paua <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">average_length =</span> <span class="fu">mean</span>(Length))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
 ##   average_length
 ##            &lt;dbl&gt;
@@ -320,9 +325,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><em>Why error bars that are <span class="math inline">\(\pm\)</span> twice the SEM?</em>
 This is approximately the 95% confidence interval for the population mean.</p>
 <p>We can use the in-built functions in <code>R</code> to calculate the mean and the SEM. Yay - we don’t have to do these calculations by hand, <code>R</code> can do them for us! For the <code>paua</code> data, here’s some code we can use:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb90-1" aria-hidden="true" tabindex="-1"></a>sem <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Length),</span>
-<span id="cb90-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb90-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sem =</span> <span class="fu">sd</span>(Length)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Length)))</span>
-<span id="cb90-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb90-3" aria-hidden="true" tabindex="-1"></a>sem</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb89-1" aria-hidden="true" tabindex="-1"></a>sem <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Length),</span>
+<span id="cb89-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb89-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sem =</span> <span class="fu">sd</span>(Length)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Length)))</span>
+<span id="cb89-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb89-3" aria-hidden="true" tabindex="-1"></a>sem</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
 ##    mean   sem
 ##   &lt;dbl&gt; &lt;dbl&gt;
@@ -343,12 +348,12 @@ This is approximately the 95% confidence interval for the population mean.</p>
 <p>Recall that a <em>p</em>-value is the probability under a specified statistical model (here, the null distribution) that a statistical summary of the data would be equal to or more extreme than its observed value (here, the t-statistic).</p>
 <p>So in this case it’s the probability, under the null hypothesis (<span class="math inline">\(\mu = 5\)</span>), that we would observe a t-statistic at least as extreme as we did.</p>
 <p>The null distribution, assuming H<sub>0</sub> is true, is below. The t-statistic calculated from our hypothesis test was 1.2391. Now, remember that our alternative hypotheses was <span class="math inline">\(H_1: \mu \neq 5\)</span> so we have to consider both sides of the inequality; hence, anything as least as extreme is either <span class="math inline">\(&gt; 1.2391\)</span> or <span class="math inline">\(&lt; -1.2391\)</span> to our observed test statistic (vertical lines). Anything at least as extreme is therefore given by the grey shaded areas.</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <p>We can calculate the <em>p</em>-value using the <code>pt()</code> function (where <code>q</code> is our calculated t-statistic, and <code>df</code> are the degrees of freedom from above):</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="at">q  =</span> <span class="fl">1.2391</span>,<span class="at">df =</span> <span class="dv">59</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="at">q  =</span> <span class="fl">1.2391</span>,<span class="at">df =</span> <span class="dv">59</span>))</span></code></pre></div>
 <pre><code>## [1] 0.2202152</code></pre>
 <p>But why make life hard for ourselves - let’s just do all of the above (specify our hypotheses, compute our test statistic and determine our <em>p</em>-value) in one step using <code>R</code>!!</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(paua<span class="sc">$</span>Length, <span class="at">mu =</span> <span class="dv">5</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(paua<span class="sc">$</span>Length, <span class="at">mu =</span> <span class="dv">5</span> )</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -406,9 +411,9 @@ t-statistic = <span class="math inline">\(\frac{\bar{x}_{\text{difference}} - \m
 </ul>
 <p>Calculations are a bit trickier here so let’s use <code>R</code>. We have two options (both give us the same information):</p>
 <p><strong>Option 1.</strong> using <code>t.test()</code></p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb96-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Length <span class="sc">~</span> Species, <span class="at">data =</span> paua)</span>
-<span id="cb96-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the result</span></span>
-<span id="cb96-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb96-3" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb95-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Length <span class="sc">~</span> Species, <span class="at">data =</span> paua)</span>
+<span id="cb95-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the result</span></span>
+<span id="cb95-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb95-3" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -420,19 +425,19 @@ t-statistic = <span class="math inline">\(\frac{\bar{x}_{\text{difference}} - \m
 ## sample estimates:
 ## mean in group Haliotis australis      mean in group Haliotis iris 
 ##                         5.766667                         4.809722</code></pre>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can print out individual pieces of information from the results using</span></span>
-<span id="cb98-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the $ to subset the data, as below</span></span>
-<span id="cb98-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb98-3" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>statistic</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can print out individual pieces of information from the results using</span></span>
+<span id="cb97-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the $ to subset the data, as below</span></span>
+<span id="cb97-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb97-3" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>statistic</span></code></pre></div>
 <pre><code>##        t 
 ## 3.540364</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb100-1" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>p.value</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb99-1" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>p.value</span></code></pre></div>
 <pre><code>## [1] 0.0007956853</code></pre>
 <p>Listed are the t-statistic, <code>t</code> = 3.5403636 and the <em>p</em>-value, <code>p-value</code> = 0.0007956853 for the hypothesis test outlined above.</p>
 <p><strong>Option 2.</strong> using <code>lm()</code></p>
 <p><code>lm(y ~ x, data = )</code> is the required information of this <code>R</code> function, where <code>lm</code> stands for linear model, <code>y</code> represents the y/dependent/response/outcome variable and <code>x</code> represents the x/independent/explanatory/predictor variable/s. <code>data =</code> tells <code>R</code> which data set to use to find these <code>y</code> and <code>x</code> variables.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb102-1" aria-hidden="true" tabindex="-1"></a>t.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Length <span class="sc">~</span> Species, <span class="at">data =</span> paua)</span>
-<span id="cb102-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extracting the estimated population parameters</span></span>
-<span id="cb102-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(t.lm)<span class="sc">$</span>coef</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb101-1" aria-hidden="true" tabindex="-1"></a>t.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Length <span class="sc">~</span> Species, <span class="at">data =</span> paua)</span>
+<span id="cb101-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extracting the estimated population parameters</span></span>
+<span id="cb101-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(t.lm)<span class="sc">$</span>coef</span></code></pre></div>
 <pre><code>##                        Estimate Std. Error   t value     Pr(&gt;|t|)
 ## (Intercept)           5.7666667  0.2278199 25.312396 4.911173e-33
 ## SpeciesHaliotis iris -0.9569444  0.2941142 -3.253649 1.902460e-03</code></pre>
@@ -448,14 +453,14 @@ t-statistic = <span class="math inline">\(\frac{\bar{x}_{\text{difference}} - \m
 <p>The <code>t value</code> and <code>Pr (&gt;|t|)</code> are the t-statistic and <em>p</em>-value for testing the null hypotheses:</p>
 <p><code>(Intercept)</code> row: Mean abundance is zero for <em>Haliotis australis</em> (not interested in this really)
 <code>SpeciesHaliotis iris</code> row: No difference between the population mean shell lengths of <em>Haliotis australis</em> and <em>Haliotis iris</em></p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <p>By default, <code>R</code> orders variables alphabetically. Sometimes, we don’t mind because there is no logical order to our variables. However, sometimes, we want to specify the variable order (e.g., if we ran a study where we had variables labelled <code>before</code>, <code>during</code> and <code>after</code>, <code>after</code> would come first - weird! Or if we ran an experiment where we had a <code>control</code> and three treatments, labelled <code>A</code>, <code>B</code> and <code>C</code>, it would make the most sense to compare all treatments to the <code>control</code> as the baseline). We can use the <code>mutate</code> function in <code>R</code> to change the variable order:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># changing the baseline</span></span>
-<span id="cb104-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co"># it&#39;s the order that makes the difference</span></span>
-<span id="cb104-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-3" aria-hidden="true" tabindex="-1"></a>paua_rl <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">fct_relevel</span>(Species, <span class="st">&quot;Haliotis iris&quot;</span>, <span class="st">&quot;Haliotis australis&quot;</span>))</span>
-<span id="cb104-4"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-5"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-5" aria-hidden="true" tabindex="-1"></a>c.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Length <span class="sc">~</span> Species, <span class="at">data =</span> paua_rl)</span>
-<span id="cb104-6"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(c.lm)<span class="sc">$</span>coef</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># changing the baseline</span></span>
+<span id="cb103-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="co"># it&#39;s the order that makes the difference</span></span>
+<span id="cb103-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb103-3" aria-hidden="true" tabindex="-1"></a>paua_rl <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">fct_relevel</span>(Species, <span class="st">&quot;Haliotis iris&quot;</span>, <span class="st">&quot;Haliotis australis&quot;</span>))</span>
+<span id="cb103-4"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb103-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-5"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb103-5" aria-hidden="true" tabindex="-1"></a>c.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Length <span class="sc">~</span> Species, <span class="at">data =</span> paua_rl)</span>
+<span id="cb103-6"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(c.lm)<span class="sc">$</span>coef</span></code></pre></div>
 <pre><code>##                            Estimate Std. Error   t value     Pr(&gt;|t|)
 ## (Intercept)               4.8097222  0.1860141 25.856756 1.578074e-33
 ## SpeciesHaliotis australis 0.9569444  0.2941142  3.253649 1.902460e-03</code></pre>
@@ -472,7 +477,7 @@ t-statistic = <span class="math inline">\(\frac{\bar{x}_{\text{difference}} - \m
 </ul>
 <p><code>(Intercept)</code> row: Mean abundance is zero for <em>Haliotis iris</em> (not interested in this really)<br />
 <code>SpeciesHaliotis australis</code> row: No difference between the population mean lengths of <em>Haliotis australis</em> and <em>Haliotis iris</em></p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 </div>
 <div id="step-four.-draw-the-appropriate-conclusions-1" class="section level4 hasAnchor" number="6.2.4.3">
 <h4><span class="header-section-number">6.2.4.3</span> Step four. Draw the appropriate conclusions<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-four.-draw-the-appropriate-conclusions-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -490,7 +495,7 @@ However, we did not use this <code>var.equal = TRUE</code> argument because the 
 <h3><span class="header-section-number">6.2.5</span> One way ANOVA (with <code>aov()</code> and <code>lm()</code>in <code>R</code>)<a href="hypothesis-testing-and-introduction-to-linear-regression.html#one-way-anova-with-aov-and-lmin-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Remember the Palmer penguins? <strong>You might find <a href="https://cmjt.shinyapps.io/penguin/">this application</a> useful, now and later…</strong></p>
 <p>Below is the bill depth (mm) values for each bird in the sample, grouped together by species</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 <p>Now we have more than two groups: <span class="math inline">\(3\)</span> potential comparisons we might be interested in. Remember that each time we carry out a hypothesis test the probability we get a false positive result (<strong>Type I</strong> error) is given by <span class="math inline">\(\alpha\)</span> (the <strong>level of significance</strong> we choose). In light of this we should control the <strong>Type I</strong> error rate across the entire <em>family</em> of tests under consideration, i.e., control the <strong>Family-Wise Error Rate (FWER)</strong>; this ensures that the risk of making at least one <strong>Type I</strong> error among the family of comparisons in the experiment is <span class="math inline">\(\alpha\)</span>.</p>
 <p><strong>AN</strong>alysis <strong>O</strong>f <strong>VA</strong>riance (ANOVA) can do this!</p>
 <div id="step-one.-state-the-hypotheses-2" class="section level4 hasAnchor" number="6.2.5.1">
@@ -507,19 +512,19 @@ However, we did not use this <code>var.equal = TRUE</code> argument because the 
 <p>Consider the ratio below, this is the F-statistic (check out the <code>R</code> output below to see where the values came from for this penguin data example): 
 <span class="math inline">\({\frac {{\text{variation due to groups}}}{{\text{unexplained variance}}}} = {\frac {{\text{ mean between-group variability}}}{{\text{mean within-group variability}}}}\)</span> <span class="math inline">\(=\frac{\text{MSB}}{\text{MSW}}\)</span> = <span class="math inline">\(\frac{435.39}{1.26}\)</span> = <span class="math inline">\(344.83\)</span></p>
 <p><strong>Option 1.</strong> using <code>aov()</code></p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using aov()</span></span>
-<span id="cb106-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb106-2" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(bill_depth_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins_nafree)</span>
-<span id="cb106-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using aov()</span></span>
+<span id="cb105-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb105-2" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(bill_depth_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins_nafree)</span>
+<span id="cb105-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov)</span></code></pre></div>
 <pre><code>##              Df Sum Sq Mean Sq F value Pr(&gt;F)    
 ## species       2  870.8   435.4   344.8 &lt;2e-16 ***
 ## Residuals   330  416.7     1.3                   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p><strong>Option 2.</strong> using <code>lm()</code> then <code>anova()</code></p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first we need to specify a linear model from the data</span></span>
-<span id="cb108-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb108-2" aria-hidden="true" tabindex="-1"></a>fit.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="do">## then we apply anova() to our fitted data</span></span>
-<span id="cb109-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first we need to specify a linear model from the data</span></span>
+<span id="cb107-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb107-2" aria-hidden="true" tabindex="-1"></a>fit.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="do">## then we apply anova() to our fitted data</span></span>
+<span id="cb108-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.lm)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: bill_depth_mm
@@ -536,7 +541,7 @@ However, we did not use this <code>var.equal = TRUE</code> argument because the 
 <p>This means it is likely that the population mean bill depth from <strong>at least one</strong> species differs from the others. Generally, It would be useful to know which groups differ from each other, but our results do not tell us this. To see which groups differ, we can use the regression coefficient output below.<br />
 Note: this is only an option if first creating a linear model using <code>lm()</code>, hence in this course we recommend this for running an ANOVA.
 Note: species <code>Adelie</code> will be the <strong>baseline</strong> in this linear regression with a categorical factor variable by default because it starts with the letter <code>A</code></p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.lm)<span class="sc">$</span>coef</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.lm)<span class="sc">$</span>coef</span></code></pre></div>
 <pre><code>##                     Estimate Std. Error     t value     Pr(&gt;|t|)
 ## (Intercept)      18.34726027 0.09299608 197.2906740 0.000000e+00
 ## speciesChinstrap  0.07332796 0.16497460   0.4444803 6.569867e-01
@@ -576,7 +581,7 @@ This means the average bill depth of Chinstrap penguins is estimated to be 0.073
 <div id="model-diagnostic-plots" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> Model diagnostic plots<a href="hypothesis-testing-and-introduction-to-linear-regression.html#model-diagnostic-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Again, <code>R</code> is making our lives easy! Such a small amount of code to check our model assumptions - nice one :-)</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb113-1" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(fit.lm) <span class="co"># Plot the four main linear regression diagnostic plots</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb112-1" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(fit.lm) <span class="co"># Plot the four main linear regression diagnostic plots</span></span></code></pre></div>
 <p><img src="BIOSCI220_files/figure-html/qqnorm-1.png" width="672" /></p>
 <div id="residuals-vs-fitted-plot" class="section level3 hasAnchor" number="6.4.1">
 <h3><span class="header-section-number">6.4.1</span> Residuals vs Fitted plot<a href="hypothesis-testing-and-introduction-to-linear-regression.html#residuals-vs-fitted-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -644,37 +649,37 @@ The aov() function in <a href="https://twitter.com/hashtag/Rstats?src=hash&amp;r
 <p>It’s the sum squared differences of the distances between the <span class="math inline">\(i^{th}\)</span> observation and the sample mean <span class="math inline">\(\bar{x}\)</span> (denoted <span class="math inline">\(\mu_x\)</span> in the GIF below)</p>
 <p><img src="https://raw.githubusercontent.com/cmjt/statbiscuits/master/figs_n_gifs/var.gif" /></p>
 <p>So using the example values in the GIF</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># our sample of values</span></span>
-<span id="cb114-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>)</span>
-<span id="cb114-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sample mean</span></span>
-<span id="cb114-4"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-4" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb114-5"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb114-5" aria-hidden="true" tabindex="-1"></a>sample_mean</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># our sample of values</span></span>
+<span id="cb113-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb113-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>)</span>
+<span id="cb113-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sample mean</span></span>
+<span id="cb113-4"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb113-4" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb113-5"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb113-5" aria-hidden="true" tabindex="-1"></a>sample_mean</span></code></pre></div>
 <pre><code>## [1] 4.333333</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distance from mean for each value</span></span>
-<span id="cb116-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb116-2" aria-hidden="true" tabindex="-1"></a>distance_from_mean <span class="ot">&lt;-</span> x <span class="sc">-</span> sample_mean</span>
-<span id="cb116-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb116-3" aria-hidden="true" tabindex="-1"></a>distance_from_mean</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distance from mean for each value</span></span>
+<span id="cb115-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb115-2" aria-hidden="true" tabindex="-1"></a>distance_from_mean <span class="ot">&lt;-</span> x <span class="sc">-</span> sample_mean</span>
+<span id="cb115-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb115-3" aria-hidden="true" tabindex="-1"></a>distance_from_mean</span></code></pre></div>
 <pre><code>## [1] -3.3333333 -2.3333333 -1.3333333  0.6666667  1.6666667  4.6666667</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># squared distance from mean for each value</span></span>
-<span id="cb118-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb118-2" aria-hidden="true" tabindex="-1"></a>squared_distance_from_mean <span class="ot">&lt;-</span> distance_from_mean<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb118-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb118-3" aria-hidden="true" tabindex="-1"></a>squared_distance_from_mean</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># squared distance from mean for each value</span></span>
+<span id="cb117-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb117-2" aria-hidden="true" tabindex="-1"></a>squared_distance_from_mean <span class="ot">&lt;-</span> distance_from_mean<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb117-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb117-3" aria-hidden="true" tabindex="-1"></a>squared_distance_from_mean</span></code></pre></div>
 <pre><code>## [1] 11.1111111  5.4444444  1.7777778  0.4444444  2.7777778 21.7777778</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum of the squared distances</span></span>
-<span id="cb120-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(squared_distance_from_mean)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum of the squared distances</span></span>
+<span id="cb119-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(squared_distance_from_mean)</span></code></pre></div>
 <pre><code>## [1] 43.33333</code></pre>
 <p><strong>Calculating SD and SEM</strong></p>
 <p>So that’s the top line, what about the complete <strong>SD</strong> calculation? Remember it’s <span class="math inline">\(\sqrt{\frac{\Sigma_{i = 1}^n(x_i - \bar{x})^2}{n-1}}\)</span> so = <span class="math inline">\(\sqrt{\frac{43.3333333}{n-1}}\)</span> = <span class="math inline">\(\sqrt{\frac{43.3333333}{6-1}}\)</span> = <span class="math inline">\(\sqrt{\frac{43.3333333}{5}}\)</span> = 2.9439203.</p>
 <p>Or we could just use <code>R</code>’s <code>sd()</code> function (much easier!!)</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
 <pre><code>## [1] 2.94392</code></pre>
 <p>So the <strong>SEM</strong> is <span class="math inline">\(\frac{\text{SD}}{\sqrt{n}}\)</span> = <span class="math inline">\(\frac{2.9439203}{\sqrt{6}}\)</span> = 1.20185</p>
 <p>In <code>R</code></p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (length(x)) returns the length of the vector x which is n, the sample size</span></span>
-<span id="cb124-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x)) </span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (length(x)) returns the length of the vector x which is n, the sample size</span></span>
+<span id="cb123-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x)) </span></code></pre></div>
 <pre><code>## [1] 1.20185</code></pre>
 <p>For the <code>paua</code> data we can avoid all those “by-hand” calculations and use the in-built functions in <code>R</code> to calculate the mean and the SEM, which we need for our test statistic, the t-statistic.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb126-1" aria-hidden="true" tabindex="-1"></a>sem <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Length),</span>
-<span id="cb126-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb126-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sem =</span> <span class="fu">sd</span>(Length)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Length)))</span>
-<span id="cb126-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb126-3" aria-hidden="true" tabindex="-1"></a>sem</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb125-1" aria-hidden="true" tabindex="-1"></a>sem <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Length),</span>
+<span id="cb125-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb125-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sem =</span> <span class="fu">sd</span>(Length)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Length)))</span>
+<span id="cb125-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb125-3" aria-hidden="true" tabindex="-1"></a>sem</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
 ##    mean   sem
 ##   &lt;dbl&gt; &lt;dbl&gt;

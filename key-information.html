@@ -152,12 +152,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html"><i class="fa fa-check"></i><b>1</b> <code>R</code> and <code>RStudio</code></a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#what-are-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What are <code>R</code> and <code>RStudio</code>?</a></li>
-<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.2</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.3</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.4" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#dealing-with-data"><i class="fa fa-check"></i><b>1.4</b> Dealing with data</a></li>
+<li class="chapter" data-level="1.5" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#error-handling-and-debugging"><i class="fa fa-check"></i><b>1.5</b> Error handling and debugging</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data wrangling and manipulation</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-eda"><i class="fa fa-check"></i><b>2.1</b> Exploratory Data Analysis (EDA)</a></li>
+<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-and-data-wrangling-in-the-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Exploratory data analysis and data wrangling in the Tidyverse</a></li>
 <li class="chapter" data-level="2.2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#data-visualisation"><i class="fa fa-check"></i><b>2.2</b> Data Visualisation</a></li>
+<li class="chapter" data-level="2.3" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#plotting-using-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Plotting using <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.4" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#bringing-things-together"><i class="fa fa-check"></i><b>2.4</b> Bringing things together</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-practice.html"><a href="data-practice.html"><i class="fa fa-check"></i><b>3</b> Data practice</a>
 <ul>
@@ -236,13 +241,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="course-outline" class="section level2 unnumbered hasAnchor">
 <h2>Course outline<a href="key-information.html#course-outline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Living systems are the most complex systems in science, and biology is naturally variable and noisy due to its many internal and external influences. For these reasons, it is difficult to make inferences from and predictions about biological systems. Understanding biology requires computational skills to effectively analyse and interpret data, and multidisciplinary research approaches are becoming more common as a critical key to solving many of the complex problems of studying life and living organisms in today’s world. So, contrary to the popular undergrad biology student beliefs, statistics, mathematics and computational skills are essential in a biologist’s toolkit.</p>
-<p>To understand modern biological research and findings, and to participate in this research (and get jobs!), skills in working with and visualising data, learning from data using models, and generating data using simulations of models are crucial. These might be classic statistical models, mathematical models, or inference with process-based models. Biologists also need to be careful and critical thinkers about data and how it is acquired, as well as think critically about the models that we use to try to simplify, and thereby understand, the incredible complexity of biology.</p>
+<p>To understand modern biological research and findings, and to participate in this research (and get jobs!), skills in working with and visualizing data, learning from data using models, and generating data using simulations of models are crucial. These might be classic statistical models, mathematical models, or inference with process-based models. Biologists also need to be careful and critical thinkers about data and how it is acquired, as well as think critically about the models that we use to try to simplify, and thereby understand, the incredible complexity of biology.</p>
 <p><strong>BIOSCI 220: Quantitative Biology</strong> will introduce you to the programming language R to develop the aforementioned skills, with no coding experience assumed or expected. The aim is to give beginners the confidence to continue learning R and not be afraid of statistics and mathematics!</p>
 </div>
 <div id="r-and-rstudio" class="section level2 unnumbered hasAnchor">
 <h2><code>R</code> and <code>RStudio</code><a href="key-information.html#r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="alert alert-danger" role="alert">
-<p>Throughout this course, you will be learning how to program using <code>R</code> and <code>RStudio</code> weekly. You are expected to install and familiarise yourself with these environments during the first week of the course. We provide plenty of help session and easy-to-follow instructions for this, please see CANVAS and/or <a href="r-and-rstudio-1.html#installing-r-and-rstudio">Installing R and RStudio</a> to get started.</p>
+<p><span><strong>Throughout this course, you will be learning how to program using <code>R</code> and <code>RStudio</code> weekly.</span></strong> You are expected to install and familiarize yourself with these environments during the first week of the course. We provide plenty of help session and easy-to-follow instructions for this, please see CANVAS and/or <a href="r-and-rstudio-1.html#installing-r-and-rstudio">Installing R and RStudio</a> to get started.</p>
 </div>
 <p>Note that lab computers will already have <code>R</code> and<code>RStudio</code> installed; however, if you plan to use your personal computer then you will need to install both <code>R</code> and <code>RStudio</code> yourself. Follow the directions in <a href="r-and-rstudio-1.html#installing-r-and-rstudio">Installing R and RStudio</a> to do so (or come along to a dedicated help session).</p>
 <p>Another option available is to use <a href="https://rstudio.cloud/">RStudio Cloud</a> where, everything is run in a web browser (on a remote server) and doesn’t require you to download the software onto your personal computer.</p>
@@ -280,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td align="center">3</td>
-<td align="center">Model-based inference and critical thinkin</td>
+<td align="center">Model-based inference and critical thinking</td>
 <td align="center">10 - 12</td>
 <td align="center">Assoc. Prof. Emma Carroll</td>
 </tr>
@@ -307,18 +312,6 @@ lecture recordings will be available in CANVAS via the Panopto video tab after t
 <h2>Assessment<a href="key-information.html#assessment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="assessment-structure" class="section level3 unnumbered hasAnchor">
 <h3>Assessment structure<a href="key-information.html#assessment-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<pre><code>## Loading required package: tidyverse</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
-## Loading required package: knitr</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -467,7 +460,7 @@ The delivery mode for the test and the exam is an on-campus, invigilated Inspera
 <p>Labs will be held in 106-014 (Biology Building, Room 014) during your scheduled SSO lab time, which will be <strong>one of</strong> Monday 2-5pm, Tuesday 10am-1pm, Tuesday 2-5pm, Thursday 2-5pm or Friday 10am-1pm.</p>
 <p>There are eight (8) labs in total. Labs are held in weeks 2, 3, 5, 6, 8, 9, 11 and 12. (i.e. in each three week lecture block there are labs in the last two weeks).</p>
 <p>Labs are three (3) hours and the material is designed to be completed in this time.</p>
-<p>Each lab is worth 5%, totalling 40% towards your final grade.</p>
+<p>Each lab is worth 5%, totaling 40% towards your final grade.</p>
 <p>You are scheduled into a lab stream in SSO. While lab attendance is not compulsory, it is highly recommended you attend your scheduled lab stream. There is teaching staff to support you through the tasks and answer your course-related questions.</p>
 </div>
 <div id="weekly-quizzes" class="section level3 unnumbered hasAnchor">

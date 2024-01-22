@@ -152,12 +152,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html"><i class="fa fa-check"></i><b>1</b> <code>R</code> and <code>RStudio</code></a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#what-are-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What are <code>R</code> and <code>RStudio</code>?</a></li>
-<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.2</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.3</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.4" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#dealing-with-data"><i class="fa fa-check"></i><b>1.4</b> Dealing with data</a></li>
+<li class="chapter" data-level="1.5" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#error-handling-and-debugging"><i class="fa fa-check"></i><b>1.5</b> Error handling and debugging</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data wrangling and manipulation</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-eda"><i class="fa fa-check"></i><b>2.1</b> Exploratory Data Analysis (EDA)</a></li>
+<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-and-data-wrangling-in-the-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Exploratory data analysis and data wrangling in the Tidyverse</a></li>
 <li class="chapter" data-level="2.2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#data-visualisation"><i class="fa fa-check"></i><b>2.2</b> Data Visualisation</a></li>
+<li class="chapter" data-level="2.3" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#plotting-using-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Plotting using <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.4" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#bringing-things-together"><i class="fa fa-check"></i><b>2.4</b> Bringing things together</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-practice.html"><a href="data-practice.html"><i class="fa fa-check"></i><b>3</b> Data practice</a>
 <ul>
@@ -355,15 +360,15 @@ Identify sources of variation within a given experimental design
 <div id="designing-a-crd-using-r" class="section level4 hasAnchor" number="4.3.1.1">
 <h4><span class="header-section-number">4.3.1.1</span> Designing a CRD using <code>R</code><a href="introduction-to-the-design-and-analysis-of-experiments.html#designing-a-crd-using-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s assume you want to set up an experiment similar to the coffee one above using <code>R</code> to do the random allocation of treatments for you.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="do">## create a character vector of bean types</span></span>
-<span id="cb71-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb71-2" aria-hidden="true" tabindex="-1"></a>beans <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">each =</span> <span class="dv">4</span>)</span>
-<span id="cb71-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb71-3" aria-hidden="true" tabindex="-1"></a>beans</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="do">## create a character vector of bean types</span></span>
+<span id="cb70-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb70-2" aria-hidden="true" tabindex="-1"></a>beans <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">each =</span> <span class="dv">4</span>)</span>
+<span id="cb70-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb70-3" aria-hidden="true" tabindex="-1"></a>beans</span></code></pre></div>
 <pre><code>##  [1] &quot;Arabica&quot;  &quot;Arabica&quot;  &quot;Arabica&quot;  &quot;Arabica&quot;  &quot;Liberica&quot; &quot;Liberica&quot;
 ##  [7] &quot;Liberica&quot; &quot;Liberica&quot; &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Robusta&quot;</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="do">## randomly sample the character vector to give the order of coffees</span></span>
-<span id="cb73-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
-<span id="cb73-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb73-3" aria-hidden="true" tabindex="-1"></a>allocation <span class="ot">&lt;-</span> <span class="fu">sample</span>(beans, <span class="dv">12</span>)</span>
-<span id="cb73-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb73-4" aria-hidden="true" tabindex="-1"></a>allocation</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="do">## randomly sample the character vector to give the order of coffees</span></span>
+<span id="cb72-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
+<span id="cb72-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb72-3" aria-hidden="true" tabindex="-1"></a>allocation <span class="ot">&lt;-</span> <span class="fu">sample</span>(beans, <span class="dv">12</span>)</span>
+<span id="cb72-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb72-4" aria-hidden="true" tabindex="-1"></a>allocation</span></code></pre></div>
 <pre><code>##  [1] &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Liberica&quot; &quot;Liberica&quot; &quot;Arabica&quot;  &quot;Liberica&quot;
 ##  [7] &quot;Arabica&quot;  &quot;Robusta&quot;  &quot;Arabica&quot;  &quot;Liberica&quot; &quot;Robusta&quot;  &quot;Arabica&quot;</code></pre>
 <p>Having run the code above your CRD plan is as follows</p>
@@ -491,12 +496,12 @@ Arabica
 <h4><span class="header-section-number">4.3.2.1</span> Designing a RCBD using <code>R</code><a href="introduction-to-the-design-and-analysis-of-experiments.html#designing-a-rcbd-using-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s assume you want to set up an experiment similar to the coffee one above; however, now you are in the situation where you have two types of cups (six mugs and six heatproof glasses). Below we use <code>R</code> to do the random allocation of treatments within each block (cup type) for you.</p>
 <p>Here we have <span class="math inline">\(t = 3\)</span> treatments (bean types) and <span class="math inline">\(b = 2\)</span> blocks (cup types) so we will have <span class="math inline">\(t \times b = 6\)</span> experimental units in total.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">432</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
-<span id="cb75-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb75-2" aria-hidden="true" tabindex="-1"></a>plan <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Beans =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">times =</span> <span class="dv">2</span>), </span>
-<span id="cb75-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb75-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">Block =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Mug&quot;</span>, <span class="st">&quot;Glass&quot;</span>), <span class="at">each =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="do">## combine experiment variables</span></span>
-<span id="cb75-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Block) <span class="sc">%&gt;%</span> <span class="do">## group by blocking factor</span></span>
-<span id="cb75-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb75-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">3</span>)</span>
-<span id="cb75-6"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb75-6" aria-hidden="true" tabindex="-1"></a>plan</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">432</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
+<span id="cb74-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb74-2" aria-hidden="true" tabindex="-1"></a>plan <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Beans =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">times =</span> <span class="dv">2</span>), </span>
+<span id="cb74-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb74-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">Block =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Mug&quot;</span>, <span class="st">&quot;Glass&quot;</span>), <span class="at">each =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="do">## combine experiment variables</span></span>
+<span id="cb74-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Block) <span class="sc">%&gt;%</span> <span class="do">## group by blocking factor</span></span>
+<span id="cb74-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb74-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">3</span>)</span>
+<span id="cb74-6"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb74-6" aria-hidden="true" tabindex="-1"></a>plan</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 2
 ## # Groups:   Block [2]
 ##   Beans    Block
@@ -626,11 +631,11 @@ Mug
 <p>Note is a factorial design has <strong>equal</strong> numbers of replicates in each group then it is said to be a <strong>balanced</strong> design; if this is not the case then it is <strong>unbalanced</strong>.</p>
 <p>Now, our <strong>question about the strength of coffee</strong> would be <em>Does the strength of the difference in the strength of the coffee between the beans wall depend on the grinder used?</em></p>
 <p><strong>Possible outcomes</strong></p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-35-1.png" width="768" /></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-43-1.png" width="768" /></p>
 <div id="interactions" class="section level4 hasAnchor" number="4.3.3.1">
 <h4><span class="header-section-number">4.3.3.1</span> Interactions<a href="introduction-to-the-design-and-analysis-of-experiments.html#interactions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If an interaction effect exists the effect of one factor on the response will change depending on the level of the other factor:</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 <p>The plot above is called an interaction plot. Creating such a plot is often very useful when drawing inference; in this instance we can see that the strength of the coffee changes depending on the type of coffee bean used, however, this relationship differs depending on the type of grinder used. For example, Liberica beans produce stronger coffee than the other two beans when the electric grinder is used, but weaker coffee when the manual grinder is used.</p>
 <div class="alert alert-info" role="alert">
 <p><img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" /></p>

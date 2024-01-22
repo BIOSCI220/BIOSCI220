@@ -152,12 +152,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html"><i class="fa fa-check"></i><b>1</b> <code>R</code> and <code>RStudio</code></a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#what-are-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What are <code>R</code> and <code>RStudio</code>?</a></li>
-<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.2</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.2" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.2</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>1.3</b> Getting started with <code>R</code></a></li>
+<li class="chapter" data-level="1.4" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#dealing-with-data"><i class="fa fa-check"></i><b>1.4</b> Dealing with data</a></li>
+<li class="chapter" data-level="1.5" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html#error-handling-and-debugging"><i class="fa fa-check"></i><b>1.5</b> Error handling and debugging</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data wrangling and manipulation</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-eda"><i class="fa fa-check"></i><b>2.1</b> Exploratory Data Analysis (EDA)</a></li>
+<li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-and-data-wrangling-in-the-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Exploratory data analysis and data wrangling in the Tidyverse</a></li>
 <li class="chapter" data-level="2.2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#data-visualisation"><i class="fa fa-check"></i><b>2.2</b> Data Visualisation</a></li>
+<li class="chapter" data-level="2.3" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#plotting-using-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Plotting using <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.4" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#bringing-things-together"><i class="fa fa-check"></i><b>2.4</b> Bringing things together</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-practice.html"><a href="data-practice.html"><i class="fa fa-check"></i><b>3</b> Data practice</a>
 <ul>
@@ -231,76 +236,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-wrangling-and-manipulation" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Data wrangling and manipulation<a href="data-wrangling-and-manipulation.html#data-wrangling-and-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="alert alert-success" role="alert">
-<p><img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" /></p>
+<center>
+<img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" />
+</center>
 <p><strong>Learning objectives</strong></p>
 <ul>
 <li>
-Carry out and interpret the outputs of basic exploratory data analysis using in-built R functions
+Import data into R from a <code>.csv</code> file using 1) functions and 2) via the menu
 </li>
 <li>
-Create and communicate informative data visualisations using <code>R</code>
+Apply the principles of tidy data using the <code>tidyverse</code> in <code>R</code>
 </li>
 <li>
-Discuss and critique data visualisations
+Carry out and interpret the outputs of basic exploratory data analysis using in-built <code>R</code> functions
+</li>
+<li>
+Carry out basic data wrangling techniques in <code>R</code> (e.g., reshaping data, creating new variables, and aggregating information using functions such as the <code>tidyverse</code> functions <code>mutate()</code>, <code>group_by()</code>, and <code>summarize()</code>).
+</li>
+<li>
+Implement <code>tidyverse</code> pipelines using the <code>%&gt;%</code> (pipe) operator
+</li>
+<li>
+Create appropriate and communicate informative data visualizations using <code>R</code>
+</li>
+<li>
+Map the appropriate data structure to a <code>ggplot2</code> aesthetic
+</li>
+<li>
+Identify the mapping of a variable given a plot
+</li>
+<li>
+Discuss and critique data visualizations
 </li>
 </ul>
 </div>
-<div id="exploratory-data-analysis-eda" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Exploratory Data Analysis (EDA)<a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-eda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To kick off this section and to ensure you’re all set to go for the rest of the module we’re going to carry out some exploratory data analysis and visualisations on some real-world data :-)</p>
-<p>For this module we will be using <code>tidyverse</code>. <a href="https://www.tidyverse.org/">‘tidyverse’</a> is a collection of <code>R</code> packages that all share underlying design philosophy, grammar, and data structures. They are specifically designed to make data wrangling, manipulation, visualisation, and analysis simpler.</p>
+<div id="exploratory-data-analysis-and-data-wrangling-in-the-tidyverse" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Exploratory data analysis and data wrangling in the Tidyverse<a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-and-data-wrangling-in-the-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For this, and most other sections, we will be using the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>, which is a collection of <code>R</code> packages that all share underlying design philosophy, grammar, and data structures. They are specifically designed to make data wrangling, manipulation, visualization, and analysis simpler.</p>
 <p>To install <strong>all</strong> the packages that belong to the <code>tidyverse</code> run</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-wrangling-and-manipulation.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## request (download) the tidyverse packages from the centralised library</span></span>
-<span id="cb31-2"><a href="data-wrangling-and-manipulation.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-wrangling-and-manipulation.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## request (download) the tidyverse packages from the centralised library</span></span>
+<span id="cb28-2"><a href="data-wrangling-and-manipulation.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>To tell your computer to access the <code>tidyverse</code> functionality in your session run (<strong>Note</strong> you’ll have to do this each time you start up an <code>R</code> session):</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="data-wrangling-and-manipulation.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Get the tidyverse packages from our local library</span></span>
-<span id="cb32-2"><a href="data-wrangling-and-manipulation.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Do this every time you start a new session</span></span>
-<span id="cb32-3"><a href="data-wrangling-and-manipulation.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="do">## and want to use the tidyverse! </span></span>
-<span id="cb32-4"><a href="data-wrangling-and-manipulation.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<div id="the-pipe-operator" class="section level4 hasAnchor" number="2.1.0.1">
-<h4><span class="header-section-number">2.1.0.1</span> The pipe operator <code>%&gt;%</code><a href="data-wrangling-and-manipulation.html#the-pipe-operator" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-wrangling-and-manipulation.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Get the tidyverse packages from our local library</span></span>
+<span id="cb29-2"><a href="data-wrangling-and-manipulation.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Do this every time you start a new session</span></span>
+<span id="cb29-3"><a href="data-wrangling-and-manipulation.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="do">## and want to use the tidyverse! </span></span>
+<span id="cb29-4"><a href="data-wrangling-and-manipulation.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="the-pipe-operator" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> The pipe operator<a href="data-wrangling-and-manipulation.html#the-pipe-operator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A nifty <code>tidyverse</code> tool is called the pipe operator <code>%&gt;%</code>. The pipe operator allows us to combine multiple operations in <code>R</code> into a single sequential chain of actions.</p>
-<p>Say you would like to perform a hypothetical sequence of operations on a hypothetical data frame x using hypothetical functions f(), g(), and h():</p>
-<p>This is where the pipe operator %&gt;% comes in handy. %&gt;% takes the output of one function and then “pipes” it to be the input of the next function. Furthermore, a helpful trick is to read %&gt;% as “then” or “and then.” For example, you can obtain the same output as the hypothetical sequence of functions as follows:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-wrangling-and-manipulation.html#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a href="data-wrangling-and-manipulation.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">f</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb33-3"><a href="data-wrangling-and-manipulation.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">g</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb33-4"><a href="data-wrangling-and-manipulation.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">h</span>()</span></code></pre></div>
+<p>Say you would like to perform a hypothetical sequence of operations on a hypothetical data frame <code>x</code> using hypothetical functions <code>f()</code>, <code>g()</code>, and <code>h()</code>:</p>
+<p>This is where the pipe operator <code>%&gt;%</code> comes in handy. <code>%&gt;%</code> takes the output of one function and then “pipes” it to be the input of the next function. Furthermore, a helpful trick is to read <code>%&gt;%</code> as “then” or “and then.” For example, you can obtain the same output as the hypothetical sequence of functions as follows:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-wrangling-and-manipulation.html#cb30-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="data-wrangling-and-manipulation.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">f</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="data-wrangling-and-manipulation.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">g</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-4"><a href="data-wrangling-and-manipulation.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">h</span>()</span></code></pre></div>
 <p>You would read this sequence as:</p>
 <ul>
-<li>Take x then</li>
-<li>Use this output as the input to the next function f() then</li>
-<li>Use this output as the input to the next function g() then</li>
-<li>Use this output as the input to the next function h()</li>
+<li>Take <code>x</code> then</li>
+<li>Use this output as the input to the next function <code>f()</code> then</li>
+<li>Use this output as the input to the next function <code>g()</code> then</li>
+<li>Use this output as the input to the next function <code>h()</code>.</li>
 </ul>
-<p>So to calculate the mean <strong>Age</strong> of each <strong>Species</strong> in the <code>paua</code> dataset we would use</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-wrangling-and-manipulation.html#cb34-1" aria-hidden="true" tabindex="-1"></a>paua <span class="sc">%&gt;%</span></span>
-<span id="cb34-2"><a href="data-wrangling-and-manipulation.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb34-3"><a href="data-wrangling-and-manipulation.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">mean_age =</span> <span class="fu">mean</span>(Age))</span></code></pre></div>
+<p>Let’s first read in the P<span class="math inline">\(\overline{\text{a}}\)</span>ua data we looked at in the previous chapter:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-wrangling-and-manipulation.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-2"><a href="data-wrangling-and-manipulation.html#cb31-2" aria-hidden="true" tabindex="-1"></a>paua <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/paua.csv&quot;</span>)</span></code></pre></div>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Revisit the <a href="r-and-rstudio-1.html#dealing-with-data">Dealing with data</a> section in the previous chapter and make sure to practice reading the file into <code>R</code> using the different ways given. Make sure to restart <code>R</code> (i.e., close it down completely and open up a fresh clean workspace) each time.</p>
+</div>
+<p>Using a <code>tidyverse</code> pipeline we can calculate the mean <strong>Age</strong> of each <strong>Species</strong> in the <code>paua</code> dataset via</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="data-wrangling-and-manipulation.html#cb32-1" aria-hidden="true" tabindex="-1"></a>paua <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="data-wrangling-and-manipulation.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="data-wrangling-and-manipulation.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">mean_age =</span> <span class="fu">mean</span>(Age))</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##   Species            mean_age
 ##   &lt;chr&gt;                 &lt;dbl&gt;
 ## 1 Haliotis australis     7.55
 ## 2 Haliotis iris          4.40</code></pre>
-<p>You would read the sequence above as:</p>
+<p>You would read the sequence above as</p>
 <ul>
 <li>Take the <code>paua</code> data.frame then</li>
 <li>Use this and apply the <code>group_by()</code> function to group by <code>Species</code></li>
 <li>Use this output and apply the <code>summarize()</code> function to calculate the mean (using (<code>mean()</code>) <code>Age</code> of each group (<code>Species</code>), calling the resulting number <code>mean_age</code></li>
 </ul>
 </div>
-<div id="basic-plotting-for-your-own-purposes" class="section level3 hasAnchor" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Basic plotting (for your own purposes)<a href="data-wrangling-and-manipulation.html#basic-plotting-for-your-own-purposes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The payoff is so clear: you make informative plots that help you understand data.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-wrangling-and-manipulation.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Age <span class="sc">~</span> Species, <span class="at">data  =</span> paua)</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/boxplot-1.png" width="672" /></p>
-<p>So what have we asked our computer to do here? Given what we know about the types of data our <code>paua</code> <em>Object</em> contains what plots do you think would be most appropriate for each variable? Below is some example code; each line of code will produce a plot (perhaps not a sensible one though). What do you think? What is each plot showing us?</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-wrangling-and-manipulation.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Length <span class="sc">~</span> Species, <span class="at">data  =</span> paua)</span>
-<span id="cb37-2"><a href="data-wrangling-and-manipulation.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Age <span class="sc">~</span> Species, <span class="at">data  =</span> paua)</span>
-<span id="cb37-3"><a href="data-wrangling-and-manipulation.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Age <span class="sc">~</span> Length, <span class="at">data  =</span> paua)</span>
-<span id="cb37-4"><a href="data-wrangling-and-manipulation.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Age <span class="sc">~</span> Length, <span class="at">data  =</span> paua)</span>
-<span id="cb37-5"><a href="data-wrangling-and-manipulation.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(paua<span class="sc">$</span>Age)</span></code></pre></div>
-<p><strong><code>tidy</code> data</strong></p>
+<div id="tidy-data" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> <code>tidy</code> data<a href="data-wrangling-and-manipulation.html#tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <blockquote>
 “Tidy datasets are all alike, but every messy dataset is messy in its own way.”
 <footer>
@@ -327,10 +347,10 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 </footer>
 </blockquote>
 </div>
-<div id="introuducing-the-palmer-penguins" class="section level3 hasAnchor" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Introuducing the <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090081">Palmer penguins</a><a href="data-wrangling-and-manipulation.html#introuducing-the-palmer-penguins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-wrangling-and-manipulation.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) <span class="do">## this package contains some nice penguin data</span></span>
-<span id="cb38-2"><a href="data-wrangling-and-manipulation.html#cb38-2" aria-hidden="true" tabindex="-1"></a>penguins</span></code></pre></div>
+<div id="introuducing-the-palmer-penguins" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Introuducing the <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090081">Palmer penguins</a><a href="data-wrangling-and-manipulation.html#introuducing-the-palmer-penguins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-wrangling-and-manipulation.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) <span class="do">## this package contains some nice penguin data</span></span>
+<span id="cb34-2"><a href="data-wrangling-and-manipulation.html#cb34-2" aria-hidden="true" tabindex="-1"></a>penguins</span></code></pre></div>
 <pre><code>## # A tibble: 344 × 8
 ##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
 ##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
@@ -358,18 +378,18 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 </ul>
 <p>To learn more about the penguins read the <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090081">paper that talks all about the data collection.</a></p>
 </div>
-<div id="common-dataframe-manipulations-in-the-tidyverse-using-dplyr-and-tidyr" class="section level3 hasAnchor" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Common dataframe manipulations in the <code>tidyverse</code>, using <code>dplyr</code> and <code>tidyr</code><a href="data-wrangling-and-manipulation.html#common-dataframe-manipulations-in-the-tidyverse-using-dplyr-and-tidyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="common-dataframe-manipulations-in-the-tidyverse-using-dplyr-and-tidyr" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Common dataframe manipulations in the <code>tidyverse</code>, using <code>dplyr</code> and <code>tidyr</code><a href="data-wrangling-and-manipulation.html#common-dataframe-manipulations-in-the-tidyverse-using-dplyr-and-tidyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Even from these first few rows of data we can see that there are some <code>NA</code> values. Let’s count the number of <code>NA</code>s. Remember the <code>%&gt;%</code> operator? Here we’re going to be introduced to a few new things</p>
 <ul>
 <li>the <code>apply()</code> function,</li>
 <li>the <code>is.na()</code> function, and</li>
 <li>how <code>R</code> deals with <code>logical</code> values!</li>
 </ul>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="data-wrangling-and-manipulation.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb40-2"><a href="data-wrangling-and-manipulation.html#cb40-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb40-3"><a href="data-wrangling-and-manipulation.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(.,<span class="dv">2</span>,is.na) <span class="sc">%&gt;%</span></span>
-<span id="cb40-4"><a href="data-wrangling-and-manipulation.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(.,<span class="dv">2</span>,sum)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-wrangling-and-manipulation.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb36-2"><a href="data-wrangling-and-manipulation.html#cb36-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="data-wrangling-and-manipulation.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(.,<span class="dv">2</span>,is.na) <span class="sc">%&gt;%</span></span>
+<span id="cb36-4"><a href="data-wrangling-and-manipulation.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(.,<span class="dv">2</span>,sum)</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 2                 2 
 ## flipper_length_mm       body_mass_g               sex              year 
@@ -398,8 +418,8 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 <p>So how many <code>NA</code>s do you think there are!</p>
 <p>Doesn’t help much. To</p>
 <p>Now we know there are <code>NA</code> values throughout the data let’s remove then and create a new <code>NA</code> free version called <code>penguins_nafree</code>. There is a really handy <code>tidyverse</code> (<code>dplyr</code>) function for this!</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="data-wrangling-and-manipulation.html#cb42-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
-<span id="cb42-2"><a href="data-wrangling-and-manipulation.html#cb42-2" aria-hidden="true" tabindex="-1"></a>penguins_nafree</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-wrangling-and-manipulation.html#cb38-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
+<span id="cb38-2"><a href="data-wrangling-and-manipulation.html#cb38-2" aria-hidden="true" tabindex="-1"></a>penguins_nafree</span></code></pre></div>
 <pre><code>## # A tibble: 333 × 8
 ##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
 ##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
@@ -416,7 +436,7 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 ## # ℹ 323 more rows
 ## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <p>Below are some other useful manipulation functions; have a look at the outputs and run them yourselves and see if you can work out what they’re doing.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="data-wrangling-and-manipulation.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(penguins_nafree, island <span class="sc">==</span> <span class="st">&quot;Torgersen&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="data-wrangling-and-manipulation.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(penguins_nafree, island <span class="sc">==</span> <span class="st">&quot;Torgersen&quot;</span> )</span></code></pre></div>
 <pre><code>## # A tibble: 47 × 8
 ##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
 ##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
@@ -432,12 +452,12 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 ## 10 Adelie  Torgersen           34.6          21.1               198        4400
 ## # ℹ 37 more rows
 ## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data-wrangling-and-manipulation.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(penguins_nafree, <span class="at">average_bill_length =</span> <span class="fu">mean</span>(bill_length_mm))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="data-wrangling-and-manipulation.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(penguins_nafree, <span class="at">average_bill_length =</span> <span class="fu">mean</span>(bill_length_mm))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
 ##   average_bill_length
 ##                 &lt;dbl&gt;
 ## 1                44.0</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-wrangling-and-manipulation.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(penguins_nafree, species)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="data-wrangling-and-manipulation.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(penguins_nafree, species)</span></code></pre></div>
 <pre><code>## # A tibble: 333 × 8
 ## # Groups:   species [3]
 ##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -460,9 +480,9 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 <li>Use this and apply the <code>group_by()</code> function to group by <code>species</code></li>
 <li>Use this output and apply the <code>summarize()</code> function to calculate the mean (using (<code>mean()</code>) bill length (<code>bill_length_mm</code>) of each group (<code>species</code>), calling the resulting number <code>average_bill_length</code></li>
 </ul>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="data-wrangling-and-manipulation.html#cb50-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span> </span>
-<span id="cb50-2"><a href="data-wrangling-and-manipulation.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
-<span id="cb50-3"><a href="data-wrangling-and-manipulation.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_bill_length =</span> <span class="fu">mean</span>(bill_length_mm))</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data-wrangling-and-manipulation.html#cb46-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span> </span>
+<span id="cb46-2"><a href="data-wrangling-and-manipulation.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-3"><a href="data-wrangling-and-manipulation.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_bill_length =</span> <span class="fu">mean</span>(bill_length_mm))</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   species   average_bill_length
 ##   &lt;fct&gt;                   &lt;dbl&gt;
@@ -470,11 +490,9 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 ## 2 Chinstrap                48.8
 ## 3 Gentoo                   47.6</code></pre>
 <p>We can also group by multiple factors, for example,</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-wrangling-and-manipulation.html#cb52-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span> </span>
-<span id="cb52-2"><a href="data-wrangling-and-manipulation.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(island,species) <span class="sc">%&gt;%</span> </span>
-<span id="cb52-3"><a href="data-wrangling-and-manipulation.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_bill_length =</span> <span class="fu">mean</span>(bill_length_mm))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;island&#39;. You can override using the
-## `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-wrangling-and-manipulation.html#cb48-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span> </span>
+<span id="cb48-2"><a href="data-wrangling-and-manipulation.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(island,species) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-3"><a href="data-wrangling-and-manipulation.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_bill_length =</span> <span class="fu">mean</span>(bill_length_mm))</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ## # Groups:   island [3]
 ##   island    species   average_bill_length
@@ -486,12 +504,12 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 ## 5 Torgersen Adelie                   39.0</code></pre>
 <p><strong>What about getting more complicated?</strong></p>
 <p>I suggest you run the code below one pipe at a time to work out what each function is doing and data it is acting on.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-wrangling-and-manipulation.html#cb55-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span></span>
-<span id="cb55-2"><a href="data-wrangling-and-manipulation.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(., sex <span class="sc">!=</span> <span class="st">&quot;male&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb55-3"><a href="data-wrangling-and-manipulation.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;island&quot;</span>, <span class="st">&quot;body_mass_g&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb55-4"><a href="data-wrangling-and-manipulation.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span></span>
-<span id="cb55-5"><a href="data-wrangling-and-manipulation.html#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_mass_g =</span> <span class="fu">sum</span>(body_mass_g)) <span class="sc">%&gt;%</span></span>
-<span id="cb55-6"><a href="data-wrangling-and-manipulation.html#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(island), <span class="at">values_from =</span> total_mass_g)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="data-wrangling-and-manipulation.html#cb50-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="data-wrangling-and-manipulation.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(., sex <span class="sc">!=</span> <span class="st">&quot;male&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="data-wrangling-and-manipulation.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;island&quot;</span>, <span class="st">&quot;body_mass_g&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-4"><a href="data-wrangling-and-manipulation.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span></span>
+<span id="cb50-5"><a href="data-wrangling-and-manipulation.html#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_mass_g =</span> <span class="fu">sum</span>(body_mass_g)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-6"><a href="data-wrangling-and-manipulation.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(island), <span class="at">values_from =</span> total_mass_g)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 4
 ## # Groups:   species [3]
 ##   species   Biscoe  Dream Torgersen
@@ -515,8 +533,8 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 — Edward Tufte
 </footer>
 </blockquote>
-<div id="exploratory-plots" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Exploratory plots<a href="data-wrangling-and-manipulation.html#exploratory-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exploratory-plots-for-your-own-purposes" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Exploratory plots (for your own purposes)<a href="data-wrangling-and-manipulation.html#exploratory-plots-for-your-own-purposes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Exploratory plots are just <em>for you</em>, they</p>
 <ul>
 <li>focus solely on data exploration,</li>
@@ -525,8 +543,18 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 <li>explore and discover new data facets, and</li>
 <li>help formulate new questions.</li>
 </ul>
-<p>For example,</p>
-<p><img src="BIOSCI220_files/figure-html/example,%20me-1.png" width="672" style="display: block; margin: auto;" /><img src="BIOSCI220_files/figure-html/example,%20me-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Let’s use a base <code>R</code> command (i.e., functions shipped with <code>R</code>) to create a <code>boxplot</code> of our <code>paua</code> data.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-wrangling-and-manipulation.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Age <span class="sc">~</span> Species, <span class="at">data  =</span> paua)</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/boxplot-1.png" width="672" /></p>
+<p>So what have we asked our computer to do here? We are using the function <code>boxplot()</code> and supplying two arguments: <code>Age ~ Species</code>, and <code>data  = paua</code>. The first argument <code>Age ~ Species</code> is how <code>R</code> understands equations (e.g., <span class="math inline">\(y = x\)</span>) and is asking for the variable <code>Age</code> to be plotted by the variable <code>Species</code>. The second argument <code>data = paua</code> specifies from which data object to grab the variables from (in this case the <code>paua</code> object we created above).</p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Run each line of the following code and comment briefly on what each plot shows.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-wrangling-and-manipulation.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Length <span class="sc">~</span> Species, <span class="at">data  =</span> paua)</span>
+<span id="cb53-2"><a href="data-wrangling-and-manipulation.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Age <span class="sc">~</span> Species, <span class="at">data  =</span> paua)</span>
+<span id="cb53-3"><a href="data-wrangling-and-manipulation.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Age <span class="sc">~</span> Length, <span class="at">data  =</span> paua)</span>
+<span id="cb53-4"><a href="data-wrangling-and-manipulation.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Age <span class="sc">~</span> Length, <span class="at">data  =</span> paua)</span>
+<span id="cb53-5"><a href="data-wrangling-and-manipulation.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(paua<span class="sc">$</span>Age)</span></code></pre></div>
+</div>
 </div>
 <div id="explanatory-plots" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Explanatory plots<a href="data-wrangling-and-manipulation.html#explanatory-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -582,14 +610,15 @@ Plots by Cedric Scherer and mentioned on <a href="https://jimgruman.netlify.app/
 </ul>
 <p>So we’ve seen some pretty plots, let’s get around to making some!</p>
 </div>
-<div id="introducing-ggplot2" class="section level3 hasAnchor" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> Introducing <code>ggplot2</code><a href="data-wrangling-and-manipulation.html#introducing-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="plotting-using-ggplot2" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Plotting using <code>ggplot2</code><a href="data-wrangling-and-manipulation.html#plotting-using-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>ggplot2</code> is an <code>R</code> package for producing statistical, or data, graphics; it has an underlying grammar based on the <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448">Grammar of Graphics</a></p>
 <p>Every <code>ggplot2</code> plot has three key components:</p>
 <ul>
 <li><p><code>data</code>,</p></li>
 <li><p>A set of <code>aes</code>thetic mappings between variables in the data and visual properties, and</p></li>
-<li><p>At least one layer which describes how to render each observation. Layers are usually created with a <code>geom</code> function.</p></li>
+<li><p>At least one layer which describes how to render each observation. Layers are usually created with a <code>geom_*</code> function.</p></li>
 </ul>
 <p align="center">
 <div class="figure">
@@ -597,58 +626,172 @@ Plots by Cedric Scherer and mentioned on <a href="https://jimgruman.netlify.app/
 <p class="caption"><code>ggplot2</code> layers</p>
 </div>
 </p>
-<div id="plotting-palmerpenguins" class="section level4 hasAnchor" number="2.2.4.1">
-<h4><span class="header-section-number">2.2.4.1</span> Plotting <code>palmerpenguins</code><a href="data-wrangling-and-manipulation.html#plotting-palmerpenguins" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>You might find <a href="https://cmjt.shinyapps.io/penguin/">this application</a> useful, now and later…</strong></p>
+<p>Every plot created using <code>ggplot2</code> code requires the three components above:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-wrangling-and-manipulation.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="do">## load package</span></span>
+<span id="cb54-2"><a href="data-wrangling-and-manipulation.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>your_data<span class="sc">&gt;</span>, <span class="fu">aes</span>(<span class="sc">&lt;</span>specify_aesthetics<span class="sc">&gt;</span>)) <span class="sc">+</span> <span class="do">## initialize plot specifying data and aesthetics</span></span>
+<span id="cb54-3"><a href="data-wrangling-and-manipulation.html#cb54-3" aria-hidden="true" tabindex="-1"></a>    geom_<span class="sc">&lt;</span>specify_geom<span class="sc">&gt;</span>() <span class="do">## add a layer (or geom)</span></span></code></pre></div>
+<p><strong>Note</strong> the <code>+</code> operator used to add a layer onto a <code>ggplot</code> object (see below for examples), it has a specific purpose in a <code>ggplot2</code> context. It should not be confused with the pipe operator <code>%&gt;%</code> which takes the output of one function and passes it as the first argument to the next function (see <a href="data-wrangling-and-manipulation.html#the-pipe-operator">The pipe operator</a>).</p>
+<p>The table below summaries the most common <code>geom</code>s and gives examples of when they are most likely appropriate.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="7%" />
+<col width="43%" />
+<col width="26%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><code>geom_*</code></th>
+<th>Description</th>
+<th>Typical Use Case</th>
+<th>Mapping Aesthetics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>geom_point</code></td>
+<td>Displays individual data points as dots on the plot.</td>
+<td>Visualizing individual data points in a scatter plot.</td>
+<td><code>aes(x = ..., y = ...)</code>: X and Y coordinates.</td>
+</tr>
+<tr class="even">
+<td><code>geom_line</code></td>
+<td>Connects data points with lines, useful for showing trends or relationships between continuous variables.</td>
+<td>Representing trends or relationships over continuous variables.</td>
+<td><code>aes(x = ..., y = ...)</code>: X and Y coordinates.</td>
+</tr>
+<tr class="odd">
+<td><code>geom_bar</code></td>
+<td>Creates bar charts, displaying the frequency or count of data within categorical groups.</td>
+<td>Illustrating the distribution of categorical data.</td>
+<td><code>aes(x = ..., y = ...)</code>: X-axis (categorical) and Y-axis (count or frequency).</td>
+</tr>
+<tr class="even">
+<td><code>geom_histogram</code></td>
+<td>Constructs histograms, visualizing the distribution of continuous variables by dividing them into bins.</td>
+<td>Examining the distribution of a single continuous variable.</td>
+<td><code>aes(x = ..., y = ...)</code>: X-axis (continuous) and Y-axis (count or frequency).</td>
+</tr>
+<tr class="odd">
+<td><code>geom_boxplot</code></td>
+<td>Generates box plots, illustrating the distribution of a continuous variable and highlighting outliers.</td>
+<td>Summarizing the distribution of continuous variables.</td>
+<td><code>aes(x = ..., y = ...)</code>: X-axis (categorical) and Y-axis (continuous).</td>
+</tr>
+<tr class="even">
+<td><code>geom_area</code></td>
+<td>Fills the area between a line and the x-axis, useful for visualizing accumulated quantities or proportions.</td>
+<td>Depicting cumulative or proportional relationships.</td>
+<td><code>aes(x = ..., y = ...)</code>: X and Y coordinates.</td>
+</tr>
+<tr class="odd">
+<td><code>geom_text</code></td>
+<td>Adds text labels to the plot, providing additional information about specific data points.</td>
+<td>Annotating specific points or adding labels to the plot.</td>
+<td><code>aes(x = ..., y = ..., label = ...)</code>: X, Y coordinates, and text labels.</td>
+</tr>
+<tr class="even">
+<td><code>geom_smooth</code></td>
+<td>Fits and overlays a smoothed line (e.g., LOESS or linear regression) on the data points.</td>
+<td>Highlighting trends and capturing patterns in the data.</td>
+<td><code>aes(x = ..., y = ...)</code>: X and Y coordinates.</td>
+</tr>
+<tr class="odd">
+<td><code>geom_violin</code></td>
+<td>Produces violin plots, displaying the distribution of a continuous variable across different categories.</td>
+<td>Visualizing the distribution and density of data within categories.</td>
+<td><code>aes(x = ..., y = ...)</code>: X-axis (categorical) and Y-axis (continuous).</td>
+</tr>
+<tr class="even">
+<td><code>geom_segment</code></td>
+<td>Draws line segments between specified points, useful for indicating relationships or connections in the data.</td>
+<td>Illustrating relationships between two sets of coordinates.</td>
+<td><code>aes(x = ..., y = ..., xend = ..., yend = ...)</code>: Start and end coordinates for the segments.</td>
+</tr>
+</tbody>
+</table>
+<div id="plotting-the-palmerpenguins-data" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Plotting the <code>palmerpenguins</code> data<a href="data-wrangling-and-manipulation.html#plotting-the-palmerpenguins-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>You might find <a href="https://cmjt.shinyapps.io/penguin/">this application</a> useful</strong></p>
 <p>Recall we used specified an <code>NA</code>-free version of the dataset:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-wrangling-and-manipulation.html#cb57-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb57-2"><a href="data-wrangling-and-manipulation.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span></code></pre></div>
-<p><strong>Scatter plot</strong> using <code>geom_point()</code></p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-wrangling-and-manipulation.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> <span class="do">## data &amp; aesthetics</span></span>
-<span id="cb58-2"><a href="data-wrangling-and-manipulation.html#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="do">## geom</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-wrangling-and-manipulation.html#cb55-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="data-wrangling-and-manipulation.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span></code></pre></div>
+<p>First off, let’s create a <strong>scatter plot</strong>. The code below takes the <code>penguins_nafree</code> dataset (created above) and maps the body mass variable <code>body_mass_g</code> to the x-axis and flipper length variable <code>flipper_length_mm</code> to the y-axis. Then, it adds points to the plot to represent each data point in the dataset. Therefore, the plot shows the relationship between body mass (g) and flipper length (mm) for the penguins in our dataset <code>penguins_nafree</code>.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-wrangling-and-manipulation.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> <span class="do">## data &amp; aesthetics</span></span>
+<span id="cb56-2"><a href="data-wrangling-and-manipulation.html#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="do">## geom</span></span></code></pre></div>
 <p><img src="BIOSCI220_files/figure-html/flippoint-1.png" width="672" /></p>
-<p>But, what about adding some personal touches? Axis labels can be specified using <code>xlab()</code> and <code>ylab()</code>, see the final two lines of code in the chunk below. But what do you think the additional code is doing? Try specifying some different colours in <code>scale_color_manual()</code>!!</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-wrangling-and-manipulation.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins_nafree, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm)) <span class="sc">+</span></span>
-<span id="cb59-2"><a href="data-wrangling-and-manipulation.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species),<span class="at">size =</span> <span class="dv">2</span>)  <span class="sc">+</span></span>
-<span id="cb59-3"><a href="data-wrangling-and-manipulation.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;darkorange&quot;</span>,<span class="st">&quot;darkorchid&quot;</span>,<span class="st">&quot;cyan4&quot;</span>), <span class="at">name =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb59-4"><a href="data-wrangling-and-manipulation.html#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb59-5"><a href="data-wrangling-and-manipulation.html#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>)</span></code></pre></div>
+<p>Breaking the code above down we have</p>
+<ol style="list-style-type: decimal">
+<li><code>ggplot(penguins_nafree, aes(x = body_mass_g, y = flipper_length_mm))</code> initializes the plot using the <code>ggplot()</code> function. It specifies the data frame <code>penguins_nafree</code> and the aesthetics mapping: setting the x-axis (<code>x</code>) to the <code>body_mass_g</code> variable and the y-axis (<code>y</code>) to the <code>flipper_length_mm</code> variable.</li>
+<li>We then add (using the <code>+</code> operator) a layer to the plot using <code>geom_point()</code>, which specifies that the data points should be represented as points on the plot. Each point corresponds to a row in the dataset, with <code>x</code> and <code>y</code> coordinates determined by the aesthetics specified in the previous line.</li>
+</ol>
+<p>But, what about adding some personal touches? We can add more appropriate axis labels can be specified using <code>xlab()</code> and <code>ylab()</code> and even customizes the color scale using <code>scale_color_manual()</code>:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-wrangling-and-manipulation.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins_nafree, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm)) <span class="sc">+</span></span>
+<span id="cb57-2"><a href="data-wrangling-and-manipulation.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species),<span class="at">size =</span> <span class="dv">2</span>)  <span class="sc">+</span></span>
+<span id="cb57-3"><a href="data-wrangling-and-manipulation.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;darkorange&quot;</span>,<span class="st">&quot;darkorchid&quot;</span>,<span class="st">&quot;cyan4&quot;</span>), <span class="at">name =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb57-4"><a href="data-wrangling-and-manipulation.html#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb57-5"><a href="data-wrangling-and-manipulation.html#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>)</span></code></pre></div>
 <p><img src="BIOSCI220_files/figure-html/point-1.png" width="672" /></p>
-<p>What about the <em>spread</em>/<em>distribution</em> of our continuous variables by the factor variables (e.g., <code>species</code>):</p>
-<ul>
-<li>Boxplots (<code>geom_boxplot()</code>)?</li>
-<li>Violin plots (<code>geom_violin()</code>)?</li>
-<li>Histograms (<code>geom_histogram()</code>)?</li>
-</ul>
-<p><strong>Boxplot</strong> using <code>geom_boxplot()</code></p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-wrangling-and-manipulation.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="do">## boxplot</span></span>
-<span id="cb60-2"><a href="data-wrangling-and-manipulation.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span></span>
-<span id="cb60-3"><a href="data-wrangling-and-manipulation.html#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb60-4"><a href="data-wrangling-and-manipulation.html#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb60-5"><a href="data-wrangling-and-manipulation.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="do">## what do you think this is doing?</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-<p><strong>Violin plot</strong> using <code>geom_violin()</code></p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-wrangling-and-manipulation.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="do">## violin plot</span></span>
-<span id="cb61-2"><a href="data-wrangling-and-manipulation.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
-<span id="cb61-3"><a href="data-wrangling-and-manipulation.html#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb61-4"><a href="data-wrangling-and-manipulation.html#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb61-5"><a href="data-wrangling-and-manipulation.html#cb61-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="do">## another theme...</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<p>We should always avoid using similarly bight red and green colours: they may not be distinguishable for red-green colorblind readers. Using <code>ggplot2</code> we can access a whole range of colourblind friendly palettes: one package that has a whole range is <code>RColorBrewer</code> install it then try running <code>RColorBrewer::display.brewer.all(colorblindFriendly = TRUE)</code> what do you think you’ve asked your computer to show you?</p>
-<p><strong>Histogram</strong> using <code>geom_histogram()</code></p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-wrangling-and-manipulation.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="do">## histogram, with a colorblind friendly palette</span></span>
-<span id="cb62-2"><a href="data-wrangling-and-manipulation.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="do">## try running display.brewer.all(colorblindFriendly = TRUE)</span></span>
-<span id="cb62-3"><a href="data-wrangling-and-manipulation.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="do">## what do you think it&#39;s doing</span></span>
-<span id="cb62-4"><a href="data-wrangling-and-manipulation.html#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span> </span>
-<span id="cb62-5"><a href="data-wrangling-and-manipulation.html#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species), <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-6"><a href="data-wrangling-and-manipulation.html#cb62-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb62-7"><a href="data-wrangling-and-manipulation.html#cb62-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>, <span class="at">name =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-8"><a href="data-wrangling-and-manipulation.html#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="do">## and another one....</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
-<p><strong>Bar charts</strong> using <code>geom_bar()</code></p>
-<p>We’ve seen that there are three <code>factor</code> variables in the dataset: <code>species</code>, <code>island</code>, and <code>sex</code>. To count the number of penguins of each <code>species</code> and <code>sex</code> on each <code>island</code> we could use</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-wrangling-and-manipulation.html#cb63-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span></span>
-<span id="cb63-2"><a href="data-wrangling-and-manipulation.html#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(species, sex, island)</span></code></pre></div>
+<p>Breaking down the lines of code here we have that</p>
+<ol style="list-style-type: decimal">
+<li>Again <code>ggplot(penguins_nafree, aes(x = body_mass_g, y = flipper_length_mm))</code> initializes the plot using the <code>ggplot()</code> function. It specifies the data frame <code>penguins_nafree</code> and the aesthetics mapping: setting the x-axis (<code>x</code>) to the <code>body_mass_g</code> variable and the y-axis (<code>y</code>) to the <code>flipper_length_mm</code> variable.</li>
+<li><code>geom_point(aes(color = species), size = 2)</code> adds a layer to the plot using <code>geom_point()</code>. It specifies that the data points should be represented as points on the plot. The argument <code>aes(color = species)</code> argument the species variable to the color of the points, and <code>size = 2</code> sets the size of the points.</li>
+<li><code>scale_color_manual(values = c("darkorange","darkorchid","cyan4"), name = "")</code> customizes the color scale of the points by setting the manually via the argument <code>values = c("darkorange","darkorchid","cyan4")</code>. Here the three specified colors are used for the three different species of penguins passed on from the previous aesthetic. The argument <code>name = ""</code> removes the legend title.</li>
+<li>Finally <code>xlab("Bill length (mm)")</code> and <code>ylab("Bill depth (mm)")</code> manually set the x-axis and y-axis labels.</li>
+</ol>
+<div class="alert alert-warning">
+<strong>TODO</strong>Try specifying some different colours in <code>scale_color_manual()</code> in the code above. Research Hex colour codes and try using these instead of colour names.
+</div>
+<p>Now let’s move onto plotting different types of data (e.g., continuous and discrete) on the same plot. We can even add some easy custom themeing using in-built <code>ggplot2</code> functionality (e.g., <code>theme_classic()</code>). The code below, generates a boxplot that compares the distribution of flipper lengths (mm) for the different penguin species.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-wrangling-and-manipulation.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="do">## boxplot</span></span>
+<span id="cb58-2"><a href="data-wrangling-and-manipulation.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span></span>
+<span id="cb58-3"><a href="data-wrangling-and-manipulation.html#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb58-4"><a href="data-wrangling-and-manipulation.html#cb58-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb58-5"><a href="data-wrangling-and-manipulation.html#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Breaking the code above down we have</p>
+<ol style="list-style-type: decimal">
+<li><code>ggplot(penguins_nafree, aes(x = species, y = flipper_length_mm))</code> initializes the plot using the <code>ggplot()</code> function. It uses the <code>penguins_nafree</code> dataset and sets the x-axis (x) to the <code>species</code> variable and the y-axis (y) to the <code>flipper_length_mm</code> variable.</li>
+<li><code>geom_boxplot()</code> adds a layer to the plot creating boxplots for each level of the <code>species</code> (x-axis) variable (species).</li>
+<li><code>ylab("Flipper length (mm)") + xlab("")</code> manually set the y-axis label to <code>"Flipper length (mm)"</code> and remove the x-axis label (setting it to an empty string <code>""</code>).</li>
+<li><code>theme_classic()</code> applies the so called <em>classic</em> theme to the plot, changing the appearance of the background and gridlines etc. from the default ones above.</li>
+</ol>
+<div class="alert alert-warning">
+<p><strong>TODO</strong>
+Type <code>theme_</code> into your Console and wait for <code>RStudio</code> to attempt to autocomplete for you. Run down the list of in-built themes and try them instead of <code>theme_classic()</code> above.</p>
+</div>
+<p>Rather than a boxplot we are going to create a violin plot of the same variables using <code>geom_violin()</code> (we use another theme this time <code>theme_minimal()</code>). Violin plots are more flexible than boxplots as they better show the shape (i.e., distribution) of our data.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-wrangling-and-manipulation.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="do">## violin plot</span></span>
+<span id="cb59-2"><a href="data-wrangling-and-manipulation.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
+<span id="cb59-3"><a href="data-wrangling-and-manipulation.html#cb59-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb59-4"><a href="data-wrangling-and-manipulation.html#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-5"><a href="data-wrangling-and-manipulation.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="do">## another theme...</span></span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> What can you say about the distribution of penguin flipper length. Do you this the distributions are symmetrical, skewed, bimodal?</p>
+</div>
+<p>The code below plots a histogram of flipper lengths (mm) for penguins, with different colors representing different species. We make the colours transparent using the <code>alpha</code> argument so that we can see the overlap in distributions. There are also another couple of new functions and arguments used, breaking the code down line by line we have</p>
+<ol style="list-style-type: decimal">
+<li><code>ggplot(penguins_nafree, aes(x = flipper_length_mm))</code> initializes the plot using the <code>ggplot()</code> function. We specify the <code>penguins_nafree</code> dataset and map the x-axis (x) to the <code>flipper_length_mm</code> variable.</li>
+<li><code>geom_histogram(aes(fill = species), alpha = 0.5, position = "identity")</code> adds a layer to the plot using <code>geom_histogram()</code>, which creates a histogram of flipper lengths. The <code>aes(fill = species)</code> argument colors the bars based on the <code>species</code> variable. Setting <code>alpha = 0.5</code> adjusts the transparency (which ranges from 0 to 1) of the bars. Finally, the less obvious use of and <code>position = "identity"</code> places the bars directly adjacent to each other.</li>
+<li><code>xlab("Flipper length (mm)")</code> sets the x-axis label.</li>
+<li><code>scale_fill_brewer(palette = "Dark2", name = "Species")</code> specifies a custom color scale mapped to the fill aesthetic. It sets the color palette to <code>"Dark2"</code> and assigns the legend title as <code>"Species"</code>.</li>
+<li><code>theme_light()</code> sets another in-built theme changing the appearance of the background and gridlines etc.</li>
+</ol>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-wrangling-and-manipulation.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="do">## histogram, with a colorblind friendly palette</span></span>
+<span id="cb60-2"><a href="data-wrangling-and-manipulation.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span> </span>
+<span id="cb60-3"><a href="data-wrangling-and-manipulation.html#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species), <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb60-4"><a href="data-wrangling-and-manipulation.html#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb60-5"><a href="data-wrangling-and-manipulation.html#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>, <span class="at">name =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">+</span></span>
+<span id="cb60-6"><a href="data-wrangling-and-manipulation.html#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="do">## and another theme....</span></span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong>
+We should always avoid using similarly bight red and green colours: they may not be distinguishable for red-green colorblind readers. Using <code>ggplot2</code> we can access a whole range of colourblind friendly palettes: one package that has a whole range is <code>RColorBrewer</code> install it then try running <code>RColorBrewer::display.brewer.all(colorblindFriendly = TRUE)</code> what do you think you’ve asked your computer to show you?</p>
+</div>
+<p>We’ve seen that there are three <code>factor</code> variables in the dataset: <code>species</code>, <code>island</code>, and <code>sex</code>. To count the number of penguins of each <code>species</code> and <code>sex</code> on each <code>island</code> we could use the following pipeline.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-wrangling-and-manipulation.html#cb61-1" aria-hidden="true" tabindex="-1"></a>penguins_nafree <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a href="data-wrangling-and-manipulation.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(species, sex, island)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 4
 ##    species   sex    island        n
 ##    &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;     &lt;int&gt;
@@ -662,63 +805,95 @@ Plots by Cedric Scherer and mentioned on <a href="https://jimgruman.netlify.app/
 ##  8 Chinstrap male   Dream        34
 ##  9 Gentoo    female Biscoe       58
 ## 10 Gentoo    male   Biscoe       61</code></pre>
-<p>It’s not too easy to compare the numbers here; what about a bar graph (<code>geom_bar()</code>)? Based on what we went through in the lecture see if you can figure out what each line is adding to the plot. What do you think <code>facet_wrap()</code> is doing? To figure it out, run it yourself and try changing some of the lines of code!</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-wrangling-and-manipulation.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
-<span id="cb65-2"><a href="data-wrangling-and-manipulation.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb65-3"><a href="data-wrangling-and-manipulation.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island) <span class="sc">+</span> <span class="do">## what are we doing here?</span></span>
-<span id="cb65-4"><a href="data-wrangling-and-manipulation.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb65-5"><a href="data-wrangling-and-manipulation.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span> <span class="do">## remember themes...</span></span>
-<span id="cb65-6"><a href="data-wrangling-and-manipulation.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;cyan4&quot;</span>,<span class="st">&quot;darkorange&quot;</span>), <span class="at">name =</span> <span class="st">&quot;Sex&quot;</span>) </span></code></pre></div>
+<p>However, it’s not too easy to compare the raw numbers here; so what about a bar graph?</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-wrangling-and-manipulation.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb63-2"><a href="data-wrangling-and-manipulation.html#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb63-3"><a href="data-wrangling-and-manipulation.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island) <span class="sc">+</span> <span class="do">## what are we doing here?</span></span>
+<span id="cb63-4"><a href="data-wrangling-and-manipulation.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb63-5"><a href="data-wrangling-and-manipulation.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span> <span class="do">## remember themes...</span></span>
+<span id="cb63-6"><a href="data-wrangling-and-manipulation.html#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;cyan4&quot;</span>,<span class="st">&quot;darkorange&quot;</span>), <span class="at">name =</span> <span class="st">&quot;Sex&quot;</span>) </span></code></pre></div>
 <p><img src="BIOSCI220_files/figure-html/bar-1.png" width="672" /></p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Before reading the breakdown below write out your own and then compare the two.</p>
 </div>
-<div id="the-good-the-bad-and-the-ugly" class="section level4 hasAnchor" number="2.2.4.2">
-<h4><span class="header-section-number">2.2.4.2</span> The Good, the Bad, and the Ugly…<a href="data-wrangling-and-manipulation.html#the-good-the-bad-and-the-ugly" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Have a go at running and modifying each code chunk below. Can you improve the plots?</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-wrangling-and-manipulation.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> <span class="do">## data &amp; aesthetics</span></span>
-<span id="cb66-2"><a href="data-wrangling-and-manipulation.html#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()  <span class="sc">+</span> <span class="do">## geom</span></span>
+<p>Breaking down the code above we have</p>
+<ol style="list-style-type: decimal">
+<li><code>ggplot(penguins_nafree, aes(x = species, fill = sex))</code> initializes the plot using the <code>ggplot()</code> function, specifying the dataset <code>penguins_nafree</code>. It maps the x-axis (x) to the <code>species</code> variable and fills the bars based on the <code>sex</code> variable.</li>
+<li><code>geom_bar(alpha = 0.8, position = "dodge")</code> adds a layer to the plot using <code>geom_bar()</code>. The <code>alpha = 0.8</code> argument adjusts the transparency of the bars, and <code>position = "dodge"</code> places the bars side by side for each species.</li>
+<li><code>facet_wrap(~island)</code> creates a faceted plot where separate plots are generated for each level of the <code>island</code> variable.</li>
+<li><code>xlab("")</code> sets the x-axis label as an empty string <code>""</code>.</li>
+<li><code>theme_linedraw()</code> applies a linedraw theme to the plot.</li>
+<li><code>scale_fill_manual(values = c("cyan4", "darkorange"), name = "Sex")</code>customizes the fill color scale and sets the colors for the two levels of the <code>sex</code> variable assigning the legend title as <code>"Sex"</code>.</li>
+</ol>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Run each code chunk below. Map each line to a component in the plot produced. Can you improve the plots?</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-wrangling-and-manipulation.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> <span class="do">## data &amp; aesthetics</span></span>
+<span id="cb64-2"><a href="data-wrangling-and-manipulation.html#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()  <span class="sc">+</span> <span class="do">## geom</span></span>
+<span id="cb64-3"><a href="data-wrangling-and-manipulation.html#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Flipper length (mm) by species&quot;</span>) <span class="sc">+</span></span>
+<span id="cb64-4"><a href="data-wrangling-and-manipulation.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb64-5"><a href="data-wrangling-and-manipulation.html#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span></span>
+<span id="cb64-6"><a href="data-wrangling-and-manipulation.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dark</span>() <span class="do">## theme</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-wrangling-and-manipulation.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> <span class="do">## data &amp; aesthetics</span></span>
+<span id="cb65-2"><a href="data-wrangling-and-manipulation.html#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>()  <span class="sc">+</span> <span class="do">## geom</span></span>
+<span id="cb65-3"><a href="data-wrangling-and-manipulation.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Flipper length (mm) by species&quot;</span>) <span class="sc">+</span></span>
+<span id="cb65-4"><a href="data-wrangling-and-manipulation.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb65-5"><a href="data-wrangling-and-manipulation.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span></span>
+<span id="cb65-6"><a href="data-wrangling-and-manipulation.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dark</span>() <span class="do">## theme</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-wrangling-and-manipulation.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> <span class="do">## data &amp; aesthetics</span></span>
+<span id="cb66-2"><a href="data-wrangling-and-manipulation.html#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>()  <span class="sc">+</span> <span class="do">## geom</span></span>
 <span id="cb66-3"><a href="data-wrangling-and-manipulation.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Flipper length (mm) by species&quot;</span>) <span class="sc">+</span></span>
 <span id="cb66-4"><a href="data-wrangling-and-manipulation.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb66-5"><a href="data-wrangling-and-manipulation.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span></span>
 <span id="cb66-6"><a href="data-wrangling-and-manipulation.html#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dark</span>() <span class="do">## theme</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-wrangling-and-manipulation.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> <span class="do">## data &amp; aesthetics</span></span>
-<span id="cb67-2"><a href="data-wrangling-and-manipulation.html#cb67-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>()  <span class="sc">+</span> <span class="do">## geom</span></span>
-<span id="cb67-3"><a href="data-wrangling-and-manipulation.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Flipper length (mm) by species&quot;</span>) <span class="sc">+</span></span>
-<span id="cb67-4"><a href="data-wrangling-and-manipulation.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb67-5"><a href="data-wrangling-and-manipulation.html#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span></span>
-<span id="cb67-6"><a href="data-wrangling-and-manipulation.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dark</span>() <span class="do">## theme</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-28-2.png" width="672" /></p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="data-wrangling-and-manipulation.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins,<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> <span class="do">## data &amp; aesthetics</span></span>
-<span id="cb68-2"><a href="data-wrangling-and-manipulation.html#cb68-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>()  <span class="sc">+</span> <span class="do">## geom</span></span>
-<span id="cb68-3"><a href="data-wrangling-and-manipulation.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Flipper length (mm) by species&quot;</span>) <span class="sc">+</span></span>
-<span id="cb68-4"><a href="data-wrangling-and-manipulation.html#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb68-5"><a href="data-wrangling-and-manipulation.html#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span></span>
-<span id="cb68-6"><a href="data-wrangling-and-manipulation.html#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dark</span>() <span class="do">## theme</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-28-3.png" width="672" /></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-wrangling-and-manipulation.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm, </span>
-<span id="cb69-2"><a href="data-wrangling-and-manipulation.html#cb69-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">col =</span> species)) <span class="sc">+</span></span>
-<span id="cb69-3"><a href="data-wrangling-and-manipulation.html#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb69-4"><a href="data-wrangling-and-manipulation.html#cb69-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb69-5"><a href="data-wrangling-and-manipulation.html#cb69-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span> sex) <span class="sc">+</span></span>
-<span id="cb69-6"><a href="data-wrangling-and-manipulation.html#cb69-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb69-7"><a href="data-wrangling-and-manipulation.html#cb69-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Flipper Length and Body Mass, by Sex &amp; Species&quot;</span>,</span>
-<span id="cb69-8"><a href="data-wrangling-and-manipulation.html#cb69-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="fu">nrow</span>(penguins), <span class="st">&quot; of the Palmer Penguins&quot;</span>),</span>
-<span id="cb69-9"><a href="data-wrangling-and-manipulation.html#cb69-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Body Mass (g)&quot;</span>, </span>
-<span id="cb69-10"><a href="data-wrangling-and-manipulation.html#cb69-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Flipper Length (mm)&quot;</span>)</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-28-4.png" width="672" /></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-wrangling-and-manipulation.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm, </span>
+<span id="cb67-2"><a href="data-wrangling-and-manipulation.html#cb67-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">col =</span> species)) <span class="sc">+</span></span>
+<span id="cb67-3"><a href="data-wrangling-and-manipulation.html#cb67-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb67-4"><a href="data-wrangling-and-manipulation.html#cb67-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb67-5"><a href="data-wrangling-and-manipulation.html#cb67-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span> sex) <span class="sc">+</span></span>
+<span id="cb67-6"><a href="data-wrangling-and-manipulation.html#cb67-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb67-7"><a href="data-wrangling-and-manipulation.html#cb67-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Flipper Length and Body Mass, by Sex &amp; Species&quot;</span>,</span>
+<span id="cb67-8"><a href="data-wrangling-and-manipulation.html#cb67-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="fu">nrow</span>(penguins), <span class="st">&quot; of the Palmer Penguins&quot;</span>),</span>
+<span id="cb67-9"><a href="data-wrangling-and-manipulation.html#cb67-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Body Mass (g)&quot;</span>, </span>
+<span id="cb67-10"><a href="data-wrangling-and-manipulation.html#cb67-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Flipper Length (mm)&quot;</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="what-do-we-think-about-when-we-look-at-plots-a-taster" class="section level3 hasAnchor" number="2.2.5">
-<h3><span class="header-section-number">2.2.5</span> What do we think about when we look at plots (<em>a taster</em>)<a href="data-wrangling-and-manipulation.html#what-do-we-think-about-when-we-look-at-plots-a-taster" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="bringing-things-together" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Bringing things together<a href="data-wrangling-and-manipulation.html#bringing-things-together" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="more-on-pipelines-and-operators" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> More on pipelines and operators<a href="data-wrangling-and-manipulation.html#more-on-pipelines-and-operators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this chapter you’ve been introduced to the pipe operator <code>%&gt;%</code> and the use of the <code>+</code> operator adding layers to a <code>ggplot</code>. Recall that <code>%&gt;%</code> is used for chaining operations in a data manipulation pipeline, whilst <code>+</code> is used for adding layers to a plot in the <code>ggplot2</code> framework. They serve different purposes, but we can combine them! For example, we can pipe a data object using <code>%&gt;%</code> into a ggplot workflow and then use <code>+</code> to add layers.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="data-wrangling-and-manipulation.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb68-2"><a href="data-wrangling-and-manipulation.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb68-3"><a href="data-wrangling-and-manipulation.html#cb68-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb68-4"><a href="data-wrangling-and-manipulation.html#cb68-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb68-5"><a href="data-wrangling-and-manipulation.html#cb68-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(., island <span class="sc">==</span> <span class="st">&quot;Biscoe&quot;</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb68-6"><a href="data-wrangling-and-manipulation.html#cb68-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> body_mass_g, <span class="at">x =</span> species)) <span class="sc">+</span></span>
+<span id="cb68-7"><a href="data-wrangling-and-manipulation.html#cb68-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb68-8"><a href="data-wrangling-and-manipulation.html#cb68-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Penguin Body Mass by Species on Biscoe&quot;</span>,</span>
+<span id="cb68-9"><a href="data-wrangling-and-manipulation.html#cb68-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Body Mass (g)&quot;</span>, </span>
+<span id="cb68-10"><a href="data-wrangling-and-manipulation.html#cb68-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<div class="alert alert-warning">
+<p><strong>TODO</strong> Run the code below. It will give you an error, can you figure out what the cause is?</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-wrangling-and-manipulation.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb69-2"><a href="data-wrangling-and-manipulation.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb69-3"><a href="data-wrangling-and-manipulation.html#cb69-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb69-4"><a href="data-wrangling-and-manipulation.html#cb69-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb69-5"><a href="data-wrangling-and-manipulation.html#cb69-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(., island <span class="sc">==</span> <span class="st">&quot;Biscoe&quot;</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb69-6"><a href="data-wrangling-and-manipulation.html#cb69-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> body_mass_g, <span class="at">x =</span> species)) <span class="sc">%&gt;%</span></span>
+<span id="cb69-7"><a href="data-wrangling-and-manipulation.html#cb69-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb69-8"><a href="data-wrangling-and-manipulation.html#cb69-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Penguin Body Mass by Species on Biscoe&quot;</span>,</span>
+<span id="cb69-9"><a href="data-wrangling-and-manipulation.html#cb69-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Body Mass (g)&quot;</span>, </span>
+<span id="cb69-10"><a href="data-wrangling-and-manipulation.html#cb69-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="what-to-look-at-in-a-plot-a-taster" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> What to look at in a plot (<em>a taster</em>)<a href="data-wrangling-and-manipulation.html#what-to-look-at-in-a-plot-a-taster" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Between group variation</p>
-<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-## ℹ Please use `linewidth` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>Within group variation</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <div class="alert alert-info" role="alert">
 <p><img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" /></p>
 <p><strong>Other resources: optional but recommended</strong></p>
