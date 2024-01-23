@@ -51,8 +51,8 @@ knitr::kable(lecs, align = "cccc", "simple", row.names = FALSE)
 
 <span><strong>Lectures are every week:</span></strong>
  <ul>
-  <li>**Mondays**: 8-9 am in 260-098, and </li>
-  <li>**Tuesdays**: 8-9 am in 260-098. </li>
+  <li>**Mondays**: 8-9 am, and </li>
+  <li>**Tuesdays**: 8-9 am. </li>
 </ul>
 </div>
 
@@ -93,7 +93,7 @@ knitr::kable(assessment, align = "cccc", "simple")
 ```
 
 <div class="alert alert-danger" role="alert">
-The test will be held on **Tuesday 12th September 6.30 - 8.15pm NZST**. **The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
+The test will be held on **TBD**. **The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
 The delivery mode for the test and the exam is an on-campus, invigilated Inspera assessment.
 </div>
 

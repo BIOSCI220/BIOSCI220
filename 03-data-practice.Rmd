@@ -1,22 +1,112 @@
-# Data practice
+# Ethical data practice
 
 <div class="alert alert-success" role="alert">
-![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%} 
+<center>![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%}</center>
 
 <strong>Learning objectives</strong> 
 
 <ul>
-<li> Define and discuss Māori Data Sovereignty principles</li>
+<li> Define reproducibility in the context of scientific research </li>
 <li> Define data sovereignty and explain this in relation to a researcher's obligation when collecting, displaying, and analysing data</li>
+<li> Define and discuss Māori Data Sovereignty principles</li>
 </ul>
 </div>
 
-## Data sovereignty
+
+What does this mean? The term **ethical data practice** has many meanings and components, the three we will focus on in this section are given below.
+
+ 1.  **Accuracy and Honesty:** Being accurate and honest in your analyses and conclusions.
+
+ 2.  **Respectful Handling of Data:** Recognize that data may represents people or beliefs or behaviour and be respectful of this.
+
+ 3.  **Awareness of Consequences:** Considering the ethical implications and societal impact of your research.
+
+
+In summary, when dealing with data we have should always aim to be accurate, honest, respectful and act responsibly. There are many ongoing discussions in the scientific community around ethical data practice and what it entails. It is a hugely important subject, and in many ways has a long way to go. We only touch briefly on some aspects of ethical data practice in this section, presenting the suggestions and thoughts of trailblazing communities and organisations in those areas.  
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Read [Ethical Guidelines for Statistical Practice](https://www.amstat.org/your-career/ethical-guidelines-for-statistical-practice) and outline which principle(s) you feel diredtly relate to your current career pathway.
+</div>
+
+
+
+
+## Accuracy and Honesty
+
+Teaching honesty is beyond the scope of this course. However, teaching you the tools so that your analysis is reproducible goes someway towards accuracy. This because, reproducibility promotes transparency, facilitates error detection and correction, and contributes to the overall reliability and accuracy of your research findings.
+
+### Reproducibility
+
+> "Reproducibility, also known as replicability and repeatability, is a major principle underpinning the scientific method. For the findings of a study to be reproducible means that results obtained by an experiment or an observational study or in a statistical analysis of a data set should be achieved again with a high degree of reliability when the study is replicated. ... With a narrower scope, reproducibility has been introduced in computational sciences: Any results should be documented by making all data and code available in such a way that the computations can be executed again with identical results." `r tufte::quote_footer('--- Reprodicibility, Wikipedia')`
+
+
+### Project-oriented workflow: good practice
+
+Properly managing data and other research outputs should starts at the beginning of your project. It should then and continue throughout!
+
+
+**Always start with a clean workspace** **Why?** *So your ex (code) can't come and mess up your life!*
+
+<p align="center">![](https://memegenerator.net/img/instances/57296391/when-your-ex-texts-you-after-months-hey-whats-up-not-today-satan-not-today.jpg){width="30%"}</p>
+
+
+To ensure this go to **Tools** > **Global Options** and uncheck the highlighted options.
+
+<p align="center">![](https://miro.medium.com/max/2784/1*dUNl71Jic2zYhYS2hxOBZA.png){width="40%"}</p>
+
+**Why?** Because, this is not reproducible, does **NOT** create a fresh `R` process, makes your script vulnerable, and it **will** come back to bite you.
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Below are two quotes from [Jenny Bryan, a `R` wizard](https://jennybryan.org/about/) which referecne two snippets of `R` code. Find out what each snippet does and why Jenny is so against them.
+
+> If the first line of your R script is
+> `setwd("C:\Users\jenny\path\that\only\I\have")`
+> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
+> If the first line of your R script is
+> `rm(list = ls())`
+> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥. `r tufte::quote_footer('--- Jenny Bryan, Tidyverse blog, workflow vs script')`
+
+</div>
+
+
+A project-oriented workflow in `R` refers to a structured approach to organizing and managing your code, data, and analyses. This helps improve reproducibility and the overall efficiency of your work. Within this it is essential essential to write code that is easy to understand, maintain, and share. To do so, coding best practice is to follow the **5 Cs** by being
+
+1. **Clear**
+   - *Code Clarity:* Write code that is easy to read and understand. Use meaningful variable and function names that convey the purpose of the code. Avoid overly complex or ambiguous expressions.
+   - *Comments:* Include comments to explain the purpose of your code, especially for complex or non-intuitive sections. Comments should add value without stating the obvious.
+
+2. **Concise:**
+   - *Avoid Redundancy:* Write code in a way that avoids unnecessary repetition. Reuse functions and use loops or vectorized operations when appropriate to reduce the length of your code.
+   - *Simplify Expressions:* Simplify complex expressions and equations to improve readability. Break down complex tasks into smaller, manageable steps.
+
+3. **Consistent:**
+   - *Coding Style:* Adhere to a consistent coding style throughout your project. Consistency in indentation, spacing, and naming conventions makes the code visually coherent.
+   - *Function Naming:* Keep naming conventions consistent. If you use camelCase for variable names, continue to use it consistently across your codebase.
+
+4. **Correct:**
+   - *Error Handling:* Implement proper error handling to ensure that your code gracefully handles unexpected situations. Check for potential issues, and provide informative error messages.
+   - *Testing:* Test your code to ensure it produces the correct output. Use tools like unit tests (e.g., with `testthat`) to verify that your functions work as intended.
+
+5. **Conformant:**
+   - *Follow Best Practices:* Adhere to best practices and coding standards in the R community. For example, follow the tidyverse style guide or the Google R Style Guide.
+   - *Package Guidelines:* If you're creating an R package, conform to package development guidelines. Use the `usethis` package to help set up your package structure in a conformant way.
+
+
+There are many other good practice tips when it comes to coding these include ensuring your code is modular, implementing unit testing, automating workflows and implementing version control. These topics, however are beyond the scope of this course (take [BIOSCI738](https://courseoutline.auckland.ac.nz/dco/course/BIOSCI/738/1243) if you'd like to learn more about them).
+
+
+
+
+
+## Respectful Handling of Data
+
+### Data sovereignty
 
 [''**Data sovereignty** is the idea that data are subject to the laws and governance structures within the nation it is collected''](https://en.wikipedia.org/wiki/Data_sovereignty)
 
 > "For Indigenous peoples, historical encounters with statistics have been fraught, and none more so than when involving official data produced as part of colonial attempts at statecraft." `r tufte::quote_footer('--- Lovett, R., Lee, V., Kukutai, T., Cormack, D., Rainie, S.C. and Walker, J., 2019. Good data practices for Indigenous data sovereignty and governance. Good data, pp.26-36.')`
 
+Data sovereignty emphasizes the importance of understanding and adhering to the legal and ethical considerations associated with data collection, storage, and analysis in different jurisdictions. Researchers must navigate these complexities while upholding the highest standards of integrity and respect for individuals' privacy and rights.
 
 ### Māori Data Sovereignty principles
  
@@ -32,11 +122,15 @@ New Zealand develops world-leading linked administrative data resources." `r tuf
 
 [Te Tiriti o Waitangi/Treaty of Waitangi](https://nzhistory.govt.nz/politics/treaty/read-the-Treaty/differences-between-the-texts) obliges the Government to actively protect [taonga](https://maoridictionary.co.nz/search?keywords=taonga), consult with Māori in respect of taonga, give effect to the principle of partnership and recognize Māori rangatiratanga over taonga. Factors that relate to how communities might recognize the taonga nature of any dataset include
 
- + provenance of the data: does the dataset come from a significant Māori source?
- + opportunity for the data: could the dataset support Māori aspirations for their people or their whenua (land)?
- + utility of the data: does the dataset have multiple uses?
+ + **provenance** of the data: does the dataset come from a significant Māori source?
+ + **opportunity** for the data: could the dataset support Māori aspirations for their people or their whenua (land)?
+ + **utility** of the data: does the dataset have multiple uses?
 
-**Māori Data Sovereignty principles** inform the recognition of Māori rights and interests in data, and promote the ethical use of data to enhance Māori wellbeing:
+**Māori Data Sovereignty principles** inform the recognition of Māori rights and interests in data, and promote the ethical use of data to enhance Māori wellbeing.
+
+<p align="center">[![](https://images.squarespace-cdn.com/content/58e9b10f9de4bb8d1fb5ebbc/1493722836783-JKE7O92ZBD7F2VMNOV59/TeManaRaraunga_wide_logo+6-1-fw.png?content-type=image%2Fpng)](https://www.temanararaunga.maori.nz/)</p>
+
+The [**Te Mana o te Raraunga Model**](https://www.temanararaunga.maori.nz/) was developed to align Māori concepts with data rights and interests, and guide agencies in the appropriate use of Māori data. Below are the guiding principles outlined by [**Te Mana o te Raraunga Model**](https://www.temanararaunga.maori.nz/) in th e [Principles of Māori Data Sovereignty](https://cdn.auckland.ac.nz/assets/psych/about/our-research/documents/TMR%2BM%C4%81ori%2BData%2BSovereignty%2BPrinciples%2BOct%2B2018.pdf).
 
 + **Rangatiratanga** (*authority*)
 
@@ -72,85 +166,13 @@ New Zealand develops world-leading linked administrative data resources." `r tuf
     + Ethics. Tikanga, kawa (protocols) and mātauranga (knowledge) shall underpin the protection, access and use of Māori data.
     + Māori shall decide which Māori data shall be controlled (tapu) or open (noa) access.
 
-#### Te Mana o te Raraunga
 
-<p align="center">[![](https://images.squarespace-cdn.com/content/58e9b10f9de4bb8d1fb5ebbc/1493722836783-JKE7O92ZBD7F2VMNOV59/TeManaRaraunga_wide_logo+6-1-fw.png?content-type=image%2Fpng)](https://www.temanararaunga.maori.nz/)</p>
+## Awareness of Consequences
 
-The *Te Mana o te Raraunga Model* was developed to align Māori concepts with data rights and interests, and guide agencies in the appropriate use of Māori data
+<div class="alert alert-warning">
+  <strong>TASK</strong> Watch this lecture [Algorithmic fairness: Examples from predictive models for criminal justice](https://www.youtube.com/watch?v=dFfA7VtrAYI) and summarise the key points made.
 
-+ **Whakapapa** and **whanaungatanga**: recognising the connectedness between the material, natural and spiritual worlds
-+ **Rangatiratanga**: Māori rights to own, access, control and possess data from them or about them and their environs
-+ **Kotahitanga**: collective vision and unity of purpose
-+ **Manaakitanga**: ethical data use to progress Māori aspirations for wellbeing
-+ **Kaitiakitanga**: sustainable data stewardship
-
-**Resources**
-
-+ [Lovett, R., Lee, V., Kukutai, T., Cormack, D., Rainie, S.C. and Walker, J., 2019. Good data practices for Indigenous data sovereignty and governance. Good data, pp.26-36.](https://researchcommons.waikato.ac.nz/bitstream/handle/10289/12919/data%20practices.pdf?sequence=5&isAllowed=y)
-
-+ [Walter, Maggie, Tahu Kukutai, Stephanie Russo Carroll, and Desi Rodriguez-Lonebear. Indigenous Data Sovereignty and Policy. Taylor & Francis, 2020.](https://library.oapen.org/handle/20.500.12657/42782) 
-
-## Reproducible research
-
-> "Reproducibility, also known as replicability and repeatability, is a major principle underpinning the scientific method. For the findings of a study to be reproducible means that results obtained by an experiment or an observational study or in a statistical analysis of a data set should be achieved again with a high degree of reliability when the study is replicated. ... With a narrower scope, reproducibility has been introduced in computational sciences: Any results should be documented by making all data and code available in such a way that the computations can be executed again with identical results." `r tufte::quote_footer('--- Reprodicibility, Wikipedia')`
-
-
-### Project-oriented workflow: good practice
-
-Properly managing data and other research outputs should starts at the beginning of your project. It should then and continue throughout!
-
-To setup an RStudio `.RProj` project go to **Project** (top right) > **New Project** > **Create Project** 
-
-**Best-practice tips**
-
- + Be organised: set up each each assignment/university course as a *project*
- + Ensure your project is self-contained. A *project* is a folder that should contain all the relevant files and all paths should be relative to that *project*
- + Always apply the 5 Cs: be **C**lear, **C**oncise, **C**onsistent, **C**orrect, and **C**onformant.
- + Naming files should be descriptive and consistent! 
- + Include a README file that summarises your project's structure
- + Provide a detailed description of the data, data source(s), and how it will be used.
- + Describe all the steps of data preprocessing.
- + Provide a description and information about each new version of the data.
- + Provide details about the software/code that is used for preprocessing the data.
- + Include brief examples of how your code works. 
- + Generate a list of all scripts, how to run them, and in what order.
- + When structuring your project directory consider the following:
-   + Put code and data in separate subdirectories.
-   + Plan to separate raw data from processed data.
-   + An example of a well-structured directory  
-      + ProjectName/
-         + README.MD
-         + Dataset/
-             + Raw Data/
-             + Processed Data/
-         + Analysis (or Code or Scripts)/
-             + Data cleaning/
-             + Data preprocessing/
-         + Output/
-             + Graphs
-             + Tables
-
-**Always start with a clean workspace** **Why?** *So your ex (code) can't come and mess up your life!*
-
-<p align="center">![](https://memegenerator.net/img/instances/57296391/when-your-ex-texts-you-after-months-hey-whats-up-not-today-satan-not-today.jpg){width="30%"}</p>
-
-
-To ensure this go to **Tools** > **Global Options** and uncheck the highlighted options.
-
-<p align="center">![](https://miro.medium.com/max/2784/1*dUNl71Jic2zYhYS2hxOBZA.png){width="40%"}</p>
-
-
-**Warning**
-
-> If the first line of your R script is
-> `setwd("C:\Users\jenny\path\that\only\I\have")`
-> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
-> If the first line of your R script is
-> `rm(list = ls())`
-> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥. `r tufte::quote_footer('--- Jenny Bryan, Tidyverse blog, workflow vs script')`
-
-**Why?** Because, this is not reproducible, does **NOT** create a fresh `R` process, makes your script vulnerable, and it **will** come back to bite you.
-
+</div>
 
 <div class="alert alert-info" role="alert">
 ![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%} 
@@ -158,8 +180,9 @@ To ensure this go to **Tools** > **Global Options** and uncheck the highlighted 
 <strong>Other resources: optional but recommended</strong>
 
 <ul>
+<li>[Indigenous Data Sovereignty and Policy](https://library.oapen.org/handle/20.500.12657/42782) </li>
+<li>[Good data practices for Indigenous data sovereignty and governance.](https://researchcommons.waikato.ac.nz/bitstream/handle/10289/12919/data%20practices.pdf?sequence=5&isAllowed=y)</li>
 <li>[Why data sovereignty matters](https://www.onenet.co.nz/our-resources/why-data-sovereignty-matters/)</li>
-<li>[Indigenous Data Sovereignty and Policy](https://library.oapen.org/handle/20.500.12657/42782)</li>
 <li>[Principles of Māori Data Sovereignty](https://cdn.auckland.ac.nz/assets/psych/about/our-research/documents/TMR%2BM%C4%81ori%2BData%2BSovereignty%2BPrinciples%2BOct%2B2018.pdf)</li>
 </ul>
 </div>

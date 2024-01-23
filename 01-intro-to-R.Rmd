@@ -66,13 +66,13 @@ Throughout this course we will be programming using `R`. `R` is a **free** **ope
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Go to the Statistics Department display in the science building foyer (building 303) to see a CD-Rom with the **first** ever version of `R`.
+  <strong>TASK</strong> Go to the Statistics Department display in the science building foyer (building 303) to see a CD-Rom with the **first** ever version of `R`.
 </div>
 
 `RStudio` is an integrated development environment (IDE) for the `R` programming language. It serves as a user-friendly workspace, offering additional tools for coding, data visualization, and project management. `RStudio` simplifies the process of learning `R` by providing a structured interface with many built-in tools to help organize workflow, fostering a systematic approach to data analysis and research. 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Research the meaning of open-source software and briefly outline the pros and cons of this in the context of statistical analysis.
+  <strong>TASK</strong> Research the meaning of open-source software and briefly outline the pros and cons of this in the context of statistical analysis.
 </div>
 
 ## Installing R and RStudio
@@ -81,7 +81,7 @@ Throughout this course we will be programming using `R`. `R` is a **free** **ope
 **NOTE:** `RStudio` depends on `R` so there is an order you should follow when you download these software!
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Follow the instructions below to install `R` and `RStudio`. Here are some step-by-step instructional videos you might find useful
+  <strong>TASK</strong> Follow the instructions below to install `R` and `RStudio`. Here are some step-by-step instructional videos you might find useful
   
   <ul>
   <li>[Software Carpentry install R & RStudio Mac](https://youtu.be/5-ly3kyxwEg)</li>
@@ -103,7 +103,7 @@ Throughout this course we will be programming using `R`. `R` is a **free** **ope
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Once you have both `R` and `Rstudio` installed, in the *Console* next to the prompt type `1:10` and press enter on your keyboard. Your computer should say something back you (in the *Console*)! What do you think you were asking it to do? Does the output make sense?^[You should have seen the numbers 1 to 10 printed out as a sequence.]
+  <strong>TASK</strong> Once you have both `R` and `Rstudio` installed, in the *Console* next to the prompt type `1:10` and press enter on your keyboard. Your computer should say something back you (in the *Console*)! What do you think you were asking it to do? Does the output make sense?^[You should have seen the numbers 1 to 10 printed out as a sequence.]
 </div>
 
 
@@ -132,7 +132,7 @@ If you had only three panes showing before, a new (fourth) pane should open up i
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Type `1:10` in your *Script* and practise *running* this line of code using both methods above. Not that if you've *Run* the code successfully then your computer will speak back to you each time via the *Console*]
+  <strong>TASK</strong> Type `1:10` in your *Script* and practise *running* this line of code using both methods above. Not that if you've *Run* the code successfully then your computer will speak back to you each time via the *Console*]
 </div>
 
 
@@ -367,7 +367,7 @@ glimpse(paua)
 `glimpse()` will give you the first few entries of each variable in a row after the variable name. Note also, that the data type  of the variable is given immediately after each variables name inside `< >`.
 
 <div class="alert alert-warning">
-  <strong>TODO!</strong> Try running the following operations on the `paua` data object. What do you think each is asking?
+  <strong>TASK!</strong> Try running the following operations on the `paua` data object. What do you think each is asking?
   
   + `head(paua)`
   + `tail(paua)`
@@ -417,7 +417,7 @@ Sometimes your computer will return a warning messages to you prefaced "Warning:
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Keep a bug diary! Each time you get an error message, see if you can solve it and keep a diary of your attempts and solution.
+  <strong>TASK</strong> Keep a bug diary! Each time you get an error message, see if you can solve it and keep a diary of your attempts and solution.
   
   </div>
 

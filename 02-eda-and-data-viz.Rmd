@@ -73,7 +73,7 @@ paua <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/
 ```
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Revisit the [Dealing with data] section in the previous chapter and make sure to practice reading the file into `R` using the different ways given. Make sure to restart `R` (i.e., close it down completely and open up a fresh clean workspace) each time.
+  <strong>TASK</strong> Revisit the [Dealing with data] section in the previous chapter and make sure to practice reading the file into `R` using the different ways given. Make sure to restart `R` (i.e., close it down completely and open up a fresh clean workspace) each time.
   
   </div>
 
@@ -222,16 +222,20 @@ penguins_nafree %>%
 
 > "Clutter and confusion are not attributes of data - they are shortcomings of design." `r tufte::quote_footer('--- Edward Tufte')`
 
+> "Scientific visualization is classically defined as the process of graphically displaying scientific data. However, this process is far from direct or automatic. There are so many different ways to represent the same data: scatter plots, linear plots, bar plots, and pie charts, to name just a few. Furthermore, the same data, using the same type of plot, may be perceived very differently depending on who is looking at the figure. A more accurate definition for scientific visualization would be a graphical interface between people and data." `r tufte::quote_footer('--- Nicolas P. Rougier, Michael Droettboom, Philip E. Bourne, Ten Simple Rules for Better Figures ')`
+
+> "message and readability of the figure is the most important aspect while beauty is only an option" `r tufte::quote_footer('--- Nicolas P. Rougier, Michael Droettboom, Philip E. Bourne, Ten Simple Rules for Better Figures ')`
 
 ### Exploratory plots (for your own purposes)
 
-Exploratory plots are just *for you*, they
+Exploratory plots are just *for you*, they focus soley on data exploration. They 
 
-  + focus solely on data exploration,
-  + don't have to look pretty,
-  + just needs to get to the point,
-  + explore and discover new data facets, and
-  + help formulate new questions.
+  1. **Don't Have to Look Pretty:** These plots are only needed to reveal insights.
+  2. **Just Needs to Get to the Point:** Keep the plots concise and straightforward. Avoid unnecessary embellishments or complex formatting. 
+  3. **Explore and Discover New Data Facets:** Use exploratory plots to uncover hidden patterns, trends, or outliers in the data. Employ different plot types to reveal various facets and aspects of the dataset.
+  4. **Help Formulate New Questions:** Use exploratory plots as a tool to prompt new questions and hypotheses. As you discover patterns, think about what additional questions these findings raise for further investigation.
+
+
   
 Let's use a base `R` command (i.e., functions shipped with `R`) to create a `boxplot` of our `paua` data.
 
@@ -244,7 +248,7 @@ So what have we asked our computer to do here? We are using the function `boxplo
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Run each line of the following code and comment briefly on what each plot shows. 
+  <strong>TASK</strong> Run each line of the following code and comment briefly on what each plot shows. 
    
 ```{r plot options, eval = FALSE, echo = TRUE}
 boxplot(Length ~ Species, data  = paua)
@@ -257,60 +261,47 @@ plot(paua$Age)
 
 
 
-
-
 ### Explanatory plots
 
 Explanatory plots are mainly *for others*. These are the most common kind of graph used in scientific publications. They should
 
-   + have a clear purpose,
-   + be designed for the audience,
-   + be easy to read (*this covers a lot of things*),
-   + not distort the data,
-   + help guide the reader to a particular conclusion, 
-   + answer a specific question, and
-   + support an outlined  decision.
+   1. **Have a Clear Purpose:** Define a clear and specific purpose for your plot. Identify what scientific question or hypothesis the plot is addressing. Avoid unnecessary elements that do not contribute to this purpose.
+   2. **Be Designed for the Audience:** Tailor the design of your plot to the characteristics and expertise of your audience. Consider their familiarity with technical terms, preferred visualizations, and overall scientific background.
+   3. **Be Easy to Read:** Prioritize readability by using legible fonts, appropriate font sizes, and clear labels. Ensure that the axes are well-labeled, and use a simple and straightforward layout. Avoid clutter and unnecessary complexity that could hinder comprehension.
+   4. **Not Distort the Data:** Maintain the integrity of the data by avoiding distortion in your plot. Ensure that scales and proportions accurately represent the underlying data, preventing misleading visualizations.
+   5. **Help Guide the Reader to a Particular Conclusion:**
+   Structure your plot in a way that guides the reader toward the intended conclusion. Use visual elements such as annotations, arrows, or emphasis to highlight key findings and lead the reader through the data interpretation process.
+   6. **Answer a Specific Question:**Construct your plot with a specific research question in mind. The plot should directly address and answer this question, providing a clear and unambiguous response.
+   7. **Support an Outlined Decision:** If the plot is intended to support decision-making, clearly outline the decision or action it is meant to inform. The plot should provide relevant information that aids in making well-informed decisions based on the presented data.
+
    
-For example,
 
 <p align="center">![](https://jimgruman.netlify.app/post/variableimportance/2020_31_PalmerPenguins.png)</p>
 <p align="center">Plots by Cedric Scherer and mentioned on [this blog](https://jimgruman.netlify.app/post/variableimportance/)</p>
 
 
+The table below summarises [Ten Simple Rules for Better Figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833), a basic set of rules to improve your visualizations.
 
-### [Ten Simple Rules for Better Figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833)
+| Rule Name                   | Rule Description                                                                                                       |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| **Know Your Audience**      | Understand the characteristics and expertise of your audience to tailor the figure accordingly.                          |
+| **Identify Your Message**    | Clearly define the main message or takeaway that you want the audience to understand from the figure.                    |
+| **Adapt the Figure to the Support Medium** | Tailor the figure's complexity and design to suit the medium it will be presented in (e.g., print, online). |
+| **Captions Are Not Optional**| Craft informative captions that provide essential details and context for interpreting the figure.                        |
+| **Do Not Trust the Defaults**| Adjust default settings to optimize the visual elements of the figure, such as colors, scales, and labels.                |
+| **Use Color Effectively**   | Apply color purposefully, taking into account accessibility considerations and cultural interpretations.                   |
+| **Do Not Mislead the Reader**| Avoid creating misleading visualizations and be aware of formulas to measure the potential misleading nature of a graph. [There are formulas to measure how misleading a graph is!](https://en.wikipedia.org/wiki/Misleading_graph) |
+| **Avoid Chartjunk**         | Eliminate unnecessary decorations and embellishments in the figure that do not contribute to the message.                 |
+| **Message Trumps Beauty**   | Prioritize conveying a clear message over making the figure aesthetically pleasing.                                      |
+| **Get the Right Tool**      | Choose the appropriate visualization tool (e.g., `R`) or chart type that best communicates the data and intended message.              |
 
-> "Scientific visualization is classically defined as the process of graphically displaying scientific data. However, this process is far from direct or automatic. There are so many different ways to represent the same data: scatter plots, linear plots, bar plots, and pie charts, to name just a few. Furthermore, the same data, using the same type of plot, may be perceived very differently depending on who is looking at the figure. A more accurate definition for scientific visualization would be a graphical interface between people and data." `r tufte::quote_footer('--- Nicolas P. Rougier, Michael Droettboom, Philip E. Bourne, Ten Simple Rules for Better Figures ')`
 
-> "message and readability of the figure is the most important aspect while beauty is only an option" `r tufte::quote_footer('--- Nicolas P. Rougier, Michael Droettboom, Philip E. Bourne, Ten Simple Rules for Better Figures ')`
+<div class="alert alert-warning">
+  <strong>TASK</strong> Read [this short paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833) and find examples in your choice of literature of one or more of the rules in action.
+  
+  </div>
 
-
- + **Know** Your Audience
- 
- + **Identify** Your Message
- 
- + **Adapt** the Figure to the Support Medium
- 
- + **Captions** Are Not Optional
- 
- + **Do Not** Trust the Defaults
- 
- + Use **Color** Effectively
- 
- + **Do Not Mislead** the Reader
- 
-    + [There are formulas to measure how misleading a graph is!](https://en.wikipedia.org/wiki/Misleading_graph)
-    
- + **Avoid** *Chartjunk*
- 
- + **Message** Trumps Beauty
- 
- + Get the Right **Tool**
- 
-    + I'm an advocate for `R` 
-
-So we've seen some pretty plots, let's get around to making some!
-
+   
 ## Plotting using `ggplot2`
 
 `ggplot2` is an `R` package for producing statistical, or data, graphics; it has an underlying grammar based on the [Grammar of Graphics](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448)
@@ -401,7 +392,7 @@ Breaking down the lines of code here we have that
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong>Try specifying some different colours in  `scale_color_manual()` in the code above. Research Hex colour codes and try using these instead of colour names.
+  <strong>TASK</strong>Try specifying some different colours in  `scale_color_manual()` in the code above. Research Hex colour codes and try using these instead of colour names.
   </div>
 
 Now let's move onto plotting different types of data (e.g., continuous and discrete) on the same plot. We can even add some easy custom themeing using in-built `ggplot2` functionality (e.g., `theme_classic()`). The code below, generates a boxplot that compares the distribution of flipper lengths (mm) for the different penguin species. 
@@ -425,7 +416,7 @@ Breaking the code above down we have
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong>
+  <strong>TASK</strong>
   Type `theme_` into your Console and wait for `RStudio` to attempt to autocomplete for you. Run down the list of in-built themes and try them instead of `theme_classic()` above.
   
 </div>
@@ -442,7 +433,7 @@ ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) +
 ```
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> What can you say about the distribution of penguin flipper length. Do you this the distributions are symmetrical, skewed, bimodal?
+  <strong>TASK</strong> What can you say about the distribution of penguin flipper length. Do you this the distributions are symmetrical, skewed, bimodal?
 </div>
 
 
@@ -469,7 +460,7 @@ ggplot(penguins_nafree,aes(x = flipper_length_mm)) +
 ```
 
 <div class="alert alert-warning">
-  <strong>TODO</strong>
+  <strong>TASK</strong>
 We should always avoid using similarly bight red and green colours: they may not be distinguishable for red-green colorblind readers. Using `ggplot2` we can access a whole range of colourblind friendly palettes: one package that has a whole range is `RColorBrewer` install it then try running `RColorBrewer::display.brewer.all(colorblindFriendly = TRUE)` what do you think you've asked your computer to show you?
 </div>
 
@@ -494,7 +485,7 @@ ggplot(penguins_nafree, aes(x = species, fill = sex)) +
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Before reading the breakdown below write out your own and then compare the two. 
+  <strong>TASK</strong> Before reading the breakdown below write out your own and then compare the two. 
   
   </div>
   
@@ -511,7 +502,7 @@ ggplot(penguins_nafree, aes(x = species, fill = sex)) +
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Run each code chunk below. Map each line to a component in the plot produced. Can you improve the plots?
+  <strong>TASK</strong> Run each code chunk below. Map each line to a component in the plot produced. Can you improve the plots?
 
 ```{r, eval = FALSE}
 ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) + ## data & aesthetics
@@ -579,7 +570,7 @@ penguins %>%
 
 
 <div class="alert alert-warning">
-  <strong>TODO</strong> Run the code below. It will give you an error, can you figure out what the cause is?
+  <strong>TASK</strong> Run the code below. It will give you an error, can you figure out what the cause is?
   
 ```{r, eval = FALSE}
 library(tidyverse)
@@ -655,6 +646,8 @@ ggplot() +
 <strong>Other resources: optional but recommended</strong>
 
 <ul>
+<li>[Ihaka Lecture Series 2023 Danielle Navarro – Unpredictable paintings: Making generative artwork in R](https://www.youtube.com/watch?v=W8rY-DNQI2Q)  </li>
+<li>[Ihaka Lecture Series 2023 Chris McDowall – What’s Behind the Map: The Process of Data Visualisation](https://www.youtube.com/watch?v=utUr1pV8Em4)  </li>
 <li>[`ggplot2` cheatsheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)</li>
 <li>[Elegant Graphics for Data Analysis](https://ggplot2-book.org/introduction.html)</li>
 <li>[Using `ggplot2` to communicate your results](https://ourcodingclub.github.io/tutorials/datavis/)</li>
