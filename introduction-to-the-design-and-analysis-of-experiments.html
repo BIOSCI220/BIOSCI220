@@ -160,7 +160,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data wrangling and manipulation</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#exploratory-data-analysis-and-data-wrangling-in-the-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Exploratory data analysis and data wrangling in the Tidyverse</a></li>
-<li class="chapter" data-level="2.2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#data-visualisation"><i class="fa fa-check"></i><b>2.2</b> Data Visualisation</a></li>
+<li class="chapter" data-level="2.2" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#data-visualization"><i class="fa fa-check"></i><b>2.2</b> Data Visualization</a></li>
 <li class="chapter" data-level="2.3" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#plotting-using-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Plotting using <code>ggplot2</code></a></li>
 <li class="chapter" data-level="2.4" data-path="data-wrangling-and-manipulation.html"><a href="data-wrangling-and-manipulation.html#bringing-things-together"><i class="fa fa-check"></i><b>2.4</b> Bringing things together</a></li>
 </ul></li>
@@ -174,13 +174,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#introduction-to-experiments"><i class="fa fa-check"></i><b>4.1</b> Introduction to experiments</a></li>
 <li class="chapter" data-level="4.2" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#the-three-main-principles-of-experimental-design"><i class="fa fa-check"></i><b>4.2</b> The three (main) principles of experimental design</a></li>
-<li class="chapter" data-level="4.3" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#some-experimental-designs"><i class="fa fa-check"></i><b>4.3</b> Some experimental designs</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-the-design-and-analysis-of-experiments.html"><a href="introduction-to-the-design-and-analysis-of-experiments.html#experimental-designs"><i class="fa fa-check"></i><b>4.3</b> Experimental designs</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html"><i class="fa fa-check"></i><b>5</b> Introduction to Hypothesis testing</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#randomisation-tests"><i class="fa fa-check"></i><b>5.1</b> Randomisation tests</a></li>
+<li class="chapter" data-level="5.1" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#randomization-tests"><i class="fa fa-check"></i><b>5.1</b> Randomization tests</a></li>
 <li class="chapter" data-level="5.2" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#what-is-a-p-value"><i class="fa fa-check"></i><b>5.2</b> What is a <em>p-value</em>?</a></li>
-<li class="chapter" data-level="5.3" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#type-i-and-type-ii-errors"><i class="fa fa-check"></i><b>5.3</b> Type I and Type II errors</a></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#the-vocabulary-of-hypothesis-testing"><i class="fa fa-check"></i><b>5.3</b> The Vocabulary of hypothesis testing</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing and introduction to linear regression</a>
 <ul>
@@ -236,11 +236,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="introduction-to-the-design-and-analysis-of-experiments" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Introduction to the design and analysis of experiments<a href="introduction-to-the-design-and-analysis-of-experiments.html#introduction-to-the-design-and-analysis-of-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>We now know how to deal with data in <code>R</code>; however, before we start drawing conclusions we need to know how the data were collected. Generally, data is either observational (data collected where researchers don’t control the environment, but simply observe outcomes) or experimental (data collected where researchers introduce some intervention and control the environment in order to draw inference).</p>
-<p>Being able to design and critique appropriate experiments is a key skill for any budding biologist. But how do you start?</p>
-<p><a href="https://en.wikipedia.org/wiki/Ronald_Fisher">R. A. Fisher</a>’s work in the area of experimental design is, perhaps, the most well known in the field. The principles he devised we still abide by today. Note, however, to give a balanced view of the celebrated mathematician many of his views (on eugenics and race in particular) are abhorrent to many. I would urge you to <a href="https://www.nature.com/articles/s41437-020-00394-6">read up on his work in this area and come to your own conclusions</a>.</p>
 <div class="alert alert-success" role="alert">
-<p><img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" /></p>
+<center>
+<img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" />
+</center>
 <p><strong>Learning objectives</strong></p>
 <ul>
 <li>
@@ -282,6 +281,9 @@ Identify sources of variation within a given experimental design
 </li>
 </ul>
 </div>
+<p>We now know how to deal with data in <code>R</code>; however, before we start drawing conclusions we need to know how the data were collected. Generally, data is either observational (data collected where researchers don’t control the environment, but simply observe outcomes) or experimental (data collected where researchers introduce some intervention and control the environment in order to draw inference).</p>
+<p>Being able to design and critique appropriate experiments is a key skill for any budding biologist. But how do you start?</p>
+<p><a href="https://en.wikipedia.org/wiki/Ronald_Fisher">R. A. Fisher</a>’s work in the area of experimental design is, perhaps, the most well known in the field. The principles he devised we still abide by today. Note, however, to give a balanced view of the celebrated mathematician many of his views (on eugenics and race in particular) are detested to many. I would urge you to <a href="https://www.nature.com/articles/s41437-020-00394-6">read up on his work in this area and come to your own conclusions</a>.</p>
 <div id="introduction-to-experiments" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Introduction to experiments<a href="introduction-to-the-design-and-analysis-of-experiments.html#introduction-to-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
@@ -290,77 +292,197 @@ Identify sources of variation within a given experimental design
 — Gertrude Mary Cox
 </footer>
 </blockquote>
-<div id="key-phrases" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Key phrases<a href="introduction-to-the-design-and-analysis-of-experiments.html#key-phrases" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>An <strong>experiment</strong> is a procedure (or set of actions) where a researcher intentionally changes some factor/treatment/variable to observe the effect of their actions. As mentioned above, the collection of observational data is not experimentation.</p>
-<p>An <strong>experimental unit</strong> is the smallest portion of experimental material which is <em>independently</em> perturbed. This is the item under study for which some variable (treatment) is changed. For example this could be a human subject or an agricultural plot.</p>
-<p>An <strong>observational unit</strong> (or subsample) is the smallest unit on which a response is measured. If the experimental unit is split after the treatment has been applied (e.g., multiple samples taken from one human subject) then this sample is called a subsample or observational unit. If one measurement is made on each experimental unit then the <strong>observational unit</strong> = the <strong>experimental unit</strong>. If multiple measurements are made on each subject (e.g., human) then each experimental unit has &gt;1 observational unit. This is then <em>pseudo-</em> or <em>technical replication</em> (see below).</p>
-<p>A <strong>treatment</strong> (or <strong>independent variable</strong> or <strong>factor</strong> or <strong>treatment factor</strong>) is an experimental condition <em>independently</em> applied to an experimental unit. It is one of the variables that is controlled by the researcher during the experiment (e.g., drug type). The values of the treatments within a set are called <strong>levels</strong>.</p>
-<p>The <strong>dependent variable</strong> or <strong>response</strong> is the output (or thing) that is measured after an experiment. This is what the researcher measures and assesses if changing the treatment(s) (i.e., independent variable(s)) induces any change. An <strong>effect</strong> is the change in the response variable caused by the controlled changes in the independent variable. Whether the magnitude of the effect (it’s size) is significant (or or any practical interest) is determined by the researcher after carrying out some appropriate analyses.</p>
-</div>
-<div id="setting-up-an-experiment" class="section level3 hasAnchor" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Setting up an experiment<a href="introduction-to-the-design-and-analysis-of-experiments.html#setting-up-an-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When setting up and experiment and/or considering experimental data there are questions we should always answer the following questions.</p>
+<p><strong>Key phrases</strong></p>
 <ul>
-<li>What are the <strong>objectives</strong> of the study? <em>Why are you carrying out this experiment?</em></li>
-<li>What is the <strong>scientific question</strong>? <em>What specific hypothesis do you hope to test/investigate?</em></li>
-<li>What are the <strong>experimental units</strong>? <em>What characteristics of the experimental units can be measured?</em> <em>How large is an meaningful effect size in this context?</em></li>
-<li>How many <strong>treatments</strong> are to be studied and what are they? <em>How does the experimenter apply the treatments to the available experimental units and then observe the responses?</em></li>
-<li>What are the potential sources of <strong>variation</strong>? <em>Can you control for the unwanted sources or variation?</em> <em>Can you name all likely sources?</em></li>
-<li>Can the resulting design be <strong>analyzed</strong> or can the desired comparisons be made? **Can you describe and detail the appropriate analysis?*</li>
+<li><p>An <strong>experiment</strong> is a procedure (or set of actions) where a researcher intentionally changes some factor/treatment/variable to observe the effect of their actions. As mentioned above, the collection of observational data is not experimentation.</p></li>
+<li><p>An <strong>experimental unit</strong> is the smallest portion of experimental material which is <em>independently</em> perturbed. This is the item under study for which some variable (treatment) is changed. For example this could be a human subject or an agricultural plot.</p></li>
+<li><p>An <strong>observational unit</strong> (or subsample) is the smallest unit on which a response is measured. If the experimental unit is split after the treatment has been applied (e.g., multiple samples taken from one human subject) then this sample is called a subsample or observational unit. If one measurement is made on each experimental unit then the <strong>observational unit</strong> = the <strong>experimental unit</strong>. If multiple measurements are made on each subject (e.g., human) then each experimental unit has &gt;1 observational unit. This is then <em>pseudo-</em> or <em>technical replication</em> (see below).</p></li>
+<li><p>A <strong>treatment</strong> (or <strong>independent variable</strong> or <strong>factor</strong> or <strong>treatment factor</strong>) is an experimental condition <em>independently</em> applied to an experimental unit. It is one of the variables that is controlled by the researcher during the experiment (e.g., drug type). The values of the treatments within a set are called <strong>levels</strong>.</p></li>
+<li><p>The <strong>dependent variable</strong> or <strong>response</strong> is the output (or thing) that is measured after an experiment. This is what the researcher measures and assesses if changing the treatment(s) (i.e., independent variable(s)) induces any change.</p></li>
+<li><p>An <strong>effect</strong> is the change in the response variable caused by the controlled changes in the independent variable. Whether the magnitude of the effect (it’s size) is significant (or or any practical interest) is determined by the researcher after carrying out some appropriate analyses.</p></li>
 </ul>
-<div id="a-simple-example-charlottes-coffee" class="section level4 hasAnchor" number="4.1.2.1">
-<h4><span class="header-section-number">4.1.2.1</span> A simple example: Charlotte’s coffee<a href="introduction-to-the-design-and-analysis-of-experiments.html#a-simple-example-charlottes-coffee" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Charlotte wants to investigate the strength of different coffee beans. So, she sets up an experiment as follows.</p>
-<ul>
-<li>Three types of coffee beans are chosen: <em>Arabica</em>, <em>Liberica</em> , and <em>Robusta</em>.</li>
-<li>12 identical cups are chosen and sets of four cups are <strong>randomly allocated</strong> one of three treatments.</li>
-<li>Four sets of each type of coffee beans are ground and cups made (in the same way) resulting in a total of 12 cups of coffee, see below.</li>
-<li>Samples are taken from each cup and the coffee strength is measured.</li>
-</ul>
-<div id="scientific-question-does-coffee-strength-differ-between-bean-types-of-coffee-beans" class="section level5 hasAnchor" number="4.1.2.1.1">
-<h5><span class="header-section-number">4.1.2.1.1</span> Scientific question: Does coffee strength differ between bean types of coffee beans?<a href="introduction-to-the-design-and-analysis-of-experiments.html#scientific-question-does-coffee-strength-differ-between-bean-types-of-coffee-beans" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>There are 3 <em>treatments</em> (types of coffee beans): Arabica, Liberica, and Robusta.</p>
-<p>In this case the <em>experimental unit</em> would be the coffee cup as each one is allocated a different bean type (treatment).</p>
-<p>The <em>observational unit</em> changes depending on the scenario (i.e., what and how samples are taken). For example,</p>
-<ul>
-<li>if a single ml of liquid is taken from each cup and one measurement is taken per ml taken <span class="math inline">\(\rightarrow\)</span> the observational unit would be the cup;</li>
-<li>if single ml of liquid is taken from each cup and two subsamples are then taken from each ml, then if measurements are taken per subsample <span class="math inline">\(\rightarrow\)</span> then the observational unit would be a subsample;</li>
-<li>if four <span class="math inline">\(\times\)</span> 1 ml of liquid were taken from each cup and from each ml a measurement is taken <span class="math inline">\(\rightarrow\)</span> then the observational unity would be each 1ml sample.</li>
-</ul>
-</div>
+<div id="setting-up-an-experiment" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Setting up an experiment<a href="introduction-to-the-design-and-analysis-of-experiments.html#setting-up-an-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the previous chapter where we discussed <a href="ethical-data-practice.html#reproducibility">Reproducibility</a>. This also applies to the design and analysis of experiments. In order to future proof our research we should make every effort to ensure others can reproduce it. To do so we should be specific about our goals and procedures by</p>
+<ol style="list-style-type: decimal">
+<li>Defining the goals/objectives of our research,</li>
+<li>Formulating a specific hypothesis,</li>
+<li>Specifying the response variable(s) that will be measured,</li>
+<li>Specifying the treatments that will be tested and describing the process of applying these treatments to the experimental units,</li>
+<li>Outlining the procedure for observing and recording responses to assess treatment effects,</li>
+<li>Identifying factors that may contribute to variability in the results (expected and otherwise), and</li>
+<li>Describing the statistical or methods that will be employed to the our hypothesis.</li>
+</ol>
+<p>Following these guidelines not only helps our experiment, but makes sure others can reproduce it. For example, defining specific objectives directs you towards writing focused statements about the investigative questions you want your experiment to answer. Listing the experimental factors (or treatments or independent variables) you will study in your experiment helps to organize variables and work out how they may help to explain observed changes in your measurable response(s). It is important that the experimental factor can be controlled during and between experimental runs. Variables that are thought to affect the response, but cannot be controlled, cannot be included as an experimental factor.</p>
+<p><strong>An example</strong></p>
+<table>
+<colgroup>
+<col width="32%" />
+<col width="67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Experiment Title</strong></th>
+<th>Barista Brews</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Researcher Name</strong></td>
+<td>Dr Java</td>
+</tr>
+<tr class="even">
+<td><strong>Researcher Institute</strong></td>
+<td>Central Perk</td>
+</tr>
+<tr class="odd">
+<td><strong>Objective</strong></td>
+<td>The objective of this experiment is to determine what type of grind and brew ratio (i.e., amount of coffee in relation to water) leads to the strongest coffee.</td>
+</tr>
+<tr class="even">
+<td><strong>Hypothesis</strong></td>
+<td>That a finer grained coffee with a higher brew ratio (i.e., less water to coffee) will lead to the strongest coffee.</td>
+</tr>
+<tr class="odd">
+<td><strong>Response variable</strong></td>
+<td>Total Dissolved Solids (TDS), a measure of soluble concentration (%).</td>
+</tr>
+<tr class="even">
+<td><strong>Treatments</strong></td>
+<td>- Brew ratio - 2 parts coffee to 1 part water (2-1) - 1 part coffee to 1 part water (1-1) - 1 part coffee to 2 parts water (1-2) - Grind - Fine - Coarse</td>
+</tr>
+<tr class="odd">
+<td><strong>Experimental material</strong></td>
+<td>Individual cups, maintaining consistency in cup size, water amount, and boiling temperature.</td>
+</tr>
+<tr class="even">
+<td><strong>How treatments applied</strong></td>
+<td>Independently to individual cups. Each cup will be made independently, not as a batch distributed among several cups.</td>
+</tr>
+<tr class="odd">
+<td><strong>How measurements taken</strong></td>
+<td>Treatments applied independently to individual cups. Each cup with the same treatment (brew ratio and grind) will be subject to the same environmental conditions.</td>
+</tr>
+<tr class="even">
+<td><strong>Experimental units</strong></td>
+<td>Replicate each treatment twice. Assign 2 experimental units (cups) to each unique treatment combination.</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-warning">
+<strong>TASK</strong> Design your own experiment briefly outlining each of the steps listed above. You may find <a href="https://statbiscuit.shinyapps.io/doe_form/">this application</a> useful.
 </div>
 </div>
 </div>
 <div id="the-three-main-principles-of-experimental-design" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> The three (main) principles of experimental design<a href="introduction-to-the-design-and-analysis-of-experiments.html#the-three-main-principles-of-experimental-design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="replication" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Replication<a href="introduction-to-the-design-and-analysis-of-experiments.html#replication" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Biological replication:</strong> each treatment is <em>independently</em> applied to each of several humans, animals or plants. <em>Why?</em> To generalize results to population.</p>
-<p><strong>Technical replication:</strong> two or more samples from the same biological source which are <em>independently</em> processed. <em>Why?</em> Advantageous if processing steps introduce a lot of variation; increases the precision with which comparisons of relative abundances between treatments are made.</p>
-<p><strong>Pseudo-replication:</strong> one sample from the same biological source, divided into two or more aliquots which are <em>independently</em> measured. <em>Why?</em> Advantageous for noisy measuring instruments; increases the <strong>precision</strong> with which comparisons of relative abundances between treatments are made.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Replication</strong></li>
+</ol>
+<p>Repeating an experiment means that you can assess the consistency and reliability of any observed effects. If you observe the effect repeatedly is less likely that it occurred simply due to random variation. There are many ways replication can be included in an experiment. What you repeat (e.g., treatments or measurements) depends on what effect or source of variation you wish to investigate. The table below summarizes, perhaps, the three most commonly employed types of replication.</p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="31%" />
+<col width="56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Replication Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Why</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Biological Replication</strong></td>
+<td>Each treatment is independently applied to several humans, animals, or plants.</td>
+<td>To generalize results to the population.</td>
+</tr>
+<tr class="even">
+<td><strong>Technical Replication</strong></td>
+<td>Two or more samples from the same biological source independently processed.</td>
+<td>Advantageous if processing steps introduce a lot of variation; increases precision in comparing relative abundances between treatments.</td>
+</tr>
+<tr class="odd">
+<td><strong>Pseudo-replication</strong></td>
+<td>One sample from the same biological source divided into two or more aliquots independently measured.</td>
+<td>Advantageous for noisy measuring instruments; increases precision in comparing relative abundances between treatments.</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Randomization</strong></li>
+</ol>
+<p>Employing randomization in your experiment goes towards ensuring the validity, reliability, and generalizability of your results. The main reason to randomize allocation of treatment to experimental units is to protect against bias. We, typically, wish to plan the experiment in such a way that the variations caused by extraneous factors can all be combined under the general heading of “chance”. Doing so ensures that each treatment has the same probability of getting good (or bad) units and thus avoids systematic bias. Random allocation can cancel out population bias; it ensures that any other possible causes for the experimental results are split equally between groups. Hence, by creating comparable treatment groups through random assignment we can minimize bias, increase validity and genralizability of the results.</p>
+<p>Typically statistical analysis assumes that observations are independent. This is almost never strictly true in practice but randomization means that our estimates will behave as if they were based on independent observations. Randomization is also useful in situations where we may be are unaware of all potential variables as it is more likely to distribute the effects of unknown factors evenly. In addition, randomizing treatment allocation can aid in the ethical conduct of our research as it promotes fair distribution of benefits and risks among participants.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Blocking</strong></li>
+</ol>
+<p>Blocking helps <strong>control variability</strong> by making treatment groups more alike. Experimental units are divided into subsets (called blocks) so that units within the same block are more similar (homogeneous) than units from different subsets or blocks. The experiment is then conducted separately within each block. Blocking is a technique for dealing with <em>nuisance factors</em>, a factor that has some effect on the response, but is of no interest. By grouping similar units together in blocks we reduce the effect of the nuisance factors, which can improve the precision of our estimates (magnitude of effects). In addition, blocking helps prevent confounding by controlling the impact of known or suspected sources of variation.</p>
+<p>Let’s briefly delve into the realms of fantasy<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> for an example. In this fantastical example we have a professor who thinks that their new dragon riding coaching technique is guaranteed to result in huge improvements in a student’s dragon riding ability. But they are given a mix of students from two different Quadrants, Riders (who have been riding dragons all their lives) and Scribes (who have never ridden a dragon before). The huge variation between these two groups (i.e., Riders are obviously going to be much better at riding dragons than Scribes) will obfuscate/obscure any improvement the new teaching technique may induce.</p>
+<table>
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Title</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Objective of experiment</strong></td>
+<td>Examine the impact of a new dragon riding coaching technique</td>
+</tr>
+<tr class="even">
+<td><strong>Primary Variable of Interest</strong></td>
+<td>Improvement in dragon riding</td>
+</tr>
+<tr class="odd">
+<td><strong>Factors Introducing Variability</strong></td>
+<td>Quadrant (i.e., Riders or Scribes)</td>
+</tr>
+<tr class="even">
+<td><strong>Blocking</strong></td>
+<td>We use blocking based on Quadrants to control for variability introduced by the differences among Riders and Scribes</td>
+</tr>
+<tr class="odd">
+<td><strong>Experimental Units</strong></td>
+<td>Students are the experimental units</td>
+</tr>
+<tr class="even">
+<td><strong>Blocking Procedure</strong></td>
+<td>1. Identify Quadrant of student (i.e., Rider or Scribe). 2. Create Blocks: Group students based on Quadrant. 3. Random Assignment within Blocks: Randomly assign students to different coaching techniques (e.g., old and new). This ensures each technique (e.g., old and new) is tested with different Quadrant.</td>
+</tr>
+<tr class="odd">
+<td><strong>Experimental Setup</strong></td>
+<td>Each block (representing a Quadrant) contains a random assignment of students receiving different dragon riding coaching.</td>
+</tr>
+<tr class="even">
+<td><strong>Benefits of Blocking</strong></td>
+<td>By using blocking based on Quadrant, the experiment controls for potential variations dragon riding improvement caused by the baseline differences in a student’s dragon riding ability due to their Quadrant. This enhances the precision of the experiment and allows for a more accurate assessment of the impact of the coaching on dragon riding skill.</td>
+</tr>
+<tr class="odd">
+<td><strong>Example Outcome</strong></td>
+<td>After the experiment, researchers analyze dragon riding improvement separately for each Quadrant, drawing conclusions about the technique’s effectiveness within specific Quadrants while minimizing the influence of Quadrant on the overall results.</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="randomization" class="section level3 hasAnchor" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Randomization<a href="introduction-to-the-design-and-analysis-of-experiments.html#randomization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The main reason to randomise allocation of treatment to experimental units is to <strong>protect against bias.</strong> We, typically, wish to plan the experiment in such a way that the variations caused by extraneous factors can all be combined under the general heading of “chance”. Doing so ensures that each treatment has the same probability of getting good (or bad) units and thus avoids systematic bias. Random allocation can cancel out population bias; it ensures that any other possible causes for the experimental results are split equally between groups. Typically statistical analysis assumes that observations are <strong>independent</strong>. This is almost never strictly true in practice but randomisation means that our estimates will behave as if they were based on independent observations.</p>
-</div>
-<div id="blocking" class="section level3 hasAnchor" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Blocking<a href="introduction-to-the-design-and-analysis-of-experiments.html#blocking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Blocking helps <strong>control variability</strong> by making treatment groups more alike. Experimental units are divided into subsets (called blocks) so that units within the same block are more similar than units from different subsets or blocks. Blocking is a technique for dealing with <em>nuisance factors</em>. A <em>nuisance factor</em> is a factor that has some effect on the response, but is of no interest.</p>
-</div>
-</div>
-<div id="some-experimental-designs" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Some experimental designs<a href="introduction-to-the-design-and-analysis-of-experiments.html#some-experimental-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="experimental-designs" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Experimental designs<a href="introduction-to-the-design-and-analysis-of-experiments.html#experimental-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="completely-randomised-design-crd" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Completely randomised design (CRD)<a href="introduction-to-the-design-and-analysis-of-experiments.html#completely-randomised-design-crd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Let’s consider a completely randomised design with one treatment factor (e.g., coffee bean type). Here, <span class="math inline">\(n\)</span> experimental units (e.g., cups) are divided <strong>randomly</strong> into <span class="math inline">\(t\)</span> groups. Random allocation can be achieved by simply drawing lots from a hat! To be more rigorous, though, we could use <code>R</code>’s <code>sample()</code> function (have a go yourself and see if you can work out how to wield <code>sample()</code>). Each group is then given one treatment level (one of the treatment factors). As we have defined only one treatment factor all other known independent variables are kept constant so as to not bias any effects (e.g., cup type and type in Charlotte’s coffee experiment).</p>
+<p>Let’s consider a completely randomized design with one treatment factor (e.g., coffee bean type). Here, <span class="math inline">\(n\)</span> experimental units (e.g., cups) are divided <strong>randomly</strong> into <span class="math inline">\(t\)</span> groups. Random allocation can be achieved by simply drawing lots from a hat! To be more rigorous, though, we could use <code>R</code>’s <code>sample()</code> function (have a go yourself and see if you can work out how to wield <code>sample()</code>). Each group is then given one treatment level (one of the treatment factors). As we have defined only one treatment factor all other known independent variables are kept constant so as to not bias any effects.</p>
 <div class="figure">
 <img src="https://github.com/cmjt/ggdesign/raw/main/README_files/figure-markdown_strict/unnamed-chunk-4-1.png" alt="" />
 <p class="caption">An illustration of a CRD with one tratment factor and three treatment levels (A, B, &amp; C)</p>
 </div>
-<div id="designing-a-crd-using-r" class="section level4 hasAnchor" number="4.3.1.1">
-<h4><span class="header-section-number">4.3.1.1</span> Designing a CRD using <code>R</code><a href="introduction-to-the-design-and-analysis-of-experiments.html#designing-a-crd-using-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Let’s assume you want to set up an experiment similar to the coffee one above using <code>R</code> to do the random allocation of treatments for you.</p>
+<p><strong>Designing a CRD using <code>R</code></strong></p>
+<p>Here we’re going to use <code>R</code> to do the random allocation of treatments for us.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="do">## create a character vector of bean types</span></span>
 <span id="cb47-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-2" aria-hidden="true" tabindex="-1"></a>beans <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">each =</span> <span class="dv">4</span>)</span>
 <span id="cb47-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-3" aria-hidden="true" tabindex="-1"></a>beans</span>
@@ -374,108 +496,84 @@ Identify sources of variation within a given experimental design
 <span id="cb47-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] &quot;Arabica&quot;  &quot;Robusta&quot;  &quot;Arabica&quot;  &quot;Liberica&quot; &quot;Robusta&quot;  &quot;Arabica&quot;</span></span></code></pre></div>
 <p>Having run the code above your CRD plan is as follows</p>
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Cup
-</th>
-<th style="text-align:left;">
-Bean
-</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:left;">
+Cup
+</td>
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
-Robusta
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
 2
 </td>
 <td style="text-align:left;">
-Robusta
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
 3
 </td>
 <td style="text-align:left;">
-Liberica
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
 4
 </td>
 <td style="text-align:left;">
-Liberica
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
 5
 </td>
 <td style="text-align:left;">
-Arabica
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
 6
 </td>
 <td style="text-align:left;">
-Liberica
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
 7
 </td>
 <td style="text-align:left;">
-Arabica
+8
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+12
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
-8
+<td style="text-align:left;">
+Bean
 </td>
 <td style="text-align:left;">
 Robusta
 </td>
-</tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
 <td style="text-align:left;">
-Arabica
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-10
+Robusta
 </td>
 <td style="text-align:left;">
 Liberica
 </td>
-</tr>
-<tr>
-<td style="text-align:right;">
-11
+<td style="text-align:left;">
+Liberica
+</td>
+<td style="text-align:left;">
+Arabica
+</td>
+<td style="text-align:left;">
+Liberica
+</td>
+<td style="text-align:left;">
+Arabica
 </td>
 <td style="text-align:left;">
 Robusta
 </td>
-</tr>
-<tr>
-<td style="text-align:right;">
-12
+<td style="text-align:left;">
+Arabica
+</td>
+<td style="text-align:left;">
+Liberica
+</td>
+<td style="text-align:left;">
+Robusta
 </td>
 <td style="text-align:left;">
 Arabica
@@ -483,21 +581,22 @@ Arabica
 </tr>
 </tbody>
 </table>
+<div class="alert alert-warning">
+<strong>TASK</strong> Run the <code>R</code> code above, but this time choose a different random seed by choosing a different number in this line of code <code>set.seed(1234)</code>. What is your CRD plan? Why might keeping the random seed be important?
 </div>
 </div>
 <div id="randomised-complete-block-design-rcbd" class="section level3 hasAnchor" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Randomised complete block design (RCBD)<a href="introduction-to-the-design-and-analysis-of-experiments.html#randomised-complete-block-design-rcbd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Let’s consider a randomised complete block design with one treatment factor (e.g., coffee bean type). If the treatment factor has <span class="math inline">\(t\)</span> levels there will be <span class="math inline">\(b\)</span> blocks that each contain <span class="math inline">\(t\)</span> experimental units resulting in a total of <span class="math inline">\(t\times b\)</span> experimental units. For example, let’s imagine that for the coffee experiment we had two cup types: mugs and heatproof glasses. We might consider the type of receptacle to have an effect on the coffee strength measured, however, we are not interested in this. Therefore, to negate this we block by cup type. This means that any effect due to the blocking factor (cup type) is accounted for by the blocking.</p>
+<p>Let’s consider a randomized complete block design with one treatment factor (e.g., coffee bean type). If the treatment factor has <span class="math inline">\(t\)</span> levels there will be <span class="math inline">\(b\)</span> blocks that each contain <span class="math inline">\(t\)</span> experimental units resulting in a total of <span class="math inline">\(t\times b\)</span> experimental units. For example, let’s imagine that for the coffee experiment we had two cup types: mugs and heatproof glasses. We might consider the type of receptacle to have an effect on the coffee strength measured, however, we are not interested in this. Therefore, to negate this we block by cup type. This means that any effect due to the blocking factor (cup type) is accounted for by the blocking.</p>
 <p>For a blocked design we want the <span class="math inline">\(t\)</span> experimental units within each block should be as homogeneous as possible (as similar as possible, so that there is unlikely to be unwanted variation coming into the experiment this way). The variation between blocks (the groups of experimental units) should be large enough (i.e., blocking factors different enough) so that conclusions can be drawn. Allocation of treatments to experimental units is done randomly (i.e., treatments are randomly assigned to units) within each block.</p>
 <div class="figure">
 <img src="https://github.com/cmjt/ggdesign/raw/main/README_files/figure-markdown_strict/unnamed-chunk-6-1.png" alt="" />
 <p class="caption">An illustration of a CRD with one tratment factor, three treatment levels (A, B, &amp; C), and three blocks (rows)</p>
 </div>
-<div id="designing-a-rcbd-using-r" class="section level4 hasAnchor" number="4.3.2.1">
-<h4><span class="header-section-number">4.3.2.1</span> Designing a RCBD using <code>R</code><a href="introduction-to-the-design-and-analysis-of-experiments.html#designing-a-rcbd-using-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Let’s assume you want to set up an experiment similar to the coffee one above; however, now you are in the situation where you have two types of cups (six mugs and six heatproof glasses). Below we use <code>R</code> to do the random allocation of treatments within each block (cup type) for you.</p>
+<p><strong>Designing a RCBD using <code>R</code></strong></p>
+<p>Let’s assume you want to set up an experiment similar to the CRD one above; however, now you are in the situation where you have two types of cups (mugs and heatproof glasses). Below we use <code>R</code> to do the random allocation of treatments within each block (cup type) for you.</p>
 <p>Here we have <span class="math inline">\(t = 3\)</span> treatments (bean types) and <span class="math inline">\(b = 2\)</span> blocks (cup types) so we will have <span class="math inline">\(t \times b = 6\)</span> experimental units in total.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">432</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4321</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
 <span id="cb48-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-2" aria-hidden="true" tabindex="-1"></a>plan <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Beans =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">times =</span> <span class="dv">2</span>), </span>
 <span id="cb48-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">Block =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Mug&quot;</span>, <span class="st">&quot;Glass&quot;</span>), <span class="at">each =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="do">## combine experiment variables</span></span>
 <span id="cb48-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Block) <span class="sc">%&gt;%</span> <span class="do">## group by blocking factor</span></span>
@@ -507,89 +606,79 @@ Arabica
 <span id="cb48-8"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   Block [2]</span></span>
 <span id="cb48-9"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   Beans    Block</span></span>
 <span id="cb48-10"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;    &lt;chr&gt;</span></span>
-<span id="cb48-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Robusta  Glass</span></span>
-<span id="cb48-12"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Arabica  Glass</span></span>
-<span id="cb48-13"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Liberica Glass</span></span>
-<span id="cb48-14"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Robusta  Mug  </span></span>
+<span id="cb48-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Arabica  Glass</span></span>
+<span id="cb48-12"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Liberica Glass</span></span>
+<span id="cb48-13"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Robusta  Glass</span></span>
+<span id="cb48-14"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Liberica Mug  </span></span>
 <span id="cb48-15"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Arabica  Mug  </span></span>
-<span id="cb48-16"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Liberica Mug</span></span></code></pre></div>
+<span id="cb48-16"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Robusta  Mug</span></span></code></pre></div>
 <p>Having run the code above your RCBD plan is as follows</p>
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Cup
-</th>
-<th style="text-align:left;">
-Beans
-</th>
-<th style="text-align:left;">
-Block
-</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:left;">
+Receptacle
+</td>
+<td style="text-align:left;">
 1
 </td>
 <td style="text-align:left;">
-Robusta
+2
 </td>
 <td style="text-align:left;">
-Glass
+3
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
-2
+<td style="text-align:left;">
+Beans
 </td>
 <td style="text-align:left;">
 Arabica
 </td>
 <td style="text-align:left;">
-Glass
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
 Liberica
-</td>
-<td style="text-align:left;">
-Glass
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
 </td>
 <td style="text-align:left;">
 Robusta
 </td>
 <td style="text-align:left;">
-Mug
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
+Liberica
 </td>
 <td style="text-align:left;">
 Arabica
 </td>
 <td style="text-align:left;">
-Mug
+Robusta
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
-3
+<td style="text-align:left;">
+Block
 </td>
 <td style="text-align:left;">
-Liberica
+Glass
+</td>
+<td style="text-align:left;">
+Glass
+</td>
+<td style="text-align:left;">
+Glass
+</td>
+<td style="text-align:left;">
+Mug
+</td>
+<td style="text-align:left;">
+Mug
 </td>
 <td style="text-align:left;">
 Mug
@@ -597,47 +686,52 @@ Mug
 </tr>
 </tbody>
 </table>
+<div class="alert alert-warning">
+<strong>TASK</strong> Run the <code>R</code> code above, but this time choose a different random seed by choosing a different number in this line of code <code>set.seed(4321)</code>. What is your CRD plan? Why might keeping the random seed be important?
 </div>
 </div>
 <div id="factorial-design" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Factorial design<a href="introduction-to-the-design-and-analysis-of-experiments.html#factorial-design" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A factorial experiment is one where there are two or more sets of (factor) treatments. Rather than studying each factor separately all combinations of the treatment factors are considered. Factorial designs enable us to infer any <strong>interaction</strong> effects, which may be present. An <strong>interaction</strong> effect is one where the effect of one variable depends on the value of another variable (i.e., the effect of one treatment factor on the response variable will change depending on the value of a second treatment factor.)</p>
-<p>For example, we could add another treatment to the coffee experiment above: grinder type (manual or electric). So, now we have two treatments, bean type (with three levels) and cup type (with two levels). Recall that in a factorial experiment we want to study <strong>all combinations</strong> of the levels of each factor:</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Manual</th>
-<th>Electric</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Arabica</td>
-<td>A.M</td>
-<td>A.E</td>
-</tr>
-<tr class="even">
-<td>Liberica</td>
-<td>L.M</td>
-<td>L. E</td>
-</tr>
-<tr class="odd">
-<td>Robusta</td>
-<td>R.M</td>
-<td>R. E</td>
-</tr>
-</tbody>
-</table>
-<p>Note is a factorial design has <strong>equal</strong> numbers of replicates in each group then it is said to be a <strong>balanced</strong> design; if this is not the case then it is <strong>unbalanced</strong>.</p>
-<p>Now, our <strong>question about the strength of coffee</strong> would be <em>Does the strength of the difference in the strength of the coffee between the beans wall depend on the grinder used?</em></p>
+<p>A factorial experiment is one where there are two or more sets of (factor) treatments<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Rather than studying each factor separately all combinations of the treatment factors are considered. Factorial designs enable us to infer any <strong>interaction</strong> effects, which may be present. An <strong>interaction</strong> effect is one where the effect of one variable depends on the value of another variable (i.e., the effect of one treatment factor on the response variable will change depending on the value of a second treatment factor.)</p>
+<p>Let’s consider Dr Java’s experiment above. Here, Dr Java wants to study <strong>all combinations</strong> of the levels of each factor. Their objective is to determine what type of grind and brew ratio (i.e., amount of coffee in relation to water) leads to the strongest coffee.</p>
 <p><strong>Possible outcomes</strong></p>
 <p><img src="BIOSCI220_files/figure-html/unnamed-chunk-43-1.png" width="768" /></p>
 <div id="interactions" class="section level4 hasAnchor" number="4.3.3.1">
 <h4><span class="header-section-number">4.3.3.1</span> Interactions<a href="introduction-to-the-design-and-analysis-of-experiments.html#interactions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>If an interaction effect exists the effect of one factor on the response will change depending on the level of the other factor:</p>
+<p>If an interaction effect exists the effect of one factor on the response will change depending on the level of the other factor.</p>
 <p><img src="BIOSCI220_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
-<p>The plot above is called an interaction plot. Creating such a plot is often very useful when drawing inference; in this instance we can see that the strength of the coffee changes depending on the type of coffee bean used, however, this relationship differs depending on the type of grinder used. For example, Liberica beans produce stronger coffee than the other two beans when the electric grinder is used, but weaker coffee when the manual grinder is used.</p>
+<p>The plot above is called an interaction plot. Creating such a plot is often very useful when drawing inference; in this instance we can see that the strength of the coffee changes depending on the type of coffee bean used, however, this relationship differs depending on the type of grind used. For example, Liberica beans produce stronger coffee than the other two beans when the fine grind is used, but weaker coffee when the coarse grind is used.</p>
+<p><strong>Designing factorial experiment using <code>R</code></strong></p>
+<p>Here we use the <code>R</code> package <code>edibble</code> which is specifically designed to aid in the planning and designing of experiments.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(edibble) <span class="do">## you will need to install this package first</span></span>
+<span id="cb49-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Factorial design (Brew and Grind)</span></span>
+<span id="cb49-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">design</span>(<span class="st">&quot;Barista Brew: Factorial Design&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb49-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_units</span>(<span class="at">cup =</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span> <span class="co"># 2*2*3</span></span>
+<span id="cb49-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_trts</span>(<span class="at">BrewRatio =</span>  <span class="fu">c</span>(<span class="st">&quot;2-1&quot;</span>, <span class="st">&quot;1-1&quot;</span>, <span class="st">&quot;1-2&quot;</span>),</span>
+<span id="cb49-6"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">Grind =</span> <span class="fu">c</span>(<span class="st">&quot;Fine&quot;</span>, <span class="st">&quot;Coarse&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-7"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">allot_trts</span>(<span class="sc">~</span>cup) <span class="sc">%&gt;%</span></span>
+<span id="cb49-8"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign_trts</span>(<span class="st">&quot;random&quot;</span>, <span class="at">seed =</span> <span class="dv">836</span>) <span class="sc">%&gt;%</span> <span class="do">## the random seed for random allocation</span></span>
+<span id="cb49-9"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">serve_table</span>()  </span>
+<span id="cb49-10"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # Barista Brew: Factorial Design </span></span>
+<span id="cb49-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="do">## # An edibble: 12 x 3</span></span>
+<span id="cb49-12"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="do">##        cup BrewRatio  Grind</span></span>
+<span id="cb49-13"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;U(12)&gt;    &lt;T(3)&gt; &lt;T(2)&gt;</span></span>
+<span id="cb49-14"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="do">##      &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;</span></span>
+<span id="cb49-15"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  1   cup01       1-2 Fine  </span></span>
+<span id="cb49-16"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  2   cup02       2-1 Coarse</span></span>
+<span id="cb49-17"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  3   cup03       1-1 Fine  </span></span>
+<span id="cb49-18"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  4   cup04       2-1 Coarse</span></span>
+<span id="cb49-19"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  5   cup05       1-2 Coarse</span></span>
+<span id="cb49-20"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  6   cup06       1-1 Coarse</span></span>
+<span id="cb49-21"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  7   cup07       1-2 Fine  </span></span>
+<span id="cb49-22"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  8   cup08       1-1 Fine  </span></span>
+<span id="cb49-23"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  9   cup09       1-2 Coarse</span></span>
+<span id="cb49-24"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 10   cup10       1-1 Coarse</span></span>
+<span id="cb49-25"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 11   cup11       2-1 Fine  </span></span>
+<span id="cb49-26"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 12   cup12       2-1 Fine</span></span></code></pre></div>
+<div class="alert alert-warning">
+<strong>TASK</strong> Run the <code>R</code> code above, but this time choose a different random seed (by changing <code>seed = 836</code>). What is your design? Now increase the number of replications, use your <code>R</code> skills to figure out what line of code needs changing here. What is your design now?
+</div>
 <div class="alert alert-info" role="alert">
 <p><img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" /></p>
 <p><strong>Other resources: optional but recommended</strong></p>
@@ -660,6 +754,13 @@ Mug
 </div>
 </div>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>This is for the fans of Fourth Wing<a href="introduction-to-the-design-and-analysis-of-experiments.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Note is a factorial design has <strong>equal</strong> numbers of replicates in each group then it is said to be a <strong>balanced</strong> design; if this is not the case then it is <strong>unbalanced</strong>.<a href="introduction-to-the-design-and-analysis-of-experiments.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
