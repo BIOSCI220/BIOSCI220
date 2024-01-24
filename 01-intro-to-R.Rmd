@@ -132,7 +132,7 @@ If you had only three panes showing before, a new (fourth) pane should open up i
 
 
 <div class="alert alert-warning">
-  <strong>TASK</strong> Type `1:10` in your *Script* and practise *running* this line of code using both methods above. Not that if you've *Run* the code successfully then your computer will speak back to you each time via the *Console*]
+  <strong>TASK</strong> Type `1:10` in your *Script* and practise *running* this line of code using both methods above. Not that if you've *Run* the code successfully then your computer will speak back to you each time via the *Console*.
 </div>
 
 

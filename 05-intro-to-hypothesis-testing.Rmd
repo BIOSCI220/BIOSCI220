@@ -1,34 +1,43 @@
 # Introduction to Hypothesis testing
 
-So, we can collect data, but what about drawing inferences and carrying out significance tests? A **significance test** can tell us whether an observed effect (e.g., the difference between two means, or medians; the correlation between two variables) could occur by chance in selecting a random sample from each of, say, two populations.
-
 <div class="alert alert-success" role="alert">
-![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%}
+<center>![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%}</center>
 
-<strong>Learning objectives</strong> 
+<strong>Learning objectives</strong>
 
 <ul>
 <li> Formulate a question/hypothesis to investigate based on the given data </li>
-<li> List the aims, write out the appropriate null and alternative hypothesis using statistical notation for, and write `R` code to carry out a randomization test </li>
-<li> Correctly interpret and communicate a p-value in terms of a randomisation test</li>
+<li> Write out the appropriate null and alternative hypothesis using statistical notation for a randomization test (given a statistic) </li>
+<li> Given a statistic write `R` code to carry out a randomization test</li>
+<li> Correctly interpret and communicate a p-value in terms of a randomization test</li>
+<li> Define the meaning of false positive (Type I error) and false negative (Type II error) effects in terms of a hypothesis test </li>
 <li> State in terms of probability statements the meaning of the power and significance level of an hypothesis test</li>
 
 </ul>
 </div>
 
-## Randomisation tests
+We saw in the previous chapter (in [Setting up an experiment]) that a hypothesis often serves as the foundation for designing experiments and therefore collecting data. A hypothesis should be specific and testable (i.e., we should be able to collect evidence either in support of or against the hypothesis). Hypotheses should mention measurable variables; typically a dependent/response variable (the outcome being measured) and one or more independent/treatment variables (being manipulated or studied).
 
-The basic approach to a randomisation test is straightforward:
+Once we have specified our hypothesis we want to test it! That is find evidence for or against it. To do so reliably we need to use rigorous statistical methodology. In this section you will be (re)introduced^[if you did  STATS10X then you have already covered randomization tests.] to a straightforward, yet hugely powerful statistical tool: randomization tests!
+
+## Randomization tests
+
+The basic approach to a randomization test is straightforward:
 
  1. Choose a statistic to measure the effect in question (e.g., differences between group means)
  2. Calculate that test statistic on the observed data. Note this metric can be **anything** you wish
- 3. Construct the sampling distribution that this statistic would have if the effect were not present in the population (i.e., the distribution under the *Null* hypothesis, $H_0$): For chosen number of times
+ 3. Construct the sampling distribution that this statistic would have if the effect were not present in the population (i.e., the distribution under the *Null* hypothesis, $H_0$): For a chosen number of times
     + shuffle the data labels
     + calculate the test statistic for the reshuffled data and retain
  4. Find the location of your observed statistic in the sampling distribution. The location of observed statistic in sampling distribution is informative:
    + if in the main body of the distribution then the observed statistic could easily have occurred by chance
    + if in the tail of the distribution then the observed statistic would rarely occur by chance and there is evidence that something other than chance is operating.
  5. Calculate the proportion of times your reshuffled statistics equal or exceed the observed. This *p-value* is the probability that we observe a statistic at least as “extreme” as the one we observed **State** the strength of evidence against the null on the basis of this **probability**.
+ 
+<div class="alert alert-warning">
+  <strong>TASK</strong> Briefly outline what effect your choice of *a chosen number of times* has on your randomization test.
+ </div>
+
  
 ### A randomization test for two independent samples
 
@@ -50,11 +59,30 @@ paua <- readr::read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/
 glimpse(paua)
 ```
 
- One question we may want to ask is if on average the shell length differs between Species? 
+**One question we may want to ask is if, on average, the shell length differs between Species?** 
 
- + **Scientific question**: Are the shell lengths of shells the same in both species? 
- + **Null hypothesis**: The distribution of shell lengths in *Haliotis iris* the same as in *Haliotis australis*
+We would formulate this as a hypothesis test as follows
+
+ + **Null hypothesis**: The mean length of *Haliotis iris* shells is the same as *Haliotis australis*
+ + **Alternative hypothesis**: The mean length of *Haliotis iris* shells is not the same as *Haliotis australis*
  + **Test statistic**: Difference of sample means
+ 
+Now, statisticians love using Greek letters to symbolize things. Typically, the letter $\mu$ is used to represent a mean. So, by letting $\mu_\text{Haliotis iris}$ represent the average shell length of *Haliotis iris* and 
+$\mu_\text{Haliotis australis}$ represent the average shell length of *Haliotis australis*  we could synthase this hypothesis test as
+
+
+ + **Null hypothesis**: $\mu_\text{Haliotis iris} = \mu_\text{Haliotis australis}$
+ + **Alternative hypothesis**: $\mu_\text{Haliotis iris} \neq \mu_\text{Haliotis australis}$
+ + **Test statistic**: $\mu_\text{Haliotis australis} - \mu_\text{Haliotis iris}$ (or $\mu_\text{Haliotis iris} - \mu_\text{Haliotis australis}$ it doesn't matter here)
+
+Finally, not having had enough of mathematical syntax quite yet by convention a Null hypothesis is denoted $\text{H}_0$ and an alternative hypothesis by $\text{H}_1$. So our hypothesis test can finally be written concisely as
+
+$\text{H}_0:$ $\mu_\text{Haliotis iris} = \mu_\text{Haliotis australis}$ vs $\text{H}_1:$ $\mu_\text{Haliotis iris} \neq \mu_\text{Haliotis australis}$
+
+It follows from this definition that out test statistic is $\mu_\text{Haliotis australis} - \mu_\text{Haliotis iris}$. The *vs* is convention as we are considering two opposing hypotheses.
+
+
+Having, defined the hypothesis test above what would you expect the answer to be looking at the plot below?
 
 ```{r violin, warning=FALSE, message = FALSE, echo = FALSE}
 means <- paua %>% group_by(Species) %>% summarise(means = mean(Length))
@@ -72,9 +100,9 @@ ggplot(paua,aes(x = Species, y = Length)) +
                 label = paste0("Species averege = ",round(means,3)), color = Species))
 ```
 
-But because the data are skewed and we've likely got non-constant variances we may be better off adopting a randomisation test, rather than a parametric t-test (see the next chapter). Our approach is as follows.
 
-#### 1. Choose a statistic that measures the effect of interest (in this case the differences between means).
+
+#### 1. Choose a statistic that measures the effect of interest (in this case the differences between means) {-}
 
 
 ```{r}
@@ -86,10 +114,10 @@ diff_in_means <- paua %>%
 diff_in_means
 ```
 
-#### 2. Construct the sampling distribution that this statistic would have if the effect were not present in the population (i.e., the distribution under $H_0$) .
+#### 2. Construct the sampling distribution that this statistic would have if the effect were not present in the population (i.e., the distribution under $H_0$) {-}
  
 ```{r}
-## Number of times I want to randomise
+## Number of times I want to randomize
 nreps <- 9999  
 ## initialize empty array to hold results
 randomisation_difference_mean <- numeric(nreps)
@@ -100,9 +128,9 @@ set.seed(1234) ## *****Remove this line for actual analyses*****
 for (i in 1:nreps) {
   ## the observations
   data <- data.frame(value = paua$Length)
-  ##  randomise labels
+  ##  randomize labels
   data$random_labels <-sample(paua$Species, replace = FALSE)
-  ## randomised differences in mean
+  ## randomized differences in mean
   randomisation_difference_mean[i] <- data %>% 
     group_by(random_labels) %>% summarise(mean = mean(value)) %>% 
     summarise(diff = diff(mean)) %>% as.numeric()
@@ -111,14 +139,14 @@ for (i in 1:nreps) {
 results <- data.frame(randomisation_difference_mean = c(diff_in_means, randomisation_difference_mean))
 ```
 
-#### 3. Locate the observed statistic (i.e., from our observed random sample) in the sampling distribution
+#### 3. Locate the observed statistic (i.e., from our observed random sample) in the sampling distribution {-}
 
 The location of observed statistic in the sampling distribution allows us to draw inference with regards to our hypothesis.
 
 If the observed statistic is in the main body of the distribution then it is more than likely that the observed statistic occurred by chance. However, if the observed statistic is in the tail of the distribution then it would rarely occur by chance and we have evidence against the observed statistic occurring by chance alone.
 
 ```{r pval}
-## How many randomised differences in means are as least as extreme as the one we observed
+## How many randomized differences in means are as least as extreme as the one we observed
 ## absolute value as dealing with two tailed
 n_exceed <- sum(abs(results$randomisation_difference_mean) >= abs(diff_in_means))
 n_exceed
@@ -138,9 +166,30 @@ ggplot(results, aes(x = randomisation_difference_mean)) +
 ```
 
 
-In experimental situations a large p-value (large tail proportion) means that the luck of the randomisation quite often produces group differences as large or even larger than what we've got in our data. A small p-value means that the luck of the randomisation draw hardly ever produces group differences as large as we've got in our data. **So what do you conclude here?**
+In experimental situations a large p-value (large tail proportion) means that the luck of the randomization quite often produces group differences as large or even larger than what we've got in our data. A small p-value means that the luck of the randomization draw hardly ever produces group differences as large as we've got in our data. **So what do you conclude here?**
 
 **NOTE: We can extend the randomization test to make inference about any sample statistic (not just the mean)**
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Run through the code chunks above but change your code accordingly so that your hypothesis test is now 
+  
+ + **Null hypothesis**: On average, the Age of *Haliotis iris* is the same as *Haliotis australis*
+ + **Alternative hypothesis**: On average, the Age of *Haliotis iris* is not the same as *Haliotis australis*
+ + **Test statistic**: Difference of sample means
+ 
+What do you conclude?
+ </div>
+ 
+ 
+ <div class="alert alert-warning">
+  <strong>TASK</strong> Run through the code chunks above but change your code accordingly so that your hypothesis test is now 
+
+ + **Null hypothesis**: The median length of *Haliotis iris* shells is the same as *Haliotis australis*
+ + **Alternative hypothesis**: The median length of *Haliotis iris* shells is not the same as *Haliotis australis*
+ + **Test statistic**: Difference of sample medians
+ 
+What do you conclude?
+ </div>
 
 ## What is a  *p-value*?
 
@@ -203,14 +252,21 @@ Note that a p-value does **not** measure the size of an effect or the importance
 Remember that **statistical significance does not imply practical significance**, and that **statistical significance says nothing about the size of treatment differences.** To estimate the sizes of differences you need confidence intervals, look out for these in the following chapters. 
 
 
-#### Some p-value threshold recursive FAQs
+**Some p-value threshold recursive FAQs**
 
-**Q:** Why do so many colleges and grad schools teach *p-val*=0.05? **A:** Because that's still what the scientific community and journal editors use.  **BUT IT SHOULDN'T BE** 
+| Question                                                         | Answer                                                                     |
+|------------------------------------------------------------------|----------------------------------------------------------------------------|
+| **Why do so many colleges and grad schools teach *p-val*=0.05?** | Because that's still what the scientific community and journal editors use.  **BUT IT SHOULDN'T BE** |
 
-**Q:** Why do so many people still use *p-val*=0.05? **A:** Because that's what they were rote taught in college or grad school. **BUT THEY SHOULDN'T BE**
+| **Why do so many people still use *p-val*=0.05?**             | Because that's what they were rote taught in college or grad school. **BUT THEY SHOULDN'T BE** |
 
 
-## Type I and Type II errors
+<div class="alert alert-warning">
+  <strong>TASK</strong> Briefly outline why a threshold cutoff is problematic in the context of hypothesis testing
+ </div>
+
+## The Vocabulary of hypothesis testing
+
 
 > "Type I Zoom error: you think people can hear you, but you’re actually on mute.  Type II Zoom error: you think your muted, but actually people can hear you." `r tufte::quote_footer('--- @CynPeacock, Twitter')`
 
@@ -223,23 +279,23 @@ Remember that **statistical significance does not imply practical significance**
 <p align="center">![](https://miro.medium.com/max/924/0*8P474MYDyFZZBdVQ.png)</p>
 
 
-### Type I
+**Type I errors**
 
 A **Type I** error (false positive): declare a difference (i.e., reject $H_0$) when there is no difference (i.e. $H_0$ is true). Risk of the Type I error is determined by the *level of significance* (which we set!) (i.e., $\alpha =\text{ P(Type I error)} = \text{P(false positive)}$.
 
 <p align="center">![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/type_1_errors.png)</p>
 
-### Type II
+**Type II**
 
 A **Type II** error (false negative): difference not declared (i.e., $H_0$ not rejected) when there is a difference (i.e., $H_0$ is false). Let $\beta =$ P(do not reject $H_0$ when $H_0$ is false); so, $1-\beta$ = P(reject $H_0$ when $H_0$ is false) = P(a true positive), which is the statistical **power** of the test.
 
 <p align="center">![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/type_2_errors.png)</p>
 
-### Significance level
+**Significance level**
 
 The **significance level** is the probability of a Type I error (i.e., the probability of finding an effect that is not there, a false positive).
 
-### Power
+**Power**
 
 The **power** of a test is the probability that the test correctly rejects the null hypothesis when the alternative hypothesis is true. The probability of finding an effect that is there =  1 - probability of a **Type II** error (false negative).
 
@@ -250,7 +306,7 @@ Reducing the chance of a **Type I** error increases the chance of a **Type II** 
   + **Sample size**
   + Choice of **Type I** error rate ($\alpha$)
 
-### Family-Wise Error Rate (FWER)
+**Family-Wise Error Rate (FWER)**
 
 **Each** time we carry out a hypothesis test the probability we get a false positive result (type I error) is given by $\alpha$ (the *level of significance* we choose).
 

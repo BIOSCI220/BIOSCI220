@@ -216,7 +216,7 @@ penguins_nafree %>%
 ```
 
 
-## Data Visualisation
+## Data Visualization
 
 > "...have obligations in that we have a great deal of power over how people ultimately make use of data, both in the patterns they see and the conclusions they draw." `r tufte::quote_footer('--- Michael Correll, Ethical Dimensions of Visualization Research')`
 
@@ -228,7 +228,7 @@ penguins_nafree %>%
 
 ### Exploratory plots (for your own purposes)
 
-Exploratory plots are just *for you*, they focus soley on data exploration. They 
+Exploratory plots are just *for you*, they focus solely on data exploration. They 
 
   1. **Don't Have to Look Pretty:** These plots are only needed to reveal insights.
   2. **Just Needs to Get to the Point:** Keep the plots concise and straightforward. Avoid unnecessary embellishments or complex formatting. 
@@ -314,7 +314,7 @@ Every `ggplot2` plot has three key components:
 
   + At least one layer which describes how to render each observation. Layers are usually created with a `geom_*` function.
   
-<p align="center">![`ggplot2` layers](figs/ggplot.png)</p>
+
 
 Every plot created using `ggplot2` code requires the three components above:
 
