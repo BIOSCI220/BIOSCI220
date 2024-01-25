@@ -76,8 +76,8 @@ Following these guidelines not only helps our experiment, but makes sure others 
 | **Response variable**      | Total Dissolved Solids (TDS), a measure of soluble concentration (%).|
 | **Treatments**             | - Brew ratio   - 2 parts coffee to 1 part water (2-1)   - 1 part coffee to 1 part water (1-1)   - 1 part coffee to 2 parts water (1-2)   - Grind   - Fine   - Coarse |
 | **Experimental material**  | Individual cups, maintaining consistency in cup size, water amount, and boiling temperature. |
-| **How treatments applied** | Independently to individual cups. Each cup will be made independently, not as a batch distributed among several cups. |
-| **How measurements taken** | Treatments applied independently to individual cups. Each cup with the same treatment (brew ratio and grind) will be subject to the same environmental conditions. |
+| **How treatments will be applied** | Independently to individual cups. Each cup will be made independently, not as a batch distributed among several cups. |
+| **How measurements will be taken** | Treatments applied independently to individual cups. Each cup with the same treatment (brew ratio and grind) will be subject to the same environmental conditions. |
 | **Experimental units**     | Replicate each treatment twice. Assign 2 experimental units (cups) to each unique treatment combination. |
 
 
@@ -114,19 +114,27 @@ Typically statistical analysis assumes that observations are independent. This i
 
 Blocking helps **control variability** by making treatment groups more alike. Experimental units are divided into subsets (called blocks) so that units within the same block are more similar (homogeneous) than units from different subsets or blocks. The experiment is then conducted separately within each block. Blocking is a technique for dealing with *nuisance factors*, a factor that has some effect on the response, but is of no interest. By grouping similar units together in blocks we reduce the effect of the  nuisance factors, which can improve the precision of our estimates (magnitude of effects). In addition, blocking helps prevent confounding by controlling the impact of known or suspected sources of variation.
 
-Let's briefly delve into the realms of fantasy^[This is for the fans of Fourth Wing] for an example. In this fantastical example we have a professor who thinks that their new dragon riding coaching technique is guaranteed to result in huge improvements in a student's dragon riding ability. But they are given a mix of students from two different Quadrants, Riders (who have been riding dragons all their lives) and Scribes (who have never ridden a dragon before). The huge variation between these two groups (i.e., Riders are obviously going to be much better at riding dragons than Scribes) will obfuscate/obscure any improvement the new teaching technique may induce.
+Let's briefly delve into the realms of fantasy^[A realm based on that in the [Fourth Wing](https://en.wikipedia.org/wiki/Fourth_Wing).]. The fantastical example we consider is set at Basgiath College where students are trained to serve the Empire. Students are either trained as Riders or Scribes entering the respective Quadrant. Along comes a new Professor, Professor Llewelyn, who thinks that their new dragon-riding coaching technique is guaranteed to result in huge improvements in a student’s dragon-riding ability. They conduct an experiment comparing the new and old coaching techniques.
+
+To conduct their experiment they use a mix of students from the two different Quadrants: Riders (who have been riding dragons all their lives) and Scribes (who have never ridden a dragon before). Before any coaching is given all students are asked to complete a dragon assault course whilst atop a dragon, which is timed. Then, over a few months, each student randomly receives one of the coaching techniques (i.e., new or old).  After this, the students are asked to complete another assault course of similar difficulty and their time is again recorded. Their improvement (if any) in dragon riding is measured by the difference between the two times. 
+
+However, the huge variation in baseline riding ability between these two groups (i.e., Riders are obviously going to be much better at riding dragons than Scribes) will obfuscate/obscure any improvement the new teaching technique may induce. Therefore So, to find out if the new dragon-riding coaching technique works Professor Llewelyn blocks by Quadrant setting up the experiment as follows.
 
 | **Title**                       |                                          |
 |---------------------------------|------------------------------------------|
 | **Objective of experiment**     | Examine the impact of a new dragon riding coaching technique |
-| **Primary Variable of Interest**| Improvement in dragon riding                    |
-| **Factors Introducing Variability** | Quadrant (i.e., Riders or Scribes) |
+| **Primary Variable of Interest**| Improvement in dragon riding (difference between assult course completion times)   |
+| **Nuisance Factors Introducing Variability** | Quadrant (i.e., Riders or Scribes) |
 | **Blocking**                    | We use blocking based on Quadrants to control for variability introduced by the differences among Riders and Scribes |
 | **Experimental Units**          | Students are the experimental units         |
-| **Blocking Procedure**          | 1. Identify Quadrant of student (i.e., Rider or Scribe). 2. Create Blocks: Group students based on Quadrant. 3. Random Assignment within Blocks: Randomly assign students to different coaching techniques (e.g., old and new). This ensures each technique (e.g., old and new) is tested with different Quadrant. |
+| **Blocking Procedure**          | 1. Identify Quadrant of student (i.e., Rider or Scribe). 2. Create Blocks: Group students based on Quadrant. 3. Random Assignment within Blocks: Randomly assign students to different coaching techniques (i.e., old and new). This ensures each technique (e.g., old and new) is tested with different Quadrant. |
 | **Experimental Setup**          | Each block (representing a Quadrant) contains a random assignment of students receiving different dragon riding coaching.|
 | **Benefits of Blocking**         | By using blocking based on Quadrant, the experiment controls for potential variations dragon riding improvement caused by the baseline differences in a student's dragon riding ability due to their Quadrant. This enhances the precision of the experiment and allows for a more accurate assessment of the impact of the coaching on dragon riding skill. |
 | **Example Outcome**             | After the experiment, researchers analyze dragon riding improvement separately for each Quadrant, drawing conclusions about the technique's effectiveness within specific Quadrants while minimizing the influence of Quadrant on the overall results. |
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Identify the observational units, treatment levels, response variable, and the number of blocks in the experiment above.
+ </div>
 
 
 ## Experimental designs
@@ -157,7 +165,8 @@ Having run the code above your CRD plan is as follows
 ```{r, echo = FALSE, results='asis', message = FALSE, warning = FALSE}
 library(tidyverse)
 kableExtra::kable(data.frame(Cup = 1:12, Bean = allocation) |> t())  %>%
-  kableExtra::kable_classic(full_width = FALSE, html_font = "Cambria")
+  kableExtra::kable_classic(full_width = FALSE, html_font = "Cambria") %>%
+  kableExtra::kable_styling(font_size = 7)
 ```
 
 

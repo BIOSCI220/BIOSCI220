@@ -116,6 +116,10 @@ Open up `RStudio` from your computer menu, the icon will look something like thi
  + **Files/Plots/Packages/Help Pane**: This pane is a multi-purpose pane that can display different tabs depending on your current activity. It can show the file structure of your project, display plots and visualizations, provide information about installed packages, and offer help documentation.
  
 These three panes will likely be the ones to appear by default. There is a fourth pane, one which you will have to open yourself. This is the **Code/Source Pane** and is where you can write, edit, and save your `R` script or code files. It's the primary workspace for creating and modifying your `R` code.
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Read the text at the top of your *Console*. What does the very first line say? Mine says ` version 4.3.1 (2023-06-16) -- "Beagle Scouts"`. Read [this blog](https://livefreeordichotomize.com/posts/2017-09-28-r-release-names/index.html) to find our what this means.
+</div>
  
 
 ### The Code/Source Pane

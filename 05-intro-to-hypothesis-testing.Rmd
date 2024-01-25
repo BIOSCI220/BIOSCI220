@@ -276,8 +276,6 @@ Remember that **statistical significance does not imply practical significance**
 | $H_0$ is true |  <i class="fa fa-check icon"></i> | Type I error  |
 | $H_0$ is false  | Type II error  | <i class="fa fa-check icon"></i> |
 
-<p align="center">![](https://miro.medium.com/max/924/0*8P474MYDyFZZBdVQ.png)</p>
-
 
 **Type I errors**
 
