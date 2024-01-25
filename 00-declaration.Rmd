@@ -101,16 +101,19 @@ The delivery mode for the test and the exam is an on-campus, invigilated Inspera
 ### Laboratories {-}
 
 <div class="alert alert-danger" role="alert">
-There are **eight** labs in total. Each lab is worth **5%** of your final grade (40% in total).
+There are **eight** labs in total held in weeks 2, 3, 5, 6, 8, 9, 11 and 12 (i.e., in each three week lecture block there are labs in the last two weeks). Each lab is worth **5%** of your final grade (40% in total).
+
+Labs will be held in 106-014 (Biology Building, Room 014) during your scheduled SSO lab time, which will be **one of** 
+<ul>
+<li>Monday 2-5pm, </li>
+<li>Tuesday 10am-1pm, </li>
+<li>Tuesday 10-1pm, </li>
+<li>Friday 10am-1pm.</li
+</ul>
+
 </div>
 
-Labs will be held in 106-014 (Biology Building, Room 014) during your scheduled SSO lab time, which will be **one of** Monday 2-5pm, Tuesday 10am-1pm, Tuesday 2-5pm, Thursday 2-5pm or Friday 10am-1pm.
-
-There are eight (8) labs in total. Labs are held in weeks 2, 3, 5, 6, 8, 9, 11 and 12. (i.e. in each three week lecture block there are labs in the last two weeks).
-
 Labs are three (3) hours and the material is designed to be completed in this time. 
-
-Each lab is worth 5%, totaling 40% towards your final grade.
 
 You are scheduled into a lab stream in SSO. While lab attendance is not compulsory, it is highly recommended you attend your scheduled lab stream. There is teaching staff to support you through the tasks and answer your course-related questions.
 

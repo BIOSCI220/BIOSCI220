@@ -589,7 +589,10 @@ penguins %>%
 
 ### What to look at in a plot (*a taster*)
 
-Between group variation
+In many of the following chapters you will hear a lot about variability or variation. Variation is simply a measure of spread (i.e., how far apart the observations are from each other). In particular, we often talk about deviation from the mean (i.e., how far away from the average value the observations are) as we are often interested in how *large* this deviation is relative to the information we have. In [Chapter 5](Introduction to Hypothesis testing) you will learn about ways of formally testing this. However, with the data visualization skills you've just learnt we can already begin to critically evaluate our data by simply looking at plots.
+
+**Between-group variation** is a measure of the variability between different groups; it assesses how much the means of different groups differ from each other. Higher between-group variation suggests that the groups are not similar. However, before we can conclude anything relating to similarity, or not, of groups we also have to consider within-group variation.
+
 
 ```{r, echo = FALSE}
 means <- penguins_nafree %>% group_by(species) %>% summarise(means = mean(bill_length_mm))
@@ -616,7 +619,7 @@ ggplot(penguins_nafree,aes(x = species, y = bill_length_mm)) +
            hjust = 0, vjust = 7, color = "purple")
 ```
 
-Within group variation
+**Within group variation** measures the variability among individual data points within each group; it measures  how much individual data points within each group differ from the group's mean. Lower within-group variation suggests that the data points within each group are less scattered around the group's mean
 
 ```{r,echo = FALSE}
 jit <- ggplot() + 
