@@ -356,11 +356,11 @@ Identify sources of variation within a given experimental design
 <td>Individual cups, maintaining consistency in cup size, water amount, and boiling temperature.</td>
 </tr>
 <tr class="even">
-<td><strong>How treatments applied</strong></td>
+<td><strong>How treatments will be applied</strong></td>
 <td>Independently to individual cups. Each cup will be made independently, not as a batch distributed among several cups.</td>
 </tr>
 <tr class="odd">
-<td><strong>How measurements taken</strong></td>
+<td><strong>How measurements will be taken</strong></td>
 <td>Treatments applied independently to individual cups. Each cup with the same treatment (brew ratio and grind) will be subject to the same environmental conditions.</td>
 </tr>
 <tr class="even">
@@ -420,7 +420,9 @@ Identify sources of variation within a given experimental design
 <li><strong>Blocking</strong></li>
 </ol>
 <p>Blocking helps <strong>control variability</strong> by making treatment groups more alike. Experimental units are divided into subsets (called blocks) so that units within the same block are more similar (homogeneous) than units from different subsets or blocks. The experiment is then conducted separately within each block. Blocking is a technique for dealing with <em>nuisance factors</em>, a factor that has some effect on the response, but is of no interest. By grouping similar units together in blocks we reduce the effect of the nuisance factors, which can improve the precision of our estimates (magnitude of effects). In addition, blocking helps prevent confounding by controlling the impact of known or suspected sources of variation.</p>
-<p>Let’s briefly delve into the realms of fantasy<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> for an example. In this fantastical example we have a professor who thinks that their new dragon riding coaching technique is guaranteed to result in huge improvements in a student’s dragon riding ability. But they are given a mix of students from two different Quadrants, Riders (who have been riding dragons all their lives) and Scribes (who have never ridden a dragon before). The huge variation between these two groups (i.e., Riders are obviously going to be much better at riding dragons than Scribes) will obfuscate/obscure any improvement the new teaching technique may induce.</p>
+<p>Let’s briefly delve into the realms of fantasy<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. The fantastical example we consider is set at Basgiath College where students are trained to serve the Empire. Students are either trained as Riders or Scribes entering the respective Quadrant. Along comes a new Professor, Professor Llewelyn, who thinks that their new dragon-riding coaching technique is guaranteed to result in huge improvements in a student’s dragon-riding ability. They conduct an experiment comparing the new and old coaching techniques.</p>
+<p>To conduct their experiment they use a mix of students from the two different Quadrants: Riders (who have been riding dragons all their lives) and Scribes (who have never ridden a dragon before). Before any coaching is given all students are asked to complete a dragon assault course whilst atop a dragon, which is timed. Then, over a few months, each student randomly receives one of the coaching techniques (i.e., new or old).  After this, the students are asked to complete another assault course of similar difficulty and their time is again recorded. Their improvement (if any) in dragon riding is measured by the difference between the two times. </p>
+<p>However, the huge variation in baseline riding ability between these two groups (i.e., Riders are obviously going to be much better at riding dragons than Scribes) will obfuscate/obscure any improvement the new teaching technique may induce. Therefore So, to find out if the new dragon-riding coaching technique works Professor Llewelyn blocks by Quadrant setting up the experiment as follows.</p>
 <table>
 <colgroup>
 <col width="44%" />
@@ -439,10 +441,10 @@ Identify sources of variation within a given experimental design
 </tr>
 <tr class="even">
 <td><strong>Primary Variable of Interest</strong></td>
-<td>Improvement in dragon riding</td>
+<td>Improvement in dragon riding (difference between assult course completion times)</td>
 </tr>
 <tr class="odd">
-<td><strong>Factors Introducing Variability</strong></td>
+<td><strong>Nuisance Factors Introducing Variability</strong></td>
 <td>Quadrant (i.e., Riders or Scribes)</td>
 </tr>
 <tr class="even">
@@ -455,7 +457,7 @@ Identify sources of variation within a given experimental design
 </tr>
 <tr class="even">
 <td><strong>Blocking Procedure</strong></td>
-<td>1. Identify Quadrant of student (i.e., Rider or Scribe). 2. Create Blocks: Group students based on Quadrant. 3. Random Assignment within Blocks: Randomly assign students to different coaching techniques (e.g., old and new). This ensures each technique (e.g., old and new) is tested with different Quadrant.</td>
+<td>1. Identify Quadrant of student (i.e., Rider or Scribe). 2. Create Blocks: Group students based on Quadrant. 3. Random Assignment within Blocks: Randomly assign students to different coaching techniques (i.e., old and new). This ensures each technique (e.g., old and new) is tested with different Quadrant.</td>
 </tr>
 <tr class="odd">
 <td><strong>Experimental Setup</strong></td>
@@ -471,6 +473,9 @@ Identify sources of variation within a given experimental design
 </tr>
 </tbody>
 </table>
+<div class="alert alert-warning">
+<strong>TASK</strong> Identify the observational units, treatment levels, response variable, and the number of blocks in the experiment above.
+</div>
 </div>
 <div id="experimental-designs" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Experimental designs<a href="introduction-to-the-design-and-analysis-of-experiments.html#experimental-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -495,7 +500,37 @@ Identify sources of variation within a given experimental design
 <span id="cb47-10"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Liberica&quot; &quot;Liberica&quot; &quot;Arabica&quot;  &quot;Liberica&quot;</span></span>
 <span id="cb47-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] &quot;Arabica&quot;  &quot;Robusta&quot;  &quot;Arabica&quot;  &quot;Liberica&quot; &quot;Robusta&quot;  &quot;Arabica&quot;</span></span></code></pre></div>
 <p>Having run the code above your CRD plan is as follows</p>
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class=" lightable-classic table" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; font-size: 7px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -614,6 +649,24 @@ Arabica
 <span id="cb48-16"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Robusta  Mug</span></span></code></pre></div>
 <p>Having run the code above your RCBD plan is as follows</p>
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -758,7 +811,7 @@ Mug
 <div class="footnotes">
 <hr />
 <ol start="3">
-<li id="fn3"><p>This is for the fans of Fourth Wing<a href="introduction-to-the-design-and-analysis-of-experiments.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>A realm based on that in the <a href="https://en.wikipedia.org/wiki/Fourth_Wing">Fourth Wing</a>.<a href="introduction-to-the-design-and-analysis-of-experiments.html#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p>Note is a factorial design has <strong>equal</strong> numbers of replicates in each group then it is said to be a <strong>balanced</strong> design; if this is not the case then it is <strong>unbalanced</strong>.<a href="introduction-to-the-design-and-analysis-of-experiments.html#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
