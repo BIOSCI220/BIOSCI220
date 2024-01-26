@@ -306,7 +306,9 @@ The table below summarises [Ten Simple Rules for Better Figures](https://journal
 
 `ggplot2` is an `R` package for producing statistical, or data, graphics; it has an underlying grammar based on the [Grammar of Graphics](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448)
 
-Every `ggplot2` plot has three key components:
+<center>![](figs/ggplot.png)</center>
+
+Every `ggplot2` plot has three **key** components:
 
   + `data`,
 
@@ -314,7 +316,6 @@ Every `ggplot2` plot has three key components:
 
   + At least one layer which describes how to render each observation. Layers are usually created with a `geom_*` function.
   
-
 
 Every plot created using `ggplot2` code requires the three components above:
 
