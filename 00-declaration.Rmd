@@ -93,7 +93,7 @@ knitr::kable(assessment, align = "cccc", "simple")
 ```
 
 <div class="alert alert-danger" role="alert">
-The test will be held on **TBD**. **The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
+The test will be held **TBD**. **The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
 The delivery mode for the test and the exam is an on-campus, invigilated Inspera assessment.
 </div>
 
@@ -107,7 +107,7 @@ Labs will be held in 106-014 (Biology Building, Room 014) during your scheduled 
 <ul>
 <li>Monday 2-5pm, </li>
 <li>Tuesday 10am-1pm, </li>
-<li>Tuesday 10-1pm, </li>
+<li>Thursday 10am-1pm, or</li>
 <li>Friday 10am-1pm.</li
 </ul>
 
