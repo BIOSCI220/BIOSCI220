@@ -291,7 +291,7 @@ where</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="statistical-inference.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins_nafree, <span class="fu">aes</span>(<span class="at">x =</span> bill_depth_mm)) <span class="sc">+</span></span>
 <span id="cb74-2"><a href="statistical-inference.html#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb74-3"><a href="statistical-inference.html#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>)</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p>First off let’s fit a null (intercept only, no slope) model. This in <em>old money</em> would be called a one sample t-test.</p>
 <p><strong>Model formula</strong></p>
 <p>The null model formula is: <span class="math display">\[Y_i = \alpha + \epsilon_i.\]</span></p>
@@ -345,7 +345,7 @@ where</p>
 <span id="cb79-5"><a href="statistical-inference.html#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb79-6"><a href="statistical-inference.html#cb79-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb79-7"><a href="statistical-inference.html#cb79-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals))</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 </div>
 <div id="a-continuous-and-a-categorical-factor-explanatory-variable-additive-model" class="section level3 hasAnchor" number="7.2.4">
 <h3><span class="header-section-number">7.2.4</span> A continuous and a categorical factor explanatory variable (Additive model)<a href="statistical-inference.html#a-continuous-and-a-categorical-factor-explanatory-variable-additive-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -356,7 +356,7 @@ Remember <code>species</code> is a categorical factor variable with three levels
 <span id="cb80-3"><a href="statistical-inference.html#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb80-4"><a href="statistical-inference.html#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
 <span id="cb80-5"><a href="statistical-inference.html#cb80-5" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="statistical-inference.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># notice the + between the two explanatory variables?</span></span>
 <span id="cb81-2"><a href="statistical-inference.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this + is what indicates this is an additive model</span></span>
 <span id="cb81-3"><a href="statistical-inference.html#cb81-3" aria-hidden="true" tabindex="-1"></a>slm_sp <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> bill_length_mm <span class="sc">+</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
@@ -408,7 +408,7 @@ It is a variable created to assign numerical value to levels of categorical vari
 <span id="cb83-5"><a href="statistical-inference.html#cb83-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb83-6"><a href="statistical-inference.html#cb83-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()  <span class="sc">+</span></span>
 <span id="cb83-7"><a href="statistical-inference.html#cb83-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals))</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
 <p><strong>Simpson’s paradox…</strong> look how the slope associated with bill length (coefficient of <code>bill_length_mm</code>) has switched direction from the model with just one explanatory variable <code>bill_length_mm</code>! Why do you think this is?</p>
 </div>
 <div id="a-continuous-and-a-categorical-factor-explanatory-variable-interaction-model" class="section level3 hasAnchor" number="7.2.5">
@@ -460,7 +460,7 @@ You’ll notice a new term <span class="math inline">\(\beta_4z_ix_{i,k}\)</span
 <span id="cb87-5"><a href="statistical-inference.html#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb87-6"><a href="statistical-inference.html#cb87-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()  <span class="sc">+</span></span>
 <span id="cb87-7"><a href="statistical-inference.html#cb87-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals))</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 <p>Look at the plot above. Now we’ve specified this <em>all singing and dancing</em> interaction model we might ask <strong>are the non-parallel lines non-parallel enough to say this model is better than the parallel line model</strong>?</p>
 </div>
 </div>
@@ -476,7 +476,7 @@ You’ll notice a new term <span class="math inline">\(\beta_4z_ix_{i,k}\)</span
 </ul>
 <p>Let’s look at the fit of the <code>slm</code> model (single continuous explanatory variable)</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="statistical-inference.html#cb88-1" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(slm) <span class="co"># Plot the four main diagnostic plots</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
 <p>Do you think the model assumptions have been met? Think of what this model is, do you think it’s the best we can do?</p>
 <div id="model-comparison-and-selection" class="section level3 hasAnchor" number="7.3.1">
 <h3><span class="header-section-number">7.3.1</span> Model comparison and selection<a href="statistical-inference.html#model-comparison-and-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -528,7 +528,7 @@ This ANOVA will test whether or not including <span class="math inline">\(\beta_
 <p>Just because we’ve chosen a model (<em>the best of a bad bunch</em> perhaps?) this doesn’t let us off the hook. We should check our assumptions…</p>
 <p>…well, we should have checked them before we started to interpret the data!</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="statistical-inference.html#cb92-1" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(slm_sp) <span class="co"># Plot the four main diagnostic plots</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
 <p><strong>Residuals vs Fitted</strong> plot: equal spread? Doesn’t look too trumpety/slice of pizza shaped! Don’t worry that there aren’t many points between 16-17 on the x-axis.</p>
 <p><strong>Normal quantile-quantile (QQ)</strong> plot: skewed? Maybe slightly right skewed (deviation upwards from the right tail) but probably nothing to worry about.</p>
 <p><strong>Scale-Location</strong> plot: equal spread and relatively straight line? I’d say so.</p>
@@ -600,7 +600,7 @@ However, there’s a couple more things we might like to do, such as:</p>
 <span id="cb95-6"><a href="statistical-inference.html#cb95-6" aria-hidden="true" tabindex="-1"></a><span class="do">##       1 </span></span>
 <span id="cb95-7"><a href="statistical-inference.html#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 15.4841</span></span></code></pre></div>
 <p>What does this look like on a plot</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
 </div>
 </div>
 <div id="tldr-lm" class="section level2 hasAnchor" number="7.5">
@@ -814,7 +814,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["BIOSCI220.html"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null

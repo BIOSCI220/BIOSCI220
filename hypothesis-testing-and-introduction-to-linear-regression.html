@@ -307,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb57-3"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   average_length</span></span>
 <span id="cb57-4"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="do">##            &lt;dbl&gt;</span></span>
 <span id="cb57-5"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1           5.19</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/vio1-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/vio1-1.png" width="672" /></p>
 <p>What about drawing inference? <em>Do we believe that the average length of P<span class="math inline">\(\overline{\text{a}}\)</span>ua shells is, say, 5cm (perhaps some previous research suggests this value)?</em> This is our research question. Let’s turn this into statistical hypotheses that we can test.</p>
 <div id="step-one.-state-the-hypotheses" class="section level4 hasAnchor" number="6.2.3.1">
 <h4><span class="header-section-number">6.2.3.1</span> Step one. State the hypotheses<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-one.-state-the-hypotheses" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -322,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We know our sample average (5.192 cm), but can we make any claims based on this one number? Other useful information to help us reflect the uncertainty about our sample mean is the spread/variability of data around this mean.</p>
 <p><strong>Visualising the uncertainty in a one-sample t-test - the SEM</strong></p>
 <p>The Standard Error of the Mean (SEM) is a measure of uncertainty about the mean. We can visualise this uncertainty by adding error bars around the sample mean on our violin plot. Typically <span class="math inline">\(\pm\)</span> twice the SEM is the interval used:</p>
-<p><img src="BIOSCI220_files/figure-html/vizun-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/vizun-1.png" width="672" /></p>
 <p><em>Why error bars that are <span class="math inline">\(\pm\)</span> twice the SEM?</em>
 This is approximately the 95% confidence interval for the population mean.</p>
 <p>We can use the in-built functions in <code>R</code> to calculate the mean and the SEM. Yay - we don’t have to do these calculations by hand, <code>R</code> can do them for us! For the <code>paua</code> data, here’s some code we can use:</p>
@@ -349,7 +349,7 @@ This is approximately the 95% confidence interval for the population mean.</p>
 <p>Recall that a <em>p</em>-value is the probability under a specified statistical model (here, the null distribution) that a statistical summary of the data would be equal to or more extreme than its observed value (here, the t-statistic).</p>
 <p>So in this case it’s the probability, under the null hypothesis (<span class="math inline">\(\mu = 5\)</span>), that we would observe a t-statistic at least as extreme as we did.</p>
 <p>The null distribution, assuming H<sub>0</sub> is true, is below. The t-statistic calculated from our hypothesis test was 1.2391. Now, remember that our alternative hypotheses was <span class="math inline">\(H_1: \mu \neq 5\)</span> so we have to consider both sides of the inequality; hence, anything as least as extreme is either <span class="math inline">\(&gt; 1.2391\)</span> or <span class="math inline">\(&lt; -1.2391\)</span> to our observed test statistic (vertical lines). Anything at least as extreme is therefore given by the grey shaded areas.</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <p>We can calculate the <em>p</em>-value using the <code>pt()</code> function (where <code>q</code> is our calculated t-statistic, and <code>df</code> are the degrees of freedom from above):</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="at">q  =</span> <span class="fl">1.2391</span>,<span class="at">df =</span> <span class="dv">59</span>))</span>
 <span id="cb59-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.2202152</span></span></code></pre></div>
@@ -376,7 +376,7 @@ This is approximately the 95% confidence interval for the population mean.</p>
 <li>Thus, when we see a large <em>p</em>-value, all we can say is that we have no evidence against the null hypothesis.</li>
 </ul>
 <p>Does the plot below help to visualise this? The proposed population mean is shown by the solid red horizontal line; the dashed line shows the sample mean and the dotted lines <span class="math inline">\(\pm\)</span> twice the SEM (i.e., ~95% confidence interval).</p>
-<p><img src="BIOSCI220_files/figure-html/vizunmu-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/vizunmu-1.png" width="672" /></p>
 <p>One of the most important steps is communicating our findings to our audience. <strong>When writing up results from hypothesis testing, always include these values listed below so the reader can determine how you obtained your p-value:</strong></p>
 <ul>
 <li>the value of the test-statistic (here our t-statistic is 1.2391)</li>
@@ -389,7 +389,7 @@ This is approximately the 95% confidence interval for the population mean.</p>
 <div id="two-sample-independent-t-test-with-t.test-and-lmin-r" class="section level3 hasAnchor" number="6.2.4">
 <h3><span class="header-section-number">6.2.4</span> Two-sample independent t-test (with <code>t.test()</code> and <code>lm()</code>in <code>R</code>)<a href="hypothesis-testing-and-introduction-to-linear-regression.html#two-sample-independent-t-test-with-t.test-and-lmin-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We have two species of p<span class="math inline">\(\overline{\text{a}}\)</span>ua in this data set, so it may be more interesting to ask <em>is there a difference in the average shell length of Haliotis australis and Haliotis iris</em>?</p>
-<p><img src="BIOSCI220_files/figure-html/vio-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/vio-1.png" width="672" /></p>
 <div id="step-one.-state-the-hypotheses-1" class="section level4 hasAnchor" number="6.2.4.1">
 <h4><span class="header-section-number">6.2.4.1</span> Step one. State the hypotheses<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-one.-state-the-hypotheses-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
@@ -455,7 +455,7 @@ t-statistic = <span class="math inline">\(\frac{\bar{x}_{\text{difference}} - \m
 <p>The <code>t value</code> and <code>Pr (&gt;|t|)</code> are the t-statistic and <em>p</em>-value for testing the null hypotheses:</p>
 <p><code>(Intercept)</code> row: Mean abundance is zero for <em>Haliotis australis</em> (not interested in this really)
 <code>SpeciesHaliotis iris</code> row: No difference between the population mean shell lengths of <em>Haliotis australis</em> and <em>Haliotis iris</em></p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>By default, <code>R</code> orders variables alphabetically. Sometimes, we don’t mind because there is no logical order to our variables. However, sometimes, we want to specify the variable order (e.g., if we ran a study where we had variables labelled <code>before</code>, <code>during</code> and <code>after</code>, <code>after</code> would come first - weird! Or if we ran an experiment where we had a <code>control</code> and three treatments, labelled <code>A</code>, <code>B</code> and <code>C</code>, it would make the most sense to compare all treatments to the <code>control</code> as the baseline). We can use the <code>mutate</code> function in <code>R</code> to change the variable order:</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># changing the baseline</span></span>
 <span id="cb63-2"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># it&#39;s the order that makes the difference</span></span>
@@ -479,7 +479,7 @@ t-statistic = <span class="math inline">\(\frac{\bar{x}_{\text{difference}} - \m
 </ul>
 <p><code>(Intercept)</code> row: Mean abundance is zero for <em>Haliotis iris</em> (not interested in this really)<br />
 <code>SpeciesHaliotis australis</code> row: No difference between the population mean lengths of <em>Haliotis australis</em> and <em>Haliotis iris</em></p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 </div>
 <div id="step-four.-draw-the-appropriate-conclusions-1" class="section level4 hasAnchor" number="6.2.4.3">
 <h4><span class="header-section-number">6.2.4.3</span> Step four. Draw the appropriate conclusions<a href="hypothesis-testing-and-introduction-to-linear-regression.html#step-four.-draw-the-appropriate-conclusions-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -497,7 +497,7 @@ However, we did not use this <code>var.equal = TRUE</code> argument because the 
 <h3><span class="header-section-number">6.2.5</span> One way ANOVA (with <code>aov()</code> and <code>lm()</code>in <code>R</code>)<a href="hypothesis-testing-and-introduction-to-linear-regression.html#one-way-anova-with-aov-and-lmin-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Remember the Palmer penguins? <strong>You might find <a href="https://cmjt.shinyapps.io/penguin/">this application</a> useful, now and later…</strong></p>
 <p>Below is the bill depth (mm) values for each bird in the sample, grouped together by species</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>Now we have more than two groups: <span class="math inline">\(3\)</span> potential comparisons we might be interested in. Remember that each time we carry out a hypothesis test the probability we get a false positive result (<strong>Type I</strong> error) is given by <span class="math inline">\(\alpha\)</span> (the <strong>level of significance</strong> we choose). In light of this we should control the <strong>Type I</strong> error rate across the entire <em>family</em> of tests under consideration, i.e., control the <strong>Family-Wise Error Rate (FWER)</strong>; this ensures that the risk of making at least one <strong>Type I</strong> error among the family of comparisons in the experiment is <span class="math inline">\(\alpha\)</span>.</p>
 <p><strong>AN</strong>alysis <strong>O</strong>f <strong>VA</strong>riance (ANOVA) can do this!</p>
 <div id="step-one.-state-the-hypotheses-2" class="section level4 hasAnchor" number="6.2.5.1">
@@ -584,7 +584,7 @@ This means the average bill depth of Chinstrap penguins is estimated to be 0.073
 <h2><span class="header-section-number">6.4</span> Model diagnostic plots<a href="hypothesis-testing-and-introduction-to-linear-regression.html#model-diagnostic-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Again, <code>R</code> is making our lives easy! Such a small amount of code to check our model assumptions - nice one :-)</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="hypothesis-testing-and-introduction-to-linear-regression.html#cb68-1" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(fit.lm) <span class="co"># Plot the four main linear regression diagnostic plots</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/qqnorm-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/qqnorm-1.png" width="672" /></p>
 <div id="residuals-vs-fitted-plot" class="section level3 hasAnchor" number="6.4.1">
 <h3><span class="header-section-number">6.4.1</span> Residuals vs Fitted plot<a href="hypothesis-testing-and-introduction-to-linear-regression.html#residuals-vs-fitted-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <strong>residuals having constant variance assumption</strong> can be checked with this plot. You are looking for a roughly symmetric cloud of points above and below the horizontal line at zero. You want to see no pattern or structure in your residuals (e.g., a “starry” night). You definitely don’t want to see the scatter increasing or decreasing around the zero line as the fitted values get bigger (e.g., trumpet/ wedge of cheese/ slice of pizza shaped) which would indicate unequal variances (heteroscedasticity).</p>
@@ -727,7 +727,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["BIOSCI220.html"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null

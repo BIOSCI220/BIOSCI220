@@ -322,7 +322,7 @@ State in terms of probability statements the meaning of the power and significan
 <p><span class="math inline">\(\text{H}_0:\)</span> <span class="math inline">\(\mu_\text{Haliotis iris} = \mu_\text{Haliotis australis}\)</span> vs <span class="math inline">\(\text{H}_1:\)</span> <span class="math inline">\(\mu_\text{Haliotis iris} \neq \mu_\text{Haliotis australis}\)</span></p>
 <p>It follows from this definition that out test statistic is <span class="math inline">\(\mu_\text{Haliotis australis} - \mu_\text{Haliotis iris}\)</span>. The <em>vs</em> is convention as we are considering two opposing hypotheses.</p>
 <p>Having, defined the hypothesis test above what would you expect the answer to be looking at the plot below?</p>
-<p><img src="BIOSCI220_files/figure-html/violin-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/violin-1.png" width="672" /></p>
 <div id="choose-a-statistic-that-measures-the-effect-of-interest-in-this-case-the-differences-between-means" class="section level4 unnumbered hasAnchor">
 <h4>1. Choose a statistic that measures the effect of interest (in this case the differences between means)<a href="introduction-to-hypothesis-testing.html#choose-a-statistic-that-measures-the-effect-of-interest-in-this-case-the-differences-between-means" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="introduction-to-hypothesis-testing.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">## observed differences in means</span></span>
@@ -366,7 +366,7 @@ State in terms of probability statements the meaning of the power and significan
 <span id="cb54-4"><a href="introduction-to-hypothesis-testing.html#cb54-4" aria-hidden="true" tabindex="-1"></a>n_exceed</span>
 <span id="cb54-5"><a href="introduction-to-hypothesis-testing.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 18</span></span></code></pre></div>
 <p>We see something as least as extreme as our observed test statistic 18 times. This translates to a two-sided tail proportion of 0.018. The plot below illustrates the location of the observed test statistic in that of the distribution of the test statistics we calculated under the null hypothesis.</p>
-<p><img src="BIOSCI220_files/figure-html/hist-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/hist-1.png" width="672" /></p>
 <p>In experimental situations a large p-value (large tail proportion) means that the luck of the randomization quite often produces group differences as large or even larger than what we’ve got in our data. A small p-value means that the luck of the randomization draw hardly ever produces group differences as large as we’ve got in our data. <strong>So what do you conclude here?</strong></p>
 <p><strong>NOTE: We can extend the randomization test to make inference about any sample statistic (not just the mean)</strong></p>
 <div class="alert alert-warning">
@@ -407,7 +407,7 @@ No single index should substitute for scientific reasoning.”
 <p>There are <strong>many</strong> different schools of thought about how a p-value should be interpreted.</p>
 <p>Most people agree that the p-value is a useful measure of the strength of evidence against the null hypothesis. The smaller the p-value, the stronger the evidence against <span class="math inline">\(H_0\)</span>.</p>
 <p>Some people go further and use an accept/reject framework. Under this framework, the null hypothesis <span class="math inline">\(H_0\)</span> should be rejected if the p-value is less than 0.05 (say), and accepted if the p-value is greater than 0.05. In this course we mostly use the strength of evidence interpretation. The p-value measures how far out our observation lies in the tails of the distribution specified by <span class="math inline">\(H_0\)</span>:</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-50-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="864" style="display: block; margin: auto;" /></p>
 <p>In summary, <strong>p-values</strong> can indicate how incompatible the data are with a specified statistical model; they <strong>do not</strong> measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.</p>
 <p>Note that a p-value does <strong>not</strong> measure the size of an effect or the importance of a result and by itself it does <strong>not</strong> provide a good measure of evidence regarding a model or hypothesis. Note also, that a substantial evidence of a difference does <strong>not</strong> equate to evidence of a substantial difference! Any scientific conclusions and business or policy decisions <strong>should not</strong> be based only on whether a p-value passes a specific threshold as proper inference requires <strong>full</strong> reporting and transparency.</p>
 <p>Remember that <strong>statistical significance does not imply practical significance</strong>, and that <strong>statistical significance says nothing about the size of treatment differences.</strong> To estimate the sizes of differences you need confidence intervals, look out for these in the following chapters.</p>
@@ -547,7 +547,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["BIOSCI220.html"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null

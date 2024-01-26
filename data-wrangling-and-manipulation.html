@@ -557,7 +557,7 @@ Illustration from the Openscapes blog <a href="https://www.openscapes.org/blog/2
 </ol>
 <p>Let’s use a base <code>R</code> command (i.e., functions shipped with <code>R</code>) to create a <code>boxplot</code> of our <code>paua</code> data.</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-wrangling-and-manipulation.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Age <span class="sc">~</span> Species, <span class="at">data  =</span> paua)</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/boxplot-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/boxplot-1.png" width="672" /></p>
 <p>So what have we asked our computer to do here? We are using the function <code>boxplot()</code> and supplying two arguments: <code>Age ~ Species</code>, and <code>data  = paua</code>. The first argument <code>Age ~ Species</code> is how <code>R</code> understands equations (e.g., <span class="math inline">\(y = x\)</span>) and is asking for the variable <code>Age</code> to be plotted by the variable <code>Species</code>. The second argument <code>data = paua</code> specifies from which data object to grab the variables from (in this case the <code>paua</code> object we created above).</p>
 <div class="alert alert-warning">
 <p><strong>TASK</strong> Run each line of the following code and comment briefly on what each plot shows.</p>
@@ -650,7 +650,10 @@ Plots by Cedric Scherer and mentioned on <a href="https://jimgruman.netlify.app/
 <div id="plotting-using-ggplot2" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Plotting using <code>ggplot2</code><a href="data-wrangling-and-manipulation.html#plotting-using-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>ggplot2</code> is an <code>R</code> package for producing statistical, or data, graphics; it has an underlying grammar based on the <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448">Grammar of Graphics</a></p>
-<p>Every <code>ggplot2</code> plot has three key components:</p>
+<center>
+<img src="figs/ggplot.png" />
+</center>
+<p>Every <code>ggplot2</code> plot has three <strong>key</strong> components:</p>
 <ul>
 <li><p><code>data</code>,</p></li>
 <li><p>A set of <code>aes</code>thetic mappings between variables in the data and visual properties, and</p></li>
@@ -749,7 +752,7 @@ Plots by Cedric Scherer and mentioned on <a href="https://jimgruman.netlify.app/
 <p>First off, let’s create a <strong>scatter plot</strong>. The code below takes the <code>penguins_nafree</code> dataset (created above) and maps the body mass variable <code>body_mass_g</code> to the x-axis and flipper length variable <code>flipper_length_mm</code> to the y-axis. Then, it adds points to the plot to represent each data point in the dataset. Therefore, the plot shows the relationship between body mass (g) and flipper length (mm) for the penguins in our dataset <code>penguins_nafree</code>.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-wrangling-and-manipulation.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins_nafree,<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> <span class="do">## data &amp; aesthetics</span></span>
 <span id="cb34-2"><a href="data-wrangling-and-manipulation.html#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="do">## geom</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/flippoint-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/flippoint-1.png" width="672" /></p>
 <p>Breaking the code above down we have</p>
 <ol style="list-style-type: decimal">
 <li><code>ggplot(penguins_nafree, aes(x = body_mass_g, y = flipper_length_mm))</code> initializes the plot using the <code>ggplot()</code> function. It specifies the data frame <code>penguins_nafree</code> and the aesthetics mapping: setting the x-axis (<code>x</code>) to the <code>body_mass_g</code> variable and the y-axis (<code>y</code>) to the <code>flipper_length_mm</code> variable.</li>
@@ -761,7 +764,7 @@ Plots by Cedric Scherer and mentioned on <a href="https://jimgruman.netlify.app/
 <span id="cb35-3"><a href="data-wrangling-and-manipulation.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;darkorange&quot;</span>,<span class="st">&quot;darkorchid&quot;</span>,<span class="st">&quot;cyan4&quot;</span>), <span class="at">name =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb35-4"><a href="data-wrangling-and-manipulation.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb35-5"><a href="data-wrangling-and-manipulation.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>)</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/point-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/point-1.png" width="672" /></p>
 <p>Breaking down the lines of code here we have that</p>
 <ol style="list-style-type: decimal">
 <li>Again <code>ggplot(penguins_nafree, aes(x = body_mass_g, y = flipper_length_mm))</code> initializes the plot using the <code>ggplot()</code> function. It specifies the data frame <code>penguins_nafree</code> and the aesthetics mapping: setting the x-axis (<code>x</code>) to the <code>body_mass_g</code> variable and the y-axis (<code>y</code>) to the <code>flipper_length_mm</code> variable.</li>
@@ -778,7 +781,7 @@ Plots by Cedric Scherer and mentioned on <a href="https://jimgruman.netlify.app/
 <span id="cb36-3"><a href="data-wrangling-and-manipulation.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb36-4"><a href="data-wrangling-and-manipulation.html#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb36-5"><a href="data-wrangling-and-manipulation.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>Breaking the code above down we have</p>
 <ol style="list-style-type: decimal">
 <li><code>ggplot(penguins_nafree, aes(x = species, y = flipper_length_mm))</code> initializes the plot using the <code>ggplot()</code> function. It uses the <code>penguins_nafree</code> dataset and sets the x-axis (x) to the <code>species</code> variable and the y-axis (y) to the <code>flipper_length_mm</code> variable.</li>
@@ -796,7 +799,7 @@ Type <code>theme_</code> into your Console and wait for <code>RStudio</code> to 
 <span id="cb37-3"><a href="data-wrangling-and-manipulation.html#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
 <span id="cb37-4"><a href="data-wrangling-and-manipulation.html#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb37-5"><a href="data-wrangling-and-manipulation.html#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="do">## another theme...</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <div class="alert alert-warning">
 <p><strong>TASK</strong> What can you say about the distribution of penguin flipper length. Do you this the distributions are symmetrical, skewed, bimodal?</p>
 </div>
@@ -814,7 +817,7 @@ Type <code>theme_</code> into your Console and wait for <code>RStudio</code> to 
 <span id="cb38-4"><a href="data-wrangling-and-manipulation.html#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Flipper length (mm)&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb38-5"><a href="data-wrangling-and-manipulation.html#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>, <span class="at">name =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">+</span></span>
 <span id="cb38-6"><a href="data-wrangling-and-manipulation.html#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="do">## and another theme....</span></span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <div class="alert alert-warning">
 <p><strong>TASK</strong>
 We should always avoid using similarly bight red and green colours: they may not be distinguishable for red-green colorblind readers. Using <code>ggplot2</code> we can access a whole range of colourblind friendly palettes: one package that has a whole range is <code>RColorBrewer</code> install it then try running <code>RColorBrewer::display.brewer.all(colorblindFriendly = TRUE)</code> what do you think you’ve asked your computer to show you?</p>
@@ -842,7 +845,7 @@ We should always avoid using similarly bight red and green colours: they may not
 <span id="cb40-4"><a href="data-wrangling-and-manipulation.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb40-5"><a href="data-wrangling-and-manipulation.html#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span> <span class="do">## remember themes...</span></span>
 <span id="cb40-6"><a href="data-wrangling-and-manipulation.html#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;cyan4&quot;</span>,<span class="st">&quot;darkorange&quot;</span>), <span class="at">name =</span> <span class="st">&quot;Sex&quot;</span>) </span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/bar-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/bar-1.png" width="672" /></p>
 <div class="alert alert-warning">
 <p><strong>TASK</strong> Before reading the breakdown below write out your own and then compare the two.</p>
 </div>
@@ -904,7 +907,7 @@ We should always avoid using similarly bight red and green colours: they may not
 <span id="cb45-8"><a href="data-wrangling-and-manipulation.html#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Penguin Body Mass by Species on Biscoe&quot;</span>,</span>
 <span id="cb45-9"><a href="data-wrangling-and-manipulation.html#cb45-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Body Mass (g)&quot;</span>, </span>
 <span id="cb45-10"><a href="data-wrangling-and-manipulation.html#cb45-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <div class="alert alert-warning">
 <p><strong>TASK</strong> Run the code below. It will give you an error, can you figure out what the cause is?</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data-wrangling-and-manipulation.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -923,9 +926,9 @@ We should always avoid using similarly bight red and green colours: they may not
 <h3><span class="header-section-number">2.4.2</span> What to look at in a plot (<em>a taster</em>)<a href="data-wrangling-and-manipulation.html#what-to-look-at-in-a-plot-a-taster" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In many of the following chapters you will hear a lot about variability or variation. Variation is simply a measure of spread (i.e., how far apart the observations are from each other). In particular, we often talk about deviation from the mean (i.e., how far away from the average value the observations are) as we are often interested in how <em>large</em> this deviation is relative to the information we have. In <a href="Introduction%20to%20Hypothesis%20testing">Chapter 5</a> you will learn about ways of formally testing this. However, with the data visualization skills you’ve just learnt we can already begin to critically evaluate our data by simply looking at plots.</p>
 <p><strong>Between-group variation</strong> is a measure of the variability between different groups; it assesses how much the means of different groups differ from each other. Higher between-group variation suggests that the groups are not similar. However, before we can conclude anything relating to similarity, or not, of groups we also have to consider within-group variation.</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p><strong>Within group variation</strong> measures the variability among individual data points within each group; it measures how much individual data points within each group differ from the group’s mean. Lower within-group variation suggests that the data points within each group are less scattered around the group’s mean</p>
-<p><img src="BIOSCI220_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <div class="alert alert-info" role="alert">
 <p><img src="https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true" style="width:10.0%" /></p>
 <p><strong>Other resources: optional but recommended</strong></p>
@@ -992,7 +995,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["BIOSCI220.html"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null
