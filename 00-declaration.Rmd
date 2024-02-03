@@ -17,7 +17,7 @@ To understand modern biological research and findings, and to participate in thi
 ##  `R` and `RStudio` {-}
 
 <div class="alert alert-danger" role="alert"> 
-<span><strong>Throughout this course, you will be learning how to program using `R` and `RStudio` weekly.</span></strong> You are expected to install and familiarize yourself with these environments during the first week of the course. We provide plenty of help session and easy-to-follow instructions for this, please see CANVAS and/or [Installing R and RStudio] to get started.
+<span><strong>Throughout this course, you will be learning how to program using `R` and `RStudio` weekly.</span></strong> You are expected to install and familiarize yourself with these environments before or during the first week of the course. We provide help sessions during week 1 and easy-to-follow instructions for this, please see CANVAS and/or [Installing R and RStudio] to get started.
 </div>
 
 Note that lab computers will already have `R` and`RStudio` installed; however, if you plan to use your personal computer then you will need to install both `R` and `RStudio` yourself. Follow the directions in [Installing R and RStudio] to do so (or come along to a dedicated help session).
@@ -32,8 +32,8 @@ Another option available is to use [RStudio Cloud](https://rstudio.cloud/) where
 ```{r include=FALSE}
 lecs <- matrix(c(1, "R programming and data exploration", "1 - 3", "Dr Charlotte Jones-Todd", 
                1, "Statistical inference", "4 - 6", "Jenn Jury (course coordinator)", 
-               2, "Mathematical modelling in biology", "7 - 9", "Dr Nobuto Takeuchi", 
-               3, "Model-based inference and critical thinking", "10 - 12", "Assoc. Prof. Emma Carroll"), 
+               2, "Mathematical modelling in biology", "7 - 9", "Assoc. Prof. Jane Allison", 
+               3, "Model-based inference and critical thinking", "10 - 12", "Prof. Alexei Drummond"), 
                ncol = 4,byrow = TRUE)
 colnames(lecs) <- c("Module Number", "Module Content", "Weeks taught","Lecturer")
 
@@ -51,8 +51,8 @@ knitr::kable(lecs, align = "cccc", "simple", row.names = FALSE)
 
 <span><strong>Lectures are every week:</span></strong>
  <ul>
-  <li>**Mondays**: 8-9 am, and </li>
-  <li>**Tuesdays**: 8-9 am. </li>
+  <li>**Mondays 8-9 am** in 201-393, and </li>
+  <li>**Tuesdays 8-9 am** in Library B28 (109-B28). </li>
 </ul>
 </div>
 
@@ -67,8 +67,8 @@ lecture recordings will be available in CANVAS via the Panopto video tab after t
 ```{r, echo=FALSE}
 require(tidyverse)
 require(knitr)
-assess <- data.frame(Week =  c(1:5, "Easter Break", 6:12 , "Exam Period"), 
-                     Laboratories = c("R help session","lab", "lab", "", "lab","", "lab", rep(c("","lab", "lab"), 2), ""), 
+assess <- data.frame(Week =  c(1:5, "Mid-semester break", 6:12 , "Exam Period"), 
+                     Laboratories = c("R help sessions","lab", "lab", "", "lab","", "lab", rep(c("","lab", "lab"), 2), ""), 
                      Quizzes = c("",rep("quiz", 4), "", rep("quiz", 7), ""), 
                      Inspera = c(rep("", 7),"Test", rep("", 5), "Exam"))
 
@@ -93,7 +93,7 @@ knitr::kable(assessment, align = "cccc", "simple")
 ```
 
 <div class="alert alert-danger" role="alert">
-The test will be held **TBD**. **The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
+The test will be held on **Friday 26th April 6.30-8.15pm. The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
 The delivery mode for the test and the exam is an on-campus, invigilated Inspera assessment.
 </div>
 
@@ -120,10 +120,10 @@ You are scheduled into a lab stream in SSO. While lab attendance is not compulso
 
 ### Weekly quizzes {-}
 
-<div class="alert alert-danger" role="alert"> There are **eleven** weekly quizzes in total. Each quiz is worth **1%** and (if you have completed all quizzes) your one (1) quiz that has the lowest mark will be dropped from your final grade. Therefore your weekly quizzes will total **10%** towards final grade)
+<div class="alert alert-danger" role="alert"> There are **eleven** weekly quizzes in total. Each quiz is worth **1%** and (if you have completed all quizzes) your one (1) quiz that has the lowest mark will be dropped from your final grade. Therefore your weekly quizzes will total **10%** towards final grade.
 </div>
 
-The weekly quizzes due at the end of each week from week 2 - week 12 (due Friday at 10pm). These are designed for you to solidify concepts and practice skills taught each week and thereby keep up with the material.
+The weekly quizzes are due at the end of each week from week 2 - week 12 (due Friday at 10pm). These are designed for you to solidify concepts and practice skills taught each week and thereby keep up with the material.
 
 There are practice quizzes for you to attempt prior to sitting the weekly quiz, these are not assessed. There is also a practice quiz for week 1.
 
