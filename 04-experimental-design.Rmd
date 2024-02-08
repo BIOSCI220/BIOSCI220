@@ -12,7 +12,7 @@
       <li> observational units </li>
       <li> treatment(s)</li>
     </ul>  
-   <li> List and describe the three main principals of experimental design, specifically,</li>
+   <li> List and describe the three main principles of experimental design, specifically,</li>
    <ul>
        <li> randomization</li>
        <li> replication</li>
