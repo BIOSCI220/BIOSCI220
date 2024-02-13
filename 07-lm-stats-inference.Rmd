@@ -1,21 +1,33 @@
 # Statistical Inference
 
-## Learning Outcomes
+<div class="alert alert-success" role="alert">
+<center>![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%}</center>
 
-+ Write `R` code to fit a linear regression model, and interpret estimated coefficients of these models:
-    + a single categorical explanatory variable (using dummy variables)
-    + no explanatory variable (a null model)
-    + a single continuous explanatory variable
-    + a continuous and a categorical factor explanatory variable
-    + an interaction term in the explanatory variables
-+ Explain why you may want to include interaction terms in a model.
-+	Describe the differences between the operators `:` and `*` in an `R` model-fitting 	formula
-+	Demonstrate how to make point predictions from linear regression models, specifically models with:
-    + a single continuous explanatory variable
-    + a continuous and a categorical factor explanatory variable
-    + an interaction term in the explanatory variables
-+	Understand how to undertake model selection using the `anova()` and `AIC()` functions in R and interpret the output
-+	Compute confidence intervals in `R` to estimate a population parameter, and interpret their meaning
+<strong>Learning outcomes</strong>
+
+<ul>
+<li> Write `R` code to fit a linear regression model, and interpret estimated coefficients of these models: </li>
+ <ul>
+ <li> a single categorical explanatory variable (using dummy variables) </li>
+ <li> no explanatory variable (a null model) </li>
+ <li> a single continuous explanatory variable </li>
+ <li> a continuous and a categorical factor explanatory variable </li>
+ <li> an interaction term in the explanatory variables </li>
+ </ul>
+
+<li> Explain why you may want to include interaction terms in a model </li>
+<li> Describe the differences between the operators `:` and `*` in an `R` model-fitting formula </li>
+<li> Demonstrate how to make point predictions from linear regression models, specifically models with: </li>
+ <ul>
+ <li> a single continuous explanatory variable </li>
+ <li> a continuous and a categorical factor explanatory variable </li>
+ <li> an interaction term in the explanatory variables </li>
+ </ul>
+ 
+<li> Understand how to undertake model selection using the `anova()` and `AIC()` functions in R and interpret the output </li>
+<li> Compute confidence intervals in `R` to estimate a population parameter, and interpret their meaning </li>
+</ul>
+</div>
 
 
 ## Linear Regression

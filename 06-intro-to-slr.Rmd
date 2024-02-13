@@ -1,15 +1,25 @@
 # Hypothesis testing and introduction to linear regression
 
-## Learning outcomes
+<div class="alert alert-success" role="alert">
+<center>![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%}</center>
 
-+ Describe the difference between a scientific hypothesis and statistical hypotheses (H~0~ and H~1~/H~A~)
-+ Apply the four steps of hypothesis testing and write `R` code for
-    + one-sample t-test
-    + two-sample independent t-test
-    + one-way Analysis of Variance (ANOVA)
-+ Identify similarities of hypothesis tests listed above to simple linear regression
-+ List linear regression model assumptions and be able to evaluate model diagnostics to assess model suitability
- 
+<strong>Learning outcomes</strong>
+
+<ul>
+<li> Describe the difference between a scientific hypothesis and statistical hypotheses (H~0~ and H~1~/H~A~) </li>
+<li> Apply the four steps of hypothesis testing and write `R` code for
+ <ul>
+ <li> one-sample t-test </li>
+ <li> two-sample independent t-test </li>
+ <li> one-way Analysis of Variance (ANOVA) </li>
+ </ul>
+
+<li> Identify similarities of hypothesis tests listed above to simple linear regression </li>
+<li> List linear regression model assumptions and be able to evaluate model diagnostics to assess model suitability </li>
+
+</ul>
+</div>
+
 
 ## Hypothesis testing
 
@@ -41,7 +51,7 @@
 
 Actually, there is a couple of initial things to do before step 1. These are to determine what type of statistical test you will conduct (based off what metric you wish to measure and your scientific hypothesis and data - see lecture and Hypothesis testing H5P for more information) and check to make sure the assumptions of said test are met. If assumptions are not met, you’ll need to adjust the test you conduct. We’ll go over model assumptions and model diagnostics in lecture and later in this guide.
 
-We'll go through all the steps of hypothesis testing by going through some worked examples. We will, again, use the `paua.csv` data from CANVAS. Recall that the P$\overline{\text{a}}$ua dataset contains the following variables:
+We'll go through all the steps of hypothesis testing by going through some worked examples. We will, again, use the `paua.csv` data, available from CANVAS and [earlier in this course guide](https://biosci220.github.io/BIOSCI220/r-and-rstudio-1.html#dealing-with-data). Recall that the P$\overline{\text{a}}$ua dataset contains the following variables:
 
  + `Age` of  P$\overline{\text{a}}$ua in years (calculated from counting rings in the cone) 
  + `Length` of  P$\overline{\text{a}}$ua shell in centimetres
@@ -125,7 +135,7 @@ sem
   
 ```
 
-Note: have you noticed the font in the code above is coloured differently? The <span style="color: green;">green font indicates an `R` function to do a calculation</span>, the <span style="color: red;">red font indicates the name of an object being created. Try to change these and see what the headers of the tibble output change to</span>, and `Length` is the variable in the `paua` data set that we want to summarise. (you will not see the colours if you are reading this course guide printed in black and white).
+Note: have you noticed the font in the code above is coloured differently? The <span style="color: MidnightBlue;">dark blue font indicates an `R` function to do a calculation</span>, the <span style="color: OliveDrab;">green font indicates the name of an object being created. Try to change these and see what the headers of the tibble output change to</span>, and `Length` in black font is the variable in the `paua` data set that we want to summarise. (you will not see the colours if you are reading this course guide printed in black and white).
 
 
 **The test statistic is a way of summarising the sample mean and its uncertainty into a single number. For a t-test, the test statistic is the t-statistic or the t-value.**
@@ -201,10 +211,10 @@ One of the most important steps is communicating our findings to our audience. *
 + the value of the test-statistic (here our t-statistic is 1.2391)
 + the sample size (*n*) (here *n* = 60 - which `R` code have we have written in previous weeks to find this out?)
 + the *p*-value, related back to your null hypothesis (in biological terms) (here our *p*-value is 0.22 or 22% which means we have no evidence against the null hypothesis that the average population shell length for both species of p$\overline{\text{a}}$ua is 5 cm). Report the actual *p*-value and not some level of significance.
-+ The *p*-value indicates the weight of evidence against the null hypothesis, but it does not measure the size of the effect, so for *best practice also include the confidence interval, also in biological terms* (in the `t.test` output, we can see the values for our confidence interval are 4.882 and 5.503 - we will go over confidence intervals in more detail in Chapter 6: Statistical inference).
++ The *p*-value indicates the weight of evidence against the null hypothesis, but it does not measure the size of the effect, so for *best practice also include the confidence interval, also in biological terms* (in the `t.test` output, we can see the values for our confidence interval are 4.882 and 5.503). We will go over confidence intervals in more detail in [Chapter 7: Statistical inference](https://biosci220.github.io/BIOSCI220/statistical-inference.html#confidence-intervals-and-point-predictions).
 
 
-### Two-sample independent t-test (with `t.test()` and `lm()`in `R`)
+### Two-sample independent t-test (with `lm()`and `t.test()` in `R`)
 
 We have two species of p$\overline{\text{a}}$ua in this data set, so it may be more interesting to ask *is there a difference in the average shell length of Haliotis australis and Haliotis iris*?
 
@@ -247,23 +257,7 @@ t-statistic = $\frac{\bar{x}_{\text{difference}} - \mu}{\text{SED}}$ = $\frac{\b
 
 Calculations are a bit trickier here so let's use `R`. We have two options (both give us the same information):
 
-**Option 1.** using `t.test()`
-
-```{r lmt}
-test <- t.test(Length ~ Species, data = paua)
-# print out the result
-test
-
-# you can print out individual pieces of information from the results using
-# the $ to subset the data, as below
-test$statistic
-test$p.value
-
-```
-
-Listed are the t-statistic, `t` = `r test$statistic` and the *p*-value, `p-value` = 0.0007956853 for the hypothesis test outlined above. 
-
-**Option 2.** using `lm()`
+**Option 1.** using `lm()`
 
 `lm(y ~ x, data = )` is the required information of this `R` function, where `lm` stands for linear model, `y` represents the y/dependent/response/outcome variable and `x` represents the x/independent/explanatory/predictor variable/s. `data =` tells `R` which data set to use to find these `y` and `x` variables.
 
@@ -338,12 +332,29 @@ a + geom_text(data = means[2,],aes(x = Species, y = base - 0.25, color = Species
   
 ```
 
+**Option 2.** using `t.test()`
+
+```{r lmt}
+test <- t.test(Length ~ Species, data = paua)
+# print out the result
+test
+
+# you can print out individual pieces of information from the results using
+# the $ to subset the data, as below
+test$statistic
+test$p.value
+
+```
+
+Listed are the t-statistic, `t` = `r test$statistic` and the *p*-value, `p-value` = 0.0007956853 for the hypothesis test outlined above. 
+
+
 #### Step four. Draw the appropriate conclusions
 
 ![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/t_test_6.jpg)
 
-From the `t.test` we got a t-statistic of 3.540364 and a *p*-value of 0.0007956853
 From the `lm()` we got a t-statistic for the hypothesis test we are interested in of -3.253649 (or 3.253649, doesn't matter which we look at because it is a two-tailed test) and a p-value of 0.001902460 (this is the same number as 1.902460e-03).
+From the `t.test` we got a t-statistic of 3.540364 and a *p*-value of 0.0007956853
 
 *Why do these numbers differ?*\
 `t.test` defaults to the Welch t-test, which is used when the variance of two samples is not equal. If you want to see the same results from `t.test` and `lm()` try this code out:\
@@ -353,7 +364,7 @@ However, we did not use this `var.equal = TRUE` argument because the variances (
 
 
 
-### One way ANOVA (with `aov()` and `lm()`in `R`)
+### One way ANOVA (with `lm()` and `aov()` in `R`)
 
 Remember the Palmer penguins? **You might find [this application](https://cmjt.shinyapps.io/penguin/) useful, now and later...**
 
@@ -407,15 +418,7 @@ The test statistic (the single number summary of the sample data) for ANOVA is t
 Consider the ratio below, this is the F-statistic (check out the `R` output below to see where the values came from for this penguin data example):\ 
 ${\frac  {{\text{variation due to groups}}}{{\text{unexplained variance}}}} = {\frac  {{\text{ mean between-group variability}}}{{\text{mean within-group variability}}}}$ $=\frac{\text{MSB}}{\text{MSW}}$  =  $\frac{435.39}{1.26}$ = $344.83$
 
-**Option 1.** using `aov()`
-
-```{r}
-# using aov()
-aov <- aov(bill_depth_mm ~ species, data = penguins_nafree)
-summary(aov)
-```
-
-**Option 2.** using `lm()` then `anova()`
+**Option 1.** using `lm()` then `anova()`
 
 ```{r}
 # first we need to specify a linear model from the data
@@ -426,9 +429,18 @@ fit.lm <- lm(bill_depth_mm ~ species, data = penguins_nafree)
 anova(fit.lm)
 ```
 
+**Option 2.** using `aov()`
+
+```{r}
+# using aov()
+aov <- aov(bill_depth_mm ~ species, data = penguins_nafree)
+summary(aov)
+```
+
+
 #### Step four. Draw the appropriate conclusions
 
-*What do you notice about the results using `aov()` and using `lm()` then `anova()`?* **They are BOTH THE SAME**
+*What do you notice about the results using `lm()` then `anova()` or using `aov()`?* **They are BOTH THE SAME**
 
 The probability of getting an **F-statistic** at least as extreme as the one we observe: **p-value** `Pr(>F)` = `< 2.2e-16` tells us we have extremely strong evidence against $H_0$.
 
@@ -492,7 +504,7 @@ The **residuals having constant variance assumption** can be checked with this p
 
 ### Normal quantile-quantile (QQ) plot
 
-The **residuals are normally distributed assumption** can be checked with this plot. This plot shows the sorted residuals versus corresponding quantile expected from a standard normal distribution. Points should be close to the 45-degree line; points moving away from the line at either tail suggest the residuals are from a skewed distribution, although some departure from the 45-degree line is acceptable and common.
+The **residuals are normally distributed assumption** can be checked with this plot. This plot shows the sorted residuals versus corresponding quantile expected from a standard normal distribution. Points should be close to the dashed diagonal line; points moving away from the line at either tail suggest the residuals are from a skewed distribution, although some departure from the dashed diagonal line is acceptable and common.
 
 
 ### Scale-Location plot
