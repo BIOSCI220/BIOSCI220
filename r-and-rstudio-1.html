@@ -488,20 +488,24 @@ Artwork by <a href="https://github.com/allisonhorst/">@allison_horst</a>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Interior_view_of_Stockholm_Public_Library.jpg/800px-Interior_view_of_Stockholm_Public_Library.jpg" style="width:30.0%" />
 </p>
 <p>The <a href="https://cran.r-project.org/">Comprehensive R Archive Network(CRAN)</a> is like a centralised library with thousands of books (packages) in stock.</p>
-<p>To access the contents of a book (package) you first need to request it for (install it into) your local library (your computer)</p>
+<p>To access the contents of a book (package) you first need to request it for (install it into) your local library (your computer):</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-and-rstudio-1.html#cb9-1" tabindex="-1"></a><span class="do">## note that &lt;the.package.name&gt; is just a placeholder</span></span>
+<span id="cb9-2"><a href="r-and-rstudio-1.html#cb9-2" tabindex="-1"></a><span class="do">## and should be replaced by your desired package name</span></span>
+<span id="cb9-3"><a href="r-and-rstudio-1.html#cb9-3" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;&lt;the.package.name&gt;&#39;</span>)</span></code></pre></div>
 <p align="center">
 <img src="https://images.ctfassets.net/pwv49hug9jad/6nubl8JUsMvwqW6FAGaqV9/f8bff26d339059d8d73ba77924d835b7/reading-rooms-feature-image-8.jpg" style="width:30.0%" />
 </p>
-<p>Your can only access books in your local library.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-and-rstudio-1.html#cb9-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;the.package.name&#39;</span>)</span></code></pre></div>
+<p>Note that you ou can only access books in your local library.</p>
 <p align="center">
 <img src="https://www.dnb.de/SharedDocs/Bilder/EN/Buehnen/professionell_umgangMitMedien_buehne.jpg?__blob=normal&amp;v=2" style="width:30.0%" />
 </p>
 <p>To access the knowledge in a particular book (use the function is the package) you need to tell your computer via <code>R</code> to go get the book of the shelf. Then you have access to all the functions it contains!</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-and-rstudio-1.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(the.package.name)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-and-rstudio-1.html#cb10-1" tabindex="-1"></a><span class="do">## note that &lt;the.package.name&gt; is just a placeholder</span></span>
+<span id="cb10-2"><a href="r-and-rstudio-1.html#cb10-2" tabindex="-1"></a><span class="do">## and should be replaced by your desired package name</span></span>
+<span id="cb10-3"><a href="r-and-rstudio-1.html#cb10-3" tabindex="-1"></a><span class="fu">library</span>(<span class="sc">&lt;</span>the.package.name<span class="sc">&gt;</span>)</span></code></pre></div>
 <p><strong>Working directories</strong></p>
 <p>You need to tell your computer where to look!</p>
-<p>Look at the top of your <em>Console</em>. You will see something like <em>~/Desktop/</em> or <em>C://Users/…</em> (it won’t be an exact match of course). This is the ‘address’ of where your computer is looking. Now, run <code>getwd()</code> and see what output you get (it will be the same as written on the top of your <em>Console</em> pane. This is because <code>getwd()</code> stands for <strong>get</strong> the current <strong>w</strong>orking<strong>d</strong>irectory (i.e., the current directory you are currently <em>working</em> in) e.g.,</p>
+<p>Look at the top of your <em>Console</em>. You will see something like <em>~/Desktop/</em> or <em>C://Users/…</em> (it won’t be an exact match of course). This is the ‘address’ of where your computer is looking. Now, run <code>getwd()</code> and see what output you get (it will be the same as written on the top of your <em>Console</em> pane. This is because <code>getwd()</code> stands for <strong>get</strong> the current <strong>w</strong>orking <strong>d</strong>irectory (i.e., the current directory you are currently <em>working</em> in) e.g.,</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-and-rstudio-1.html#cb11-1" tabindex="-1"></a><span class="fu">getwd</span>()</span>
 <span id="cb11-2"><a href="r-and-rstudio-1.html#cb11-2" tabindex="-1"></a><span class="do">## [1] &quot;/home/runner/work/BIOSCI220/BIOSCI220&quot;</span></span></code></pre></div>
 <p>You should ensure that you are aware of which directory you’re working in (which folder <code>RStudio</code> is looking in by default) as this is important later on when we come to reading in files and saving our work!</p>

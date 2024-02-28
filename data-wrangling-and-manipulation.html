@@ -282,12 +282,14 @@ Discuss and critique data visualizations
 <div id="the-pipe-operator" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> The pipe operator<a href="data-wrangling-and-manipulation.html#the-pipe-operator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A nifty <code>tidyverse</code> tool is called the pipe operator <code>%&gt;%</code>. The pipe operator allows us to combine multiple operations in <code>R</code> into a single sequential chain of actions.</p>
-<p>Say you would like to perform a hypothetical sequence of operations on a hypothetical data frame <code>x</code> using hypothetical functions <code>f()</code>, <code>g()</code>, and <code>h()</code>:</p>
-<p>This is where the pipe operator <code>%&gt;%</code> comes in handy. <code>%&gt;%</code> takes the output of one function and then “pipes” it to be the input of the next function. Furthermore, a helpful trick is to read <code>%&gt;%</code> as “then” or “and then.” For example, you can obtain the same output as the hypothetical sequence of functions as follows:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-wrangling-and-manipulation.html#cb20-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="data-wrangling-and-manipulation.html#cb20-2" tabindex="-1"></a>  <span class="fu">f</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="data-wrangling-and-manipulation.html#cb20-3" tabindex="-1"></a>  <span class="fu">g</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb20-4"><a href="data-wrangling-and-manipulation.html#cb20-4" tabindex="-1"></a>  <span class="fu">h</span>()</span></code></pre></div>
+<p>Say you would like to perform a <strong>hypothetical</strong> sequence of operations on a hypothetical data frame <code>x</code> using hypothetical functions <code>f()</code>, <code>g()</code>, and <code>h()</code> (i.e., they are not actual <code>R</code> functions, but are shown to demonstrate the structure of a piping sequence):</p>
+<p>This is where the pipe operator <code>%&gt;%</code> comes in handy. <code>%&gt;%</code> takes the output of one function and then “pipes” it to be the input of the next function. Furthermore, a helpful trick is to read <code>%&gt;%</code> as “then” or “and then.” For example, you can obtain the same output as the <strong>hypothetical</strong> sequence of functions as follows:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-wrangling-and-manipulation.html#cb20-1" tabindex="-1"></a><span class="do">## These functions are not true R functions but are</span></span>
+<span id="cb20-2"><a href="data-wrangling-and-manipulation.html#cb20-2" tabindex="-1"></a><span class="do">## shown to demonstrate the structure of a piping sequence</span></span>
+<span id="cb20-3"><a href="data-wrangling-and-manipulation.html#cb20-3" tabindex="-1"></a>x <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="data-wrangling-and-manipulation.html#cb20-4" tabindex="-1"></a>  <span class="fu">f</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="data-wrangling-and-manipulation.html#cb20-5" tabindex="-1"></a>  <span class="fu">g</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-6"><a href="data-wrangling-and-manipulation.html#cb20-6" tabindex="-1"></a>  <span class="fu">h</span>()</span></code></pre></div>
 <p>You would read this sequence as:</p>
 <ul>
 <li>Take <code>x</code> then</li>
