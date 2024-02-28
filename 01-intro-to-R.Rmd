@@ -246,23 +246,27 @@ The base installation of `R` comes with many useful packages as standard and the
 
 The [Comprehensive R Archive Network(CRAN)](https://cran.r-project.org/) is like a centralised library with thousands of books (packages) in stock. 
 
-To access the contents of a book (package) you first need to request it for (install it into)  your local library (your computer)
-
-<p align="center">![](https://images.ctfassets.net/pwv49hug9jad/6nubl8JUsMvwqW6FAGaqV9/f8bff26d339059d8d73ba77924d835b7/reading-rooms-feature-image-8.jpg){width="30%"}</p>
-
-Your can only access books in your local library.
+To access the contents of a book (package) you first need to request it for (install it into)  your local library (your computer):
 
 
 ```{r, eval = FALSE, echo = TRUE}
-install.packages('the.package.name')
+## note that <the.package.name> is just a placeholder
+## and should be replaced by your desired package name
+install.packages('<the.package.name>')
 ```
+
+<p align="center">![](https://images.ctfassets.net/pwv49hug9jad/6nubl8JUsMvwqW6FAGaqV9/f8bff26d339059d8d73ba77924d835b7/reading-rooms-feature-image-8.jpg){width="30%"}</p>
+
+Note that you ou can only access books in your local library.
 
 <p align="center">![](https://www.dnb.de/SharedDocs/Bilder/EN/Buehnen/professionell_umgangMitMedien_buehne.jpg?__blob=normal&v=2){width="30%"}</p>
 
 To access the knowledge in a particular book (use the function is the package) you need to tell your computer via `R` to go get the book of the shelf. Then you have access to all the functions it contains!
 
 ```{r, eval = FALSE, echo = TRUE}
-library(the.package.name)
+## note that <the.package.name> is just a placeholder
+## and should be replaced by your desired package name
+library(<the.package.name>)
 ```
 
 
@@ -270,7 +274,7 @@ library(the.package.name)
 
 You need to tell your computer where to look!
 
-Look at the top of your *Console*. You will see something like *~/Desktop/* or *C://Users/...* (it won't be an exact match of course). This is the 'address' of where your computer is looking. Now, run `getwd()` and see what output you get (it will be the same as written on the top of your *Console* pane. This is because `getwd()` stands for **get** the current **w**orking**d**irectory (i.e., the current directory you are currently *working* in) e.g., 
+Look at the top of your *Console*. You will see something like *~/Desktop/* or *C://Users/...* (it won't be an exact match of course). This is the 'address' of where your computer is looking. Now, run `getwd()` and see what output you get (it will be the same as written on the top of your *Console* pane. This is because `getwd()` stands for **get** the current **w**orking **d**irectory (i.e., the current directory you are currently *working* in) e.g., 
 
 ```{r, echo = TRUE, eval = TRUE}
 getwd()

@@ -5,6 +5,14 @@
 <span><strong>**Please read this page carefully as it contains important information about the course structure, delivery, and assessment.**</span></strong>
 </div>
 
+Please note that we do not send an order to UBIQ to print this course guide for a few reasons:
+
+ 1. we can make updates to the course guide during semester when hosted online like it is,
+ 2. printing it loses some of the functionality of the course guide with the way the code is presented once printed, and
+ 3. we are also keen to save some trees from unnecessary printing! 
+ 
+However, if you want to print it, you’re more than welcome to do so. The easiest way to do this is *printing to PDF* from your browser. 
+
 ## Course outline {-}
 
 Living systems are the most complex systems in science, and biology is naturally variable and noisy due to its many internal and external influences. For these reasons, it is difficult to make inferences from and predictions about biological systems. Understanding biology requires computational skills to effectively analyse and interpret data, and multidisciplinary research approaches are becoming more common as a critical key to solving many of the complex problems of studying life and living organisms in today’s world. So, contrary to the popular undergrad biology student beliefs, statistics, mathematics and computational skills are essential in a biologist’s toolkit.

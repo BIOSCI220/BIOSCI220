@@ -47,11 +47,13 @@ library(tidyverse)
 
 A nifty `tidyverse` tool is called the pipe operator `%>%`. The pipe operator allows us to combine multiple operations in `R` into a single sequential chain of actions.
 
-Say you would like to perform a hypothetical sequence of operations on a hypothetical data frame `x` using hypothetical functions `f()`, `g()`, and `h()`:
+Say you would like to perform a **hypothetical** sequence of operations on a hypothetical data frame `x` using hypothetical functions `f()`, `g()`, and `h()` (i.e., they are not actual `R` functions, but are shown to demonstrate the structure of a piping sequence):
 
- This is where the pipe operator `%>%` comes in handy. `%>%` takes the output of one function and then “pipes” it to be the input of the next function. Furthermore, a helpful trick is to read `%>%` as “then” or “and then.” For example, you can obtain the same output as the hypothetical sequence of functions as follows:
+ This is where the pipe operator `%>%` comes in handy. `%>%` takes the output of one function and then “pipes” it to be the input of the next function. Furthermore, a helpful trick is to read `%>%` as “then” or “and then.” For example, you can obtain the same output as the **hypothetical** sequence of functions as follows:
 
 ```{r eval = FALSE, echo = TRUE}
+## These functions are not true R functions but are
+## shown to demonstrate the structure of a piping sequence
 x %>% 
   f() %>% 
   g() %>% 
