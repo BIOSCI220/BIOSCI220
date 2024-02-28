@@ -74,6 +74,7 @@ statistical-inference
 linear-regression
 some-mathematical-notation
 modelling-bill-depth
+intercept-only-null-model
 single-continuous-explanatory-variable
 a-continuous-and-a-categorical-factor-explanatory-variable-additive-model
 a-continuous-and-a-categorical-factor-explanatory-variable-interaction-model
