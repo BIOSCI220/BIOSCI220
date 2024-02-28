@@ -8,9 +8,9 @@
 <ul>
 <li> Write `R` code to fit a linear regression model, and interpret estimated coefficients of these models: </li>
  <ul>
- <li> a single categorical explanatory variable (using dummy variables) </li>
  <li> no explanatory variable (a null model) </li>
  <li> a single continuous explanatory variable </li>
+ <li> a single categorical explanatory variable (using dummy variables) </li>
  <li> a continuous and a categorical factor explanatory variable </li>
  <li> an interaction term in the explanatory variables </li>
  </ul>
@@ -79,6 +79,8 @@ ggplot(data = penguins_nafree, aes(x = bill_depth_mm)) +
 
 ```
 
+
+### Intercept only (null) model
 
 First off let's fit a null (intercept only, no slope)  model. This in *old money* would be called a one sample t-test. 
 
@@ -244,8 +246,6 @@ ggplot(data = penguins_nafree, aes(y = bill_depth_mm, x = bill_length_mm, color 
   geom_line(aes(y = pred_vals))
 
 ```
-
-**Simpson's paradox...** look how the slope associated with bill length (coefficient of `bill_length_mm`) has switched direction from the model with just one explanatory variable `bill_length_mm`! Why do you think this is?
 
 
 ### A continuous and a categorical factor explanatory variable (Interaction model)
@@ -480,7 +480,8 @@ newdf <- data.frame(species = "Gentoo", bill_length_mm = 50)
 ## use predict() function
 predict(slm_sp, newdata = newdf) ## more accurate than our by hand version!
 ```
-What does this look like on a plot
+
+What does this look like on a plot?
 
 ```{r, echo = FALSE}
 ## calculate predicted values
