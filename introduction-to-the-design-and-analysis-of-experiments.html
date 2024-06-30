@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Introduction to the design and analysis of experiments | Module 1</title>
   <meta name="description" content="Chapter 4 Introduction to the design and analysis of experiments | Module 1" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Introduction to the design and analysis of experiments | Module 1" />
   <meta property="og:type" content="book" />
@@ -485,17 +485,17 @@ Identify sources of variation within a given experimental design
 </div>
 <p><strong>Designing a CRD using <code>R</code></strong></p>
 <p>Here we’re going to use <code>R</code> to do the random allocation of treatments for us.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-1" tabindex="-1"></a><span class="do">## create a character vector of bean types</span></span>
-<span id="cb47-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-2" tabindex="-1"></a>beans <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">each =</span> <span class="dv">4</span>)</span>
-<span id="cb47-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-3" tabindex="-1"></a>beans</span>
-<span id="cb47-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-4" tabindex="-1"></a><span class="do">##  [1] &quot;Arabica&quot;  &quot;Arabica&quot;  &quot;Arabica&quot;  &quot;Arabica&quot;  &quot;Liberica&quot; &quot;Liberica&quot;</span></span>
-<span id="cb47-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-5" tabindex="-1"></a><span class="do">##  [7] &quot;Liberica&quot; &quot;Liberica&quot; &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Robusta&quot;</span></span>
-<span id="cb47-6"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-6" tabindex="-1"></a><span class="do">## randomly sample the character vector to give the order of coffees</span></span>
-<span id="cb47-7"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-7" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
-<span id="cb47-8"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-8" tabindex="-1"></a>allocation <span class="ot">&lt;-</span> <span class="fu">sample</span>(beans, <span class="dv">12</span>)</span>
-<span id="cb47-9"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-9" tabindex="-1"></a>allocation</span>
-<span id="cb47-10"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-10" tabindex="-1"></a><span class="do">##  [1] &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Liberica&quot; &quot;Liberica&quot; &quot;Arabica&quot;  &quot;Liberica&quot;</span></span>
-<span id="cb47-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb47-11" tabindex="-1"></a><span class="do">##  [7] &quot;Arabica&quot;  &quot;Robusta&quot;  &quot;Arabica&quot;  &quot;Liberica&quot; &quot;Robusta&quot;  &quot;Arabica&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb51-1" tabindex="-1"></a><span class="do">## create a character vector of bean types</span></span>
+<span id="cb51-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb51-2" tabindex="-1"></a>beans <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">each =</span> <span class="dv">4</span>)</span>
+<span id="cb51-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb51-3" tabindex="-1"></a>beans</span>
+<span id="cb51-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb51-4" tabindex="-1"></a><span class="do">##  [1] &quot;Arabica&quot;  &quot;Arabica&quot;  &quot;Arabica&quot;  &quot;Arabica&quot;  &quot;Liberica&quot; &quot;Liberica&quot;</span></span>
+<span id="cb51-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb51-5" tabindex="-1"></a><span class="do">##  [7] &quot;Liberica&quot; &quot;Liberica&quot; &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Robusta&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb52-1" tabindex="-1"></a><span class="do">## randomly sample the character vector to give the order of coffees</span></span>
+<span id="cb52-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb52-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
+<span id="cb52-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb52-3" tabindex="-1"></a>allocation <span class="ot">&lt;-</span> <span class="fu">sample</span>(beans, <span class="dv">12</span>)</span>
+<span id="cb52-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb52-4" tabindex="-1"></a>allocation</span>
+<span id="cb52-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb52-5" tabindex="-1"></a><span class="do">##  [1] &quot;Robusta&quot;  &quot;Robusta&quot;  &quot;Liberica&quot; &quot;Liberica&quot; &quot;Arabica&quot;  &quot;Liberica&quot;</span></span>
+<span id="cb52-6"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb52-6" tabindex="-1"></a><span class="do">##  [7] &quot;Arabica&quot;  &quot;Robusta&quot;  &quot;Arabica&quot;  &quot;Liberica&quot; &quot;Robusta&quot;  &quot;Arabica&quot;</span></span></code></pre></div>
 <p>Having run the code above your CRD plan is as follows</p>
 <table class=" lightable-classic table" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; font-size: 7px; margin-left: auto; margin-right: auto;">
 <thead>
@@ -628,22 +628,22 @@ Arabica
 <p><strong>Designing a RCBD using <code>R</code></strong></p>
 <p>Let’s assume you want to set up an experiment similar to the CRD one above; however, now you are in the situation where you have two types of cups (mugs and heatproof glasses). Below we use <code>R</code> to do the random allocation of treatments within each block (cup type) for you.</p>
 <p>Here we have <span class="math inline">\(t = 3\)</span> treatments (bean types) and <span class="math inline">\(b = 2\)</span> blocks (cup types) so we will have <span class="math inline">\(t \times b = 6\)</span> experimental units in total.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4321</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
-<span id="cb48-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-2" tabindex="-1"></a>plan <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Beans =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">times =</span> <span class="dv">2</span>), </span>
-<span id="cb48-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-3" tabindex="-1"></a>           <span class="at">Block =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Mug&quot;</span>, <span class="st">&quot;Glass&quot;</span>), <span class="at">each =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="do">## combine experiment variables</span></span>
-<span id="cb48-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-4" tabindex="-1"></a>  <span class="fu">group_by</span>(Block) <span class="sc">%&gt;%</span> <span class="do">## group by blocking factor</span></span>
-<span id="cb48-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">3</span>)</span>
-<span id="cb48-6"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-6" tabindex="-1"></a>plan</span>
-<span id="cb48-7"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-7" tabindex="-1"></a><span class="do">## # A tibble: 6 × 2</span></span>
-<span id="cb48-8"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-8" tabindex="-1"></a><span class="do">## # Groups:   Block [2]</span></span>
-<span id="cb48-9"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-9" tabindex="-1"></a><span class="do">##   Beans    Block</span></span>
-<span id="cb48-10"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-10" tabindex="-1"></a><span class="do">##   &lt;chr&gt;    &lt;chr&gt;</span></span>
-<span id="cb48-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-11" tabindex="-1"></a><span class="do">## 1 Arabica  Glass</span></span>
-<span id="cb48-12"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-12" tabindex="-1"></a><span class="do">## 2 Liberica Glass</span></span>
-<span id="cb48-13"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-13" tabindex="-1"></a><span class="do">## 3 Robusta  Glass</span></span>
-<span id="cb48-14"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-14" tabindex="-1"></a><span class="do">## 4 Liberica Mug  </span></span>
-<span id="cb48-15"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-15" tabindex="-1"></a><span class="do">## 5 Arabica  Mug  </span></span>
-<span id="cb48-16"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb48-16" tabindex="-1"></a><span class="do">## 6 Robusta  Mug</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4321</span>) <span class="do">## this is ONLY for consistency, remove if doing this yourself</span></span>
+<span id="cb53-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-2" tabindex="-1"></a>plan <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Beans =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Arabica&quot;</span>,<span class="st">&quot;Liberica&quot;</span>, <span class="st">&quot;Robusta&quot;</span>), <span class="at">times =</span> <span class="dv">2</span>), </span>
+<span id="cb53-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-3" tabindex="-1"></a>           <span class="at">Block =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Mug&quot;</span>, <span class="st">&quot;Glass&quot;</span>), <span class="at">each =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="do">## combine experiment variables</span></span>
+<span id="cb53-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-4" tabindex="-1"></a>  <span class="fu">group_by</span>(Block) <span class="sc">%&gt;%</span> <span class="do">## group by blocking factor</span></span>
+<span id="cb53-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">3</span>)</span>
+<span id="cb53-6"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-6" tabindex="-1"></a>plan</span>
+<span id="cb53-7"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-7" tabindex="-1"></a><span class="do">## # A tibble: 6 × 2</span></span>
+<span id="cb53-8"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-8" tabindex="-1"></a><span class="do">## # Groups:   Block [2]</span></span>
+<span id="cb53-9"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-9" tabindex="-1"></a><span class="do">##   Beans    Block</span></span>
+<span id="cb53-10"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-10" tabindex="-1"></a><span class="do">##   &lt;chr&gt;    &lt;chr&gt;</span></span>
+<span id="cb53-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-11" tabindex="-1"></a><span class="do">## 1 Arabica  Glass</span></span>
+<span id="cb53-12"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-12" tabindex="-1"></a><span class="do">## 2 Liberica Glass</span></span>
+<span id="cb53-13"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-13" tabindex="-1"></a><span class="do">## 3 Robusta  Glass</span></span>
+<span id="cb53-14"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-14" tabindex="-1"></a><span class="do">## 4 Liberica Mug  </span></span>
+<span id="cb53-15"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-15" tabindex="-1"></a><span class="do">## 5 Arabica  Mug  </span></span>
+<span id="cb53-16"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb53-16" tabindex="-1"></a><span class="do">## 6 Robusta  Mug</span></span></code></pre></div>
 <p>Having run the code above your RCBD plan is as follows</p>
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -753,32 +753,32 @@ Mug
 <p>The plot above is called an interaction plot. Creating such a plot is often very useful when drawing inference; in this instance we can see that the strength of the coffee changes depending on the type of coffee bean used, however, this relationship differs depending on the type of grind used. For example, Liberica beans produce stronger coffee than the other two beans when the fine grind is used, but weaker coffee when the coarse grind is used.</p>
 <p><strong>Designing factorial experiment using <code>R</code></strong></p>
 <p>Here we use the <code>R</code> package <code>edibble</code> which is specifically designed to aid in the planning and designing of experiments.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(edibble) <span class="do">## you will need to install this package first</span></span>
-<span id="cb49-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-2" tabindex="-1"></a><span class="do">## Factorial design (Brew and Grind)</span></span>
-<span id="cb49-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-3" tabindex="-1"></a><span class="fu">design</span>(<span class="st">&quot;Barista Brew: Factorial Design&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb49-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-4" tabindex="-1"></a>  <span class="fu">set_units</span>(<span class="at">cup =</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span> <span class="co"># 2*2*3</span></span>
-<span id="cb49-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-5" tabindex="-1"></a>  <span class="fu">set_trts</span>(<span class="at">BrewRatio =</span>  <span class="fu">c</span>(<span class="st">&quot;2-1&quot;</span>, <span class="st">&quot;1-1&quot;</span>, <span class="st">&quot;1-2&quot;</span>),</span>
-<span id="cb49-6"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-6" tabindex="-1"></a>           <span class="at">Grind =</span> <span class="fu">c</span>(<span class="st">&quot;Fine&quot;</span>, <span class="st">&quot;Coarse&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-7"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-7" tabindex="-1"></a>  <span class="fu">allot_trts</span>(<span class="sc">~</span>cup) <span class="sc">%&gt;%</span></span>
-<span id="cb49-8"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-8" tabindex="-1"></a>  <span class="fu">assign_trts</span>(<span class="st">&quot;random&quot;</span>, <span class="at">seed =</span> <span class="dv">836</span>) <span class="sc">%&gt;%</span> <span class="do">## the random seed for random allocation</span></span>
-<span id="cb49-9"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-9" tabindex="-1"></a>    <span class="fu">serve_table</span>()  </span>
-<span id="cb49-10"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-10" tabindex="-1"></a><span class="do">## # Barista Brew: Factorial Design </span></span>
-<span id="cb49-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-11" tabindex="-1"></a><span class="do">## # An edibble: 12 x 3</span></span>
-<span id="cb49-12"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-12" tabindex="-1"></a><span class="do">##        cup BrewRatio  Grind</span></span>
-<span id="cb49-13"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-13" tabindex="-1"></a><span class="do">##    &lt;U(12)&gt;    &lt;T(3)&gt; &lt;T(2)&gt;</span></span>
-<span id="cb49-14"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-14" tabindex="-1"></a><span class="do">##      &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;</span></span>
-<span id="cb49-15"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-15" tabindex="-1"></a><span class="do">##  1   cup01       1-2 Fine  </span></span>
-<span id="cb49-16"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-16" tabindex="-1"></a><span class="do">##  2   cup02       2-1 Coarse</span></span>
-<span id="cb49-17"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-17" tabindex="-1"></a><span class="do">##  3   cup03       1-1 Fine  </span></span>
-<span id="cb49-18"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-18" tabindex="-1"></a><span class="do">##  4   cup04       2-1 Coarse</span></span>
-<span id="cb49-19"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-19" tabindex="-1"></a><span class="do">##  5   cup05       1-2 Coarse</span></span>
-<span id="cb49-20"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-20" tabindex="-1"></a><span class="do">##  6   cup06       1-1 Coarse</span></span>
-<span id="cb49-21"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-21" tabindex="-1"></a><span class="do">##  7   cup07       1-2 Fine  </span></span>
-<span id="cb49-22"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-22" tabindex="-1"></a><span class="do">##  8   cup08       1-1 Fine  </span></span>
-<span id="cb49-23"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-23" tabindex="-1"></a><span class="do">##  9   cup09       1-2 Coarse</span></span>
-<span id="cb49-24"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-24" tabindex="-1"></a><span class="do">## 10   cup10       1-1 Coarse</span></span>
-<span id="cb49-25"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-25" tabindex="-1"></a><span class="do">## 11   cup11       2-1 Fine  </span></span>
-<span id="cb49-26"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb49-26" tabindex="-1"></a><span class="do">## 12   cup12       2-1 Fine</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-1" tabindex="-1"></a><span class="fu">library</span>(edibble) <span class="do">## you will need to install this package first</span></span>
+<span id="cb54-2"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-2" tabindex="-1"></a><span class="do">## Factorial design (Brew and Grind)</span></span>
+<span id="cb54-3"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-3" tabindex="-1"></a><span class="fu">design</span>(<span class="st">&quot;Barista Brew: Factorial Design&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-4"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-4" tabindex="-1"></a>  <span class="fu">set_units</span>(<span class="at">cup =</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span> <span class="co"># 2*2*3</span></span>
+<span id="cb54-5"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-5" tabindex="-1"></a>  <span class="fu">set_trts</span>(<span class="at">BrewRatio =</span>  <span class="fu">c</span>(<span class="st">&quot;2-1&quot;</span>, <span class="st">&quot;1-1&quot;</span>, <span class="st">&quot;1-2&quot;</span>),</span>
+<span id="cb54-6"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-6" tabindex="-1"></a>           <span class="at">Grind =</span> <span class="fu">c</span>(<span class="st">&quot;Fine&quot;</span>, <span class="st">&quot;Coarse&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-7"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-7" tabindex="-1"></a>  <span class="fu">allot_trts</span>(<span class="sc">~</span>cup) <span class="sc">%&gt;%</span></span>
+<span id="cb54-8"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-8" tabindex="-1"></a>  <span class="fu">assign_trts</span>(<span class="st">&quot;random&quot;</span>, <span class="at">seed =</span> <span class="dv">836</span>) <span class="sc">%&gt;%</span> <span class="do">## the random seed for random allocation</span></span>
+<span id="cb54-9"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-9" tabindex="-1"></a>    <span class="fu">serve_table</span>()  </span>
+<span id="cb54-10"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-10" tabindex="-1"></a><span class="do">## # Barista Brew: Factorial Design </span></span>
+<span id="cb54-11"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-11" tabindex="-1"></a><span class="do">## # An edibble: 12 x 3</span></span>
+<span id="cb54-12"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-12" tabindex="-1"></a><span class="do">##        cup BrewRatio  Grind</span></span>
+<span id="cb54-13"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-13" tabindex="-1"></a><span class="do">##    &lt;U(12)&gt;    &lt;T(3)&gt; &lt;T(2)&gt;</span></span>
+<span id="cb54-14"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-14" tabindex="-1"></a><span class="do">##      &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;</span></span>
+<span id="cb54-15"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-15" tabindex="-1"></a><span class="do">##  1   cup01       1-2   Fine</span></span>
+<span id="cb54-16"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-16" tabindex="-1"></a><span class="do">##  2   cup02       2-1 Coarse</span></span>
+<span id="cb54-17"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-17" tabindex="-1"></a><span class="do">##  3   cup03       1-1   Fine</span></span>
+<span id="cb54-18"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-18" tabindex="-1"></a><span class="do">##  4   cup04       2-1 Coarse</span></span>
+<span id="cb54-19"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-19" tabindex="-1"></a><span class="do">##  5   cup05       1-2 Coarse</span></span>
+<span id="cb54-20"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-20" tabindex="-1"></a><span class="do">##  6   cup06       1-1 Coarse</span></span>
+<span id="cb54-21"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-21" tabindex="-1"></a><span class="do">##  7   cup07       1-2   Fine</span></span>
+<span id="cb54-22"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-22" tabindex="-1"></a><span class="do">##  8   cup08       1-1   Fine</span></span>
+<span id="cb54-23"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-23" tabindex="-1"></a><span class="do">##  9   cup09       1-2 Coarse</span></span>
+<span id="cb54-24"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-24" tabindex="-1"></a><span class="do">## 10   cup10       1-1 Coarse</span></span>
+<span id="cb54-25"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-25" tabindex="-1"></a><span class="do">## 11   cup11       2-1   Fine</span></span>
+<span id="cb54-26"><a href="introduction-to-the-design-and-analysis-of-experiments.html#cb54-26" tabindex="-1"></a><span class="do">## 12   cup12       2-1   Fine</span></span></code></pre></div>
 <div class="alert alert-warning">
 <strong>TASK</strong> Run the <code>R</code> code above, but this time choose a different random seed (by changing <code>seed = 836</code>). What is your design? Now increase the number of replications, use your <code>R</code> skills to figure out what line of code needs changing here. What is your design now?
 </div>

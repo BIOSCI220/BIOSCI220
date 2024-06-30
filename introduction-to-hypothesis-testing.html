@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Introduction to Hypothesis testing | Module 1</title>
   <meta name="description" content="Chapter 5 Introduction to Hypothesis testing | Module 1" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Introduction to Hypothesis testing | Module 1" />
   <meta property="og:type" content="book" />
@@ -294,13 +294,13 @@ State in terms of probability statements the meaning of the power and significan
 <em>Haliotis australis</em> (less commonly found in NZ)</li>
 </ul>
 <p>We can read these data directly into R using the URL and the <code>readr</code> package, which is part of the <code>tidyverse</code> collection) as follows.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="introduction-to-hypothesis-testing.html#cb50-1" tabindex="-1"></a>paua <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/paua.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introduction-to-hypothesis-testing.html#cb51-1" tabindex="-1"></a><span class="fu">glimpse</span>(paua)</span>
-<span id="cb51-2"><a href="introduction-to-hypothesis-testing.html#cb51-2" tabindex="-1"></a><span class="do">## Rows: 60</span></span>
-<span id="cb51-3"><a href="introduction-to-hypothesis-testing.html#cb51-3" tabindex="-1"></a><span class="do">## Columns: 3</span></span>
-<span id="cb51-4"><a href="introduction-to-hypothesis-testing.html#cb51-4" tabindex="-1"></a><span class="do">## $ Species &lt;chr&gt; &quot;Haliotis iris&quot;, &quot;Haliotis australis&quot;, &quot;Haliotis australis&quot;, &quot;…</span></span>
-<span id="cb51-5"><a href="introduction-to-hypothesis-testing.html#cb51-5" tabindex="-1"></a><span class="do">## $ Length  &lt;dbl&gt; 1.80, 5.40, 4.80, 5.75, 5.65, 2.80, 5.90, 3.75, 7.20, 4.25, 6.…</span></span>
-<span id="cb51-6"><a href="introduction-to-hypothesis-testing.html#cb51-6" tabindex="-1"></a><span class="do">## $ Age     &lt;dbl&gt; 1.497884, 11.877010, 5.416991, 4.497799, 5.500789, 2.500972, 6…</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="introduction-to-hypothesis-testing.html#cb55-1" tabindex="-1"></a>paua <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/paua.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="introduction-to-hypothesis-testing.html#cb56-1" tabindex="-1"></a><span class="fu">glimpse</span>(paua)</span>
+<span id="cb56-2"><a href="introduction-to-hypothesis-testing.html#cb56-2" tabindex="-1"></a><span class="do">## Rows: 60</span></span>
+<span id="cb56-3"><a href="introduction-to-hypothesis-testing.html#cb56-3" tabindex="-1"></a><span class="do">## Columns: 3</span></span>
+<span id="cb56-4"><a href="introduction-to-hypothesis-testing.html#cb56-4" tabindex="-1"></a><span class="do">## $ Species &lt;chr&gt; &quot;Haliotis iris&quot;, &quot;Haliotis australis&quot;, &quot;Haliotis australis&quot;, &quot;…</span></span>
+<span id="cb56-5"><a href="introduction-to-hypothesis-testing.html#cb56-5" tabindex="-1"></a><span class="do">## $ Length  &lt;dbl&gt; 1.80, 5.40, 4.80, 5.75, 5.65, 2.80, 5.90, 3.75, 7.20, 4.25, 6.…</span></span>
+<span id="cb56-6"><a href="introduction-to-hypothesis-testing.html#cb56-6" tabindex="-1"></a><span class="do">## $ Age     &lt;dbl&gt; 1.497884, 11.877010, 5.416991, 4.497799, 5.500789, 2.500972, 6…</span></span></code></pre></div>
 <p><strong>One question we may want to ask is if, on average, the shell length differs between Species?</strong></p>
 <p>We would formulate this as a hypothesis test as follows</p>
 <ul>
@@ -322,46 +322,46 @@ State in terms of probability statements the meaning of the power and significan
 <p><img src="_main_files/figure-html/violin-1.png" width="672" /></p>
 <div id="choose-a-statistic-that-measures-the-effect-of-interest-in-this-case-the-differences-between-means" class="section level4 unnumbered hasAnchor">
 <h4>1. Choose a statistic that measures the effect of interest (in this case the differences between means)<a href="introduction-to-hypothesis-testing.html#choose-a-statistic-that-measures-the-effect-of-interest-in-this-case-the-differences-between-means" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="introduction-to-hypothesis-testing.html#cb52-1" tabindex="-1"></a><span class="do">## observed differences in means</span></span>
-<span id="cb52-2"><a href="introduction-to-hypothesis-testing.html#cb52-2" tabindex="-1"></a>diff_in_means <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> </span>
-<span id="cb52-3"><a href="introduction-to-hypothesis-testing.html#cb52-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> </span>
-<span id="cb52-4"><a href="introduction-to-hypothesis-testing.html#cb52-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Length)) <span class="sc">%&gt;%</span></span>
-<span id="cb52-5"><a href="introduction-to-hypothesis-testing.html#cb52-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">diff =</span> <span class="fu">diff</span>(mean)) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
-<span id="cb52-6"><a href="introduction-to-hypothesis-testing.html#cb52-6" tabindex="-1"></a>diff_in_means</span>
-<span id="cb52-7"><a href="introduction-to-hypothesis-testing.html#cb52-7" tabindex="-1"></a><span class="do">## [1] -0.9569444</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="introduction-to-hypothesis-testing.html#cb57-1" tabindex="-1"></a><span class="do">## observed differences in means</span></span>
+<span id="cb57-2"><a href="introduction-to-hypothesis-testing.html#cb57-2" tabindex="-1"></a>diff_in_means <span class="ot">&lt;-</span> paua <span class="sc">%&gt;%</span> </span>
+<span id="cb57-3"><a href="introduction-to-hypothesis-testing.html#cb57-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-4"><a href="introduction-to-hypothesis-testing.html#cb57-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Length)) <span class="sc">%&gt;%</span></span>
+<span id="cb57-5"><a href="introduction-to-hypothesis-testing.html#cb57-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">diff =</span> <span class="fu">diff</span>(mean)) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb57-6"><a href="introduction-to-hypothesis-testing.html#cb57-6" tabindex="-1"></a>diff_in_means</span>
+<span id="cb57-7"><a href="introduction-to-hypothesis-testing.html#cb57-7" tabindex="-1"></a><span class="do">## [1] -0.9569444</span></span></code></pre></div>
 </div>
 <div id="construct-the-sampling-distribution-that-this-statistic-would-have-if-the-effect-were-not-present-in-the-population-i.e.-the-distribution-under-h_0" class="section level4 unnumbered hasAnchor">
 <h4>2. Construct the sampling distribution that this statistic would have if the effect were not present in the population (i.e., the distribution under <span class="math inline">\(H_0\)</span>)<a href="introduction-to-hypothesis-testing.html#construct-the-sampling-distribution-that-this-statistic-would-have-if-the-effect-were-not-present-in-the-population-i.e.-the-distribution-under-h_0" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="introduction-to-hypothesis-testing.html#cb53-1" tabindex="-1"></a><span class="do">## Number of times I want to randomize</span></span>
-<span id="cb53-2"><a href="introduction-to-hypothesis-testing.html#cb53-2" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">9999</span>  </span>
-<span id="cb53-3"><a href="introduction-to-hypothesis-testing.html#cb53-3" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
-<span id="cb53-4"><a href="introduction-to-hypothesis-testing.html#cb53-4" tabindex="-1"></a>randomisation_difference_mean <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
-<span id="cb53-5"><a href="introduction-to-hypothesis-testing.html#cb53-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) <span class="do">## *****Remove this line for actual analyses*****</span></span>
-<span id="cb53-6"><a href="introduction-to-hypothesis-testing.html#cb53-6" tabindex="-1"></a><span class="do">## This means that each run with produce the same results and</span></span>
-<span id="cb53-7"><a href="introduction-to-hypothesis-testing.html#cb53-7" tabindex="-1"></a><span class="do">## agree with the printout that I show.</span></span>
-<span id="cb53-8"><a href="introduction-to-hypothesis-testing.html#cb53-8" tabindex="-1"></a></span>
-<span id="cb53-9"><a href="introduction-to-hypothesis-testing.html#cb53-9" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
-<span id="cb53-10"><a href="introduction-to-hypothesis-testing.html#cb53-10" tabindex="-1"></a>  <span class="do">## the observations</span></span>
-<span id="cb53-11"><a href="introduction-to-hypothesis-testing.html#cb53-11" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> paua<span class="sc">$</span>Length)</span>
-<span id="cb53-12"><a href="introduction-to-hypothesis-testing.html#cb53-12" tabindex="-1"></a>  <span class="do">##  randomize labels</span></span>
-<span id="cb53-13"><a href="introduction-to-hypothesis-testing.html#cb53-13" tabindex="-1"></a>  data<span class="sc">$</span>random_labels <span class="ot">&lt;-</span><span class="fu">sample</span>(paua<span class="sc">$</span>Species, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb53-14"><a href="introduction-to-hypothesis-testing.html#cb53-14" tabindex="-1"></a>  <span class="do">## randomized differences in mean</span></span>
-<span id="cb53-15"><a href="introduction-to-hypothesis-testing.html#cb53-15" tabindex="-1"></a>  randomisation_difference_mean[i] <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb53-16"><a href="introduction-to-hypothesis-testing.html#cb53-16" tabindex="-1"></a>    <span class="fu">group_by</span>(random_labels) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(value)) <span class="sc">%&gt;%</span> </span>
-<span id="cb53-17"><a href="introduction-to-hypothesis-testing.html#cb53-17" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">diff =</span> <span class="fu">diff</span>(mean)) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
-<span id="cb53-18"><a href="introduction-to-hypothesis-testing.html#cb53-18" tabindex="-1"></a>}</span>
-<span id="cb53-19"><a href="introduction-to-hypothesis-testing.html#cb53-19" tabindex="-1"></a><span class="do">## results, combine with the observed statistic</span></span>
-<span id="cb53-20"><a href="introduction-to-hypothesis-testing.html#cb53-20" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">randomisation_difference_mean =</span> <span class="fu">c</span>(diff_in_means, randomisation_difference_mean))</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="introduction-to-hypothesis-testing.html#cb58-1" tabindex="-1"></a><span class="do">## Number of times I want to randomize</span></span>
+<span id="cb58-2"><a href="introduction-to-hypothesis-testing.html#cb58-2" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">9999</span>  </span>
+<span id="cb58-3"><a href="introduction-to-hypothesis-testing.html#cb58-3" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
+<span id="cb58-4"><a href="introduction-to-hypothesis-testing.html#cb58-4" tabindex="-1"></a>randomisation_difference_mean <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb58-5"><a href="introduction-to-hypothesis-testing.html#cb58-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) <span class="do">## *****Remove this line for actual analyses*****</span></span>
+<span id="cb58-6"><a href="introduction-to-hypothesis-testing.html#cb58-6" tabindex="-1"></a><span class="do">## This means that each run with produce the same results and</span></span>
+<span id="cb58-7"><a href="introduction-to-hypothesis-testing.html#cb58-7" tabindex="-1"></a><span class="do">## agree with the printout that I show.</span></span>
+<span id="cb58-8"><a href="introduction-to-hypothesis-testing.html#cb58-8" tabindex="-1"></a></span>
+<span id="cb58-9"><a href="introduction-to-hypothesis-testing.html#cb58-9" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb58-10"><a href="introduction-to-hypothesis-testing.html#cb58-10" tabindex="-1"></a>  <span class="do">## the observations</span></span>
+<span id="cb58-11"><a href="introduction-to-hypothesis-testing.html#cb58-11" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> paua<span class="sc">$</span>Length)</span>
+<span id="cb58-12"><a href="introduction-to-hypothesis-testing.html#cb58-12" tabindex="-1"></a>  <span class="do">##  randomize labels</span></span>
+<span id="cb58-13"><a href="introduction-to-hypothesis-testing.html#cb58-13" tabindex="-1"></a>  data<span class="sc">$</span>random_labels <span class="ot">&lt;-</span><span class="fu">sample</span>(paua<span class="sc">$</span>Species, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-14"><a href="introduction-to-hypothesis-testing.html#cb58-14" tabindex="-1"></a>  <span class="do">## randomized differences in mean</span></span>
+<span id="cb58-15"><a href="introduction-to-hypothesis-testing.html#cb58-15" tabindex="-1"></a>  randomisation_difference_mean[i] <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb58-16"><a href="introduction-to-hypothesis-testing.html#cb58-16" tabindex="-1"></a>    <span class="fu">group_by</span>(random_labels) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(value)) <span class="sc">%&gt;%</span> </span>
+<span id="cb58-17"><a href="introduction-to-hypothesis-testing.html#cb58-17" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">diff =</span> <span class="fu">diff</span>(mean)) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb58-18"><a href="introduction-to-hypothesis-testing.html#cb58-18" tabindex="-1"></a>}</span>
+<span id="cb58-19"><a href="introduction-to-hypothesis-testing.html#cb58-19" tabindex="-1"></a><span class="do">## results, combine with the observed statistic</span></span>
+<span id="cb58-20"><a href="introduction-to-hypothesis-testing.html#cb58-20" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">randomisation_difference_mean =</span> <span class="fu">c</span>(diff_in_means, randomisation_difference_mean))</span></code></pre></div>
 </div>
 <div id="locate-the-observed-statistic-i.e.-from-our-observed-random-sample-in-the-sampling-distribution" class="section level4 unnumbered hasAnchor">
 <h4>3. Locate the observed statistic (i.e., from our observed random sample) in the sampling distribution<a href="introduction-to-hypothesis-testing.html#locate-the-observed-statistic-i.e.-from-our-observed-random-sample-in-the-sampling-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The location of observed statistic in the sampling distribution allows us to draw inference with regards to our hypothesis.</p>
 <p>If the observed statistic is in the main body of the distribution then it is more than likely that the observed statistic occurred by chance. However, if the observed statistic is in the tail of the distribution then it would rarely occur by chance and we have evidence against the observed statistic occurring by chance alone.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="introduction-to-hypothesis-testing.html#cb54-1" tabindex="-1"></a><span class="do">## How many randomized differences in means are as least as extreme as the one we observed</span></span>
-<span id="cb54-2"><a href="introduction-to-hypothesis-testing.html#cb54-2" tabindex="-1"></a><span class="do">## absolute value as dealing with two tailed</span></span>
-<span id="cb54-3"><a href="introduction-to-hypothesis-testing.html#cb54-3" tabindex="-1"></a>n_exceed <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(results<span class="sc">$</span>randomisation_difference_mean) <span class="sc">&gt;=</span> <span class="fu">abs</span>(diff_in_means))</span>
-<span id="cb54-4"><a href="introduction-to-hypothesis-testing.html#cb54-4" tabindex="-1"></a>n_exceed</span>
-<span id="cb54-5"><a href="introduction-to-hypothesis-testing.html#cb54-5" tabindex="-1"></a><span class="do">## [1] 18</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="introduction-to-hypothesis-testing.html#cb59-1" tabindex="-1"></a><span class="do">## How many randomized differences in means are as least as extreme as the one we observed</span></span>
+<span id="cb59-2"><a href="introduction-to-hypothesis-testing.html#cb59-2" tabindex="-1"></a><span class="do">## absolute value as dealing with two tailed</span></span>
+<span id="cb59-3"><a href="introduction-to-hypothesis-testing.html#cb59-3" tabindex="-1"></a>n_exceed <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(results<span class="sc">$</span>randomisation_difference_mean) <span class="sc">&gt;=</span> <span class="fu">abs</span>(diff_in_means))</span>
+<span id="cb59-4"><a href="introduction-to-hypothesis-testing.html#cb59-4" tabindex="-1"></a>n_exceed</span>
+<span id="cb59-5"><a href="introduction-to-hypothesis-testing.html#cb59-5" tabindex="-1"></a><span class="do">## [1] 18</span></span></code></pre></div>
 <p>We see something as least as extreme as our observed test statistic 18 times. This translates to a two-sided tail proportion of 0.018. The plot below illustrates the location of the observed test statistic in that of the distribution of the test statistics we calculated under the null hypothesis.</p>
 <p><img src="_main_files/figure-html/hist-1.png" width="672" /></p>
 <p>In experimental situations a large p-value (large tail proportion) means that the luck of the randomization quite often produces group differences as large or even larger than what we’ve got in our data. A small p-value means that the luck of the randomization draw hardly ever produces group differences as large as we’ve got in our data. <strong>So what do you conclude here?</strong></p>
