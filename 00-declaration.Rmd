@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 # Key Information {-}
 
@@ -35,13 +40,13 @@ Another option available is to use [RStudio Cloud](https://rstudio.cloud/) where
 
 ## Your teaching team {-}
 
-**Semester 1, 2024**
+**Semester 2, 2024**
 
 ```{r include=FALSE}
 lecs <- matrix(c(1, "R programming and data exploration", "1 - 3", "Dr Charlotte Jones-Todd", 
                1, "Statistical inference", "4 - 6", "Jenn Jury (course coordinator)", 
-               2, "Mathematical modelling in biology", "7 - 9", "Assoc. Prof. Jane Allison", 
-               3, "Model-based inference and critical thinking", "10 - 12", "Prof. Alexei Drummond"), 
+               2, "Mathematical modelling in biology", "7 - 9", "Dr Nobuto Takeuchi", 
+               3, "Model-based inference and critical thinking", "10 - 12", "Dr Nick Matzke"), 
                ncol = 4,byrow = TRUE)
 colnames(lecs) <- c("Module Number", "Module Content", "Weeks taught","Lecturer")
 
@@ -59,8 +64,7 @@ knitr::kable(lecs, align = "cccc", "simple", row.names = FALSE)
 
 <span><strong>Lectures are every week:</span></strong>
  <ul>
-  <li>**Mondays 8-9 am** in 201-393, and </li>
-  <li>**Tuesdays 8-9 am** in Library B28 (109-B28). </li>
+  <li>**Mondays and Tuesdays 9-10 am** in 201-393 </li>
 </ul>
 </div>
 
@@ -75,9 +79,9 @@ lecture recordings will be available in CANVAS via the Panopto video tab after t
 ```{r, echo=FALSE}
 require(tidyverse)
 require(knitr)
-assess <- data.frame(Week =  c(1:5, "Mid-semester break", 6:12 , "Exam Period"), 
-                     Laboratories = c("R help sessions","lab", "lab", "", "lab","", "lab", rep(c("","lab", "lab"), 2), ""), 
-                     Quizzes = c("",rep("quiz", 4), "", rep("quiz", 7), ""), 
+assess <- data.frame(Week =  c(1:6, "Mid-semester break", 7:12 , "Exam Period"), 
+                     Laboratories = c("R help sessions","lab", "lab", "", "lab","lab", "", rep(c("","lab", "lab"), 2), ""), 
+                     Quizzes = c("",rep("quiz", 5), "", rep("quiz", 6), ""), 
                      Inspera = c(rep("", 7),"Test", rep("", 5), "Exam"))
 
 assess %>%
@@ -101,7 +105,7 @@ knitr::kable(assessment, align = "cccc", "simple")
 ```
 
 <div class="alert alert-danger" role="alert">
-The test will be held on **Friday 26th April 6.30-8.15pm. The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
+The test will be held on **Monday 9th September 6.30-8.15pm. The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
 The delivery mode for the test and the exam is an on-campus, invigilated Inspera assessment.
 </div>
 
@@ -115,7 +119,7 @@ Labs will be held in 106-014 (Biology Building, Room 014) during your scheduled 
 <ul>
 <li>Monday 2-5pm, </li>
 <li>Tuesday 10am-1pm, </li>
-<li>Thursday 10am-1pm, or</li>
+<li>Tuesday 2-5pm, or</li>
 <li>Friday 10am-1pm.</li
 </ul>
 
