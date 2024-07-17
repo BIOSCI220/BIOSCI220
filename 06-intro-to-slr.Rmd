@@ -500,7 +500,7 @@ gglm::gglm(fit.lm) # Plot the four main linear regression diagnostic plots
 
 The **residuals having constant variance assumption** can be checked with this plot. You are looking for a roughly symmetric cloud of points above and below the horizontal line at zero. You want to see no pattern or structure in your residuals (e.g., a "starry" night). You definitely don't want to see the scatter increasing or decreasing around the zero line as the fitted values get bigger (e.g., trumpet/ wedge of cheese/ slice of pizza shaped) which would indicate unequal variances (heteroscedasticity). 
 
-[Note: in the residual vs fitted plot above things look a bit weird, the points are in clumps. Why? Think of the model we fitted (i.e., one with a categorical explanatory variable)]
+[Note: in the residual vs fitted plot above things look a bit weird, the points are in vertical rows. Why might this be? Think of the model we fitted (i.e., one with a categorical explanatory variable)]
 
 ### Normal quantile-quantile (QQ) plot
 
@@ -513,10 +513,10 @@ This plot can be used to check the **linear relationship assumption**. We want t
 
 ### Residuals vs Leverage plot
 
-This plot can also be used to check the **linear relationship and residuals having constant variance assumptions** in the same way as the scale-location plot: we want to see a roughly straight horizontal line and the spread of standardized residuals shouldn't change as a function of leverage. The other useful functionality of this plot is it can help detect *influential* outliers in a linear regression model (i.e. Even if data have extreme values, they might not be influential to determine the regression line.). Points with high leverage may be influential: that is, deleting them would change the model a lot. These high leverage points will be found in upper or lower right hand corners of the plot.
+This plot can also be used to check the **linear relationship and residuals having constant variance assumptions** in the same way as the scale-location plot: we want to see a roughly straight horizontal line and the spread of standardized residuals shouldn't change as a function of leverage. The other useful functionality of this plot is it can help detect *influential* outliers in a linear regression model (i.e. Even if data have extreme values, they might not be influential to determine the regression line.). Points with high leverage may be influential: that is, deleting them would change the model a lot. These high leverage points will be found in upper or lower right-hand corner of the plot.
 
 
-[Note: in the residuals vs leverage plot above things look a bit weird because there are only three points. Why? Well think of the model we fitted (i.e., one with a single categorical explanatory variable). It looks like there is a plot up in the top right-hand corner, but actually the three points are all centered on 0 on the y-axis. We can't tell much from this plot, but will use these plots more later on.]
+[Note: in the residuals vs leverage plot above things look a bit weird because there are only three points. Why? Well think of the model we fitted (i.e., one with a single categorical explanatory variable). It also looks like there is a high leverage point in the bottom right-hand corner, but if you look more closely the three points are all centered on 0 on the y-axis `(0e+00)`. It's the very strange (rollercoaster!!) trend line, specifically what has been drawn between the first two points that has pushed the 0 on the y-axis to the bottom of our plot window (in these plots, the y-axis is normally centred on 0, similar to can be seen in the Residuals vs Fitted and Normal Q-Q plots). We can't tell much from this specific plot, but will use these plots more later on.]
 
 ### What if data do not fulfil the model assumptions?
 
