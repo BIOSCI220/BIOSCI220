@@ -7,7 +7,7 @@
 
 <ul>
 <li> Describe the difference between a scientific hypothesis and statistical hypotheses (H~0~ and H~1~/H~A~) </li>
-<li> Apply the four steps of hypothesis testing and write `R` code for
+<li> Apply the four steps of hypothesis testing, write `R` code and interpret `R` outputs for
  <ul>
  <li> one-sample t-test </li>
  <li> two-sample independent t-test </li>
