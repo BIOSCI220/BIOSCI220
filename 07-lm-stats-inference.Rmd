@@ -222,7 +222,7 @@ Here's an example dummy variable table for `species` in the `palmerpenguin` data
 
 ![](figs/dv_table_penguins.png)
 
-Here the `Adelie` group is the baseline (`R` does this alphabetically by default. To change this, we can use the `mutate` function. See section 5.2.4.2 in Hypothesis testing for more details) so we assign a 0 to `speciesChinstrap` and a 0 to `speciesGentoo` to see what the response is for Adelie penguins `(Intercept)`. This is shown in the top line row of the table above. 
+Here the `Adelie` group is the baseline (`R` does this alphabetically by default. To change this, we can use the `mutate` function. [See section 6.1.4.2 in Hypothesis testing and introduction to linear regression](https://biosci220.github.io/BIOSCI220/hypothesis-testing-and-introduction-to-linear-regression.html#step-two-three.-compute-the-test-statistic-and-determine-the-p-value) for more details) so we assign a 0 to `speciesChinstrap` and a 0 to `speciesGentoo` to see what the response is for Adelie penguins `(Intercept)`. This is shown in the top line row of the table above. 
 
 **Fitted model**
 
