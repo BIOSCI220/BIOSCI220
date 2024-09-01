@@ -180,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#randomization-tests"><i class="fa fa-check"></i><b>5.1</b> Randomization tests</a></li>
 <li class="chapter" data-level="5.2" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#what-is-a-p-value"><i class="fa fa-check"></i><b>5.2</b> What is a <em>p-value</em>?</a></li>
-<li class="chapter" data-level="5.3" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#the-vocabulary-of-hypothesis-testing"><i class="fa fa-check"></i><b>5.3</b> The Vocabulary of hypothesis testing</a></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-hypothesis-testing.html"><a href="introduction-to-hypothesis-testing.html#the-vocabulary-of-hypothesis-testing"><i class="fa fa-check"></i><b>5.3</b> The vocabulary of hypothesis testing</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="hypothesis-testing-and-introduction-to-linear-regression.html"><a href="hypothesis-testing-and-introduction-to-linear-regression.html"><i class="fa fa-check"></i><b>6</b> Hypothesis testing and introduction to linear regression</a>
 <ul>
@@ -362,7 +362,7 @@ State in terms of probability statements the meaning of the power and significan
 <span id="cb54-3"><a href="introduction-to-hypothesis-testing.html#cb54-3" tabindex="-1"></a>n_exceed <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(results<span class="sc">$</span>randomisation_difference_mean) <span class="sc">&gt;=</span> <span class="fu">abs</span>(diff_in_means))</span>
 <span id="cb54-4"><a href="introduction-to-hypothesis-testing.html#cb54-4" tabindex="-1"></a>n_exceed</span>
 <span id="cb54-5"><a href="introduction-to-hypothesis-testing.html#cb54-5" tabindex="-1"></a><span class="do">## [1] 18</span></span></code></pre></div>
-<p>We see something as least as extreme as our observed test statistic 18 times. This translates to a two-sided tail proportion of 0.018. The plot below illustrates the location of the observed test statistic in that of the distribution of the test statistics we calculated under the null hypothesis.</p>
+<p>We see something as least as extreme as our observed test statistic 18 times. This translates to a two-sided tail proportion of 0.0018. The plot below illustrates the location of the observed test statistic in that of the distribution of the test statistics we calculated under the null hypothesis.</p>
 <p><img src="_main_files/figure-html/hist-1.png" width="672" /></p>
 <p>In experimental situations a large p-value (large tail proportion) means that the luck of the randomization quite often produces group differences as large or even larger than what we’ve got in our data. A small p-value means that the luck of the randomization draw hardly ever produces group differences as large as we’ve got in our data. <strong>So what do you conclude here?</strong></p>
 <p><strong>NOTE: We can extend the randomization test to make inference about any sample statistic (not just the mean)</strong></p>
@@ -433,7 +433,7 @@ No single index should substitute for scientific reasoning.”
 </div>
 </div>
 <div id="the-vocabulary-of-hypothesis-testing" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> The Vocabulary of hypothesis testing<a href="introduction-to-hypothesis-testing.html#the-vocabulary-of-hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">5.3</span> The vocabulary of hypothesis testing<a href="introduction-to-hypothesis-testing.html#the-vocabulary-of-hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
 “Type I Zoom error: you think people can hear you, but you’re actually on mute. Type II Zoom error: you think your muted, but actually people can hear you.”
 <footer>
