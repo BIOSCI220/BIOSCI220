@@ -152,7 +152,7 @@ n_exceed <- sum(abs(results$randomisation_difference_mean) >= abs(diff_in_means)
 n_exceed
 ```
 
-We see something as least as extreme as our observed test statistic 18 times. This translates to a two-sided tail proportion of `r n_exceed/1000`. The plot below illustrates the location of the observed test statistic in that of the distribution of the test statistics we calculated under the null hypothesis.
+We see something as least as extreme as our observed test statistic 18 times. This translates to a two-sided tail proportion of `r n_exceed/nrow(results)`. The plot below illustrates the location of the observed test statistic in that of the distribution of the test statistics we calculated under the null hypothesis.
 
 ```{r hist, echo = FALSE}
 ggplot(results, aes(x = randomisation_difference_mean)) +
@@ -265,7 +265,7 @@ Remember that **statistical significance does not imply practical significance**
   <strong>TASK</strong> Briefly outline why a threshold cutoff is problematic in the context of hypothesis testing
  </div>
 
-## The Vocabulary of hypothesis testing
+## The vocabulary of hypothesis testing
 
 
 > "Type I Zoom error: you think people can hear you, but you’re actually on mute.  Type II Zoom error: you think your muted, but actually people can hear you." `r tufte::quote_footer('--- @CynPeacock, Twitter')`
