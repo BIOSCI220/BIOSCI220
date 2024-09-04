@@ -6,7 +6,7 @@
 <strong>Learning outcomes</strong>
 
 <ul>
-<li> Write `R` code to fit a linear regression model, and interpret estimated coefficients of these models: </li>
+<li> Write `R` code to fit a linear regression model, and interpret estimated coefficients of these models. For example: </li>
  <ul>
  <li> no explanatory variable (a null model) </li>
  <li> a single continuous explanatory variable </li>
@@ -17,7 +17,7 @@
 
 <li> Explain why you may want to include interaction terms in a model </li>
 <li> Describe the differences between the operators `:` and `*` in an `R` model-fitting formula </li>
-<li> Demonstrate how to make point predictions from linear regression models, specifically models with: </li>
+<li> Demonstrate how to make point predictions from linear regression models, for example models with: </li>
  <ul>
  <li> a single continuous explanatory variable </li>
  <li> a continuous and a categorical factor explanatory variable </li>
