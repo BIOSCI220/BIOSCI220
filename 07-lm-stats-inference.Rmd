@@ -1,3 +1,8 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 # Statistical Inference
 
 <div class="alert alert-success" role="alert">
@@ -17,7 +22,7 @@
 
 <li> Explain why you may want to include interaction terms in a model </li>
 <li> Describe the differences between the operators `:` and `*` in an `R` model-fitting formula </li>
-<li> Demonstrate how to make point predictions from linear regression models, for example models with: </li>
+<li> Demonstrate how to make point predictions from linear regression models. For example models with: </li>
  <ul>
  <li> a single continuous explanatory variable </li>
  <li> a continuous and a categorical factor explanatory variable </li>
@@ -55,7 +60,7 @@ Here for observation $i$
 
 Does this remind you of anything?
 
-![](https://memegenerator.net/img/instances/63099571/one-does-not-simply-forget-ymxc.jpg)
+![](figs/ymxc_meme.png)
 
 
 ### Modelling Bill Depth 
@@ -160,10 +165,101 @@ ggplot(data = penguins_nafree, aes(x = bill_length_mm, y = bill_depth_mm)) +
 
 ```
 
+### Single categorical explanatory variable
+
+Let's forget about `bill_length_mm` as an explanatory variable for a minute... Instead, let's see if **`species` can help explain some of the variation in `bill_depth_mm`.** Here is a visualisation of this data:
+
+```{r, echo = FALSE}
+## plot
+ggplot(penguins_nafree, aes(x = species, y = bill_depth_mm)) +
+  geom_point(alpha = 0.5, size = 2) +
+  ylab("Bill depth (mm)") +
+  xlab("Species") +
+  theme_classic()+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_x_discrete(expand = c(0, 0.01))
+
+```
+
+`species` is a categorical variable with three levels/groups: Adelie, Chinstrap and Gentoo. When we have categorical explanatory variables (e.g., `species`) we have to use **dummy variables** to estimate population parameters in our linear regression model. *Why?* Well, let's consider what the y-intercept might be when our explanatory variable can never equal 0; our only options here are Adelie, Chinstrap and Gentoo. 
+
+*What is a dummy variable?*\
+It is a variable created to assign numerical value to levels of categorical variables. This is necessary with most categorical variables because an individual usually cannot be in more than one group/level (e.g., a Chinstrap penguin cannot be a Gentoo penguin too!). So the dummy variable coding works by representing one category of the explanatory variable and is coded with 1 if the case falls in that category and with 0 if not.
+
+Here's an example dummy variable table for `species` in the `palmerpenguin` data set:
+
+![](figs/dv_table_penguins.png)
+
+Here the `Adelie` group/level is the baseline and as such will act as the y-intercept in our regression model (`R` does this alphabetically by default. To change this, we can use the `mutate` function. [See section 6.1.4.2 in Hypothesis testing and introduction to linear regression](https://biosci220.github.io/BIOSCI220/hypothesis-testing-and-introduction-to-linear-regression.html#step-two-three.-compute-the-test-statistic-and-determine-the-p-value) for more details) so we assign a 0 to `speciesChinstrap` and a 0 to `speciesGentoo` to see what the response is for Adelie penguins `(Intercept)`. This is shown in the top line row of the table above. 
+
+**Model formula**
+
+The formula for this model is $$Y_i = \alpha + \beta_1x_{i,1} + \beta_2x_{i,2} + ... + \beta_kx_{i,k} + \epsilon_i$$ 
+
+where for observation $i$ 
+
+  + $Y_i$ is the value of the response (`bill_depth_mm`)
+  + $x_{i,k}$ is the value of the explanatory variable (`bill_length_mm`), where $k$ is the number of levels of the explanatory variable  - 1, because one level is the intercept term 
+  + $\epsilon_i$ is the error term: the difference between $Y_i$ and its expected value
+  + $\alpha$, $\beta_1$, $\beta_2$, up to $\beta_k$ are all parameters to be estimated using our sample data. We could also write this model as
+  
+
+$$
+\begin{aligned}
+\operatorname{bill\_depth\_mm} &= \alpha + \beta_{1}(\operatorname{species_{Chinstrap}}) + 
+\beta_{2}(\operatorname{species_{Gentoo}}) + \epsilon
+\end{aligned}
+$$
+
+**Fitted model**
+
+```{r}
+## first, let's fit the model
+fit.lm <- lm(bill_depth_mm ~ species, data = penguins_nafree)
+
+## ok, now let's look at the regression coefficents output table
+summary(fit.lm)$coef
+```
+
+Here, the `Estimate` of the `(Intercept)` ($\alpha$ in the model) gives us the estimated average bill depth (mm) of the **Adelie** penguins. So, in this model, the estimated average bill depth of Adelie penguins is 18.35 mm.
+
+The `Estimate` of `speciesChinstrap` ($\beta_1$ in the model) is the average difference in bill depth of Chinstraps from Adelies. It is a positive value, so here the average bill depth of Chinstrap penguins is estimated to be 0.07 mm larger than the average of Adelie penguins. More generally, the `Estimate` of $\beta_1$ in this model tell us the average difference in the response for this group/level, relative to the `(Intercept)` group/level `Estimate`. 
+
+The `Estimate` of `speciesGentoo` ($\beta_2$ in the model) is the average difference in bill depth of Gentoos from Adelies. It is a negative value, so here the average bill depth of Gentoo penguins is estimated to be 3.35 mm smaller than the average of Adelie penguins. More generally, the `Estimate` of $\beta_2$ in this model tell us the average difference in the response for this group/level, relative to the `(Intercept)` group/level `Estimate`.
+
+You can visualise these differences in group averages by looking at the plot below, where the dashed horizontal lines represent the group averages for the Adelie (pink), Chinstrap (green) and Gentoo (blue) penguins.
+
+```{r, echo = FALSE}
+penguins_nafree <- penguins %>% drop_na()
+means <- penguins %>% group_by(species) %>% summarise(means = mean(bill_depth_mm, na.rm = TRUE))
+mean <- mean(penguins_nafree$bill_depth_mm)
+means$ends <- mean
+means$lag1 <- means$means[c(2,3,1)]
+means$lag2 <- means$means[c(3,1,2)]
+jit <- ggplot() + 
+  geom_jitter(data = penguins_nafree,aes(x = species, y = bill_depth_mm, color = species), alpha = 0.2) 
+
+penguins_nafree$x_points <- layer_data(jit)$x
+penguins_nafree$y_points <- layer_data(jit)$y
+penguins_nafree <- penguins_nafree %>% group_by(species) %>% mutate(sp_means = mean(bill_depth_mm))
+penguins_nafree$mean <- mean
+
+ggplot(penguins_nafree, aes(x = species, y = bill_depth_mm)) +
+  geom_point(alpha = 0.5, size = 2) +
+  geom_hline(data = means, aes(yintercept = means, color = species), alpha = 0.7, lty = 2) +
+  ylab("Bill depth (mm)") +
+  xlab("Species") +
+  theme_classic()+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_x_discrete(expand = c(0, 0.01))
+```  
+
 ### A continuous and a categorical factor explanatory variable (Additive model)
 
-**Does adding in `species` to the above model help explain more of the variation in `bill_depth_mm`?**\
-Remember `species` is a categorical factor variable with three levels/groups: Adelie, Chinstrap and Gentoo.
+**Does adding in `bill_length_mm` back into the model, along with `species` help explain more of the variation in `bill_depth_mm`?**\
+
 
 ```{r}
 p2 <- ggplot(data = penguins_nafree,
@@ -195,12 +291,9 @@ where for observation $i$
   + $\epsilon_i$ is the error term: the difference between $Y_i$ and its expected value
   + $\alpha$, $\beta_1$, and $\beta_2$ are all parameters to be estimated.
   
-...but because one of the variables is **categorical**, our model formula needs to be written in a slightly more complicated way
+...but because one of the variables is **categorical**, our model formula needs to be written in the slightly more complicated way we outlined in the previous section
 
 $$Y_i = \beta_0 + \beta_1z_i + \beta_2x_{i,1} + \beta_3x_{i,2} + ... +\beta_kx_{i,k}+ \epsilon_i$$
-where the only new terminology from the above formula is 
-
-  + $x_{i,k}$ is the value of the explanatory variable (where *k* = # of levels of the variable - 1, as one level is the intercept)
 
 Another way to write this model formula for this example is
 
@@ -211,18 +304,6 @@ $$
 &\quad \epsilon
 \end{aligned}
 $$
-
-
-When we have categorical explanatory variables (e.g., `species`) we have to use **dummy variables** to estimate population parameters in our linear regression model.
-
-*What is a dummy variable?*\
-It is a variable created to assign numerical value to levels of categorical variables. This is necessary with most categorical variables because an individual usually cannot be in more than one group/level (e.g., a Chinstrap penguin cannot be a Gentoo penguin too!). So the dummy variable coding works by representing one category of the explanatory variable and is coded with 1 if the case falls in that category and with 0 if not.
-
-Here's an example dummy variable table for `species` in the `palmerpenguin` data set:
-
-![](figs/dv_table_penguins.png)
-
-Here the `Adelie` group is the baseline (`R` does this alphabetically by default. To change this, we can use the `mutate` function. [See section 6.1.4.2 in Hypothesis testing and introduction to linear regression](https://biosci220.github.io/BIOSCI220/hypothesis-testing-and-introduction-to-linear-regression.html#step-two-three.-compute-the-test-statistic-and-determine-the-p-value) for more details) so we assign a 0 to `speciesChinstrap` and a 0 to `speciesGentoo` to see what the response is for Adelie penguins `(Intercept)`. This is shown in the top line row of the table above. 
 
 **Fitted model**
 

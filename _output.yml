@@ -7,7 +7,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">BIOSCI 220: Quantitative Biology</a></li>
       after: |
-        <li><a href="https://canvas.auckland.ac.nz/courses/104040">CANVAS</a></li>
+        <li><a href="https://canvas.auckland.ac.nz/courses/120365">CANVAS</a></li>
     search: yes
     sharing: null
 bookdown::html_book:
