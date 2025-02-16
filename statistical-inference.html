@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Statistical Inference | Module 1</title>
   <meta name="description" content="Chapter 7 Statistical Inference | Module 1" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Statistical Inference | Module 1" />
   <meta property="og:type" content="book" />
@@ -148,6 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#your-teaching-team"><i class="fa fa-check"></i>Your teaching team</a></li>
 <li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#lectures"><i class="fa fa-check"></i>Lectures</a></li>
 <li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#assessment"><i class="fa fa-check"></i>Assessment</a></li>
+<li class="chapter" data-level="" data-path="key-information.html"><a href="key-information.html#rstudio-accessibility"><i class="fa fa-check"></i><code>RStudio</code> Accessibility</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="r-and-rstudio-1.html"><a href="r-and-rstudio-1.html"><i class="fa fa-check"></i><b>1</b> <code>R</code> and <code>RStudio</code></a>
 <ul>
@@ -212,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.10" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#other-resources-optional-but-recommended-2"><i class="fa fa-check"></i><b>8.10</b> Other resources: optional but recommended</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://canvas.auckland.ac.nz/courses/104040">CANVAS</a></li>
+<li><a href="https://canvas.auckland.ac.nz/courses/120365">CANVAS</a></li>
 
 </ul>
 
@@ -266,7 +267,7 @@ Explain why you may want to include interaction terms in a model
 Describe the differences between the operators <code>:</code> and <code>*</code> in an <code>R</code> model-fitting formula
 </li>
 <li>
-Demonstrate how to make point predictions from linear regression models, for example models with:
+Demonstrate how to make point predictions from linear regression models. For example models with:
 </li>
 <ul>
 <li>
@@ -306,7 +307,7 @@ where</p>
 </ul>
 <p>Note: you may also see the intercept term <span class="math inline">\(\alpha\)</span> written as <span class="math inline">\(\beta_0\)</span></p>
 <p>Does this remind you of anything?</p>
-<p><img src="https://memegenerator.net/img/instances/63099571/one-does-not-simply-forget-ymxc.jpg" /></p>
+<p><img src="figs/ymxc_meme.png" /></p>
 </div>
 <div id="modelling-bill-depth" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Modelling Bill Depth<a href="statistical-inference.html#modelling-bill-depth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -378,19 +379,60 @@ where</p>
 <span id="cb79-7"><a href="statistical-inference.html#cb79-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 </div>
-<div id="a-continuous-and-a-categorical-factor-explanatory-variable-additive-model" class="section level3 hasAnchor" number="7.1.5">
-<h3><span class="header-section-number">7.1.5</span> A continuous and a categorical factor explanatory variable (Additive model)<a href="statistical-inference.html#a-continuous-and-a-categorical-factor-explanatory-variable-additive-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Does adding in <code>species</code> to the above model help explain more of the variation in <code>bill_depth_mm</code>?</strong><br />
-Remember <code>species</code> is a categorical factor variable with three levels/groups: Adelie, Chinstrap and Gentoo.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="statistical-inference.html#cb80-1" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_nafree,</span>
-<span id="cb80-2"><a href="statistical-inference.html#cb80-2" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">y =</span> bill_depth_mm, <span class="at">x =</span> bill_length_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb80-3"><a href="statistical-inference.html#cb80-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb80-4"><a href="statistical-inference.html#cb80-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
-<span id="cb80-5"><a href="statistical-inference.html#cb80-5" tabindex="-1"></a>p2</span></code></pre></div>
+<div id="single-categorical-explanatory-variable" class="section level3 hasAnchor" number="7.1.5">
+<h3><span class="header-section-number">7.1.5</span> Single categorical explanatory variable<a href="statistical-inference.html#single-categorical-explanatory-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s forget about <code>bill_length_mm</code> as an explanatory variable for a minute… Instead, let’s see if <strong><code>species</code> can help explain some of the variation in <code>bill_depth_mm</code>.</strong> Here is a visualisation of this data:</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="statistical-inference.html#cb81-1" tabindex="-1"></a><span class="co"># notice the + between the two explanatory variables?</span></span>
-<span id="cb81-2"><a href="statistical-inference.html#cb81-2" tabindex="-1"></a><span class="co"># this + is what indicates this is an additive model</span></span>
-<span id="cb81-3"><a href="statistical-inference.html#cb81-3" tabindex="-1"></a>slm_sp <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> bill_length_mm <span class="sc">+</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
+<p><code>species</code> is a categorical variable with three levels/groups: Adelie, Chinstrap and Gentoo. When we have categorical explanatory variables (e.g., <code>species</code>) we have to use <strong>dummy variables</strong> to estimate population parameters in our linear regression model. <em>Why?</em> Well, let’s consider what the y-intercept might be when our explanatory variable can never equal 0; our only options here are Adelie, Chinstrap and Gentoo.</p>
+<p><em>What is a dummy variable?</em><br />
+It is a variable created to assign numerical value to levels of categorical variables. This is necessary with most categorical variables because an individual usually cannot be in more than one group/level (e.g., a Chinstrap penguin cannot be a Gentoo penguin too!). So the dummy variable coding works by representing one category of the explanatory variable and is coded with 1 if the case falls in that category and with 0 if not.</p>
+<p>Here’s an example dummy variable table for <code>species</code> in the <code>palmerpenguin</code> data set:</p>
+<p><img src="figs/dv_table_penguins.png" /></p>
+<p>Here the <code>Adelie</code> group/level is the baseline and as such will act as the y-intercept in our regression model (<code>R</code> does this alphabetically by default. To change this, we can use the <code>mutate</code> function. <a href="https://biosci220.github.io/BIOSCI220/hypothesis-testing-and-introduction-to-linear-regression.html#step-two-three.-compute-the-test-statistic-and-determine-the-p-value">See section 6.1.4.2 in Hypothesis testing and introduction to linear regression</a> for more details) so we assign a 0 to <code>speciesChinstrap</code> and a 0 to <code>speciesGentoo</code> to see what the response is for Adelie penguins <code>(Intercept)</code>. This is shown in the top line row of the table above.</p>
+<p><strong>Model formula</strong></p>
+<p>The formula for this model is <span class="math display">\[Y_i = \alpha + \beta_1x_{i,1} + \beta_2x_{i,2} + ... + \beta_kx_{i,k} + \epsilon_i\]</span></p>
+<p>where for observation <span class="math inline">\(i\)</span></p>
+<ul>
+<li><span class="math inline">\(Y_i\)</span> is the value of the response (<code>bill_depth_mm</code>)</li>
+<li><span class="math inline">\(x_{i,k}\)</span> is the value of the explanatory variable (<code>bill_length_mm</code>), where <span class="math inline">\(k\)</span> is the number of levels of the explanatory variable - 1, because one level is the intercept term</li>
+<li><span class="math inline">\(\epsilon_i\)</span> is the error term: the difference between <span class="math inline">\(Y_i\)</span> and its expected value</li>
+<li><span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>, up to <span class="math inline">\(\beta_k\)</span> are all parameters to be estimated using our sample data. We could also write this model as</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{bill\_depth\_mm} &amp;= \alpha + \beta_{1}(\operatorname{species_{Chinstrap}}) +
+\beta_{2}(\operatorname{species_{Gentoo}}) + \epsilon
+\end{aligned}
+\]</span></p>
+<p><strong>Fitted model</strong></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="statistical-inference.html#cb80-1" tabindex="-1"></a><span class="do">## first, let&#39;s fit the model</span></span>
+<span id="cb80-2"><a href="statistical-inference.html#cb80-2" tabindex="-1"></a>fit.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins_nafree)</span>
+<span id="cb80-3"><a href="statistical-inference.html#cb80-3" tabindex="-1"></a></span>
+<span id="cb80-4"><a href="statistical-inference.html#cb80-4" tabindex="-1"></a><span class="do">## ok, now let&#39;s look at the regression coefficents output table</span></span>
+<span id="cb80-5"><a href="statistical-inference.html#cb80-5" tabindex="-1"></a><span class="fu">summary</span>(fit.lm)<span class="sc">$</span>coef</span>
+<span id="cb80-6"><a href="statistical-inference.html#cb80-6" tabindex="-1"></a><span class="do">##                     Estimate Std. Error     t value     Pr(&gt;|t|)</span></span>
+<span id="cb80-7"><a href="statistical-inference.html#cb80-7" tabindex="-1"></a><span class="do">## (Intercept)      18.34726027 0.09299608 197.2906740 0.000000e+00</span></span>
+<span id="cb80-8"><a href="statistical-inference.html#cb80-8" tabindex="-1"></a><span class="do">## speciesChinstrap  0.07332796 0.16497460   0.4444803 6.569867e-01</span></span>
+<span id="cb80-9"><a href="statistical-inference.html#cb80-9" tabindex="-1"></a><span class="do">## speciesGentoo    -3.35062162 0.13877592 -24.1441135 6.622121e-75</span></span></code></pre></div>
+<p>Here, the <code>Estimate</code> of the <code>(Intercept)</code> (<span class="math inline">\(\alpha\)</span> in the model) gives us the estimated average bill depth (mm) of the <strong>Adelie</strong> penguins. So, in this model, the estimated average bill depth of Adelie penguins is 18.35 mm.</p>
+<p>The <code>Estimate</code> of <code>speciesChinstrap</code> (<span class="math inline">\(\beta_1\)</span> in the model) is the average difference in bill depth of Chinstraps from Adelies. It is a positive value, so here the average bill depth of Chinstrap penguins is estimated to be 0.07 mm larger than the average of Adelie penguins. More generally, the <code>Estimate</code> of <span class="math inline">\(\beta_1\)</span> in this model tell us the average difference in the response for this group/level, relative to the <code>(Intercept)</code> group/level <code>Estimate</code>.</p>
+<p>The <code>Estimate</code> of <code>speciesGentoo</code> (<span class="math inline">\(\beta_2\)</span> in the model) is the average difference in bill depth of Gentoos from Adelies. It is a negative value, so here the average bill depth of Gentoo penguins is estimated to be 3.35 mm smaller than the average of Adelie penguins. More generally, the <code>Estimate</code> of <span class="math inline">\(\beta_2\)</span> in this model tell us the average difference in the response for this group/level, relative to the <code>(Intercept)</code> group/level <code>Estimate</code>.</p>
+<p>You can visualise these differences in group averages by looking at the plot below, where the dashed horizontal lines represent the group averages for the Adelie (pink), Chinstrap (green) and Gentoo (blue) penguins.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+</div>
+<div id="a-continuous-and-a-categorical-factor-explanatory-variable-additive-model" class="section level3 hasAnchor" number="7.1.6">
+<h3><span class="header-section-number">7.1.6</span> A continuous and a categorical factor explanatory variable (Additive model)<a href="statistical-inference.html#a-continuous-and-a-categorical-factor-explanatory-variable-additive-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Does adding in <code>bill_length_mm</code> back into the model, along with <code>species</code> help explain more of the variation in <code>bill_depth_mm</code>?</strong><br />
+</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="statistical-inference.html#cb81-1" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_nafree,</span>
+<span id="cb81-2"><a href="statistical-inference.html#cb81-2" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">y =</span> bill_depth_mm, <span class="at">x =</span> bill_length_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb81-3"><a href="statistical-inference.html#cb81-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb81-4"><a href="statistical-inference.html#cb81-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb81-5"><a href="statistical-inference.html#cb81-5" tabindex="-1"></a>p2</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="statistical-inference.html#cb82-1" tabindex="-1"></a><span class="co"># notice the + between the two explanatory variables?</span></span>
+<span id="cb82-2"><a href="statistical-inference.html#cb82-2" tabindex="-1"></a><span class="co"># this + is what indicates this is an additive model</span></span>
+<span id="cb82-3"><a href="statistical-inference.html#cb82-3" tabindex="-1"></a>slm_sp <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> bill_length_mm <span class="sc">+</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
 <p><strong>Model formula</strong></p>
 <p>Now we have <strong>two explanatory variables</strong>, if they were both continuous variables, the model formula would be…</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1z_i + \beta_2x_i + \epsilon_i\]</span>
@@ -403,12 +445,8 @@ Remember <code>species</code> is a categorical factor variable with three levels
 <li><span class="math inline">\(\epsilon_i\)</span> is the error term: the difference between <span class="math inline">\(Y_i\)</span> and its expected value</li>
 <li><span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta_1\)</span>, and <span class="math inline">\(\beta_2\)</span> are all parameters to be estimated.</li>
 </ul>
-<p>…but because one of the variables is <strong>categorical</strong>, our model formula needs to be written in a slightly more complicated way</p>
-<p><span class="math display">\[Y_i = \beta_0 + \beta_1z_i + \beta_2x_{i,1} + \beta_3x_{i,2} + ... +\beta_kx_{i,k}+ \epsilon_i\]</span>
-where the only new terminology from the above formula is</p>
-<ul>
-<li><span class="math inline">\(x_{i,k}\)</span> is the value of the explanatory variable (where <em>k</em> = # of levels of the variable - 1, as one level is the intercept)</li>
-</ul>
+<p>…but because one of the variables is <strong>categorical</strong>, our model formula needs to be written in the slightly more complicated way we outlined in the previous section</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1z_i + \beta_2x_{i,1} + \beta_3x_{i,2} + ... +\beta_kx_{i,k}+ \epsilon_i\]</span></p>
 <p>Another way to write this model formula for this example is</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -416,33 +454,27 @@ where the only new terminology from the above formula is</p>
 &amp;\quad \epsilon
 \end{aligned}
 \]</span></p>
-<p>When we have categorical explanatory variables (e.g., <code>species</code>) we have to use <strong>dummy variables</strong> to estimate population parameters in our linear regression model.</p>
-<p><em>What is a dummy variable?</em><br />
-It is a variable created to assign numerical value to levels of categorical variables. This is necessary with most categorical variables because an individual usually cannot be in more than one group/level (e.g., a Chinstrap penguin cannot be a Gentoo penguin too!). So the dummy variable coding works by representing one category of the explanatory variable and is coded with 1 if the case falls in that category and with 0 if not.</p>
-<p>Here’s an example dummy variable table for <code>species</code> in the <code>palmerpenguin</code> data set:</p>
-<p><img src="figs/dv_table_penguins.png" /></p>
-<p>Here the <code>Adelie</code> group is the baseline (<code>R</code> does this alphabetically by default. To change this, we can use the <code>mutate</code> function. <a href="https://biosci220.github.io/BIOSCI220/hypothesis-testing-and-introduction-to-linear-regression.html#step-two-three.-compute-the-test-statistic-and-determine-the-p-value">See section 6.1.4.2 in Hypothesis testing and introduction to linear regression</a> for more details) so we assign a 0 to <code>speciesChinstrap</code> and a 0 to <code>speciesGentoo</code> to see what the response is for Adelie penguins <code>(Intercept)</code>. This is shown in the top line row of the table above.</p>
 <p><strong>Fitted model</strong></p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="statistical-inference.html#cb82-1" tabindex="-1"></a><span class="fu">summary</span>(slm_sp)<span class="sc">$</span>coef</span>
-<span id="cb82-2"><a href="statistical-inference.html#cb82-2" tabindex="-1"></a><span class="do">##                    Estimate Std. Error    t value     Pr(&gt;|t|)</span></span>
-<span id="cb82-3"><a href="statistical-inference.html#cb82-3" tabindex="-1"></a><span class="do">## (Intercept)      10.5652616 0.69092642  15.291442 2.977289e-40</span></span>
-<span id="cb82-4"><a href="statistical-inference.html#cb82-4" tabindex="-1"></a><span class="do">## bill_length_mm    0.2004431 0.01767974  11.337449 2.258955e-25</span></span>
-<span id="cb82-5"><a href="statistical-inference.html#cb82-5" tabindex="-1"></a><span class="do">## speciesChinstrap -1.9330779 0.22571878  -8.564099 4.259893e-16</span></span>
-<span id="cb82-6"><a href="statistical-inference.html#cb82-6" tabindex="-1"></a><span class="do">## speciesGentoo    -5.1033153 0.19439523 -26.252267 1.043789e-82</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="statistical-inference.html#cb83-1" tabindex="-1"></a><span class="fu">summary</span>(slm_sp)<span class="sc">$</span>coef</span>
+<span id="cb83-2"><a href="statistical-inference.html#cb83-2" tabindex="-1"></a><span class="do">##                    Estimate Std. Error    t value     Pr(&gt;|t|)</span></span>
+<span id="cb83-3"><a href="statistical-inference.html#cb83-3" tabindex="-1"></a><span class="do">## (Intercept)      10.5652616 0.69092642  15.291442 2.977289e-40</span></span>
+<span id="cb83-4"><a href="statistical-inference.html#cb83-4" tabindex="-1"></a><span class="do">## bill_length_mm    0.2004431 0.01767974  11.337449 2.258955e-25</span></span>
+<span id="cb83-5"><a href="statistical-inference.html#cb83-5" tabindex="-1"></a><span class="do">## speciesChinstrap -1.9330779 0.22571878  -8.564099 4.259893e-16</span></span>
+<span id="cb83-6"><a href="statistical-inference.html#cb83-6" tabindex="-1"></a><span class="do">## speciesGentoo    -5.1033153 0.19439523 -26.252267 1.043789e-82</span></span></code></pre></div>
 <p>Here, the <code>Estimate</code> of the <code>(Intercept)</code> (<span class="math inline">\(\alpha\)</span> or <span class="math inline">\(\beta_0\)</span> in the model) gives us the estimated average bill depth (mm) of the <strong>Adelie</strong> penguins <strong>given the other variables in the model</strong>.</p>
 <p>The <code>Estimate</code> of <code>bill_length_mm</code> (<span class="math inline">\(\beta_1\)</span> in the model) is the slope associated with bill length (mm). So, here for every 1 mm increase in bill length we estimated a 0.2 mm increase in bill depth.</p>
 <p>What about the regression coefficients of the other species levels (<code>Estimate</code> for <code>speciesChinstrap</code> and <code>speciesGentoo</code>)? These values give the shift (up or down) of the <strong>parallel</strong> lines from the <strong>Adelie</strong> (<code>(Intercept)</code>) level. So given the estimated relationship between bill depth and bill length these coefficients are the estimated change for each species from the baseline. You can visualise this by looking at the plot below.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="statistical-inference.html#cb83-1" tabindex="-1"></a><span class="do">## calculate predicted values</span></span>
-<span id="cb83-2"><a href="statistical-inference.html#cb83-2" tabindex="-1"></a>penguins_nafree<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(slm_sp)</span>
-<span id="cb83-3"><a href="statistical-inference.html#cb83-3" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb83-4"><a href="statistical-inference.html#cb83-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins_nafree, <span class="fu">aes</span>(<span class="at">y =</span> bill_depth_mm, <span class="at">x =</span> bill_length_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb83-5"><a href="statistical-inference.html#cb83-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb83-6"><a href="statistical-inference.html#cb83-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()  <span class="sc">+</span></span>
-<span id="cb83-7"><a href="statistical-inference.html#cb83-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="statistical-inference.html#cb84-1" tabindex="-1"></a><span class="do">## calculate predicted values</span></span>
+<span id="cb84-2"><a href="statistical-inference.html#cb84-2" tabindex="-1"></a>penguins_nafree<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(slm_sp)</span>
+<span id="cb84-3"><a href="statistical-inference.html#cb84-3" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb84-4"><a href="statistical-inference.html#cb84-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins_nafree, <span class="fu">aes</span>(<span class="at">y =</span> bill_depth_mm, <span class="at">x =</span> bill_length_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb84-5"><a href="statistical-inference.html#cb84-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb84-6"><a href="statistical-inference.html#cb84-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()  <span class="sc">+</span></span>
+<span id="cb84-7"><a href="statistical-inference.html#cb84-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 </div>
-<div id="a-continuous-and-a-categorical-factor-explanatory-variable-interaction-model" class="section level3 hasAnchor" number="7.1.6">
-<h3><span class="header-section-number">7.1.6</span> A continuous and a categorical factor explanatory variable (Interaction model)<a href="statistical-inference.html#a-continuous-and-a-categorical-factor-explanatory-variable-interaction-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="a-continuous-and-a-categorical-factor-explanatory-variable-interaction-model" class="section level3 hasAnchor" number="7.1.7">
+<h3><span class="header-section-number">7.1.7</span> A continuous and a categorical factor explanatory variable (Interaction model)<a href="statistical-inference.html#a-continuous-and-a-categorical-factor-explanatory-variable-interaction-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Recall the <em>additive</em> model formula from above</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1z_i + \beta_2x_i + \epsilon_i\]</span>
 An additive model will always produce regression lines that are <strong>parallel</strong> with each other (i.e., there is no relationship between the explanatory variables, they act independently of each other)…</p>
@@ -467,30 +499,30 @@ You’ll notice a new term <span class="math inline">\(\beta_4z_ix_{i,k}\)</span
 <li><p><code>*</code> means to include all main effects and interactions, so <code>a * b</code> is the same as <code>a + b + a:b</code>, where <code>a</code> and <code>b</code> represent the main effects and <code>a:b</code> represents the interaction term in the model.</p></li>
 </ul>
 <p>To specify a model with additive and interaction effects use either</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="statistical-inference.html#cb84-1" tabindex="-1"></a>slm_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> bill_length_mm <span class="sc">*</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="statistical-inference.html#cb85-1" tabindex="-1"></a>slm_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> bill_length_mm <span class="sc">*</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
 <p>Or the other way we could write this and get the SAME MODEL is</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="statistical-inference.html#cb85-1" tabindex="-1"></a>slm_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> bill_length_mm <span class="sc">+</span> species <span class="sc">+</span> </span>
-<span id="cb85-2"><a href="statistical-inference.html#cb85-2" tabindex="-1"></a>                bill_length_mm <span class="sc">:</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="statistical-inference.html#cb86-1" tabindex="-1"></a>slm_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_depth_mm <span class="sc">~</span> bill_length_mm <span class="sc">+</span> species <span class="sc">+</span> </span>
+<span id="cb86-2"><a href="statistical-inference.html#cb86-2" tabindex="-1"></a>                bill_length_mm <span class="sc">:</span> species, <span class="at">data =</span> penguins_nafree)</span></code></pre></div>
 <p><strong>Fitted model</strong></p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="statistical-inference.html#cb86-1" tabindex="-1"></a><span class="fu">summary</span>(slm_int)<span class="sc">$</span>coef</span>
-<span id="cb86-2"><a href="statistical-inference.html#cb86-2" tabindex="-1"></a><span class="do">##                                    Estimate Std. Error    t value     Pr(&gt;|t|)</span></span>
-<span id="cb86-3"><a href="statistical-inference.html#cb86-3" tabindex="-1"></a><span class="do">## (Intercept)                     11.48770713 1.15987305  9.9042797 2.135979e-20</span></span>
-<span id="cb86-4"><a href="statistical-inference.html#cb86-4" tabindex="-1"></a><span class="do">## bill_length_mm                   0.17668344 0.02980564  5.9278518 7.793199e-09</span></span>
-<span id="cb86-5"><a href="statistical-inference.html#cb86-5" tabindex="-1"></a><span class="do">## speciesChinstrap                -3.91856701 2.06730876 -1.8954919 5.890889e-02</span></span>
-<span id="cb86-6"><a href="statistical-inference.html#cb86-6" tabindex="-1"></a><span class="do">## speciesGentoo                   -6.36675118 1.77989710 -3.5770333 4.000274e-04</span></span>
-<span id="cb86-7"><a href="statistical-inference.html#cb86-7" tabindex="-1"></a><span class="do">## bill_length_mm:speciesChinstrap  0.04552828 0.04594283  0.9909769 3.224296e-01</span></span>
-<span id="cb86-8"><a href="statistical-inference.html#cb86-8" tabindex="-1"></a><span class="do">## bill_length_mm:speciesGentoo     0.03092816 0.04111608  0.7522157 4.524625e-01</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="statistical-inference.html#cb87-1" tabindex="-1"></a><span class="fu">summary</span>(slm_int)<span class="sc">$</span>coef</span>
+<span id="cb87-2"><a href="statistical-inference.html#cb87-2" tabindex="-1"></a><span class="do">##                                    Estimate Std. Error    t value     Pr(&gt;|t|)</span></span>
+<span id="cb87-3"><a href="statistical-inference.html#cb87-3" tabindex="-1"></a><span class="do">## (Intercept)                     11.48770713 1.15987305  9.9042797 2.135979e-20</span></span>
+<span id="cb87-4"><a href="statistical-inference.html#cb87-4" tabindex="-1"></a><span class="do">## bill_length_mm                   0.17668344 0.02980564  5.9278518 7.793199e-09</span></span>
+<span id="cb87-5"><a href="statistical-inference.html#cb87-5" tabindex="-1"></a><span class="do">## speciesChinstrap                -3.91856701 2.06730876 -1.8954919 5.890889e-02</span></span>
+<span id="cb87-6"><a href="statistical-inference.html#cb87-6" tabindex="-1"></a><span class="do">## speciesGentoo                   -6.36675118 1.77989710 -3.5770333 4.000274e-04</span></span>
+<span id="cb87-7"><a href="statistical-inference.html#cb87-7" tabindex="-1"></a><span class="do">## bill_length_mm:speciesChinstrap  0.04552828 0.04594283  0.9909769 3.224296e-01</span></span>
+<span id="cb87-8"><a href="statistical-inference.html#cb87-8" tabindex="-1"></a><span class="do">## bill_length_mm:speciesGentoo     0.03092816 0.04111608  0.7522157 4.524625e-01</span></span></code></pre></div>
 <p>As before, the <code>Estimate</code> of the <code>(Intercept)</code> gives us the estimated average bill depth (mm) of the <strong>Adelie</strong> penguins <strong>given the other variables in the model</strong>.</p>
 <p>The <code>bill_length_mm</code> : <code>Estimate</code> (<span class="math inline">\(\beta_1\)</span> in the model) is the slope associated with bill length (mm). So, here for every 1 mm increase in bill length we estimated a 0.177 mm increase in bill depth.</p>
 <p>The main effects of species (i.e., <code>Estimate</code> for <code>speciesChinstrap</code> and <code>speciesGentoo</code>) again give the shift (up or down) of the lines from the <strong>Adelie</strong> level; however these lines are no longer parallel! The interaction terms (i.e., <code>bill_length_mm:speciesChinstrap</code> and <code>bill_length_mm:speciesGentoo</code>) specify the species specific slopes <strong>given the other variables in the model</strong>.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="statistical-inference.html#cb87-1" tabindex="-1"></a><span class="do">## calculate predicted values</span></span>
-<span id="cb87-2"><a href="statistical-inference.html#cb87-2" tabindex="-1"></a>penguins_nafree<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(slm_int)</span>
-<span id="cb87-3"><a href="statistical-inference.html#cb87-3" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb87-4"><a href="statistical-inference.html#cb87-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins_nafree, <span class="fu">aes</span>(<span class="at">y =</span> bill_depth_mm, <span class="at">x =</span> bill_length_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb87-5"><a href="statistical-inference.html#cb87-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb87-6"><a href="statistical-inference.html#cb87-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()  <span class="sc">+</span></span>
-<span id="cb87-7"><a href="statistical-inference.html#cb87-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="statistical-inference.html#cb88-1" tabindex="-1"></a><span class="do">## calculate predicted values</span></span>
+<span id="cb88-2"><a href="statistical-inference.html#cb88-2" tabindex="-1"></a>penguins_nafree<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(slm_int)</span>
+<span id="cb88-3"><a href="statistical-inference.html#cb88-3" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb88-4"><a href="statistical-inference.html#cb88-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins_nafree, <span class="fu">aes</span>(<span class="at">y =</span> bill_depth_mm, <span class="at">x =</span> bill_length_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb88-5"><a href="statistical-inference.html#cb88-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Bill depth (mm)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb88-6"><a href="statistical-inference.html#cb88-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Bill length (mm)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()  <span class="sc">+</span></span>
+<span id="cb88-7"><a href="statistical-inference.html#cb88-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
 <p>Look at the plot above. Now we’ve specified this <em>all singing and dancing</em> interaction model we might ask <strong>are the non-parallel lines non-parallel enough to say this model is better than the parallel line model</strong>?</p>
 </div>
 </div>
@@ -505,8 +537,8 @@ You’ll notice a new term <span class="math inline">\(\beta_4z_ix_{i,k}\)</span
 <li>The residuals are <strong>normally distributed</strong></li>
 </ul>
 <p>Let’s look at the fit of the <code>slm</code> model (single continuous explanatory variable)</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="statistical-inference.html#cb88-1" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(slm) <span class="co"># Plot the four main diagnostic plots</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="statistical-inference.html#cb89-1" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(slm) <span class="co"># Plot the four main diagnostic plots</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
 <p>Do you think the model assumptions have been met? Think of what this model is, do you think it’s the best we can do?</p>
 <div id="model-comparison-and-selection" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Model comparison and selection<a href="statistical-inference.html#model-comparison-and-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -520,45 +552,45 @@ You’ll notice a new term <span class="math inline">\(\beta_4z_ix_{i,k}\)</span
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1z_i + \beta_2x_i + \epsilon_i\]</span>
 This ANOVA will test whether or not including <span class="math inline">\(\beta_2x_i\)</span> leads to a significant improvement in the model.</p>
 <p>As an example consider testing the single explanatory variable model <code>slm</code> against the same model with <code>species</code> included as a variable <code>slm_sp</code>. To carry out the appropriate hypothesis test in <code>R</code> we can run</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="statistical-inference.html#cb89-1" tabindex="-1"></a><span class="fu">anova</span>(slm,slm_sp)</span>
-<span id="cb89-2"><a href="statistical-inference.html#cb89-2" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
-<span id="cb89-3"><a href="statistical-inference.html#cb89-3" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb89-4"><a href="statistical-inference.html#cb89-4" tabindex="-1"></a><span class="do">## Model 1: bill_depth_mm ~ bill_length_mm</span></span>
-<span id="cb89-5"><a href="statistical-inference.html#cb89-5" tabindex="-1"></a><span class="do">## Model 2: bill_depth_mm ~ bill_length_mm + species</span></span>
-<span id="cb89-6"><a href="statistical-inference.html#cb89-6" tabindex="-1"></a><span class="do">##   Res.Df     RSS Df Sum of Sq      F    Pr(&gt;F)    </span></span>
-<span id="cb89-7"><a href="statistical-inference.html#cb89-7" tabindex="-1"></a><span class="do">## 1    331 1220.16                                  </span></span>
-<span id="cb89-8"><a href="statistical-inference.html#cb89-8" tabindex="-1"></a><span class="do">## 2    329  299.62  2    920.55 505.41 &lt; 2.2e-16 ***</span></span>
-<span id="cb89-9"><a href="statistical-inference.html#cb89-9" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb89-10"><a href="statistical-inference.html#cb89-10" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="statistical-inference.html#cb90-1" tabindex="-1"></a><span class="fu">anova</span>(slm,slm_sp)</span>
+<span id="cb90-2"><a href="statistical-inference.html#cb90-2" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
+<span id="cb90-3"><a href="statistical-inference.html#cb90-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb90-4"><a href="statistical-inference.html#cb90-4" tabindex="-1"></a><span class="do">## Model 1: bill_depth_mm ~ bill_length_mm</span></span>
+<span id="cb90-5"><a href="statistical-inference.html#cb90-5" tabindex="-1"></a><span class="do">## Model 2: bill_depth_mm ~ bill_length_mm + species</span></span>
+<span id="cb90-6"><a href="statistical-inference.html#cb90-6" tabindex="-1"></a><span class="do">##   Res.Df     RSS Df Sum of Sq      F    Pr(&gt;F)    </span></span>
+<span id="cb90-7"><a href="statistical-inference.html#cb90-7" tabindex="-1"></a><span class="do">## 1    331 1220.16                                  </span></span>
+<span id="cb90-8"><a href="statistical-inference.html#cb90-8" tabindex="-1"></a><span class="do">## 2    329  299.62  2    920.55 505.41 &lt; 2.2e-16 ***</span></span>
+<span id="cb90-9"><a href="statistical-inference.html#cb90-9" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb90-10"><a href="statistical-inference.html#cb90-10" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 <p>As you’ll see the <code>anova()</code> function takes two model objects (<code>slm</code> and <code>slm_sp</code>) each as arguments. It returns an ANOVA testing whether the simpler model (<code>slm</code>) is just as good at capturing the variation in the data as the more complex model (<code>slm_sp</code>). The returned p-value should be interpreted as in any other hypothesis test. i.e., the probability of observing a statistic as least as extreme under our null hypothesis (here, that either model is as good as each other at capturing the variation in the data, or model 1 = model 2, or model 1 - model 2 = 0).</p>
 <p>What would we conclude here from the output above comparing <code>slm</code> and <code>slm_sp</code>? We can see the results show a <code>Df</code> of <code>2</code> (indicating that the more complex model has two additional parameters) and a very small p-value (&lt;2e-16). I’d say we have very strong evidence against the models being equally good, and adding <code>species</code> to the model lead to a significantly improved fit over <code>slm</code> without <code>species</code>! Looking at the relevant plots, does this make sense?</p>
 <p>Now what about <code>slm_int</code> vs <code>slm_sp</code>?
 <strong>Are the non-parallel lines non-parallel enough to say the more complicated interaction model is better than the simpler parallel line additive model?</strong></p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="statistical-inference.html#cb90-1" tabindex="-1"></a><span class="fu">anova</span>(slm_sp,slm_int)</span>
-<span id="cb90-2"><a href="statistical-inference.html#cb90-2" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
-<span id="cb90-3"><a href="statistical-inference.html#cb90-3" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb90-4"><a href="statistical-inference.html#cb90-4" tabindex="-1"></a><span class="do">## Model 1: bill_depth_mm ~ bill_length_mm + species</span></span>
-<span id="cb90-5"><a href="statistical-inference.html#cb90-5" tabindex="-1"></a><span class="do">## Model 2: bill_depth_mm ~ bill_length_mm + species + bill_length_mm:species</span></span>
-<span id="cb90-6"><a href="statistical-inference.html#cb90-6" tabindex="-1"></a><span class="do">##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)</span></span>
-<span id="cb90-7"><a href="statistical-inference.html#cb90-7" tabindex="-1"></a><span class="do">## 1    329 299.62                           </span></span>
-<span id="cb90-8"><a href="statistical-inference.html#cb90-8" tabindex="-1"></a><span class="do">## 2    327 298.62  2   0.99284 0.5436 0.5812</span></span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="statistical-inference.html#cb91-1" tabindex="-1"></a><span class="fu">anova</span>(slm_sp,slm_int)</span>
+<span id="cb91-2"><a href="statistical-inference.html#cb91-2" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
+<span id="cb91-3"><a href="statistical-inference.html#cb91-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb91-4"><a href="statistical-inference.html#cb91-4" tabindex="-1"></a><span class="do">## Model 1: bill_depth_mm ~ bill_length_mm + species</span></span>
+<span id="cb91-5"><a href="statistical-inference.html#cb91-5" tabindex="-1"></a><span class="do">## Model 2: bill_depth_mm ~ bill_length_mm + species + bill_length_mm:species</span></span>
+<span id="cb91-6"><a href="statistical-inference.html#cb91-6" tabindex="-1"></a><span class="do">##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)</span></span>
+<span id="cb91-7"><a href="statistical-inference.html#cb91-7" tabindex="-1"></a><span class="do">## 1    329 299.62                           </span></span>
+<span id="cb91-8"><a href="statistical-inference.html#cb91-8" tabindex="-1"></a><span class="do">## 2    327 298.62  2   0.99284 0.5436 0.5812</span></span></code></pre></div>
 <p>So it seems both models are just as good at capturing the variation in our data: we’re happy with the simpler model with parallel lines!</p>
 </div>
 <div id="model-comparison-using-aic" class="section level4 hasAnchor" number="7.2.1.2">
 <h4><span class="header-section-number">7.2.1.2</span> Model comparison using <code>AIC()</code><a href="statistical-inference.html#model-comparison-using-aic" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Another way we might compare models is by using the Akaike information criterion (AIC) (you’ll see more of this later in the course). AIC is an estimator of out-of-sample prediction error and can be used as a metric to choose between competing models. Lower AIC scores are better, and AIC penalizes models that use more parameters. So if two models explain the same amount of variation, the one with fewer parameters (<code>df</code>) will have a lower AIC value (i.e., smallest out-of-sample prediction error) and will be the better-fit model. Typically, a difference of 4 or more is considered to indicate an improvement; this should not be taken as writ however, using multiple comparison techniques is advised.</p>
 <p><code>R</code> has an <code>AIC()</code> function that can be used directly on your <code>lm()</code> model objects. The <code>AIC()</code> function can take multiple arguments compared to <code>anova()</code> that can only compare two models at a time. For example,</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="statistical-inference.html#cb91-1" tabindex="-1"></a><span class="fu">AIC</span>(slm_null, slm, slm_sp, slm_int)</span>
-<span id="cb91-2"><a href="statistical-inference.html#cb91-2" tabindex="-1"></a><span class="do">##          df       AIC</span></span>
-<span id="cb91-3"><a href="statistical-inference.html#cb91-3" tabindex="-1"></a><span class="do">## slm_null  2 1399.3234</span></span>
-<span id="cb91-4"><a href="statistical-inference.html#cb91-4" tabindex="-1"></a><span class="do">## slm       3 1383.4462</span></span>
-<span id="cb91-5"><a href="statistical-inference.html#cb91-5" tabindex="-1"></a><span class="do">## slm_sp    5  919.8347</span></span>
-<span id="cb91-6"><a href="statistical-inference.html#cb91-6" tabindex="-1"></a><span class="do">## slm_int   7  922.7294</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="statistical-inference.html#cb92-1" tabindex="-1"></a><span class="fu">AIC</span>(slm_null, slm, slm_sp, slm_int)</span>
+<span id="cb92-2"><a href="statistical-inference.html#cb92-2" tabindex="-1"></a><span class="do">##          df       AIC</span></span>
+<span id="cb92-3"><a href="statistical-inference.html#cb92-3" tabindex="-1"></a><span class="do">## slm_null  2 1399.3234</span></span>
+<span id="cb92-4"><a href="statistical-inference.html#cb92-4" tabindex="-1"></a><span class="do">## slm       3 1383.4462</span></span>
+<span id="cb92-5"><a href="statistical-inference.html#cb92-5" tabindex="-1"></a><span class="do">## slm_sp    5  919.8347</span></span>
+<span id="cb92-6"><a href="statistical-inference.html#cb92-6" tabindex="-1"></a><span class="do">## slm_int   7  922.7294</span></span></code></pre></div>
 <p>This supports what the <code>anova()</code> output suggested; <code>slm_sp</code> is the preferred model. As always it’s important to do a sanity check! Does this make sense? Have a look at the outputs from these models and see what you think.</p>
 <p>Just because we’ve chosen a model (<em>the best of a bad bunch</em> perhaps?) this doesn’t let us off the hook. We should check our assumptions…</p>
 <p>…well, we should have checked them before we started to interpret the data!</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="statistical-inference.html#cb92-1" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(slm_sp) <span class="co"># Plot the four main diagnostic plots</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="statistical-inference.html#cb93-1" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>(slm_sp) <span class="co"># Plot the four main diagnostic plots</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 <p><strong>Residuals vs Fitted</strong> plot: equal spread? Doesn’t look too trumpety/slice of pizza shaped! Don’t worry that there aren’t many points between 16-17 on the x-axis.</p>
 <p><strong>Normal quantile-quantile (QQ)</strong> plot: skewed? Maybe slightly right skewed (deviation upwards from the right tail) but probably nothing to worry about.</p>
 <p><strong>Scale-Location</strong> plot: equal spread and relatively straight line? I’d say so.</p>
@@ -578,15 +610,15 @@ However, there’s a couple more things we might like to do, such as:</p>
 <h3><span class="header-section-number">7.3.1</span> Confidence intervals<a href="statistical-inference.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Confidence intervals provide a range of values around a population estimate that are believed to contain, with a certain probability (e.g., 95%), the true value of that estimate. They provide a way to quantify the uncertainty about the value of that population estimate we have calculated from the sample data.</p>
 <p>For the <em>chosen</em> <code>slm_sp</code> model we can get the confidence intervals for the regression coefficient estimates in <code>R</code> by using the <code>confint()</code> function.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="statistical-inference.html#cb93-1" tabindex="-1"></a>cis <span class="ot">&lt;-</span> <span class="fu">confint</span>(slm_sp)</span>
-<span id="cb93-2"><a href="statistical-inference.html#cb93-2" tabindex="-1"></a>cis</span>
-<span id="cb93-3"><a href="statistical-inference.html#cb93-3" tabindex="-1"></a><span class="do">##                       2.5 %     97.5 %</span></span>
-<span id="cb93-4"><a href="statistical-inference.html#cb93-4" tabindex="-1"></a><span class="do">## (Intercept)       9.2060707 11.9244526</span></span>
-<span id="cb93-5"><a href="statistical-inference.html#cb93-5" tabindex="-1"></a><span class="do">## bill_length_mm    0.1656635  0.2352227</span></span>
-<span id="cb93-6"><a href="statistical-inference.html#cb93-6" tabindex="-1"></a><span class="do">## speciesChinstrap -2.3771120 -1.4890438</span></span>
-<span id="cb93-7"><a href="statistical-inference.html#cb93-7" tabindex="-1"></a><span class="do">## speciesGentoo    -5.4857298 -4.7209009</span></span>
-<span id="cb93-8"><a href="statistical-inference.html#cb93-8" tabindex="-1"></a><span class="co"># By default the 95% confidence intervals are returned </span></span>
-<span id="cb93-9"><a href="statistical-inference.html#cb93-9" tabindex="-1"></a><span class="co"># you can change this using the `level = ` argument</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="statistical-inference.html#cb94-1" tabindex="-1"></a>cis <span class="ot">&lt;-</span> <span class="fu">confint</span>(slm_sp)</span>
+<span id="cb94-2"><a href="statistical-inference.html#cb94-2" tabindex="-1"></a>cis</span>
+<span id="cb94-3"><a href="statistical-inference.html#cb94-3" tabindex="-1"></a><span class="do">##                       2.5 %     97.5 %</span></span>
+<span id="cb94-4"><a href="statistical-inference.html#cb94-4" tabindex="-1"></a><span class="do">## (Intercept)       9.2060707 11.9244526</span></span>
+<span id="cb94-5"><a href="statistical-inference.html#cb94-5" tabindex="-1"></a><span class="do">## bill_length_mm    0.1656635  0.2352227</span></span>
+<span id="cb94-6"><a href="statistical-inference.html#cb94-6" tabindex="-1"></a><span class="do">## speciesChinstrap -2.3771120 -1.4890438</span></span>
+<span id="cb94-7"><a href="statistical-inference.html#cb94-7" tabindex="-1"></a><span class="do">## speciesGentoo    -5.4857298 -4.7209009</span></span>
+<span id="cb94-8"><a href="statistical-inference.html#cb94-8" tabindex="-1"></a><span class="co"># By default the 95% confidence intervals are returned </span></span>
+<span id="cb94-9"><a href="statistical-inference.html#cb94-9" tabindex="-1"></a><span class="co"># you can change this using the `level = ` argument</span></span></code></pre></div>
 <ul>
 <li><p>This tells us that for every 1 mm increase in bill length we are 95% confident the expected bill depth will increase between 0.166 and 0.235 mm (3 sf).</p></li>
 <li><p>We are 95% confident that the average bill depth of a Chinstrap penguin is between
@@ -606,12 +638,12 @@ However, there’s a couple more things we might like to do, such as:</p>
 \end{aligned}
 \]</span></p>
 <p>And recall the output table from this model, with estimates.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="statistical-inference.html#cb94-1" tabindex="-1"></a><span class="fu">summary</span>(slm_sp)<span class="sc">$</span>coef</span>
-<span id="cb94-2"><a href="statistical-inference.html#cb94-2" tabindex="-1"></a><span class="do">##                    Estimate Std. Error    t value     Pr(&gt;|t|)</span></span>
-<span id="cb94-3"><a href="statistical-inference.html#cb94-3" tabindex="-1"></a><span class="do">## (Intercept)      10.5652616 0.69092642  15.291442 2.977289e-40</span></span>
-<span id="cb94-4"><a href="statistical-inference.html#cb94-4" tabindex="-1"></a><span class="do">## bill_length_mm    0.2004431 0.01767974  11.337449 2.258955e-25</span></span>
-<span id="cb94-5"><a href="statistical-inference.html#cb94-5" tabindex="-1"></a><span class="do">## speciesChinstrap -1.9330779 0.22571878  -8.564099 4.259893e-16</span></span>
-<span id="cb94-6"><a href="statistical-inference.html#cb94-6" tabindex="-1"></a><span class="do">## speciesGentoo    -5.1033153 0.19439523 -26.252267 1.043789e-82</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="statistical-inference.html#cb95-1" tabindex="-1"></a><span class="fu">summary</span>(slm_sp)<span class="sc">$</span>coef</span>
+<span id="cb95-2"><a href="statistical-inference.html#cb95-2" tabindex="-1"></a><span class="do">##                    Estimate Std. Error    t value     Pr(&gt;|t|)</span></span>
+<span id="cb95-3"><a href="statistical-inference.html#cb95-3" tabindex="-1"></a><span class="do">## (Intercept)      10.5652616 0.69092642  15.291442 2.977289e-40</span></span>
+<span id="cb95-4"><a href="statistical-inference.html#cb95-4" tabindex="-1"></a><span class="do">## bill_length_mm    0.2004431 0.01767974  11.337449 2.258955e-25</span></span>
+<span id="cb95-5"><a href="statistical-inference.html#cb95-5" tabindex="-1"></a><span class="do">## speciesChinstrap -1.9330779 0.22571878  -8.564099 4.259893e-16</span></span>
+<span id="cb95-6"><a href="statistical-inference.html#cb95-6" tabindex="-1"></a><span class="do">## speciesGentoo    -5.1033153 0.19439523 -26.252267 1.043789e-82</span></span></code></pre></div>
 <p>We can then substitute in the values (using our dummy variable coding for <code>species</code>):</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -622,15 +654,15 @@ However, there’s a couple more things we might like to do, such as:</p>
 \end{aligned}
 \]</span></p>
 <p>Rather than <em>by hand</em> we can do this easily in <code>R</code></p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="statistical-inference.html#cb95-1" tabindex="-1"></a><span class="do">## create new data frame with data we want to predict</span></span>
-<span id="cb95-2"><a href="statistical-inference.html#cb95-2" tabindex="-1"></a><span class="do">## the names have to match those in our original data frame</span></span>
-<span id="cb95-3"><a href="statistical-inference.html#cb95-3" tabindex="-1"></a>newdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">species =</span> <span class="st">&quot;Gentoo&quot;</span>, <span class="at">bill_length_mm =</span> <span class="dv">50</span>)</span>
-<span id="cb95-4"><a href="statistical-inference.html#cb95-4" tabindex="-1"></a><span class="do">## use predict() function</span></span>
-<span id="cb95-5"><a href="statistical-inference.html#cb95-5" tabindex="-1"></a><span class="fu">predict</span>(slm_sp, <span class="at">newdata =</span> newdf) <span class="do">## more accurate than our by hand version!</span></span>
-<span id="cb95-6"><a href="statistical-inference.html#cb95-6" tabindex="-1"></a><span class="do">##       1 </span></span>
-<span id="cb95-7"><a href="statistical-inference.html#cb95-7" tabindex="-1"></a><span class="do">## 15.4841</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="statistical-inference.html#cb96-1" tabindex="-1"></a><span class="do">## create new data frame with data we want to predict</span></span>
+<span id="cb96-2"><a href="statistical-inference.html#cb96-2" tabindex="-1"></a><span class="do">## the names have to match those in our original data frame</span></span>
+<span id="cb96-3"><a href="statistical-inference.html#cb96-3" tabindex="-1"></a>newdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">species =</span> <span class="st">&quot;Gentoo&quot;</span>, <span class="at">bill_length_mm =</span> <span class="dv">50</span>)</span>
+<span id="cb96-4"><a href="statistical-inference.html#cb96-4" tabindex="-1"></a><span class="do">## use predict() function</span></span>
+<span id="cb96-5"><a href="statistical-inference.html#cb96-5" tabindex="-1"></a><span class="fu">predict</span>(slm_sp, <span class="at">newdata =</span> newdf) <span class="do">## more accurate than our by hand version!</span></span>
+<span id="cb96-6"><a href="statistical-inference.html#cb96-6" tabindex="-1"></a><span class="do">##       1 </span></span>
+<span id="cb96-7"><a href="statistical-inference.html#cb96-7" tabindex="-1"></a><span class="do">## 15.4841</span></span></code></pre></div>
 <p>What does this look like on a plot?</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
 </div>
 </div>
 <div id="tldr-lm" class="section level2 hasAnchor" number="7.4">
