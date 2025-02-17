@@ -347,8 +347,8 @@ where <em>j</em> and <em>k</em> represent the two samples whose distance is bein
 <ul>
 <li>…is a really useful distance measure for “well-behaved” data (without many zeroes or the zeroes are meaningful) and approximately normally distributed data!!</li>
 <li>…does not have an upper value boundary (can be any number larger than zero).</li>
-<li>…puts emphasis on variables with large ranges (high abundance values) e.g., samples 2 &amp; 4.</li>
-<li>…between two samples not sharing any variable/species may be smaller than between two samples sharing all variables/species, but with the same variables/species having large abundance differences between samples e.g., samples 3 &amp; 4 vs samples 2 &amp; 4, respectively. In other words, the distance between 0 and 1 is treated the same as the distance between 1 and 2, or 1001 and 1002.</li>
+<li>…separates samples more when they contain variables with large ranges (large differences in abundance values) e.g., samples 2 &amp; 4.</li>
+<li>…between two samples not sharing any variable/species may be smaller than between two samples sharing all variables/species, but with the same variables/species having large abundance differences between samples e.g., samples 3 &amp; 4 vs samples 2 &amp; 4, respectively. In other words, the distance between 0 and 1 is treated the same as the distance between 1 and 2, or 1001 and 1002. In this example, there is a difference of 1 between each pair of numbers (0 &amp; 1, 1 &amp; 2, 1001 &amp; 1002) and that is how similarity is measured; it does not matter if these are low or high values.</li>
 <li>…will put samples with low counts closer together, even when they have no variables/species in common i.e., samples 3 &amp; 4.</li>
 <li>…is a symmetrical index, i.e., it treats double zeros in the same way as double presences. This means it is not appropriate for data sets where joint absences are considered meaningless, i.e., if two samples do not have a particular variable/species present, does this mean they are more similar to each other?</li>
 </ul>
@@ -389,7 +389,7 @@ d_{Bray-Curtis}(1,2)&amp; = \frac{|(y_{(V1,S1)} - y_{(V1,S2}) + (y_{(V2,S1)} - y
 <p><strong>Bray-Curtis dissimilarity distance…</strong></p>
 <ul>
 <li>…reflects changes in composition and relative abundances pretty well.</li>
-<li>…adds more weighting to relatively rare individuals, as differences between smaller values matter.</li>
+<li>…adds more weighting to relatively rare individuals, as differences between smaller values matter. This is because it is calculated as a fraction. Let’s consider two hypothetical samples to expand on this… If we had a sample with two variables/species that had abundances of 1001 and 1002, the difference between the two values is 1, but in proportion to the total abundance (2003) it is very small. On the other hand, if we had another sample with abundances of 1 and 2, the difference between the two values is still 1, but the total abundance is 3 so it is a comparably large proportion. Because the latter is a larger fraction (closer to 1) this one is considered more different/adds more weighting.</li>
 <li>…always treats joint absences as unimportant – they do not make the samples more similar to each other.</li>
 </ul>
 </div>
