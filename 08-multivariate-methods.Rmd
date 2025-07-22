@@ -301,7 +301,7 @@ nmds_penguins <- penguins_nafree %>%                  # use the NA free data set
 Now our data is in a good format, we can run the nMDS, using the `metaMDS()` function from the `vegan` package. Remember, the `vegan` package is designed for community structure data, so we need to change some of the defaults for this analysis. 
 
 +	The default distance measure (`bray`) is only appropriate for certain data ([see notes on distance measures above on when you may wish to use it](https://biosci220.github.io/BIOSCI220/multivariate-data-analysis.html#distance-matrices-and-measures)). In many cases with non-community structure data, the distance parameter should be set to `euclidean`. Euclidean distance is the distance measure we want to use with this penguin data.
-+	The default data transformations that are appropriate for community structure data need to be turned off by setting `autotransform=FALSE` and `noshare=FALSE`. 
++	The default data transformations that are appropriate for community structure data need to be turned off by setting `autotransform=FALSE` and `noshare=FALSE` (if you'd like to learn more about what these functions do, you can use R help by typing metaMDS in the search bar, or search on the internet). 
 
 We can set the number of dimensions/axes we want the nMDS to output. Generally, we do not want more than 3 dimensions/axes as larger numbers means the interpretation of the data remains challenging for our poor brains (anything above 3-D is very difficult to conceptualise and visualise).  The number of axes can be changed using the *k* argument (e.g. `k = 2`), where *k* is the number of dimensions. 
 
@@ -483,7 +483,7 @@ When writing up results from a nMDS, always include at least:
 
 +	A description of any data culling (e.g., we removed rows with NA values in our penguin data set) or data transformations that were used. State these in the order that they were performed. (e.g., after removing NA values from the penguin data set, we standardised/scaled then added a constant to the variables to make them positive)
 +	The distance measure, number of random restarts, and the specified number of dimensions/axes.
-+	The value of stress.
++	The number of times the best solution was repeated and the stress value of this best solution.
 + An interpretation of the important/interesting trends and patterns in the data, made evident in the nMDS plot.
 
 And also include what is relevant from below:
