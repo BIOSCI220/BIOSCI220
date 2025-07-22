@@ -213,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.10" data-path="multivariate-data-analysis.html"><a href="multivariate-data-analysis.html#other-resources-optional-but-recommended-2"><i class="fa fa-check"></i><b>8.10</b> Other resources: optional but recommended</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://canvas.auckland.ac.nz/courses/120365">CANVAS</a></li>
+<li><a href="https://canvas.auckland.ac.nz/courses/120675">CANVAS</a></li>
 
 </ul>
 
@@ -470,7 +470,7 @@ As the palmerpenguin data is not community structure data, we will be making som
 <p>Now our data is in a good format, we can run the nMDS, using the <code>metaMDS()</code> function from the <code>vegan</code> package. Remember, the <code>vegan</code> package is designed for community structure data, so we need to change some of the defaults for this analysis.</p>
 <ul>
 <li>The default distance measure (<code>bray</code>) is only appropriate for certain data (<a href="https://biosci220.github.io/BIOSCI220/multivariate-data-analysis.html#distance-matrices-and-measures">see notes on distance measures above on when you may wish to use it</a>). In many cases with non-community structure data, the distance parameter should be set to <code>euclidean</code>. Euclidean distance is the distance measure we want to use with this penguin data.</li>
-<li>The default data transformations that are appropriate for community structure data need to be turned off by setting <code>autotransform=FALSE</code> and <code>noshare=FALSE</code>.</li>
+<li>The default data transformations that are appropriate for community structure data need to be turned off by setting <code>autotransform=FALSE</code> and <code>noshare=FALSE</code> (if you’d like to learn more about what these functions do, you can use R help by typing metaMDS in the search bar, or search on the internet).</li>
 </ul>
 <p>We can set the number of dimensions/axes we want the nMDS to output. Generally, we do not want more than 3 dimensions/axes as larger numbers means the interpretation of the data remains challenging for our poor brains (anything above 3-D is very difficult to conceptualise and visualise). The number of axes can be changed using the <em>k</em> argument (e.g. <code>k = 2</code>), where <em>k</em> is the number of dimensions.</p>
 <p><em>Note for your future-self, should you use these notes again:</em> If you run into a problem where it can’t find a convergent solution (which basically means it can’t find the same solution at least twice), you can increase the number of random restarts to be more likely of finding the global solution for our specified <em>k</em> (e.g., increasing <code>try =</code> and <code>trymax =</code>).</p>
@@ -627,7 +627,7 @@ As the palmerpenguin data is not community structure data, we will be making som
 <ul>
 <li>A description of any data culling (e.g., we removed rows with NA values in our penguin data set) or data transformations that were used. State these in the order that they were performed. (e.g., after removing NA values from the penguin data set, we standardised/scaled then added a constant to the variables to make them positive)</li>
 <li>The distance measure, number of random restarts, and the specified number of dimensions/axes.</li>
-<li>The value of stress.</li>
+<li>The number of times the best solution was repeated and the stress value of this best solution.</li>
 <li>An interpretation of the important/interesting trends and patterns in the data, made evident in the nMDS plot.</li>
 </ul>
 <p>And also include what is relevant from below:</p>
