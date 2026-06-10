@@ -30,7 +30,7 @@ options(warn = 0)
 
 **Module 01: Data exploration, data sovereignty and statistical inference**
 
-Lecturers: Charlotte Jones-Todd & Jenn Jury
+Lecturers: Beatrix Jones & Jenn Jury
 
 Guest lecturer: Nicole Edwards
 

@@ -10,7 +10,7 @@ output:
 <span><strong>**Please read this page carefully as it contains important information about the course structure, delivery, and assessment.**</span></strong>
 </div>
 
-Please note that we do not send an order to UBIQ to print this course guide for a few reasons:
+Please note that we do not print this course guide for a few reasons:
 
  1. we can make updates to the course guide during semester when hosted online like it is,
  2. printing it loses some of the functionality of the course guide with the way the code is presented once printed, and
@@ -40,13 +40,13 @@ Another option available is to use [RStudio Cloud](https://rstudio.cloud/) where
 
 ## Your teaching team {-}
 
-**Semester 2, 2025**
+**Semester 2, 2026**
 
 ```{r include=FALSE}
-lecs <- matrix(c(1, "R programming and data exploration", "1 - 3", "Dr Charlotte Jones-Todd", 
+lecs <- matrix(c(1, "R programming and data exploration", "1 - 3", "Assoc. Prof. Beatrix Jones", 
                1, "Statistical inference", "4 - 6", "Jenn Jury (course coordinator)", 
                2, "Mathematical modelling in biology", "7 - 9", "Dr Nobuto Takeuchi", 
-               3, "Model-based inference and critical thinking", "10 - 12", "Assoc. Prof. Emma Carroll"), 
+               3, "Model-based inference and critical thinking", "10 - 12", "Assoc. Prof. Dave Aguirre"), 
                ncol = 4,byrow = TRUE)
 colnames(lecs) <- c("Module Number", "Module Content", "Weeks taught","Lecturer")
 
@@ -62,14 +62,14 @@ knitr::kable(lecs, align = "cccc", "simple", row.names = FALSE)
 
 <div class="alert alert-danger" role="alert">
 
-<span><strong>Lectures are every week:</span></strong>
+<span><strong>Lectures are every week, either:</span></strong>
  <ul>
-  <li>**Mondays 11am-12pm and Wednesdays 9-10 am** in 201-393 </li>
+  <li>IN-PERSON (L01C) **Mondays 9-10am** in MLT1 (303-G23) and **Thursdays 9-10 am** in FPAA (260-115), or </li>
+  <li>ONLINE (L02C) Delivered using **lecture recordings (via Panopto Video)** from in-person lectures. Scheduled for Mondays and Thursdays 7-8pm, but **can be viewed as soon as available** </li>
 </ul>
 </div>
 
-You should attend the lectures in-person as there will be in-class activities to assist you with your learning. However, 
-lecture recordings will be available in CANVAS via the Panopto video tab after the lecture has been delivered (typically within 24 hours).
+You should stay on top of lectures as this will assist you with your learning. Please attend lectures if in L01C, but lecture recordings will also be available in CANVAS via the Panopto Video tab after the lecture has been delivered (within 24 hours, usually earlier than this).
 
 
 ## Assessment {-}
@@ -82,13 +82,13 @@ require(knitr)
 assess <- data.frame(Week =  c(1:6, "Mid-semester break", 7:12 , "Exam Period"), 
                      Laboratories = c("R help sessions","lab", "lab", "", "lab","lab", "", rep(c("","lab", "lab"), 2), ""), 
                      Quizzes = c("",rep("quiz", 5), "", rep("quiz", 6), ""), 
-                     Inspera = c(rep("", 7),"Test", rep("", 5), "Exam"))
+                     `Inspera Assessment` = c(rep("", 7),"Test", rep("", 5), "Exam"))
 
 assess %>%
   dplyr::mutate(Laboratories = kableExtra::cell_spec(Laboratories, background = ifelse(Laboratories == "lab", "#ffb38a", 
   																																										 ifelse(Laboratories == "R help session", "#ffccd4", "")))) %>%
   dplyr::mutate(Quizzes = kableExtra::cell_spec(Quizzes, background = ifelse(Quizzes == "quiz", "#ADD8E6", ""))) %>%
-  dplyr::mutate(Inspera = kableExtra::cell_spec(Inspera, background = ifelse(Inspera != "", "#CBC3E3", ""))) %>%
+  dplyr::mutate(`Inspera Assessment` = kableExtra::cell_spec(`Inspera Assessment`, background = ifelse(Inspera != "", "#CBC3E3", ""))) %>%
   kable(align = "cccc", "simple")
 ```
 
@@ -105,7 +105,7 @@ knitr::kable(assessment, align = "cccc", "simple")
 ```
 
 <div class="alert alert-danger" role="alert">
-The test will be held on **Friday 19th September 6.30-8.15pm. The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
+The test will be held on **Wednesday 16th September 6.30-8.15pm. The test will cover all of Module 1 taught material only. The exam will cover both Module 2 & 3 taught material only.**
 The delivery mode for the test and the exam is an on-campus, invigilated closed-book Inspera assessment.
 </div>
 
@@ -120,8 +120,11 @@ Labs will be held in 106-014 (Biology Building, Room 014) during your scheduled 
 <li>Monday 2-5pm, or</li>
 <li>Tuesday 2-5pm, or</li>
 <li>Wednesday 10am-1pm, or</li>
+<li>Wednesday 2-5pm, or</li>
+<li>Thursday 10am-1pm, or</li>
 <li>Thursday 2-5pm, or</li>
-<li>Friday 10am-1pm.</li
+<li>Friday 10am-1pm, or</li>
+<li>Friday 2-5pm.</li
 </ul>
 
 </div>
