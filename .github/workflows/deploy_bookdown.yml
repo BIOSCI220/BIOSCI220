@@ -13,7 +13,7 @@ jobs:
     name: Render-Book
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # More detail here, https://github.com/r-lib/actions
       # It's possible to define R and pandoc version if desired
       - uses: r-lib/actions/setup-r@v2
