@@ -82,13 +82,13 @@ require(knitr)
 assess <- data.frame(Week =  c(1:6, "Mid-semester break", 7:12 , "Exam Period"), 
                      Laboratories = c("R help sessions","lab", "lab", "", "lab","lab", "", rep(c("","lab", "lab"), 2), ""), 
                      Quizzes = c("",rep("quiz", 5), "", rep("quiz", 6), ""), 
-                     `Inspera Assessment` = c(rep("", 7),"Test", rep("", 5), "Exam"))
+                     Inspera = c(rep("", 7),"Test", rep("", 5), "Exam"))
 
 assess %>%
   dplyr::mutate(Laboratories = kableExtra::cell_spec(Laboratories, background = ifelse(Laboratories == "lab", "#ffb38a", 
   																																										 ifelse(Laboratories == "R help session", "#ffccd4", "")))) %>%
   dplyr::mutate(Quizzes = kableExtra::cell_spec(Quizzes, background = ifelse(Quizzes == "quiz", "#ADD8E6", ""))) %>%
-  dplyr::mutate(`Inspera Assessment` = kableExtra::cell_spec(`Inspera Assessment`, background = ifelse(Inspera != "", "#CBC3E3", ""))) %>%
+  dplyr::mutate(Inspera = kableExtra::cell_spec(Inspera, background = ifelse(Inspera != "", "#CBC3E3", ""))) %>%
   kable(align = "cccc", "simple")
 ```
 
