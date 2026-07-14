@@ -28,7 +28,10 @@ jobs:
       - name: Install packages
         run: Rscript -e 'install.packages(c("rmarkdown", "bookdown", "tidyverse", "palmerpenguins", "patchwork", "vegan", "gglm", "GGally", "viridis", "goeveg", "vegan3d", "tufte", "kableExtra", "edibble"))'
       - name: Render Book
-        run: Rscript -e 'options(error = traceback); bookdown::render_book("index.Rmd")'
+        run: |
+          Rscript -e 'bookdown::render_book("index.Rmd")'
+          echo "Rendered files:"
+          find . -type f | sort
       - name: Check render output
         run: |
           find . -name "*.html"

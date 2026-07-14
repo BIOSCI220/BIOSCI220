@@ -1,7 +1,12 @@
---- 
-title: "Module 1"
-author: ""
-date: ""
+---
+title: "BIOSCI 220: Quantitative Biology"
+author: "Materials for module 1"
+date: "Lecturers: Beatrix Jones and Jenn Jury"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook:
+    theme: cosmo
+    highlight: tango
 ---
 
 ```{r  include=FALSE}
