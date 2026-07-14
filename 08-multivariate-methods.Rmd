@@ -705,7 +705,7 @@ species_scores_3d <-scores(nmds_minv_results_3d, display = "species")
 
 from there it's actually pretty straight forward code to get either a static 3-D plot using `ordiplot3d`...
 
-```{r}
+```{r, 3d-plots1}
 #static 3-D variable scores plot
 out <- ordiplot3d(species_scores_3d, col = "red", ax.col= "black", pch = 18)
 text(out$xyz.convert(species_scores_3d), rownames(species_scores_3d), pos=1)
@@ -723,7 +723,7 @@ text(out3$xyz.convert(species_scores_3d), rownames(species_scores_3d), pos=1)
 
 ... or you can create a rotatable, zoomable dynamic 3-D plot using `ordirgl` which won't display in this course guide but are useful and easy to rotate and manipulate on your computer screen using the code below.
 
-```{r}
+```{r, 3d_plots2}
 #rotatable 3-D sample scores plot with sample points
 ordirgl(data_scores_3d, col = "red", type = "p", ax.col= "black", pch = 18)
 # to change points to sample labels use type = "t"
