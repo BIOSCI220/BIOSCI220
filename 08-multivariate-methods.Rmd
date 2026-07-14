@@ -608,7 +608,7 @@ plot(nmds_minv_results)
 
 ...but ggplots are much nicer and more informative!
 
-```{r}
+```{r ordersdata}
 ### creating an nMDS plot using ggplot2
 
 ## Recommendation is to run each line of code below and then view either the
@@ -636,7 +636,7 @@ species_scores$species <- rownames(species_scores)
 ```
 
 
-```{r}
+```{r nMDSorders}
 # Now we can build the plot!
 ggplot() +
   # the text labels for each species group
@@ -663,7 +663,7 @@ With community structure data, the variable labels can give a bit of information
 
 What about the Shepard diagram (our other diagnostic plot)?
 
-```{r}
+```{r shepard}
 #Shepard diagram
 stressplot(nmds_minv_results)
 ```
@@ -695,7 +695,7 @@ nmds_minv_results_3d <- metaMDS(comm = orders[ , 4:11], k = 3, try = 100)
 
 After this, we need to subset the sample and variable scores from the output, which we did for the 2-D ggplot we created too. 
 
-```{r}
+```{r 3dplots}
 # sample scores data
 data_scores_3d <-scores(nmds_minv_results_3d, display = "sites")
 
@@ -705,7 +705,7 @@ species_scores_3d <-scores(nmds_minv_results_3d, display = "species")
 
 from there it's actually pretty straight forward code to get either a static 3-D plot using `ordiplot3d`...
 
-```{r, 3d-plots1}
+```{r 3dplots1}
 #static 3-D variable scores plot
 out <- ordiplot3d(species_scores_3d, col = "red", ax.col= "black", pch = 18)
 text(out$xyz.convert(species_scores_3d), rownames(species_scores_3d), pos=1)
@@ -723,7 +723,7 @@ text(out3$xyz.convert(species_scores_3d), rownames(species_scores_3d), pos=1)
 
 ... or you can create a rotatable, zoomable dynamic 3-D plot using `ordirgl` which won't display in this course guide but are useful and easy to rotate and manipulate on your computer screen using the code below.
 
-```{r, 3d_plots2}
+```{r 3dplots2}
 #rotatable 3-D sample scores plot with sample points
 ordirgl(data_scores_3d, col = "red", type = "p", ax.col= "black", pch = 18)
 # to change points to sample labels use type = "t"
