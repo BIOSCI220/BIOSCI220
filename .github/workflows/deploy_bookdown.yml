@@ -29,6 +29,11 @@ jobs:
         run: Rscript -e 'install.packages(c("rmarkdown", "bookdown", "tidyverse", "palmerpenguins", "patchwork", "vegan", "gglm", "GGally", "viridis", "goeveg", "vegan3d", "tufte", "kableExtra", "edibble"))'
       - name: Render Book
         run: Rscript -e 'options(error = traceback); bookdown::render_book("index.Rmd")'
+      - name: Show files
+        run: |
+          pwd
+          ls -la
+          find . -maxdepth 2 -type d
       - uses: actions/upload-artifact@v4
         with:
           name: _book
