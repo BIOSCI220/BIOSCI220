@@ -1,4 +1,5 @@
 bookdown::gitbook:
+  theme: cosmo
   toc_depth: 2
   highlight: pygments
   config:
