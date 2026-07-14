@@ -725,7 +725,7 @@ text(out3$xyz.convert(species_scores_3d), rownames(species_scores_3d), pos=1)
 ![](figs/3d_nMDS_plot3.png)
 ... or you can create a rotatable, zoomable dynamic 3-D plot using `ordirgl` which won't display in this course guide but are useful and easy to rotate and manipulate on your computer screen using the code below.
 
-```{r 3dplots2}
+```{r 3dplots2, eval=FALSE}
 #rotatable 3-D sample scores plot with sample points
 ordirgl(data_scores_3d, col = "red", type = "p", ax.col= "black", pch = 18)
 # to change points to sample labels use type = "t"
