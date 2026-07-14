@@ -682,20 +682,20 @@ Although not required for this course, you may come across data sets in the near
 
 You need to use an extension of the `vegan` package - it is called `vegan3d`.
 
-```{r warning = FALSE}
+```{r vegan3d-load, eval=FALSE, warning = FALSE}
 # remember to install the package if you haven't done so before
 library(vegan3d)
 ```
 
 We then need to run the `metaMDS()` function specifying `k = 3` to get a 3-D solution. Let's use the macroinvertebrate community structure data from the example above. The stress was much lower at 0.11 for the 3-D solution anyway - check out the stress plot.
 
-```{r results="hide"}
+```{r , eval=FALSE}
 nmds_minv_results_3d <- metaMDS(comm = orders[ , 4:11], k = 3, try = 100) 
 ```
 
 After this, we need to subset the sample and variable scores from the output, which we did for the 2-D ggplot we created too. 
 
-```{r 3dplots}
+```{r 3dplots, eval=FALSE}
 # sample scores data
 data_scores_3d <-scores(nmds_minv_results_3d, display = "sites")
 
@@ -705,7 +705,7 @@ species_scores_3d <-scores(nmds_minv_results_3d, display = "species")
 
 from there it's actually pretty straight forward code to get either a static 3-D plot using `ordiplot3d`...
 
-```{r 3dplots1}
+```{r 3dplots1, eval=FALSE}
 #static 3-D variable scores plot
 out <- ordiplot3d(species_scores_3d, col = "red", ax.col= "black", pch = 18)
 text(out$xyz.convert(species_scores_3d), rownames(species_scores_3d), pos=1)
@@ -720,7 +720,9 @@ text(out2$xyz.convert(data_scores_3d), rownames(data_scores_3d), pos=1)
 out3 <- ordiplot3d(data_scores_3d, col = "red", ax.col= "black", pch = 18)
 text(out3$xyz.convert(species_scores_3d), rownames(species_scores_3d), pos=1)
 ```
-
+![](figs/3d_nMDS_plot1.png)
+![](figs/3d_nMDS_plot2.png)
+![](figs/3d_nMDS_plot3.png)
 ... or you can create a rotatable, zoomable dynamic 3-D plot using `ordirgl` which won't display in this course guide but are useful and easy to rotate and manipulate on your computer screen using the code below.
 
 ```{r 3dplots2}
