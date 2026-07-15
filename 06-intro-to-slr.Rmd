@@ -6,20 +6,23 @@
 <strong>Learning outcomes</strong>
 
 <ul>
-<li> Describe the difference between a scientific hypothesis and statistical hypotheses (H~0~ and H~1~/H~A~) </li>
-<li> Apply the four steps of hypothesis testing, write `R` code and interpret `R` outputs for
- <ul>
- <li> one-sample t-test </li>
- <li> two-sample independent t-test </li>
- <li> one-way Analysis of Variance (ANOVA) </li>
- </ul>
+  <li>Describe the difference between a scientific hypothesis and statistical hypotheses (H~0~ and H~1~/H~A~)</li>
 
-<li> Identify similarities of hypothesis tests listed above to simple linear regression </li>
-<li> List linear regression model assumptions and be able to evaluate model diagnostics to assess model suitability </li>
+  <li>
+    Apply the four steps of hypothesis testing, write `R` code and interpret `R` outputs for
+    <ul>
+      <li>one-sample t-test</li>
+      <li>two-sample independent t-test</li>
+      <li>one-way Analysis of Variance (ANOVA)</li>
+    </ul>
+  </li>
 
+  <li>Identify similarities of hypothesis tests listed above to simple linear regression</li>
+
+  <li>List linear regression model assumptions and be able to evaluate model diagnostics to assess model suitability</li>
 </ul>
-</div>
 
+</div>
 
 ## Hypothesis testing
 
@@ -394,6 +397,7 @@ ggplot() +
                               label = paste0("Species average = ",round(means,3)))) +
   geom_hline(data = means, aes(yintercept = means, color = species), alpha = 0.3, lty = 2) +
   geom_point(data = penguins_nafree,aes(x = x_points, y = y_points, color = species), alpha = 0.2) +
+  theme_classic() +
   theme(legend.position = "none") + 
   geom_segment(data = penguins_nafree, aes(x = x_points, y = y_points, xend = x_points, 
                                  yend = sp_means,color = species), size = 1, alpha = 0.2) 

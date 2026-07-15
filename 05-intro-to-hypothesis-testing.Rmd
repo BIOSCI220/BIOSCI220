@@ -50,6 +50,10 @@ Remember the Pāua data from earlier in the module? This dataset contains the fo
 
 We can read these data directly into R using the URL and the `readr` package, which is part of the `tidyverse` collection) as follows.
 
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
 ```{r, message = FALSE}
 paua <- readr::read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/paua.csv")
 ```
@@ -97,7 +101,7 @@ ggplot(paua,aes(x = Species, y = Length)) +
   theme(legend.position = "none") +
   geom_text(data = means, 
             aes(x = Species, y = means + 0.5, 
-                label = paste0("Species averege = ",round(means,3)), color = Species))
+                label = paste0("Species average = ",round(means,3)), color = Species))
 ```
 
 

@@ -8,19 +8,22 @@ The purpose of this section is to get you started learning a new language and le
 <strong>Learning objectives</strong> 
 
 <ul>
- <li>Define the difference between `R` and `RStudio`
- <li> Express the benefits and issues associated with these software being used in the scientific community. Specifically,</li>
+  <li>Define the difference between `R` and `RStudio`</li>
 
- <ul>
-   <li>summarise the benefits and drawbacks associated with the open-source paradigm,</li>
-   <li>discuss the concept of reproducible research and outline its importance</li>
- </ul>
-     
-<li> Distinguish between different data types (e.g., integers, characters, logical, numerical)</li>
-<li> Explain what an `R` function is; describe what an argument to an `R` function is</li>
-<li> Explain what an `R` package is; distinguish between the functions `install.packages()` and `library()`</li>
-<li> Explain what a *working directory* is in the context of `R`</li>
-<li> Interpret and fix basic `R` errors such as</li>
+  <li>
+    Express the benefits and issues associated with these software being used in the scientific community. Specifically,
+    <ul>
+      <li>summarise the benefits and drawbacks associated with the open-source paradigm</li>
+      <li>discuss the concept of reproducible research and outline its importance</li>
+    </ul>
+  </li>
+
+  <li>Distinguish between different data types (e.g., integers, characters, logical, numerical)</li>
+  <li>Explain what an `R` function is; describe what an argument to an `R` function is</li>
+  <li>Explain what an `R` package is; distinguish between the functions `install.packages()` and `library()`</li>
+  <li>Explain what a *working directory* is in the context of `R`</li>
+  <li>Interpret and fix basic `R` errors such as ...</li>
+</ul>
 
 ```{r, err1, echo = FALSE, eval = TRUE, error = TRUE}
 library(fiddler)
@@ -45,7 +48,8 @@ You can think of `R` as the engine to `RStudio`'s dashboard.
 
 
 
-![`R` "the engine"](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mercedes_V6_DTM_Rennmotor_1996.jpg/260px-Mercedes_V6_DTM_Rennmotor_1996.jpg){width="50%"}![`RStudio` "the dashboard](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Dashboard_%282%29.jpg/800px-Dashboard_%282%29.jpg){width="50%"}
+![`R` "the engine"](https://upload.wikimedia.org/wikipedia/commons/1/1b/Mercedes_V6_DTM_Rennmotor_1996.jpg){width="50%"}
+![`RStudio` "the dashboard](https://upload.wikimedia.org/wikipedia/commons/6/64/At_Tenerife_2023_1659.jpg){width="50%"}
 
 
 

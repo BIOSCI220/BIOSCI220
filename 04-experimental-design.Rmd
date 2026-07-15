@@ -144,7 +144,7 @@ However, the huge variation in baseline riding ability between these two groups 
 
 Let's consider a completely randomized design with one treatment factor (e.g., coffee bean type). Here, $n$ experimental units (e.g., cups) are divided **randomly** into $t$ groups. Random allocation can be achieved by simply drawing lots from a hat! To be more rigorous, though, we could use `R`'s `sample()` function (have a go yourself and see if you can work out how to wield `sample()`). Each group is then given one treatment level (one of the treatment factors). As we have defined only one treatment factor all other known independent variables are kept constant so as to not bias any effects.
 
-![An illustration of a CRD with one tratment factor and three treatment levels (A, B, & C)](https://github.com/cmjt/ggdesign/raw/main/README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![An illustration of a CRD with one treatment factor and three treatment levels (A, B, & C)](https://github.com/cmjt/ggdesign/raw/main/README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
 
 **Designing a CRD using `R`**
 
@@ -166,7 +166,7 @@ Having run the code above your CRD plan is as follows
 library(tidyverse)
 kableExtra::kable(data.frame(Cup = 1:12, Bean = allocation) |> t())  %>%
   kableExtra::kable_classic(full_width = FALSE, html_font = "Cambria") %>%
-  kableExtra::kable_styling(font_size = 7)
+  kableExtra::kable_styling(font_size = 9)
 ```
 
 

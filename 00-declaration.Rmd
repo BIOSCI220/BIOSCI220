@@ -1,13 +1,7 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
-
 # Key Information {-}
 
 <div class="alert alert-danger" role="alert">
-<span><strong>**Please read this page carefully as it contains important information about the course structure, delivery, and assessment.**</span></strong>
+<span><strong>**Please read this page carefully as it contains important information about the course structure, delivery, and assessment.**</strong></span>
 </div>
 
 Please note that we do not print this course guide for a few reasons:
@@ -27,10 +21,10 @@ To understand modern biological research and findings, and to participate in thi
 **BIOSCI 220: Quantitative Biology** will introduce you to the programming language R to develop the aforementioned skills, with no coding experience assumed or expected. The aim is to give beginners the confidence to continue learning R and not be afraid of statistics and mathematics! 
 
 
-##  `R` and `RStudio` {-}
+##  Installing `R` and `RStudio` {-}
 
 <div class="alert alert-danger" role="alert"> 
-<span><strong>Throughout this course, you will be learning how to program using `R` and `RStudio` weekly.</span></strong> You are expected to install and familiarize yourself with these environments before or during the first week of the course. We provide help sessions during week 1 and easy-to-follow instructions for this, please see CANVAS and/or [Installing R and RStudio] to get started.
+<span><strong>Throughout this course, you will be learning how to program using `R` and `RStudio` weekly.</strong></span> You are expected to install and familiarize yourself with these environments before or during the first week of the course. We provide help sessions during week 1 and easy-to-follow instructions for this, please see CANVAS and/or [Installing R and RStudio] to get started.
 </div>
 
 Note that lab computers will already have `R` and`RStudio` installed; however, if you plan to use your personal computer then you will need to install both `R` and `RStudio` yourself. Follow the directions in [Installing R and RStudio] to do so (or come along to a dedicated help session).
@@ -62,7 +56,7 @@ knitr::kable(lecs, align = "cccc", "simple", row.names = FALSE)
 
 <div class="alert alert-danger" role="alert">
 
-<span><strong>Lectures are every week, either:</span></strong>
+<span><strong>Lectures are every week, either:</strong></span>
  <ul>
   <li>IN-PERSON (L01C) **Mondays 9-10am** in MLT1 (303-G23) and **Thursdays 9-10 am** in FPAA (260-115), or </li>
   <li>ONLINE (L02C) Delivered using **lecture recordings (via Panopto Video)** from in-person lectures. Scheduled for Mondays and Thursdays 7-8pm, but **can be viewed as soon as available** </li>
@@ -124,7 +118,7 @@ Labs will be held in 106-014 (Biology Building, Room 014) during your scheduled 
 <li>Thursday 10am-1pm, or</li>
 <li>Thursday 2-5pm, or</li>
 <li>Friday 10am-1pm, or</li>
-<li>Friday 2-5pm.</li
+<li>Friday 2-5pm.</li>
 </ul>
 
 </div>

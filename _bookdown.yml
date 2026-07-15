@@ -1,4 +1,7 @@
+Book_filename: "BIOSCI220"
+
 delete_merged_file: true
+new_session: yes
 
 rmd_files:
   - index.Rmd
@@ -11,3 +14,4 @@ rmd_files:
   - 06-intro-to-slr.Rmd
   - 07-lm-stats-inference.Rmd
   - 08-multivariate-methods.Rmd
+  
