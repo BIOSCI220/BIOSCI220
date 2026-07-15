@@ -1,0 +1,839 @@
+# Data wrangling and manipulation
+
+
+<div class="alert alert-success" role="alert">
+<center>![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%}</center>
+
+<strong>Learning objectives</strong> 
+
+<ul>
+<li> Import data into R from a `.csv` file using 1) functions and 2) via the menu </li>
+<li> Apply the principles of tidy data using the `tidyverse` in `R` </li>
+<li> Carry out and interpret the outputs of basic exploratory data analysis using in-built `R` functions </li>
+<li> Carry out basic data wrangling techniques in `R` (e.g., reshaping data, creating new variables, and aggregating information using functions such as the `tidyverse` functions `mutate()`, `group_by()`, and `summarize()`).</li>
+<li> Implement `tidyverse` pipelines using the `%>%` (pipe) operator</li>
+<li> Create appropriate and communicate informative data visualizations using `R`</li> 
+<li> Map the appropriate data structure to a `ggplot2` aesthetic </li>
+<li> Identify the mapping of a variable given a plot </li>
+<li> Discuss and critique data visualizations</li>
+</ul>
+
+</div>
+
+
+## Exploratory data analysis and data wrangling in the Tidyverse
+
+
+For this, and most other sections, we will be using the [`tidyverse`](https://www.tidyverse.org/), which is a collection of `R` packages that all share underlying design philosophy, grammar, and data structures. They are specifically designed to make data wrangling, manipulation, visualization, and analysis simpler.
+
+To install **all** the packages that belong to the `tidyverse` run
+
+
+``` r
+## request (download) the tidyverse packages from the centralised library
+install.packages("tidyverse")
+```
+
+To tell your computer to access the `tidyverse` functionality in your session run  (**Note** you'll have to do this each time you start up an `R` session):
+
+
+``` r
+## Get the tidyverse packages from our local library
+## Do this every time you start a new session
+## and want to use the tidyverse! 
+library(tidyverse)
+```
+
+### The pipe operator
+
+A nifty `tidyverse` tool is called the pipe operator `%>%`. The pipe operator allows us to combine multiple operations in `R` into a single sequential chain of actions.
+
+Say you would like to perform a **hypothetical** sequence of operations on a hypothetical data frame `x` using hypothetical functions `f()`, `g()`, and `h()` (i.e., they are not actual `R` functions, but are shown to demonstrate the structure of a piping sequence):
+
+ This is where the pipe operator `%>%` comes in handy. `%>%` takes the output of one function and then “pipes” it to be the input of the next function. Furthermore, a helpful trick is to read `%>%` as “then” or “and then.” For example, you can obtain the same output as the **hypothetical** sequence of functions as follows:
+
+
+``` r
+## These functions are not true R functions but are
+## shown to demonstrate the structure of a piping sequence
+x %>% 
+  f() %>% 
+  g() %>% 
+  h()
+```
+
+You would read this sequence as:
+
++ Take `x` then
++ Use this output as the input to the next function `f()` then
++ Use this output as the input to the next function `g()` then
++ Use this output as the input to the next function `h()`.
+
+Let's first read in the P$\overline{\text{a}}$ua data we looked at in the previous chapter:
+
+
+``` r
+library(tidyverse)
+paua <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/paua.csv")
+```
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Revisit the [Dealing with data] section in the previous chapter and make sure to practice reading the file into `R` using the different ways given. Make sure to restart `R` (i.e., close it down completely and open up a fresh clean workspace) each time.
+  
+  </div>
+
+Using a `tidyverse` pipeline we can calculate the mean **Age** of each **Species** in the `paua` dataset via
+
+
+``` r
+paua %>%
+group_by(Species) %>%
+summarize(mean_age = mean(Age))
+```
+
+```
+## # A tibble: 2 × 2
+##   Species            mean_age
+##   <chr>                 <dbl>
+## 1 Haliotis australis     7.55
+## 2 Haliotis iris          4.40
+```
+
+You would read the sequence  above as
+
++ Take the `paua` data.frame then
++ Use this and apply the `group_by()` function to group by `Species`
++ Use this output and apply the `summarize()` function to calculate the mean (using (`mean()`) `Age` of each group (`Species`), calling the resulting number `mean_age`
+
+
+
+
+### `tidy` data
+
+> "Tidy datasets are all alike, but every messy dataset is messy in its own way." <footer class="blockquote-footer" style="text-align: right;">Hadley Wickham</footer>
+
+
+There are three interrelated rules which make a dataset `tidy`:
+
+ 1. Each variable must have its own column
+ 2. Each observation must have its own row
+ 3. Each value must have its own cell
+
+<p align="center">![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/tidydata_1.jpg){width=70%}</p>
+
+<p align="center">Illustration from the Openscapes blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst</p>
+
+
+Why ensure that your data is `tidy`? 1) **Consistency:** using a consistent format aids learning and reproducibility, and 2) **simplicity:** it's a format that is well understood by `R`!
+ 
+> "Tidy datasets are easy to manipulate, model and visualize, and have a specific structure: each variable is a column, each observation is a row, and each type of observational unit is a table. This framework makes it easy to tidy messy datasets because only a small set of tools are needed to deal with a wide range of un-tidy datasets." <footer class="blockquote-footer" style="text-align: right;">Hadley Wickham, Tidy Data</footer>
+
+
+### Introuducing the [Palmer penguins](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090081)
+
+
+``` r
+library(palmerpenguins) ## this package contains some nice penguin data
+```
+
+```
+## 
+## Attaching package: 'palmerpenguins'
+```
+
+```
+## The following objects are masked from 'package:datasets':
+## 
+##     penguins, penguins_raw
+```
+
+``` r
+penguins
+```
+
+```
+## # A tibble: 344 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    <fct>   <fct>              <dbl>         <dbl>             <int>       <int>
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           NA            NA                  NA          NA
+##  5 Adelie  Torgersen           36.7          19.3               193        3450
+##  6 Adelie  Torgersen           39.3          20.6               190        3650
+##  7 Adelie  Torgersen           38.9          17.8               181        3625
+##  8 Adelie  Torgersen           39.2          19.6               195        4675
+##  9 Adelie  Torgersen           34.1          18.1               193        3475
+## 10 Adelie  Torgersen           42            20.2               190        4250
+## # ℹ 334 more rows
+## # ℹ 2 more variables: sex <fct>, year <int>
+```
+
+So, what does this show us?
+
++ `A tibble: 344 x 8`: A `tibble` is a specific kind of data frame in `R`. The `penguin` dataset has
+  + `344` rows (i.e., 344 different observations). Here, each observation corresponds to a penguin.
+  + `8` columns corresponding to 3 variables describing each observation.
+  + `species`, `island`, `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g`, `sex`, and  `year` are the different variables of this dataset.
+  
++ We then have a preview of the first 10 rows of observations corresponding to the first 10 penguins. ```... with 334 more rows` indicates there are 334 more rows to see, but these have not been printed (likely as it would clog our screen)
+
+To learn more about the penguins read the [paper that talks all about the data collection.](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090081)
+
+### Common dataframe manipulations in the `tidyverse`, using `dplyr` and `tidyr`
+
+Even from these first few rows of data we can see that there are some `NA` values. Let's count the number of `NA`s. Remember the `%>%` operator? Here we're going to be introduced to a few new things
+
+  + the `apply()` function,
+  + the `is.na()` function, and
+  + how `R` deals with `logical` values!
+
+
+``` r
+library(tidyverse)
+penguins %>% 
+  apply(.,2,is.na) %>%
+  apply(.,2,sum)
+```
+
+```
+##           species            island    bill_length_mm     bill_depth_mm 
+##                 0                 0                 2                 2 
+## flipper_length_mm       body_mass_g               sex              year 
+##                 2                 2                11                 0
+```
+There's lot going on in that code! Let's break it down
+
++ Take `penguins` then
++ Use `penguins` as an input to the `apply()` function (this is specified as the first argument using the `.`)
+  + Now the `apply()` function takes 3 arguments: 
+    1. the data object you want it to *apply* something to (in our case `penguins`)
+    2. the margin you want to *apply* that something to; 1 stands for rows and 2 stands for columns, and
+    3. the function you want it to apply (in our case `is.na()`).
+  + So the second line of code is asking `R` to *apply* the `is.na()` function over the columns of `penguins`
+    + `is.na()` asks for each value it's fed is it an `NA` value; it returns a `TRUE` if so and a `FALSE` otherwise
++ The output from the first `apply()` is then fed to the second `apply()` (using the `.`). The `sum()` function then add them up!
+    + `R` treats a `TRUE` as a 1 and a `FALSE` as a 0.
+    
+So how many `NA`s do you think there are!
+
+Doesn't help much. To
+
+Now we know there are `NA` values throughout the data let's remove then and create a new `NA` free version called `penguins_nafree`. There is a really handy `tidyverse` (`dplyr`) function for this!
+
+
+``` r
+penguins_nafree <- penguins %>% drop_na()
+penguins_nafree
+```
+
+```
+## # A tibble: 333 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    <fct>   <fct>              <dbl>         <dbl>             <int>       <int>
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           36.7          19.3               193        3450
+##  5 Adelie  Torgersen           39.3          20.6               190        3650
+##  6 Adelie  Torgersen           38.9          17.8               181        3625
+##  7 Adelie  Torgersen           39.2          19.6               195        4675
+##  8 Adelie  Torgersen           41.1          17.6               182        3200
+##  9 Adelie  Torgersen           38.6          21.2               191        3800
+## 10 Adelie  Torgersen           34.6          21.1               198        4400
+## # ℹ 323 more rows
+## # ℹ 2 more variables: sex <fct>, year <int>
+```
+
+Below are some other useful manipulation functions; have a look at the outputs and run them yourselves and see if you can work out what they're doing.
+
+
+``` r
+filter(penguins_nafree, island == "Torgersen" )
+```
+
+```
+## # A tibble: 47 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    <fct>   <fct>              <dbl>         <dbl>             <int>       <int>
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           36.7          19.3               193        3450
+##  5 Adelie  Torgersen           39.3          20.6               190        3650
+##  6 Adelie  Torgersen           38.9          17.8               181        3625
+##  7 Adelie  Torgersen           39.2          19.6               195        4675
+##  8 Adelie  Torgersen           41.1          17.6               182        3200
+##  9 Adelie  Torgersen           38.6          21.2               191        3800
+## 10 Adelie  Torgersen           34.6          21.1               198        4400
+## # ℹ 37 more rows
+## # ℹ 2 more variables: sex <fct>, year <int>
+```
+
+``` r
+summarise(penguins_nafree, average_bill_length = mean(bill_length_mm))
+```
+
+```
+## # A tibble: 1 × 1
+##   average_bill_length
+##                 <dbl>
+## 1                44.0
+```
+
+``` r
+group_by(penguins_nafree, species)
+```
+
+```
+## # A tibble: 333 × 8
+## # Groups:   species [3]
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    <fct>   <fct>              <dbl>         <dbl>             <int>       <int>
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           36.7          19.3               193        3450
+##  5 Adelie  Torgersen           39.3          20.6               190        3650
+##  6 Adelie  Torgersen           38.9          17.8               181        3625
+##  7 Adelie  Torgersen           39.2          19.6               195        4675
+##  8 Adelie  Torgersen           41.1          17.6               182        3200
+##  9 Adelie  Torgersen           38.6          21.2               191        3800
+## 10 Adelie  Torgersen           34.6          21.1               198        4400
+## # ℹ 323 more rows
+## # ℹ 2 more variables: sex <fct>, year <int>
+```
+
+
+Often we want to summarise variables by different groups (factors). Below we
+
++ Take the `penguins_nafree` data then
++ Use this and apply the `group_by()` function to group by `species`
++ Use this output and apply the `summarize()` function to calculate the mean (using (`mean()`) bill length (`bill_length_mm`) of each group (`species`), calling the resulting number `average_bill_length`
+
+
+
+``` r
+penguins_nafree %>% 
+  group_by(species) %>% 
+  summarise(average_bill_length = mean(bill_length_mm))
+```
+
+```
+## # A tibble: 3 × 2
+##   species   average_bill_length
+##   <fct>                   <dbl>
+## 1 Adelie                   38.8
+## 2 Chinstrap                48.8
+## 3 Gentoo                   47.6
+```
+
+We can also group by multiple factors, for example, 
+
+
+
+``` r
+penguins_nafree %>% 
+  group_by(island,species) %>% 
+  summarise(average_bill_length = mean(bill_length_mm))
+```
+
+```
+## `summarise()` has regrouped the output.
+## ℹ Summaries were computed grouped by island and species.
+## ℹ Output is grouped by island.
+## ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+## ℹ Use `summarise(.by = c(island, species))` for per-operation grouping
+##   (`?dplyr::dplyr_by`) instead.
+```
+
+```
+## # A tibble: 5 × 3
+## # Groups:   island [3]
+##   island    species   average_bill_length
+##   <fct>     <fct>                   <dbl>
+## 1 Biscoe    Adelie                   39.0
+## 2 Biscoe    Gentoo                   47.6
+## 3 Dream     Adelie                   38.5
+## 4 Dream     Chinstrap                48.8
+## 5 Torgersen Adelie                   39.0
+```
+
+**What about getting more complicated?**
+
+I suggest you run the code below one pipe at a time to work out what each function is doing and data it is acting on.
+
+
+``` r
+penguins_nafree %>%
+  filter(., sex != "male") %>%
+  select(c("species", "island", "body_mass_g")) %>%
+  group_by(species, island) %>%
+  summarise(total_mass_g = sum(body_mass_g)) %>%
+  pivot_wider(names_from = c(island), values_from = total_mass_g)
+```
+
+```
+## # A tibble: 3 × 4
+## # Groups:   species [3]
+##   species   Biscoe  Dream Torgersen
+##   <fct>      <int>  <int>     <int>
+## 1 Adelie     74125  90300     81500
+## 2 Chinstrap     NA 119925        NA
+## 3 Gentoo    271425     NA        NA
+```
+
+
+## Data Visualization
+
+> "...have obligations in that we have a great deal of power over how people ultimately make use of data, both in the patterns they see and the conclusions they draw." <footer class="blockquote-footer" style="text-align: right;">Michael Correll, Ethical Dimensions of Visualization Research</footer>
+
+> "Clutter and confusion are not attributes of data - they are shortcomings of design." <footer class="blockquote-footer" style="text-align: right;">Edward Tufte</footer>
+
+> "Scientific visualization is classically defined as the process of graphically displaying scientific data. However, this process is far from direct or automatic. There are so many different ways to represent the same data: scatter plots, linear plots, bar plots, and pie charts, to name just a few. Furthermore, the same data, using the same type of plot, may be perceived very differently depending on who is looking at the figure. A more accurate definition for scientific visualization would be a graphical interface between people and data." <footer class="blockquote-footer" style="text-align: right;">Nicolas P. Rougier, Michael Droettboom, Philip E. Bourne, Ten Simple Rules for Better Figures </footer>
+
+> "message and readability of the figure is the most important aspect while beauty is only an option" <footer class="blockquote-footer" style="text-align: right;">Nicolas P. Rougier, Michael Droettboom, Philip E. Bourne, Ten Simple Rules for Better Figures </footer>
+
+### Exploratory plots (for your own purposes)
+
+Exploratory plots are just *for you*, they focus solely on data exploration. They 
+
+  1. **Don't Have to Look Pretty:** These plots are only needed to reveal insights.
+  2. **Just Needs to Get to the Point:** Keep the plots concise and straightforward. Avoid unnecessary embellishments or complex formatting. 
+  3. **Explore and Discover New Data Facets:** Use exploratory plots to uncover hidden patterns, trends, or outliers in the data. Employ different plot types to reveal various facets and aspects of the dataset.
+  4. **Help Formulate New Questions:** Use exploratory plots as a tool to prompt new questions and hypotheses. As you discover patterns, think about what additional questions these findings raise for further investigation.
+
+
+  
+Let's use a base `R` command (i.e., functions shipped with `R`) to create a `boxplot` of our `paua` data.
+
+
+``` r
+boxplot(Age ~ Species, data  = paua)
+```
+
+<img src="02-eda-and-data-viz_files/figure-html/boxplot-1.png" alt="" width="672" />
+
+So what have we asked our computer to do here? We are using the function `boxplot()` and supplying two arguments: `Age ~ Species`, and `data  = paua`. The first argument `Age ~ Species` is how `R` understands equations (e.g., $y = x$) and is asking for the variable `Age` to be plotted by the variable `Species`. The second argument `data = paua` specifies from which data object to grab the variables from (in this case the `paua` object we created above).
+
+
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Run each line of the following code and comment briefly on what each plot shows. 
+   
+
+``` r
+boxplot(Length ~ Species, data  = paua)
+boxplot(Age ~ Species, data  = paua)
+plot(Age ~ Length, data  = paua)
+boxplot(Age ~ Length, data  = paua)
+plot(paua$Age)
+```
+</div>
+
+
+
+### Explanatory plots
+
+Explanatory plots are mainly *for others*. These are the most common kind of graph used in scientific publications. They should
+
+   1. **Have a Clear Purpose:** Define a clear and specific purpose for your plot. Identify what scientific question or hypothesis the plot is addressing. Avoid unnecessary elements that do not contribute to this purpose.
+   2. **Be Designed for the Audience:** Tailor the design of your plot to the characteristics and expertise of your audience. Consider their familiarity with technical terms, preferred visualizations, and overall scientific background.
+   3. **Be Easy to Read:** Prioritize readability by using legible fonts, appropriate font sizes, and clear labels. Ensure that the axes are well-labeled, and use a simple and straightforward layout. Avoid clutter and unnecessary complexity that could hinder comprehension.
+   4. **Not Distort the Data:** Maintain the integrity of the data by avoiding distortion in your plot. Ensure that scales and proportions accurately represent the underlying data, preventing misleading visualizations.
+   5. **Help Guide the Reader to a Particular Conclusion:**
+   Structure your plot in a way that guides the reader toward the intended conclusion. Use visual elements such as annotations, arrows, or emphasis to highlight key findings and lead the reader through the data interpretation process.
+   6. **Answer a Specific Question:**Construct your plot with a specific research question in mind. The plot should directly address and answer this question, providing a clear and unambiguous response.
+   7. **Support an Outlined Decision:** If the plot is intended to support decision-making, clearly outline the decision or action it is meant to inform. The plot should provide relevant information that aids in making well-informed decisions based on the presented data.
+
+   
+
+<p align="center">![](https://jimgruman.netlify.app/post/variableimportance/2020_31_PalmerPenguins.png)</p>
+<p align="center">Plots by Cedric Scherer and mentioned on [this blog](https://jimgruman.netlify.app/post/variableimportance/)</p>
+
+
+The table below summarises [Ten Simple Rules for Better Figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833), a basic set of rules to improve your visualizations.
+
+| Rule Name                   | Rule Description                                                                                                       |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| **Know Your Audience**      | Understand the characteristics and expertise of your audience to tailor the figure accordingly.                          |
+| **Identify Your Message**    | Clearly define the main message or takeaway that you want the audience to understand from the figure.                    |
+| **Adapt the Figure to the Support Medium** | Tailor the figure's complexity and design to suit the medium it will be presented in (e.g., print, online). |
+| **Captions Are Not Optional**| Craft informative captions that provide essential details and context for interpreting the figure.                        |
+| **Do Not Trust the Defaults**| Adjust default settings to optimize the visual elements of the figure, such as colors, scales, and labels.                |
+| **Use Color Effectively**   | Apply color purposefully, taking into account accessibility considerations and cultural interpretations.                   |
+| **Do Not Mislead the Reader**| Avoid creating misleading visualizations and be aware of formulas to measure the potential misleading nature of a graph. [There are formulas to measure how misleading a graph is!](https://en.wikipedia.org/wiki/Misleading_graph) |
+| **Avoid Chartjunk**         | Eliminate unnecessary decorations and embellishments in the figure that do not contribute to the message.                 |
+| **Message Trumps Beauty**   | Prioritize conveying a clear message over making the figure aesthetically pleasing.                                      |
+| **Get the Right Tool**      | Choose the appropriate visualization tool (e.g., `R`) or chart type that best communicates the data and intended message.              |
+
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Read [this short paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833) and find examples in your choice of literature of one or more of the rules in action.
+  
+  </div>
+
+   
+## Plotting using `ggplot2`
+
+`ggplot2` is an `R` package for producing statistical, or data, graphics; it has an underlying grammar based on the [Grammar of Graphics](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448)
+
+<center>![](figs/ggplot.png)</center>
+
+Every `ggplot2` plot has three **key** components:
+
+  + `data`,
+
+  + A set of `aes`thetic mappings between variables in the data and visual properties, and
+
+  + At least one layer which describes how to render each observation. Layers are usually created with a `geom_*` function.
+  
+
+Every plot created using `ggplot2` code requires the three components above:
+
+
+``` r
+library(ggplot2) ## load package
+ggplot(data = <your_data>, aes(<specify_aesthetics>)) + ## initialize plot specifying data and aesthetics
+	geom_<specify_geom>() ## add a layer (or geom)
+```
+
+**Note** the `+` operator used to add a layer onto a `ggplot` object (see below for examples), it has a specific purpose in a `ggplot2` context. It should not be confused with the pipe operator `%>%` which  takes the output of one function and passes it as the first argument to the next function (see [The pipe operator]).
+
+
+The table below summaries the most common `geom`s and gives examples of when they are most likely appropriate.
+
+| `geom_*`         | Description                                                                                                   | Typical Use Case                                                   | Mapping Aesthetics                                       |
+|------------------|---------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|-----------------------------------------------------------|
+| `geom_point`     | Displays individual data points as dots on the plot.                                                          | Visualizing individual data points in a scatter plot.            | `aes(x = ..., y = ...)`: X and Y coordinates.                |
+| `geom_line`      | Connects data points with lines, useful for showing trends or relationships between continuous variables.    | Representing trends or relationships over continuous variables. | `aes(x = ..., y = ...)`: X and Y coordinates.                |
+| `geom_bar`       | Creates bar charts, displaying the frequency or count of data within categorical groups.                      | Illustrating the distribution of categorical data.                | `aes(x = ..., y = ...)`: X-axis (categorical) and Y-axis (count or frequency). |
+| `geom_histogram` | Constructs histograms, visualizing the distribution of continuous variables by dividing them into bins.      | Examining the distribution of a single continuous variable.       | `aes(x = ..., y = ...)`: X-axis (continuous) and Y-axis (count or frequency). |
+| `geom_boxplot`   | Generates box plots, illustrating the distribution of a continuous variable and highlighting outliers.       | Summarizing the distribution of continuous variables.             | `aes(x = ..., y = ...)`: X-axis (categorical) and Y-axis (continuous). |
+| `geom_area`      | Fills the area between a line and the x-axis, useful for visualizing accumulated quantities or proportions.  | Depicting cumulative or proportional relationships.               | `aes(x = ..., y = ...)`: X and Y coordinates.                |
+| `geom_text`      | Adds text labels to the plot, providing additional information about specific data points.                  | Annotating specific points or adding labels to the plot.          | `aes(x = ..., y = ..., label = ...)`: X, Y coordinates, and text labels. |
+| `geom_smooth`    | Fits and overlays a smoothed line (e.g., LOESS or linear regression) on the data points.                    | Highlighting trends and capturing patterns in the data.         | `aes(x = ..., y = ...)`: X and Y coordinates.                |
+| `geom_violin`    | Produces violin plots, displaying the distribution of a continuous variable across different categories.     | Visualizing the distribution and density of data within categories. | `aes(x = ..., y = ...)`: X-axis (categorical) and Y-axis (continuous). |
+| `geom_segment`   | Draws line segments between specified points, useful for indicating relationships or connections in the data. | Illustrating relationships between two sets of coordinates.      | `aes(x = ..., y = ..., xend = ..., yend = ...)`: Start and end coordinates for the segments. |
+
+
+
+### Plotting the `palmerpenguins` data
+
+**You might find [this application](https://cmjt.shinyapps.io/penguin/) useful**
+
+Recall we used specified an `NA`-free version of the dataset:
+
+
+``` r
+penguins_nafree <- penguins %>% 
+  drop_na()
+```
+
+
+First off, let's create a **scatter plot**. The code below takes the `penguins_nafree` dataset (created above) and maps the body mass variable `body_mass_g` to the x-axis and flipper length variable `flipper_length_mm` to the y-axis. Then, it adds points to the plot to represent each data point in the dataset. Therefore, the plot shows  the relationship between body mass (g) and flipper length (mm) for the penguins in our dataset `penguins_nafree`.
+
+
+
+``` r
+ggplot(penguins_nafree,aes(x = body_mass_g, y = flipper_length_mm)) + ## data & aesthetics
+    geom_point() ## geom
+```
+
+<img src="02-eda-and-data-viz_files/figure-html/flippoint-1.png" alt="" width="672" />
+
+
+Breaking the code above down we have
+
+ 1. `ggplot(penguins_nafree, aes(x = body_mass_g, y = flipper_length_mm))` initializes the plot using the `ggplot()` function. It specifies the data frame `penguins_nafree` and the aesthetics mapping: setting the x-axis (`x`) to the `body_mass_g` variable and the y-axis (`y`) to the `flipper_length_mm` variable. 
+ 2. We then add (using the `+` operator) a layer to the plot using `geom_point()`, which specifies that the data points should be represented as points on the plot. Each point corresponds to a row in the dataset, with `x` and `y` coordinates determined by the aesthetics specified in the previous line.
+
+
+
+But, what about adding some personal touches? We can add more appropriate axis labels can be specified using `xlab()` and `ylab()` and even customizes the color scale using  `scale_color_manual()`:
+
+
+``` r
+ggplot(data = penguins_nafree, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species),size = 2)  +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"), name = "") +
+  xlab("Bill length (mm)") +
+  ylab("Bill depth (mm)")
+```
+
+<img src="02-eda-and-data-viz_files/figure-html/point-1.png" alt="" width="672" />
+
+Breaking down the lines of code here we have that
+
+ 1. Again `ggplot(penguins_nafree, aes(x = body_mass_g, y = flipper_length_mm))` initializes the plot using the `ggplot()` function. It specifies the data frame `penguins_nafree` and the aesthetics mapping: setting the x-axis (`x`) to the `body_mass_g` variable and the y-axis (`y`) to the `flipper_length_mm` variable. 
+ 2. `geom_point(aes(color = species), size = 2)` adds a layer to the plot using `geom_point()`. It specifies that the data points should be represented as points on the plot. The argument `aes(color = species)` argument  the species variable to the color of the points, and `size = 2` sets the size of the points.
+ 3. `scale_color_manual(values = c("darkorange","darkorchid","cyan4"), name = "")` customizes the color scale of the points by setting the manually via the argument `values = c("darkorange","darkorchid","cyan4")`. Here the three specified colors are used for the three different species of penguins passed on from the previous aesthetic. The argument  `name = ""` removes the legend title.
+ 4. Finally `xlab("Bill length (mm)")` and `ylab("Bill depth (mm)")` manually set the x-axis and y-axis labels.
+
+
+<div class="alert alert-warning">
+  <strong>TASK</strong>Try specifying some different colours in  `scale_color_manual()` in the code above. Research Hex colour codes and try using these instead of colour names.
+  </div>
+
+Now let's move onto plotting different types of data (e.g., continuous and discrete) on the same plot. We can even add some easy custom themeing using in-built `ggplot2` functionality (e.g., `theme_classic()`). The code below, generates a boxplot that compares the distribution of flipper lengths (mm) for the different penguin species. 
+
+
+
+``` r
+## boxplot
+ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) +
+    geom_boxplot() +
+    ylab("Flipper length (mm)") + xlab("") +
+  theme_classic() 
+```
+
+<img src="02-eda-and-data-viz_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672" />
+
+Breaking the code above down we have
+
+
+ 1. `ggplot(penguins_nafree, aes(x = species, y = flipper_length_mm))` initializes the plot using the `ggplot()` function. It uses the `penguins_nafree` dataset and sets the x-axis (x) to the `species` variable and the y-axis (y) to the `flipper_length_mm` variable.
+ 2. `geom_boxplot()` adds a layer to the plot creating boxplots for each level of the `species` (x-axis) variable (species). 
+ 3. `ylab("Flipper length (mm)") + xlab("")` manually set the y-axis label to `"Flipper length (mm)"` and remove the x-axis label (setting it to an empty string `""`).
+ 4. `theme_classic()` applies the so called *classic* theme to the plot, changing the appearance of the background and gridlines etc. from the default ones above.
+
+
+<div class="alert alert-warning">
+  <strong>TASK</strong>
+  Type `theme_` into your Console and wait for `RStudio` to attempt to autocomplete for you. Run down the list of in-built themes and try them instead of `theme_classic()` above.
+  
+</div>
+
+
+Rather than a boxplot we are going to create a violin plot of the same variables using `geom_violin()` (we use another theme this time `theme_minimal()`). Violin plots are more flexible than boxplots as they better show the shape (i.e., distribution)  of our data.
+
+
+``` r
+## violin plot
+ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) + 
+    geom_violin() +
+    ylab("Flipper length (mm)") + xlab("") +
+    theme_minimal() ## another theme...
+```
+
+<img src="02-eda-and-data-viz_files/figure-html/unnamed-chunk-15-1.png" alt="" width="672" />
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> What can you say about the distribution of penguin flipper length. Do you this the distributions are symmetrical, skewed, bimodal?
+</div>
+
+
+The code below plots a histogram of flipper lengths (mm) for penguins, with different colors representing different species. We make the colours transparent using the `alpha` argument so that we can see the overlap in distributions. There are also another couple of new functions and arguments used, breaking the code down line by line we have
+
+ 1. `ggplot(penguins_nafree, aes(x = flipper_length_mm))` initializes the plot using the `ggplot()` function. We specify the `penguins_nafree` dataset and map the x-axis (x) to the `flipper_length_mm` variable.
+ 2. `geom_histogram(aes(fill = species), alpha = 0.5, position = "identity")` adds a layer to the plot using `geom_histogram()`, which creates a histogram of flipper lengths. The `aes(fill = species)` argument colors the bars based on the `species` variable. Setting `alpha = 0.5` adjusts the transparency (which ranges from 0 to 1) of the bars. Finally, the less obvious use of and `position = "identity"` places the bars directly adjacent to each other.
+ 3. `xlab("Flipper length (mm)")` sets the x-axis label.
+ 4. `scale_fill_brewer(palette = "Dark2", name = "Species")` specifies a custom color scale mapped to the fill aesthetic. It sets the color palette to `"Dark2"` and assigns the legend title as `"Species"`.
+ 5. `theme_light()` sets another in-built theme changing the appearance of the background and gridlines etc.
+ 
+
+
+
+
+
+``` r
+## histogram, with a colorblind friendly palette
+ggplot(penguins_nafree,aes(x = flipper_length_mm)) + 
+    geom_histogram(aes(fill = species), alpha = 0.5, position = "identity") +
+    xlab("Flipper length (mm)") + 
+    scale_fill_brewer(palette = "Dark2", name = "Species") +
+  theme_light() ## and another theme....
+```
+
+<img src="02-eda-and-data-viz_files/figure-html/unnamed-chunk-16-1.png" alt="" width="672" />
+
+<div class="alert alert-warning">
+  <strong>TASK</strong>
+We should always avoid using similarly bight red and green colours: they may not be distinguishable for red-green colorblind readers. Using `ggplot2` we can access a whole range of colourblind friendly palettes: one package that has a whole range is `RColorBrewer` install it then try running `RColorBrewer::display.brewer.all(colorblindFriendly = TRUE)` what do you think you've asked your computer to show you?
+</div>
+
+
+We've seen that there are three `factor` variables in the dataset: `species`, `island`, and `sex`. To count the number of penguins of each `species` and `sex` on each `island` we could use the following pipeline.
+
+
+``` r
+penguins_nafree %>%
+  count(species, sex, island)
+```
+
+```
+## # A tibble: 10 × 4
+##    species   sex    island        n
+##    <fct>     <fct>  <fct>     <int>
+##  1 Adelie    female Biscoe       22
+##  2 Adelie    female Dream        27
+##  3 Adelie    female Torgersen    24
+##  4 Adelie    male   Biscoe       22
+##  5 Adelie    male   Dream        28
+##  6 Adelie    male   Torgersen    23
+##  7 Chinstrap female Dream        34
+##  8 Chinstrap male   Dream        34
+##  9 Gentoo    female Biscoe       58
+## 10 Gentoo    male   Biscoe       61
+```
+
+However, it's not too easy to compare the raw numbers here; so what about a bar graph? 
+
+
+``` r
+ggplot(penguins_nafree, aes(x = species, fill = sex)) +
+  geom_bar(alpha = 0.8, position = "dodge") +
+  facet_wrap(~island) + ## what are we doing here?
+  xlab("") +
+  theme_linedraw() + ## remember themes...
+  scale_fill_manual(values = c("cyan4","darkorange"), name = "Sex") 
+```
+
+<img src="02-eda-and-data-viz_files/figure-html/bar-1.png" alt="" width="672" />
+
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Before reading the breakdown below write out your own and then compare the two. 
+  
+  </div>
+  
+  Breaking down the code above we have
+
+ 1. `ggplot(penguins_nafree, aes(x = species, fill = sex))` initializes the plot using the `ggplot()` function, specifying the dataset `penguins_nafree`. It maps the x-axis (x) to the `species` variable and fills the bars based on the `sex` variable.
+ 2. `geom_bar(alpha = 0.8, position = "dodge")` adds a layer to the plot using `geom_bar()`. The `alpha = 0.8` argument adjusts the transparency of the bars, and `position = "dodge"` places the bars side by side for each species.
+ 3. `facet_wrap(~island)` creates a faceted plot where separate plots are generated for each level of the `island` variable. 
+ 4. `xlab("")` sets the x-axis label as an empty string `""`.
+ 5. `theme_linedraw()` applies a linedraw theme to the plot.
+ 5. `scale_fill_manual(values = c("cyan4", "darkorange"), name = "Sex")`customizes the fill color scale and sets the colors for the two levels of the `sex` variable assigning the legend title as `"Sex"`.
+
+
+
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Run each code chunk below. Map each line to a component in the plot produced. Can you improve the plots?
+
+
+``` r
+ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) + ## data & aesthetics
+    geom_boxplot()  + ## geom
+  ggtitle("Flipper length (mm) by species") +
+  ylab("Flipper length (mm)") +
+  xlab("Species") +
+  theme_dark() ## theme
+```
+
+
+``` r
+ggplot(penguins_nafree,aes(x = species, y = flipper_length_mm)) + ## data & aesthetics
+    geom_jitter()  + ## geom
+  ggtitle("Flipper length (mm) by species") +
+  ylab("Flipper length (mm)") +
+  xlab("Species") +
+  theme_dark() ## theme
+```
+
+
+``` r
+ggplot(penguins,aes(x = species, y = flipper_length_mm)) + ## data & aesthetics
+    geom_violin()  + ## geom
+  ggtitle("Flipper length (mm) by species") +
+  ylab("Flipper length (mm)") +
+  xlab("Species") +
+  theme_dark() ## theme
+```
+
+
+``` r
+ggplot(penguins_nafree, aes(x = body_mass_g, y = flipper_length_mm, 
+                         col = species)) +
+    geom_point(size = 2, alpha = 0.5) + 
+    geom_smooth(method = "lm", se = FALSE) +
+    facet_grid(~ sex) +
+    theme_bw() + 
+    labs(title = "Flipper Length and Body Mass, by Sex & Species",
+         subtitle = paste0(nrow(penguins), " of the Palmer Penguins"),
+         x = "Body Mass (g)", 
+         y = "Flipper Length (mm)")
+```
+
+</div>
+
+## Bringing things together 
+
+### More on pipelines and operators
+
+In this chapter you've been introduced to the pipe operator `%>%` and the use of the `+` operator adding layers to a `ggplot`. Recall that `%>%` is used for chaining operations in a data manipulation pipeline, whilst `+` is used for adding layers to a plot in the `ggplot2` framework. They serve different purposes, but we can combine them! For example, we can pipe a data object using `%>%` into a ggplot workflow and then use `+` to add layers.
+
+
+``` r
+library(tidyverse)
+library(palmerpenguins)
+penguins %>%
+	na.omit() %>%
+	filter(., island == "Biscoe" ) %>%
+	ggplot(., aes(y = body_mass_g, x = species)) +
+    geom_boxplot() +
+	labs(title = "Penguin Body Mass by Species on Biscoe",
+         y = "Body Mass (g)", 
+         x = "")
+```
+
+<img src="02-eda-and-data-viz_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672" />
+
+
+<div class="alert alert-warning">
+  <strong>TASK</strong> Run the code below. It will give you an error, can you figure out what the cause is?
+  
+
+``` r
+library(tidyverse)
+library(palmerpenguins)
+penguins %>%
+	na.omit() %>%
+	filter(., island == "Biscoe" ) %>%
+	ggplot(., aes(y = body_mass_g, x = species)) %>%
+    geom_boxplot() %>%
+	labs(title = "Penguin Body Mass by Species on Biscoe",
+         y = "Body Mass (g)", 
+         x = "")
+```
+  
+  </div>
+
+### What to look at in a plot (*a taster*)
+
+In many of the following chapters you will hear a lot about variability or variation. Variation is simply a measure of spread (i.e., how far apart the observations are from each other). In particular, we often talk about deviation from the mean (i.e., how far away from the average value the observations are) as we are often interested in how *large* this deviation is relative to the information we have. In [Chapter 5](Introduction to Hypothesis testing) you will learn about ways of formally testing this. However, with the data visualization skills you've just learnt we can already begin to critically evaluate our data by simply looking at plots.
+
+**Between-group variation** is a measure of the variability between different groups; it assesses how much the means of different groups differ from each other. Higher between-group variation suggests that the groups are not similar. However, before we can conclude anything relating to similarity, or not, of groups we also have to consider within-group variation.
+
+
+
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once per session.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+```
+
+<img src="02-eda-and-data-viz_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672" />
+
+**Within group variation** measures the variability among individual data points within each group; it measures  how much individual data points within each group differ from the group's mean. Lower within-group variation suggests that the data points within each group are less scattered around the group's mean
+
+<img src="02-eda-and-data-viz_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" />
+
+
+<div class="alert alert-info" role="alert">
+![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_hex.png?raw=true){width=10%} 
+
+<strong>Other resources: optional but recommended</strong>
+
+<ul>
+<li>[Ihaka Lecture Series 2023 Danielle Navarro – Unpredictable paintings: Making generative artwork in R](https://www.youtube.com/watch?v=W8rY-DNQI2Q)  </li>
+<li>[Ihaka Lecture Series 2023 Chris McDowall – What’s Behind the Map: The Process of Data Visualisation](https://www.youtube.com/watch?v=utUr1pV8Em4)  </li>
+<li>[`ggplot2` cheatsheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)</li>
+<li>[Elegant Graphics for Data Analysis](https://ggplot2-book.org/introduction.html)</li>
+<li>[Using `ggplot2` to communicate your results](https://ourcodingclub.github.io/tutorials/datavis/)</li>
+<li>[Teacups, giraffes, and statistics: free online introductory level R and statistics modules](https://tinystats.github.io/teacups-giraffes-and-statistics/)</li>
+</ul>
+</div>

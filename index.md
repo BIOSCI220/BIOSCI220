@@ -1,0 +1,24 @@
+---
+title: "BIOSCI 220: Quantitative Biology"
+author: ""
+date: ""
+site: bookdown::bookdown_site
+---
+
+
+
+# Nau mai, haere mai, welcome to BIOSCI 220 {-}
+
+<center>
+
+![](https://github.com/BIOSCI220/hoiho/blob/main/hoiho_logo_sq_blue.png?raw=true){width=60%}
+
+**Module 01: Data exploration, data sovereignty and statistical inference**
+
+Lecturers: Beatrix Jones & Jenn Jury
+
+Guest lecturer: Nicole Edwards
+
+</center>
+
+

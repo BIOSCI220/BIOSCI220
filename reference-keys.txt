@@ -1,7 +1,7 @@
-r-and-rstudio-1
+r-and-rstudio
 what-are-r-and-rstudio
 why-are-you-learning-to-program
-installing-r-and-rstudio
+installing-r-and-rstudio-1
 getting-started-with-r
 the-codesource-pane
 r-basics
